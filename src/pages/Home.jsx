@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, TrendingUp, Users, Award, PlayCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2, TrendingUp, Users, Award, PlayCircle, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -25,74 +25,86 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-navy-900 text-white overflow-hidden">
+    <div className="bg-navy-900 text-white overflow-hidden selection:bg-gold/40">
+      {/* Global Grain Texture */}
+      <div className="fixed inset-0 z-50 bg-grain pointer-events-none opacity-[0.03]" />
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center pt-20">
-        {/* Cinematic Backdrop */}
+        {/* Cinematic Backdrop & Spotlights */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/80 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/40 to-transparent z-10" />
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/4" />
+          
           <img 
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070" 
             alt="High-end Architecture" 
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover opacity-20"
           />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="inline-block px-4 py-1 rounded-full border border-gold/30 text-gold text-xs font-bold uppercase tracking-[0.2em] mb-6 bg-gold/5">
-              Visionary & Founder
-            </span>
-            <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 leading-[0.9]">
+            <motion.span 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/40 text-gold text-[10px] font-black uppercase tracking-[0.4em] mb-10 bg-gold/10"
+            >
+              <ShieldCheck size={14} /> Executive Leadership
+            </motion.span>
+            
+            <h1 className="text-7xl md:text-9xl font-black tracking-tighter mb-8 leading-[0.85] uppercase">
               Clarity Makes <br /> 
-              <span className="text-gold italic font-light">The Difference.</span>
+              <span className="gold-gradient-text italic font-black">The Difference.</span>
             </h1>
-            <p className="text-xl text-white/60 max-w-lg mb-10 leading-relaxed">
-              Ghassan Farajallah is redefining the real estate ecosystem through the lens of tokenization and strategic leadership.
+            <p className="text-xl md:text-2xl text-white/40 max-w-lg mb-12 leading-relaxed font-light">
+              Redefining the real estate ecosystem through the lens of tokenization and strategic authority.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact" className="px-8 py-4 bg-gold text-navy-900 font-bold uppercase tracking-widest text-sm hover:bg-gold-light transition-all flex items-center justify-center gap-2 group">
-                Work with ETMAM <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <div className="flex flex-col sm:flex-row gap-6">
+              <Link to="/contact" className="px-10 py-5 bg-gold text-navy-900 font-black uppercase tracking-[0.2em] text-xs hover:bg-gold-light hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 group premium-shadow">
+                Work with ETMAM <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
               </Link>
-              <button className="px-8 py-4 border border-white/20 hover:bg-white/5 transition-all font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-2">
+              <button className="px-10 py-5 border border-white/20 hover:bg-white/5 hover:border-white/40 transition-all font-black uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3">
                 Watch Vision <PlayCircle size={18} />
               </button>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            initial={{ opacity: 0, scale: 0.95, rotate: -2 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="hidden lg:block relative"
           >
-            {/* Visual Frame for Personal Brand */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-gold/20 grayscale hover:grayscale-0 transition-all duration-1000 group">
-              <div className="absolute inset-0 bg-gold/10 mix-blend-overlay group-hover:opacity-0 transition-opacity" />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-white/10 p-2 bg-navy-800/50 backdrop-blur-sm group">
+              <div className="absolute inset-0 bg-gold/5 mix-blend-overlay group-hover:opacity-0 transition-opacity" />
               <img 
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1974" 
                 alt="Ghassan Farajallah" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover grayscale brightness-110 group-hover:grayscale-0 transition-all duration-1000"
               />
-              <div className="absolute bottom-8 left-8 right-8 p-6 bg-navy-900/90 backdrop-blur-md border border-white/10">
-                <p className="text-gold font-bold uppercase tracking-[0.3em] text-[10px] mb-1">Founder & CEO</p>
-                <h3 className="text-xl font-bold">Ghassan Farajallah</h3>
+              <div className="absolute bottom-10 left-10 right-10 p-8 glass-card border-gold/30">
+                <p className="text-gold font-black uppercase tracking-[0.4em] text-[10px] mb-2">Founder & CEO</p>
+                <h3 className="text-2xl font-black uppercase tracking-tight">Ghassan Farajallah</h3>
               </div>
             </div>
-            {/* Design elements */}
-            <div className="absolute -top-6 -right-6 w-32 h-32 border-t-2 border-r-2 border-gold/30" />
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b-2 border-l-2 border-gold/30" />
+            {/* Cinematic layered borders */}
+            <div className="absolute -top-10 -right-10 w-48 h-48 border-t-[1px] border-r-[1px] border-gold/20" />
+            <div className="absolute -bottom-10 -left-10 w-48 h-48 border-b-[1px] border-l-[1px] border-gold/20" />
+            <div className="absolute -top-5 -right-5 w-24 h-24 border-t-[0.5px] border-r-[0.5px] border-gold/40" />
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <section className="bg-navy-800 border-y border-white/5 py-12">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-12">
+      {/* Authority Bar (Stats) */}
+      <section className="bg-navy-900 border-y border-white/5 py-16 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-16">
           {stats.map((stat, idx) => (
             <motion.div 
               key={idx}
@@ -100,43 +112,49 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className="flex items-center gap-6"
+              className="flex items-center gap-8 group"
             >
-              <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+              <div className="w-20 h-20 rounded-sm bg-white/[0.03] flex items-center justify-center border border-white/10 group-hover:border-gold/50 group-hover:bg-gold/5 transition-all duration-500">
                 {stat.icon}
               </div>
               <div>
-                <h4 className="text-3xl font-bold text-white">{stat.value}</h4>
-                <p className="text-sm text-white/50 uppercase tracking-widest">{stat.label}</p>
+                <h4 className="text-4xl font-black text-white mb-1">{stat.value}</h4>
+                <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">{stat.label}</p>
               </div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Pillars Section */}
-      <section className="py-32 relative">
+      {/* Strategic Domains (Pillars) */}
+      <section className="py-40 relative">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Strategic Domains</h2>
-            <div className="w-24 h-1 bg-gold" />
+          <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-10">
+            <div className="max-w-2xl">
+              <span className="text-gold text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Strategic Pillars</span>
+              <h2 className="text-5xl md:text-7xl font-black uppercase leading-[0.9]">Domains of <br /> <span className="text-gold italic">Authority.</span></h2>
+            </div>
+            <div className="w-40 h-[1px] bg-gold/30 mb-4 hidden md:block" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {corePillars.map((pillar, idx) => (
               <motion.div
                 key={idx}
-                whileHover={{ y: -10 }}
-                className="p-12 bg-white/5 border border-white/10 rounded-sm relative group overflow-hidden"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -15 }}
+                className="p-16 glass-card rounded-sm relative group overflow-hidden premium-shadow"
               >
-                <div className="absolute top-0 right-0 p-8 text-gold/20 text-6xl font-black">0{idx+1}</div>
-                <span className="text-gold text-xs font-bold uppercase tracking-widest mb-4 block">{pillar.role}</span>
-                <h3 className="text-2xl font-bold mb-6">{pillar.title}</h3>
-                <p className="text-white/50 mb-8 leading-relaxed">
+                <div className="absolute top-0 right-0 p-10 text-gold/[0.05] text-[120px] font-black group-hover:text-gold/10 transition-colors leading-none">0{idx+1}</div>
+                <span className="text-gold text-[10px] font-black uppercase tracking-[0.4em] mb-6 block">{pillar.role}</span>
+                <h3 className="text-4xl font-black mb-8 tracking-tighter uppercase">{pillar.title}</h3>
+                <p className="text-white/40 text-lg mb-12 leading-relaxed font-light">
                   {pillar.description}
                 </p>
-                <Link to={pillar.link} className="flex items-center gap-2 text-white font-bold text-sm uppercase tracking-widest group-hover:text-gold transition-colors">
-                  Explore Insights <ArrowRight size={16} />
+                <Link to={pillar.link} className="inline-flex items-center gap-3 text-white font-black text-xs uppercase tracking-[0.3em] group-hover:text-gold transition-all">
+                  Access Intellectual Capital <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
                 </Link>
               </motion.div>
             ))}
@@ -144,60 +162,61 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Integrated Programs Section */}
-      <section className="py-32 bg-navy-800 relative">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-20 items-center">
+      {/* Integrated Programs (Executive Education) */}
+      <section className="py-40 bg-navy-800/30 relative">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-32 items-center">
           <div className="lg:w-1/2">
-            <span className="text-gold text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Education & Masterclasses</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 italic">Clarity Makes <br /> The Difference.</h2>
-            <p className="text-white/60 text-lg mb-8 leading-relaxed">
-              Exclusive workshops designed for real estate professionals and executives looking to master the foundations of tokenization and strategic leadership in a digital-first economy.
+            <span className="text-gold text-[10px] font-black uppercase tracking-[0.5em] mb-8 block">Masterclasses</span>
+            <h2 className="text-5xl md:text-7xl font-black mb-10 leading-[0.9] uppercase italic">Clarity Makes <br /> <span className="not-italic text-gold">The Difference.</span></h2>
+            <p className="text-white/40 text-xl mb-12 leading-relaxed font-light">
+              High-stakes workshops designed for the modern executive. Transition from traditional real estate to a tokenized, digital-first economy with absolute precision.
             </p>
-            <ul className="space-y-4 mb-10">
-              {['Tokenization Foundations', 'Executive Leadership in Web3', 'Digital Asset Strategy'].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-white/80">
-                  <CheckCircle2 size={18} className="text-gold" />
+            <ul className="grid grid-cols-1 gap-6 mb-16">
+              {['Tokenization Architecture', 'Web3 Corporate Strategy', 'Institutional Digital Assets'].map((item, i) => (
+                <li key={i} className="flex items-center gap-4 text-white font-black uppercase tracking-widest text-[10px]">
+                  <div className="w-2 h-2 rounded-full bg-gold" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            <button className="px-10 py-5 bg-navy-900 border border-gold/30 text-gold font-bold uppercase tracking-widest text-sm hover:bg-gold hover:text-navy-900 transition-all">
-              Register for Next Session
+            <button className="px-12 py-6 bg-transparent border border-gold text-gold font-black uppercase tracking-[0.3em] text-xs hover:bg-gold hover:text-navy-900 transition-all premium-shadow">
+              Secure Your Placement
             </button>
           </div>
-          <div className="lg:w-1/2 relative">
-            <div className="aspect-video bg-navy-900 rounded-sm border border-white/10 flex items-center justify-center group cursor-pointer overflow-hidden">
+          <div className="lg:w-1/2 relative group">
+            <div className="aspect-[4/3] bg-navy-900 rounded-sm overflow-hidden border border-white/10 premium-shadow">
                <img 
                 src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=2070" 
                 alt="Workshop Session" 
-                className="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0"
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 rounded-full bg-gold/90 flex items-center justify-center text-navy-900 shadow-xl shadow-gold/20 group-hover:scale-110 transition-transform">
-                  <PlayCircle size={40} fill="currentColor" />
-                </div>
+                <motion.div 
+                  whileHover={{ scale: 1.1 }}
+                  className="w-24 h-24 rounded-full bg-gold/90 flex items-center justify-center text-navy-900 shadow-2xl shadow-gold/40 group-hover:bg-gold transition-all"
+                >
+                  <PlayCircle size={48} fill="currentColor" />
+                </motion.div>
               </div>
             </div>
-            <div className="absolute -bottom-6 -right-6 px-8 py-6 bg-gold text-navy-900 font-black text-4xl italic">
+            <div className="absolute -bottom-8 -right-8 px-10 py-8 bg-gold text-navy-900 font-black text-5xl italic premium-shadow">
               LIVE
             </div>
           </div>
         </div>
       </section>
 
-      {/* Flagship Venture Teaser */}
-      <section className="py-40 text-center relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-10">
-           <div className="absolute inset-0 bg-gold radial-gradient" />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-6">
-          <span className="text-gold text-xs font-bold uppercase tracking-[0.4em] mb-6 block">Building the Standard</span>
-          <h2 className="text-5xl md:text-7xl font-bold mb-10">SmartBlocks.</h2>
-          <p className="text-white/50 text-xl mb-12 leading-relaxed">
-            The flagship venture defining real estate tokenization. A product-grade platform built with uncompromising precision.
+      {/* Flagship Venture (SmartBlocks) */}
+      <section className="py-52 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] bg-gold/[0.03] rounded-full blur-[180px] z-0" />
+        <div className="relative z-10 max-w-5xl mx-auto px-6">
+          <span className="text-gold text-[10px] font-black uppercase tracking-[0.6em] mb-10 block">Executive Portfolio</span>
+          <h2 className="text-7xl md:text-9xl font-black mb-12 tracking-tighter uppercase leading-none">SmartBlocks.</h2>
+          <p className="text-white/40 text-2xl mb-16 leading-relaxed font-light mx-auto max-w-3xl">
+            Defining the gold standard of real estate tokenization. A flagship demonstration of technical excellence and institutional authority.
           </p>
-          <Link to="/ventures" className="inline-flex items-center gap-3 px-10 py-5 bg-white text-navy-900 font-bold uppercase tracking-widest text-sm hover:bg-gold transition-colors">
-            View Marketplace Case Study <ArrowRight size={20} />
+          <Link to="/ventures" className="inline-flex items-center gap-4 px-12 py-6 bg-white text-navy-900 font-black uppercase tracking-[0.3em] text-xs hover:bg-gold hover:scale-[1.05] transition-all premium-shadow">
+            View Case Study <ArrowRight size={20} />
           </Link>
         </div>
       </section>

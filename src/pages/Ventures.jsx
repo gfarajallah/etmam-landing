@@ -1,132 +1,175 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Layers, ShieldCheck, Zap, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Layers, ShieldCheck, Zap, ArrowUpRight, Cpu } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Ventures = () => {
   const portfolio = [
     {
       name: "SmartBlocks",
-      role: "Flagship Venture",
-      type: "Real Estate Tokenization Platform",
-      desc: "The definitive platform for fractionalizing real estate assets. Built to institutional standards, SmartBlocks bridges the gap between physical property and digital liquidity.",
-      features: ["Compliant Token Issuance", "Secondary Market Trading", "Automated Distribution"],
+      role: "Founder & Flagship Venture",
+      type: "Real Estate Tokenization Standard",
+      desc: "The definitive platform for institutional-grade property fractionalization. SmartBlocks isn't just a product; it's the protocol defining the intersection of physical assets and digital liquidity.",
+      features: ["Reg-D/S Compliant Architecture", "Automated Cap Table Management", "Secondary Market Infrastructure"],
       link: "https://smart-blocks-tokenization.base44.app/",
-      isFlagship: true
+      isFlagship: true,
+      accent: "gold"
     },
     {
       name: "EliteWay Strategy",
       role: "Strategic Partner",
-      type: "Advisory & Market Entry",
-      desc: "Specialized consultancy focusing on high-net-worth market entry strategies and luxury real estate positioning in the MENA region.",
-      features: ["HNWI Networking", "Market Intelligence", "Brand Positioning"],
+      type: "Market Intelligence & Advisory",
+      desc: "Specialized consultancy focusing on frontier market entry and luxury asset positioning for HNWI and institutional family offices.",
+      features: ["HNWI Access Networks", "Bespoke Market Reports", "MENA Integration Strategy"],
       link: "#",
-      isFlagship: false
+      isFlagship: false,
+      accent: "white"
     }
   ];
 
   return (
-    <div className="pt-32 pb-20 bg-navy-900 min-h-screen">
-      {/* Header */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-24">
-        <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           className="max-w-3xl"
-        >
-          <span className="text-gold text-xs font-bold uppercase tracking-[0.3em] mb-4 block text-center md:text-left">Portfolio</span>
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 text-center md:text-left">Building the <br /><span className="text-gold italic font-light">Ecosystem.</span></h1>
-          <p className="text-white/50 text-xl leading-relaxed text-center md:text-left">
-            A curated selection of ventures and strategic initiatives founded or advised by Ghassan Farajallah.
-          </p>
-        </motion.div>
-      </section>
+    <div className="pt-20 bg-navy-900 min-h-screen text-white relative">
+      <div className="absolute inset-0 bg-grain opacity-[0.03] pointer-events-none" />
 
-      {/* Flagship Section */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-32">
-        {portfolio.filter(v => v.isFlagship).map((v, i) => (
+      {/* Ventures Hero */}
+      <section className="relative py-32 md:py-48 overflow-hidden">
+        <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+           <div className="absolute inset-0 bg-gradient-to-b from-navy-900 via-transparent to-navy-900" />
+           <div className="grid grid-cols-12 h-full">
+              {[...Array(12)].map((_, i) => (
+                <div key={i} className="border-r border-white/5 h-full" />
+              ))}
+           </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
           <motion.div
-            key={i}
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative group rounded-sm overflow-hidden border border-gold/30 bg-navy-800"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-4xl"
           >
-             <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="p-12 md:p-16 flex flex-col justify-center">
-                   <div className="flex items-center gap-3 mb-6">
-                      <Layers className="text-gold" size={24} />
-                      <span className="text-gold font-bold uppercase tracking-widest text-xs">{v.role}</span>
-                   </div>
-                   <h2 className="text-4xl md:text-5xl font-bold mb-6">{v.name}</h2>
-                   <p className="text-white/60 text-lg mb-8 leading-relaxed">
-                     {v.desc}
-                   </p>
-                   <div className="space-y-4 mb-10">
-                      {v.features.map((f, idx) => (
-                        <div key={idx} className="flex items-center gap-3 text-sm text-white/80 font-medium">
-                           <ShieldCheck size={18} className="text-gold" />
-                           <span>{f}</span>
-                        </div>
-                      ))}
-                   </div>
-                   <a 
-                    href={v.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-navy-900 font-bold uppercase tracking-widest text-sm hover:bg-gold-light transition-all w-fit"
-                   >
-                     Launch Platform <ExternalLink size={18} />
-                   </a>
-                </div>
-                <div className="relative aspect-video lg:aspect-auto bg-navy-900 overflow-hidden">
-                   <img 
-                    src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=2232" 
-                    alt="SmartBlocks Preview" 
-                    className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000"
-                   />
-                   <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-navy-800 via-transparent to-transparent" />
-                </div>
-             </div>
+            <span className="text-gold text-[10px] font-black uppercase tracking-[0.5em] mb-8 block">Ventures Portfolio</span>
+            <h1 className="text-6xl md:text-9xl font-black mb-10 leading-[0.85] uppercase tracking-tighter">
+              Engineering <br /> <span className="gold-gradient-text italic">The Future.</span>
+            </h1>
+            <p className="text-2xl text-white/40 leading-relaxed font-light mb-12 max-w-2xl">
+              A curated ecosystem of ventures founded and advised by Ghassan Farajallah, focused on institutionalizing the digital real estate economy.
+            </p>
           </motion.div>
-        ))}
+        </div>
       </section>
 
-      {/* Secondary Ventures */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12">
-         <div className="mb-16">
-            <h3 className="text-2xl font-bold mb-4">Strategic Engagements</h3>
-            <div className="w-16 h-1 bg-gold" />
+      {/* Flagship Product Showcase (SmartBlocks) */}
+      <section className="pb-40 relative">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          {portfolio.filter(v => v.isFlagship).map((v, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative group rounded-sm overflow-hidden border border-gold/30 bg-navy-800/50 premium-shadow glass-card"
+            >
+               {/* Decorative Lights */}
+               <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gold/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+               <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gold/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2" />
+
+               <div className="grid grid-cols-1 lg:grid-cols-2">
+                  <div className="p-16 md:p-24 flex flex-col justify-center relative z-10">
+                     <div className="flex items-center gap-4 mb-10">
+                        <div className="w-12 h-[1px] bg-gold" />
+                        <span className="text-gold font-black uppercase tracking-[0.4em] text-[10px]">{v.role}</span>
+                     </div>
+                     <h2 className="text-5xl md:text-7xl font-black mb-10 uppercase tracking-tighter">{v.name}<span className="text-gold">.</span></h2>
+                     <p className="text-white/40 text-xl mb-12 leading-relaxed font-light">
+                       {v.desc}
+                     </p>
+                     
+                     <div className="grid grid-cols-1 gap-6 mb-16">
+                        {v.features.map((f, idx) => (
+                          <div key={idx} className="flex items-center gap-4 text-xs text-white/60 font-black uppercase tracking-widest group/item">
+                             <ShieldCheck size={20} className="text-gold group-hover/item:scale-125 transition-transform" />
+                             <span>{f}</span>
+                          </div>
+                        ))}
+                     </div>
+
+                     <a 
+                      href={v.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-4 px-12 py-6 bg-gold text-navy-900 font-black uppercase tracking-widest text-xs hover:bg-white hover:scale-[1.05] active:scale-[0.98] transition-all w-fit premium-shadow"
+                     >
+                       Enter Platform <ExternalLink size={18} />
+                     </a>
+                  </div>
+
+                  <div className="relative overflow-hidden group/img">
+                     <img 
+                      src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=2232" 
+                      alt="SmartBlocks Tech" 
+                      className="w-full h-full object-cover grayscale brightness-50 group-hover/img:grayscale-0 group-hover/img:brightness-100 transition-all duration-1000 group-hover/img:scale-110"
+                     />
+                     <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-navy-800 via-navy-800/40 to-transparent" />
+                     
+                     <div className="absolute bottom-10 right-10 flex gap-4">
+                        <div className="w-40 h-40 border border-white/10 glass-card p-6 flex flex-col justify-center items-center">
+                           <Cpu className="text-gold mb-3" />
+                           <span className="text-center text-[10px] font-black uppercase tracking-widest text-white/40 leading-tight">Advanced <br /> Infrastructure</span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Strategic Ecosystem */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pb-52">
+         <div className="mb-24 flex items-center gap-10">
+            <h3 className="text-4xl font-black uppercase tracking-tighter">Strategic Ecosystem</h3>
+            <div className="flex-grow h-[1px] bg-white/5" />
          </div>
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {portfolio.filter(v => !v.isFlagship).map((v, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -10 }}
-                className="p-10 bg-white/5 border border-white/10 rounded-sm hover:border-white/20 transition-all"
+                whileHover={{ y: -15 }}
+                className="p-20 glass-card rounded-sm border border-white/5 hover:border-white/20 transition-all group premium-shadow relative"
               >
-                 <div className="flex justify-between items-start mb-6">
-                    <span className="text-gold text-xs font-bold uppercase tracking-widest">{v.role}</span>
-                    <ArrowUpRight className="text-white/20" />
+                 <div className="absolute top-0 right-0 p-12 text-white/[0.03] group-hover:text-gold/10 transition-colors">
+                    <Layers size={80} />
                  </div>
-                 <h4 className="text-3xl font-bold mb-4">{v.name}</h4>
-                 <p className="text-white/40 mb-8 leading-relaxed italic">{v.type}</p>
-                 <p className="text-white/60 leading-relaxed mb-6">
-                   {v.desc}
-                 </p>
+                 
+                 <div className="flex flex-col h-full relative z-10">
+                    <span className="text-gold text-[10px] font-black uppercase tracking-[0.4em] mb-10 block">{v.role}</span>
+                    <h4 className="text-4xl font-black mb-6 uppercase tracking-tight">{v.name}<span className="text-white/20">/</span></h4>
+                    <p className="text-white font-black uppercase tracking-widest text-[10px] mb-8 italic text-gold/60">{v.type}</p>
+                    <p className="text-white/40 text-xl leading-relaxed mb-12 font-light">
+                      {v.desc}
+                    </p>
+                    <div className="mt-auto">
+                       <Link to="/contact" className="inline-flex items-center gap-3 text-white/50 hover:text-gold font-black uppercase tracking-[0.3em] text-[10px] transition-all">
+                          Collaborate <ArrowUpRight size={16} />
+                       </Link>
+                    </div>
+                 </div>
               </motion.div>
             ))}
             
-            {/* CTA for Collaboration */}
+            {/* CTA for Future Ventures */}
             <motion.div
-              whileHover={{ y: -10 }}
-              className="p-10 bg-gold/5 border border-gold/20 rounded-sm border-dashed flex flex-col items-center justify-center text-center group"
+              whileHover={{ scale: 0.98 }}
+              className="p-20 border border-dashed border-white/10 rounded-sm flex flex-col items-center justify-center text-center group bg-gold/[0.01]"
             >
-               <Zap className="text-gold mb-6 group-hover:scale-110 transition-transform" size={40} />
-               <h4 className="text-2xl font-bold mb-4 text-gold">Building Together</h4>
-               <p className="text-white/50 text-sm max-w-xs mb-8">
-                 Looking for a strategic partner to build the next generation of real estate technology?
+               <Zap className="text-gold/20 mb-10 group-hover:scale-110 group-hover:text-gold transition-all" size={60} />
+               <h4 className="text-3xl font-black mb-6 uppercase tracking-tighter">Next Cycle.</h4>
+               <p className="text-white/30 text-lg font-light max-w-xs mb-12">
+                 Analyzing growth-stage opportunities in fractional liquidity and fintech bridging.
                </p>
-               <Link to="/contact" className="text-white font-bold uppercase tracking-[0.2em] text-xs underline underline-offset-8 decoration-gold">
-                 Discuss Venture Opportunities
+               <Link to="/contact" className="px-10 py-5 border border-white/10 hover:border-gold/50 text-white font-black uppercase tracking-[0.2em] text-[10px] transition-all">
+                 Submit Proposition
                </Link>
             </motion.div>
          </div>

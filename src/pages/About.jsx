@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Shield, Target, Lightbulb, Users } from 'lucide-react';
+import { Target, Eye, ShieldCheck, BookOpen, Quote, Shield, Lightbulb, Users } from 'lucide-react';
 
 const About = () => {
   const values = [
@@ -10,86 +10,127 @@ const About = () => {
   ];
 
   return (
-    <div className="pt-32 pb-20 bg-navy-900">
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <div className="pt-20 bg-navy-900 min-h-screen text-white relative">
+      <div className="absolute inset-0 bg-grain opacity-[0.03] pointer-events-none" />
+
+      {/* Executive Hero */}
+      <section className="relative py-32 md:py-48 overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full opacity-20">
+          <div className="absolute inset-0 bg-gradient-to-l from-navy-900 via-navy-900 to-transparent z-10" />
+          <img 
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069" 
+            alt="Executive Background" 
+            className="w-full h-full object-cover grayscale"
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-4xl"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-10 leading-tight">
-              A Decade of <span className="text-gold italic font-light">Leadership.</span>
+            <span className="text-gold text-[10px] font-black uppercase tracking-[0.5em] mb-8 block">Executive Profile</span>
+            <h1 className="text-6xl md:text-9xl font-black mb-10 leading-[0.85] uppercase tracking-tighter">
+              Legacy of <br /> <span className="gold-gradient-text italic">Precision.</span>
             </h1>
-            <p className="text-xl text-white/70 mb-8 leading-relaxed">
-              With over 10 years of experience in the UAE real estate and technology sectors, Ghassan Farajallah has been a pivotal force in driving digital transformation in the region.
+            <p className="text-2xl text-white/40 leading-relaxed font-light mb-12">
+              Ghassan Farajallah is a recognized authority in real estate tokenization and institutional Web3 strategy, bridging the gap between traditional finance and the future of digital assets.
             </p>
-            <div className="space-y-6 text-white/50 leading-relaxed">
-              <p>
-                Having trained over 500 professionals and overseen high-value tokenization initiatives, Ghassan identified a critical gap: the need for absolute clarity in the face of complex innovation.
-              </p>
-              <p>
-                ETMAM was founded as the answer to that gap—a specialized advisory and execution engine designed to bring technical excellence and strategic vision to the forefront of the new economy.
-              </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* The Vision (Storytelling) */}
+      <section className="py-40 relative">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="aspect-[3/4] rounded-sm overflow-hidden border border-white/10 premium-shadow p-2 bg-navy-800/50">
+               <img 
+                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1974" 
+                alt="Ghassan Strategy Session" 
+                className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000"
+              />
+            </div>
+            <div className="absolute -bottom-12 -right-12 p-12 glass-card border-gold/30 max-w-sm premium-shadow">
+               <Quote className="text-gold mb-6" size={40} />
+               <p className="text-white font-medium italic text-lg leading-relaxed">
+                 "In the transition to a tokenized economy, clarity is the only asset that truly matters."
+               </p>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="relative"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
           >
-             <div className="aspect-square relative overflow-hidden rounded-sm border border-white/10 p-4 bg-white/5">
-                <img 
-                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1974" 
-                  alt="Executive Meeting" 
-                  className="w-full h-full object-cover opacity-80"
-                />
-             </div>
-             {/* Abstract elements */}
-             <div className="absolute -top-10 -right-10 w-40 h-40 bg-gold/10 blur-3xl rounded-full" />
-             <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gold/5 blur-3xl rounded-full" />
+            <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter">Strategist. Founder. <br /><span className="text-gold">Visionary.</span></h2>
+            <div className="space-y-10 text-white/50 text-xl leading-relaxed font-light">
+              <p>
+                With over a decade of high-stakes leadership in real estate and technology, Ghassan has pioneered frameworks that empower institutional investors to navigate the complexities of digital transformation.
+              </p>
+              <p>
+                As the architect behind ETMAM and SmartBlocks, his focus remains steadfast: removing friction from capital flows and establishing institutional-grade standards for the global real estate market.
+              </p>
+              <div className="grid grid-cols-2 gap-8 pt-10">
+                 <div className="p-8 border border-white/5 bg-white/[0.02] rounded-sm group hover:border-gold/30 transition-all">
+                    <ShieldCheck className="text-gold mb-4 group-hover:scale-110 transition-transform" />
+                    <h4 className="text-white font-black uppercase tracking-widest text-xs mb-2">Institutional Trust</h4>
+                    <p className="text-xs">Expertise trusted by leading family offices and developers.</p>
+                 </div>
+                 <div className="p-8 border border-white/5 bg-white/[0.02] rounded-sm group hover:border-gold/30 transition-all">
+                    <BookOpen className="text-gold mb-4 group-hover:scale-110 transition-transform" />
+                    <h4 className="text-white font-black uppercase tracking-widest text-xs mb-2">Thought Leadership</h4>
+                    <p className="text-xs">Propagating the standard for Web3 real estate education.</p>
+                 </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Values Grid */}
       <section className="bg-navy-800 py-32 border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center mb-20">
-          <h2 className="text-4xl font-bold mb-4 uppercase tracking-widest text-xs text-gold">Our Philosophy</h2>
-          <h3 className="text-4xl md:text-5xl font-bold">The ETMAM Standard</h3>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center mb-24">
+           <span className="text-gold text-[10px] font-black uppercase tracking-[0.5em] mb-8 block">Our Philosophy</span>
+           <h2 className="text-5xl md:text-7xl font-black mb-8 uppercase tracking-tighter italic">The ETMAM <span className="not-italic text-gold">Standard.</span></h2>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {values.map((v, i) => (
             <motion.div
               key={i}
-              whileHover={{ y: -5 }}
-              className="p-8 bg-navy-900 border border-white/10 rounded-sm"
+              whileHover={{ y: -10 }}
+              className="p-12 glass-card border border-white/5 rounded-sm premium-shadow group"
             >
-              <div className="mb-6">{v.icon}</div>
-              <h4 className="text-xl font-bold mb-4">{v.title}</h4>
-              <p className="text-white/40 text-sm leading-relaxed">{v.desc}</p>
+              <div className="mb-10 w-12 h-12 bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-gold/50 transition-all">{v.icon}</div>
+              <h4 className="text-xl font-black mb-6 uppercase tracking-tight">{v.title}</h4>
+              <p className="text-white/40 text-sm leading-relaxed font-light">{v.desc}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* Quote Section */}
-      <section className="py-32 max-w-5xl mx-auto px-6 text-center">
+      <section className="py-40 max-w-5xl mx-auto px-6 text-center">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
         >
-          <p className="text-3xl md:text-4xl font-light italic text-white/80 leading-snug mb-10">
+          <Quote className="text-gold/20 mx-auto mb-10" size={60} />
+          <p className="text-3xl md:text-5xl font-light italic text-white/80 leading-tight mb-16">
             "We don't just build platforms; we build the trust and infrastructure required for the next generation of global capital movements."
           </p>
-          <div className="w-16 h-1 bg-gold mx-auto mb-6" />
-          <h5 className="text-xl font-bold">Ghassan Farajallah</h5>
-          <p className="text-gold text-xs uppercase tracking-widest mt-2">Executive Visionary</p>
+          <div className="w-24 h-[1px] bg-gold mx-auto mb-10" />
+          <h5 className="text-2xl font-black uppercase tracking-widest">Ghassan Farajallah</h5>
+          <p className="text-gold text-[10px] font-black uppercase tracking-[0.3em] mt-4">Executive Founder</p>
         </motion.div>
       </section>
     </div>
