@@ -32,10 +32,10 @@ const Services = () => {
 
   return (
     <div className="pt-20 bg-navy-900 min-h-screen text-white relative">
-      <div className="absolute inset-0 bg-grain opacity-[0.04] pointer-events-none" />
+      <div className="absolute inset-0 bg-grain opacity-[0.02] pointer-events-none" />
 
       {/* 01. Services Hero (Rhythm: Deep Theme) */}
-      <section className="relative py-40 md:py-60 overflow-hidden theme-navy-deep">
+      <section className="relative py-40 md:py-60 overflow-hidden theme-navy-deep z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
           <motion.div
              initial={{ opacity: 0, y: 30 }}
@@ -47,10 +47,10 @@ const Services = () => {
                <div className="w-12 h-[1px] bg-gold/50" />
                <span className="text-gold text-[10px] font-black uppercase tracking-[0.6em]">Solution Architecture</span>
             </div>
-            <h1 className="text-[clamp(3rem,9vw,9rem)] font-black mb-12 leading-[0.8] uppercase tracking-tighter">
+            <h1 className="text-[clamp(3.5rem,9vw,9rem)] font-black mb-12 leading-[0.8] uppercase tracking-tighter">
               Engineering <br /> <span className="gold-gradient-text italic">Authority.</span>
             </h1>
-            <p className="text-2xl md:text-3xl text-white/30 leading-relaxed font-light max-w-3xl">
+            <p className="text-2xl md:text-4xl text-white/90 leading-relaxed font-light max-w-4xl">
               We don't just advise; we engineer the strategic and technical engines that power the future of global real estate.
             </p>
           </motion.div>
@@ -58,7 +58,7 @@ const Services = () => {
       </section>
 
       {/* 02. Service Engine (Rhythm: Slate Theme) */}
-      <section className="py-52 theme-navy-slate border-y border-white/5">
+      <section className="py-52 theme-navy-slate border-y border-white/5 relative z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="space-y-24">
             {offerings.map((service, idx) => (
@@ -82,8 +82,8 @@ const Services = () => {
                           <div className="h-px w-12 bg-white/10" />
                           <span className="text-gold text-[10px] font-black tracking-[0.6em] uppercase">{service.tag}</span>
                        </div>
-                       <h2 className="text-5xl md:text-7xl font-black mb-10 uppercase tracking-tighter leading-[0.9]">{service.title}</h2>
-                       <p className="text-white/40 text-xl leading-relaxed font-light mb-16 max-w-lg">
+                       <h2 className="text-6xl md:text-8xl font-black mb-12 uppercase tracking-tighter leading-[0.8]">{service.title}</h2>
+                       <p className="text-white/80 text-2xl leading-relaxed font-light mb-16 max-w-lg">
                           {service.desc}
                        </p>
                        
@@ -120,7 +120,7 @@ const Services = () => {
       </section>
 
       {/* 03. Global CTA (Rhythm: Gold Theme) */}
-      <section className="py-60 theme-navy-gold">
+      <section className="py-60 theme-navy-gold relative z-10">
          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
             <h2 className="text-6xl md:text-9xl font-black mb-12 uppercase tracking-tighter italic leading-none">Standardize <br /><span className="text-gold not-italic">Success.</span></h2>
             <p className="text-white/30 text-2xl mb-20 font-light leading-relaxed">

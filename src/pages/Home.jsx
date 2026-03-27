@@ -44,10 +44,10 @@ const Home = () => {
   return (
     <div className="bg-navy-900 text-white selection:bg-gold/40 scroll-smooth">
       {/* Global Grain Texture */}
-      <div className="fixed inset-0 z-[60] bg-grain pointer-events-none opacity-[0.04]" />
+      <div className="fixed inset-0 z-0 bg-grain pointer-events-none opacity-[0.02]" />
 
       {/* 01. Hero Section (Prestige Theme) */}
-      <section className="relative min-h-[110vh] flex items-center pt-20 theme-navy-deep overflow-hidden">
+      <section className="relative min-h-screen flex items-center pt-20 theme-navy-deep overflow-hidden z-10">
         {/* Cinematic Backdrop */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/40 to-transparent z-10" />
@@ -76,20 +76,19 @@ const Home = () => {
               <span className="text-gold text-[10px] font-black uppercase tracking-[0.6em]">Executive Leadership</span>
             </motion.div>
             
-            <h1 className="text-[clamp(3.5rem,10vw,8.5rem)] font-black tracking-tighter mb-10 leading-[0.82] uppercase">
-              Precision <br /> 
-              <span className="gold-gradient-text italic">Redefined.</span>
+            <h1 className="text-[clamp(3.5rem,10vw,10rem)] font-black mb-12 leading-[0.8] uppercase tracking-tighter">
+              Institutional <br /> <span className="gold-gradient-text italic">Precision.</span>
             </h1>
-            <p className="text-2xl md:text-3xl text-white/30 max-w-lg mb-16 leading-relaxed font-light">
-              Architecting the institutional transition to the tokenized economy.
+            <p className="text-2xl md:text-4xl text-white/90 leading-relaxed font-light mb-20 max-w-3xl">
+              Ghassan Farajallah engineers the elite frameworks for the transition to tokenized real estate assets.
             </p>
             <div className="flex flex-col sm:flex-row gap-8">
-              <Link to="/contact" className="btn-premium group shadow-2xl shadow-gold/10">
-                Initiate Engagement <ArrowRight size={18} className="group-hover:translate-x-3 transition-transform" />
-              </Link>
-              <button className="px-10 py-5 border border-white/10 hover:border-gold/30 hover:bg-gold/5 transition-all font-black uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-3 glass-card">
-                Review Vision <PlayCircle size={18} />
-              </button>
+               <Link to="/contact" className="btn-premium flex items-center justify-center gap-4 group">
+                  Initiate Protocol <div className="w-6 h-6 bg-navy-950 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform"><ArrowRight size={14} className="text-gold" /></div>
+               </Link>
+               <Link to="/services" className="px-10 py-5 border border-white/20 text-white font-black uppercase tracking-widest text-[10px] hover:bg-white/5 transition-all flex items-center justify-center">
+                  Review Architecture
+               </Link>
             </div>
           </motion.div>
 
@@ -120,7 +119,7 @@ const Home = () => {
       </section>
 
       {/* 02. Authority Metrics (Contrast Theme) */}
-      <section className="bg-white/5 border-y border-white/5 backdrop-blur-sm relative py-24">
+      <section className="bg-white/5 border-y border-white/5 backdrop-blur-sm relative py-24 z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-20">
           {stats.map((stat, idx) => (
             <motion.div 
@@ -140,7 +139,7 @@ const Home = () => {
       </section>
 
       {/* 03. Domains of Authority (Rhythm Shift: Slate Theme) */}
-      <section className="py-52 theme-navy-slate relative overflow-hidden">
+      <section className="py-52 theme-navy-slate relative overflow-hidden z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex flex-col lg:flex-row justify-between items-end gap-16 mb-32">
             <div className="max-w-3xl">
@@ -180,7 +179,7 @@ const Home = () => {
       </section>
 
       {/* 04. Flagship Spotlight: SMARTBLOCKS (Rhythm Shift: Dark Glass) */}
-      <section className="py-60 bg-black relative overflow-hidden border-y border-gold/10">
+      <section className="py-60 bg-black relative overflow-hidden border-y border-gold/10 z-10">
         {/* Flagship Background Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1400px] h-[700px] bg-gold/[0.04] rounded-full blur-[180px] z-0" />
         
@@ -250,35 +249,23 @@ const Home = () => {
       </section>
 
       {/* 05. High-Conversion CTA (Rhythm Shift: Full Gold Theme) */}
-      <section className="py-60 relative overflow-hidden bg-navy-900">
+      <section className="py-60 relative overflow-hidden bg-navy-900 z-10">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
         
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-           <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+            <motion.div
+             initial={{ opacity: 0, scale: 0.9 }}
+             whileInView={{ opacity: 1, scale: 1 }}
+             viewport={{ once: true }}
            >
-              <h2 className="text-6xl md:text-9xl font-black mb-12 uppercase tracking-tighter leading-[0.85]">Ready to <br /><span className="gold-gradient-text italic">Scale?</span></h2>
-              <p className="text-2xl md:text-3xl text-white/40 mb-20 font-light max-w-3xl mx-auto leading-relaxed">
-                We accept a limited number of high-stakes engagements each quarter. Secure your position in the next cycle.
+              <h2 className="text-7xl md:text-[10rem] font-black mb-12 uppercase tracking-tighter italic leading-none">Ready to <br /><span className="text-gold not-italic">Scale?</span></h2>
+              <p className="text-2xl md:text-3xl text-white/90 mb-20 font-light leading-relaxed max-w-3xl mx-auto">
+                 Initiate the protocol for institutional transformation. Join the elite network defining the next era of global assets.
               </p>
-              <Link to="/contact" className="btn-premium px-20 py-8 shadow-gold/20 text-lg">
-                 Initiate Engagement Node
+              <Link to="/contact" className="btn-premium text-lg px-20 py-8 shadow-gold/30 flex items-center justify-center gap-4 group mx-auto w-fit">
+                 Command Strategy Now <ArrowRight size={24} className="group-hover:translate-x-4 transition-transform" />
               </Link>
-              
-              <div className="mt-24 flex items-center justify-center gap-10 opacity-30">
-                 <div className="flex flex-col items-center">
-                    <ShieldCheck size={24} className="mb-2" />
-                    <span className="text-[10px] font-black tracking-widest uppercase">Verified Authority</span>
-                 </div>
-                 <div className="w-px h-10 bg-white/20" />
-                 <div className="flex flex-col items-center">
-                    <BarChart3 size={24} className="mb-2" />
-                    <span className="text-[10px] font-black tracking-widest uppercase">Institutional Data</span>
-                 </div>
-              </div>
            </motion.div>
         </div>
       </section>

@@ -6,11 +6,12 @@ export default {
       colors: {
         background: '#020617', // Deep cinematic navy
         gold: {
-          light: '#F5D394',
-          DEFAULT: '#D4AF37', // Classic metallic gold
-          dark: '#B8860B',
+          light: '#E5C87B',
+          DEFAULT: '#C9A962',
+          dark: '#A68A4F',
         },
         navy: {
+          950: '#01040f',
           900: '#020617',
           800: '#0F172A',
           700: '#1E293B',

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Target, Shield, Lightbulb, Users, Quote, ShieldCheck, BookOpen, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const values = [
@@ -11,10 +12,10 @@ const About = () => {
 
   return (
     <div className="pt-20 bg-navy-900 min-h-screen text-white relative">
-      <div className="absolute inset-0 bg-grain opacity-[0.04] pointer-events-none" />
+      <div className="absolute inset-0 bg-grain opacity-[0.02] pointer-events-none" />
 
       {/* 01. Portfolio Hero (Rhythm: Deep Theme) */}
-      <section className="relative py-40 md:py-60 overflow-hidden theme-navy-deep">
+      <section className="relative py-40 md:py-60 overflow-hidden theme-navy-deep z-10">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-20 hidden lg:block">
           <div className="absolute inset-0 bg-gradient-to-l from-navy-900 via-navy-900/60 to-transparent z-10" />
           <img 
@@ -34,18 +35,18 @@ const About = () => {
                <div className="w-10 h-[1px] bg-gold/50" />
                <span className="text-gold text-[10px] font-black uppercase tracking-[0.5em]">Visionary Profile</span>
             </div>
-            <h1 className="text-[clamp(3rem,8vw,7rem)] font-black mb-10 leading-[0.85] uppercase tracking-tighter">
+            <h1 className="text-[clamp(3.5rem,9vw,9rem)] font-black mb-12 leading-[0.8] uppercase tracking-tighter">
               Legacy of <br /> <span className="gold-gradient-text italic">Precision.</span>
             </h1>
-            <p className="text-2xl md:text-3xl text-white/30 leading-relaxed font-light mb-16 max-w-2xl">
-              Ghassan Farajallah is a recognized authority in real estate tokenization, bridging the gap between traditional finance and the future of digital assets.
+            <p className="text-2xl md:text-4xl text-white/90 leading-relaxed font-light mb-16 max-w-2xl">
+              Ghassan Farajallah is the recognized authority in real estate tokenization, defining the bridge between traditional finance and digital assets.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* 02. The Vision (Rhythm: Slate Theme) */}
-      <section className="py-52 theme-navy-slate relative">
+      <section className="py-52 theme-navy-slate relative z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -73,10 +74,10 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-7xl font-black mb-12 uppercase tracking-tighter leading-[0.9]">Strategist. <br /><span className="text-gold italic">Visionary.</span></h2>
-            <div className="space-y-12 text-white/40 text-xl leading-relaxed font-light">
+            <h2 className="text-6xl md:text-8xl font-black mb-12 uppercase tracking-tighter leading-[0.85]">Strategist. <br /><span className="text-gold italic">Visionary.</span></h2>
+            <div className="space-y-12 text-white/80 text-xl leading-relaxed font-light">
               <p>
-                As the executive architect behind ETMAM, Ghassan has pioneered frameworks that empower institutional investors to navigate the complexities of digital transformation with absolute confidence.
+                As the executive architect behind ETMAM, Ghassan has pioneered frameworks that empower institutional investors to navigate the complexities of digital transformation with absolute confidence and mathematical clarity.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-10">
                  <div className="p-10 premium-card group">
@@ -96,7 +97,7 @@ const About = () => {
       </section>
 
       {/* 03. The ETMAM Standard (Rhythm: Gold Theme) */}
-      <section className="py-60 theme-navy-gold">
+      <section className="py-60 theme-navy-gold relative z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center mb-32">
            <span className="text-gold text-[10px] font-black uppercase tracking-[0.8em] mb-10 block">Our Philosophy</span>
            <h2 className="text-6xl md:text-9xl font-black mb-12 uppercase tracking-tighter italic">The ETMAM <span className="not-italic text-gold">Standard.</span></h2>
@@ -123,7 +124,7 @@ const About = () => {
       </section>
 
       {/* 04. Call to Executive Action */}
-      <section className="py-60 theme-navy-deep relative border-t border-white/5">
+      <section className="py-60 theme-navy-deep relative border-t border-white/5 z-10">
         <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-5xl md:text-8xl font-black mb-12 uppercase tracking-tighter italic leading-none">Ready to <br /><span className="text-gold not-italic">Execute?</span></h2>
             <p className="text-2xl text-white/30 mb-16 font-light">Join the movement defining the future of digital real estate assets.</p>

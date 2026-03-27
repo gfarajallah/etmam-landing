@@ -24,14 +24,12 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
+
 
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${
-        scrolled ? 'py-4' : 'py-8'
+        scrolled ? 'py-4 bg-navy-900/80 backdrop-blur-xl border-b border-white/5' : 'py-8 bg-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           
@@ -47,6 +45,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
+                onClick={() => setIsOpen(false)}
                 className={`text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-500 hover:text-gold ${
                   location.pathname === link.path ? 'text-gold' : 'text-white/60'
                 }`}
@@ -93,6 +92,7 @@ const Navbar = () => {
                 >
                   <Link
                     to={link.path}
+                    onClick={() => setIsOpen(false)}
                     className={`text-5xl font-black uppercase tracking-tighter ${
                       location.pathname === link.path ? 'gold-gradient-text italic' : 'text-white'
                     }`}

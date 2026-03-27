@@ -38,10 +38,10 @@ const Ventures = () => {
 
   return (
     <div className="pt-20 bg-navy-900 min-h-screen text-white relative">
-      <div className="absolute inset-0 bg-grain opacity-[0.04] pointer-events-none" />
+      <div className="absolute inset-0 bg-grain opacity-[0.02] pointer-events-none" />
 
       {/* 01. Ventures Hero (Rhythm: Deep Theme) */}
-      <section className="relative py-40 md:py-60 overflow-hidden theme-navy-deep">
+      <section className="relative py-40 md:py-60 overflow-hidden theme-navy-deep z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -63,7 +63,7 @@ const Ventures = () => {
       </section>
 
       {/* 02. Flagship: SMARTBLOCKS (Rhythm: Flagship Theme) */}
-      <section className="py-60 bg-black relative overflow-hidden border-y border-gold/10">
+      <section className="py-60 bg-black relative overflow-hidden border-y border-gold/10 z-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1600px] h-[800px] bg-gold/[0.04] rounded-full blur-[200px]" />
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
@@ -79,9 +79,9 @@ const Ventures = () => {
                    </div>
                    <span className="text-gold text-[10px] font-black uppercase tracking-[0.6em]">Flagship Achievement</span>
                 </div>
-                <h2 className="text-6xl md:text-8xl font-black mb-12 uppercase tracking-tighter leading-none">SmartBlocks.</h2>
-                <div className="space-y-10 text-white/40 text-xl font-light mb-16 max-w-lg">
-                   <p>Defining the gold standard for institutional real estate tokenization. SmartBlocks removes friction from the capital markets through validated technical architectures.</p>
+                 <h2 className="text-7xl md:text-[10rem] font-black mb-12 uppercase tracking-tighter leading-[0.8]">Smart <br /><span className="text-glow-gold">Blocks.</span></h2>
+                <div className="space-y-12 text-white/90 text-2xl font-light mb-16 max-w-xl leading-relaxed">
+                   <p>Defining the technical and regulatory gold standard for institutional real estate tokenization. SmartBlocks is the execution engine for high-stakes capital markets.</p>
                    <ul className="space-y-6">
                       {[
                         { label: "Secondary Liquidity", val: "Institutional Grade" },
@@ -107,45 +107,45 @@ const Ventures = () => {
                className="relative"
              >
                 {/* Visual Proof / Case Study Mockup */}
-                <div className="glass-card rounded-sm border-gold/20 p-2 metallic-glow">
-                   <div className="bg-navy-900 p-10 md:p-16 border border-white/5 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 p-8">
-                         <Activity className="text-gold/20 animate-pulse" />
-                      </div>
-                      <div className="grid grid-cols-2 gap-10">
-                         <div className="col-span-2 md:col-span-1 p-8 glass-card border-gold/10">
-                            <h5 className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-4">Market Liquidity</h5>
-                            <p className="text-4xl font-black gold-gradient-text">+24.5%</p>
-                         </div>
-                         <div className="col-span-2 md:col-span-1 p-8 glass-card border-gold/10">
-                            <h5 className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-4">Verification Depth</h5>
-                            <p className="text-4xl font-black text-white/80">6.2T // SEC</p>
-                         </div>
-                      </div>
-                      <div className="mt-10 p-10 bg-white/[0.02] border border-white/5">
-                         <div className="flex items-center justify-between mb-8">
-                            <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white/20">Operational Intelligence</span>
-                            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                         </div>
-                         <div className="h-40 flex items-end gap-3">
-                            {[40, 70, 45, 90, 65, 80, 55].map((h, i) => (
-                              <div key={i} style={{ height: `${h}%` }} className={`flex-1 ${i === 3 ? 'bg-gold' : 'bg-white/10'}`} />
-                            ))}
-                         </div>
-                      </div>
-                   </div>
-                </div>
-                <div className="absolute -top-10 -right-10 p-12 glass-card border-gold/20 max-w-xs premium-shadow backdrop-blur-3xl hidden md:block">
-                   <ShieldCheck className="text-gold mb-6" size={40} />
-                   <p className="text-white text-sm font-medium italic">"SmartBlocks represents the first true institutional bridge for tokenized real assets."</p>
-                </div>
+                 <div className="glass-card rounded-sm border-gold/40 p-3 metallic-glow flagship-aura">
+                    <div className="bg-navy-950 p-12 md:p-24 border border-gold/10 relative overflow-hidden">
+                       <div className="absolute top-0 right-0 p-12">
+                          <Activity className="text-gold animate-pulse" size={32} />
+                       </div>
+                       <div className="grid grid-cols-2 gap-12">
+                          <div className="col-span-2 md:col-span-1 p-10 bg-white/[0.03] border border-gold/20">
+                             <h5 className="text-[11px] font-black uppercase tracking-widest text-gold mb-4 text-glow-gold">Market Liquidity</h5>
+                             <p className="text-5xl font-black text-white">+24.5%</p>
+                          </div>
+                          <div className="col-span-2 md:col-span-1 p-10 bg-white/[0.03] border border-gold/20">
+                             <h5 className="text-[11px] font-black uppercase tracking-widest text-gold mb-4 text-glow-gold">Verification Depth</h5>
+                             <p className="text-5xl font-black text-white">6.2T // SEC</p>
+                          </div>
+                       </div>
+                       <div className="mt-12 p-12 bg-gold/5 border border-gold/20">
+                          <div className="flex items-center justify-between mb-10">
+                             <span className="text-[10px] font-black uppercase tracking-[0.5em] text-gold">Operational Intelligence Level 9</span>
+                             <div className="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)] animate-pulse" />
+                          </div>
+                          <div className="h-48 flex items-end gap-4">
+                             {[40, 70, 45, 100, 65, 80, 55, 90].map((h, i) => (
+                               <div key={i} style={{ height: `${h}%` }} className={`flex-1 ${i === 3 ? 'bg-gold shadow-[0_0_30px_rgba(201,169,98,0.4)]' : 'bg-white/10'}`} />
+                             ))}
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div className="absolute -top-16 -right-16 p-16 glass-card border-gold/40 max-w-xs premium-shadow backdrop-blur-3xl hidden md:block z-20">
+                    <ShieldCheck className="text-gold mb-8 shadow-gold/20" size={48} />
+                    <p className="text-white text-lg font-bold italic leading-relaxed">"SmartBlocks is the definitive institutional bridge for global real assets."</p>
+                 </div>
              </motion.div>
           </div>
         </div>
       </section>
 
       {/* 03. Strategic Ecosystem (Rhythm: Slate Theme) */}
-      <section className="py-52 theme-navy-slate relative overflow-hidden">
+      <section className="py-52 theme-navy-slate relative overflow-hidden z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
            <div className="mb-32">
               <span className="text-gold text-[10px] font-black uppercase tracking-[0.6em] mb-8 block">Strategic Ecosystem</span>
@@ -179,7 +179,7 @@ const Ventures = () => {
       </section>
 
       {/* 04. Call to Venture Action */}
-      <section className="py-60 theme-navy-gold">
+      <section className="py-60 theme-navy-gold relative z-10">
          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
             <h2 className="text-6xl md:text-9xl font-black mb-12 uppercase tracking-tighter italic leading-none">Collaborate <br /><span className="text-gold not-italic">Globally.</span></h2>
             <p className="text-white/30 text-2xl mb-20 font-light leading-relaxed">

@@ -4,10 +4,10 @@ import { Mail, Linkedin, ArrowRight, MessageSquare, Globe, ShieldCheck, Clock, M
 const Contact = () => {
   return (
     <div className="pt-20 bg-navy-900 min-h-screen text-white relative">
-      <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
+      <div className="absolute inset-0 bg-grain opacity-[0.02] pointer-events-none" />
 
       {/* 01. Protocol Hero (Rhythm: Deep Theme) */}
-      <section className="relative py-40 md:py-60 overflow-hidden theme-navy-deep">
+      <section className="relative py-40 md:py-60 overflow-hidden theme-navy-deep z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -18,18 +18,18 @@ const Contact = () => {
                <div className="w-12 h-[1px] bg-gold/50" />
                <span className="text-gold text-[10px] font-black uppercase tracking-[0.6em]">Engagement Node</span>
             </div>
-            <h1 className="text-[clamp(3rem,9vw,9rem)] font-black mb-12 leading-[0.8] uppercase tracking-tighter">
-              Initiate <br /> <span className="gold-gradient-text italic">Protocol.</span>
+            <h1 className="text-[clamp(3.5rem,10vw,10rem)] font-black mb-16 leading-[0.8] uppercase tracking-tighter">
+              Initiate <br /><span className="gold-gradient-text italic">Protocol.</span>
             </h1>
-            <p className="text-2xl md:text-3xl text-white/30 leading-relaxed font-light max-w-3xl">
-              Connect with ETMAM for institutional-grade consulting, venture collaboration, and strategic advisory.
+            <p className="text-2xl md:text-4xl text-white/90 leading-relaxed font-light max-w-3xl">
+              Begin the formal technical and strategic engagement. Our team will review your requirements for institutional alignment.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* 02. Communication Architecture (Rhythm: Slate Theme) */}
-      <section className="pb-60 theme-navy-slate relative">
+      <section className="pb-60 theme-navy-slate relative z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-32">
           
           {/* Information Architecture */}
