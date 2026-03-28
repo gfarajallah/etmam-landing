@@ -1,26 +1,99 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700&display=swap');
 
+/* Arabic web fallbacks (Azkadinya & 29LT Riwaya load from system if installed) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;900&family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --navy-950: #01040f;
-  --navy-900: #020617;
-  --navy-800: #0f172a;
-  --gold: #C9A962;
-  --gold-light: #E5C87B;
-  --gold-dark: #A68A4F;
+  --font-inter: 'Inter', sans-serif;
+  /* Azkadinya Bold for Arabic Display — system font on Windows, falls back to Noto Kufi Arabic */
+  --font-arabic-display: 'Azkadinya', 'AzkadineBold', 'Noto Kufi Arabic', sans-serif;
+  /* 29LT Riwaya Informal for Arabic body — falls back to IBM Plex Sans Arabic */
+  --font-arabic-body: '29LT Riwaya', '29LT Riwaya Informal', 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+  /* Dark Theme (Default) */
+  --bg-primary: #01040f;
+  --bg-secondary: #020617;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.5);
+  --accent-gold: #C9A962;
+  --accent-gold-light: #E5C87B;
+  --accent-gold-dark: #A68A4F;
+  --accent-navy: #0f172a;
+  --border-color: rgba(255, 255, 255, 0.1);
+  
+  /* Gradient variables */
+  --gold-grad-start: #C9A962;
+  --gold-grad-mid: #E5C87B;
+  --gold-grad-end: #A68A4F;
+  --btn-text: #01040f;
+}
+
+[data-theme='light'] {
+  /* Royal Light Theme */
+  --bg-primary: #F8F9FA; /* Imperial White */
+  --bg-secondary: #ffffff;
+  --text-primary: #0A192F; /* Royal Navy for strong contrast */
+  --text-secondary: rgba(10, 25, 47, 0.7);
+  --accent-gold: #B8860B; /* Darker Gold for visibility on white */
+  --accent-gold-light: #C9A962;
+  --accent-gold-dark: #8B7340;
+  --accent-navy: #01040f;
+  --border-color: rgba(10, 25, 47, 0.1);
+  
+  /* Gradient variables optimized for light backgrounds */
+  --gold-grad-start: #B8860B;
+  --gold-grad-mid: #C9A962;
+  --gold-grad-end: #8B7340;
+  --btn-text: #ffffff;
+}
+
+[dir='rtl'] {
+  /* Arabic body text: 29LT Riwaya Informal → IBM Plex Sans Arabic */
+  font-family: '29LT Riwaya', '29LT Riwaya Informal', 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+  letter-spacing: 0;
+}
+
+[dir='ltr'] {
+  font-family: 'Inter', sans-serif;
 }
 
 @layer base {
   body {
-    @apply bg-[#01040f] text-white/80 font-inter antialiased;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    opacity: 0.9;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: default;
   }
   
+  /* English headings: Outfit — bold, condensed, uppercase */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-outfit uppercase tracking-tighter text-white;
+    font-family: 'Outfit', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    color: var(--text-primary);
+  }
+  
+  /* Arabic headings: Azkadinya Bold — heavy display, no uppercase transform */
+  [dir='rtl'] h1, [dir='rtl'] h2, [dir='rtl'] h3,
+  [dir='rtl'] h4, [dir='rtl'] h5, [dir='rtl'] h6 {
+    font-family: 'Azkadinya', 'AzkadineBold', 'Noto Kufi Arabic', sans-serif;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 900;
+    line-height: 1.15;
+  }
+  
+  /* Arabic body paragraphs: 29LT Riwaya Informal */
+  [dir='rtl'] p, [dir='rtl'] span, [dir='rtl'] li, [dir='rtl'] a {
+    font-family: '29LT Riwaya', '29LT Riwaya Informal', 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+    line-height: 1.8;
   }
 }
 
@@ -31,7 +104,10 @@
 
   /* High Contrast Gold */
   .gold-gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold via-gold-light to-gold-dark;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #C9A962, #E5C87B, #A68A4F);
     background-size: 200% auto;
     animation: shine 4s linear infinite;
   }
@@ -42,27 +118,41 @@
 
   /* Ultimate Premium Card */
   .premium-card {
-    @apply relative overflow-hidden transition-all duration-700 bg-white/[0.03] border border-white/10 backdrop-blur-2xl;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.7s;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
   }
 
   .premium-card:hover {
-    @apply -translate-y-4 bg-white/[0.06] border-gold/40;
+    @apply -translate-y-4 shadow-2xl;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(201, 169, 98, 0.4);
     box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(201, 169, 98, 0.05);
   }
 
   /* Flagship Glow System */
   .flagship-aura {
-    @apply relative after:absolute after:inset-0 after:bg-gold/5 after:opacity-0 after:transition-opacity after:duration-1000 hover:after:opacity-100 after:pointer-events-none;
+    @apply relative after:absolute after:inset-0 after:opacity-0 after:transition-opacity after:duration-1000 hover:after:opacity-100 after:pointer-events-none;
+    &::after {
+      background-color: var(--accent-gold);
+      opacity: 0.05;
+    }
   }
   
   .flagship-border {
-    @apply border border-gold/20 shadow-[0_0_20px_rgba(201,169,98,0.05)];
+    @apply border shadow-[0_0_20px_rgba(201,169,98,0.05)];
+    border-color: rgba(201, 169, 98, 0.2);
   }
 
   /* Glass Effects */
   .glass-card {
-    @apply bg-navy-800/60 backdrop-blur-3xl border border-white/20;
+    @apply backdrop-blur-3xl border border-[var(--border-color)];
+    background-color: rgba(15, 23, 42, 0.6);
   }
 
   /* Visual Rhythm Themes - Optimized for Contrast */
@@ -72,28 +162,87 @@
   
   /* Buttons - More Aggressive */
   .btn-premium {
-    @apply relative overflow-hidden px-12 py-6 bg-gold text-[#01040f] font-black uppercase tracking-[0.25em] text-[11px] transition-all duration-500 hover:scale-[1.1] hover:bg-gold-light active:scale-[0.98] shadow-2xl shadow-gold/10 hover:shadow-gold/20;
+    @apply relative overflow-hidden px-12 py-6 font-black uppercase tracking-[0.25em] text-[11px] transition-all duration-500;
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+    color: var(--btn-text);
+  }
+  
+  .btn-premium:hover {
+    @apply scale-[1.1] shadow-2xl;
+    background-color: var(--accent-gold-light);
+    box-shadow: 0 25px 50px -12px rgba(201, 169, 98, 0.2);
+  }
+
+  .btn-premium:active {
+    @apply scale-[0.98];
   }
   
   .btn-premium::after {
-    @apply content-[''] absolute inset-0 bg-white/30 translate-x-[-100%] skewed-overlay;
-  }
-  
-  .skewed-overlay {
+    @apply content-[''] absolute inset-0 bg-white/30;
     transform: skewX(-20deg) translateX(-150%);
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
   
   .btn-premium:hover::after {
-    @apply translate-x-[150%];
+    transform: skewX(-20deg) translateX(150%);
   }
   
   .text-glow-gold {
     text-shadow: 0 0 20px rgba(201, 169, 98, 0.4);
   }
+
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .metallic-glow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metallic-glow::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(201, 169, 98, 0.1),
+      transparent 20%,
+      rgba(201, 169, 98, 0.1),
+      transparent 40%,
+      rgba(201, 169, 98, 0.1),
+      transparent 60%,
+      rgba(201, 169, 98, 0.1),
+      transparent 80%,
+      transparent
+    );
+    animation: rotate-conic 10s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes rotate-conic {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 }
 
 /* Custom Scrollbar - Thinner & Cleaner */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { @apply bg-black; }
-::-webkit-scrollbar-thumb { @apply bg-gold/30 hover:bg-gold/50 transition-colors rounded-full; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { 
+  background: rgba(201, 169, 98, 0.3);
+  border-radius: 9999px;
+  transition: background 0.3s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 169, 98, 0.5);
+}

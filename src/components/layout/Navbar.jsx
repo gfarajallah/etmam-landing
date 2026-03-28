@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Globe, ShieldCheck } from 'lucide-react';
+import { Menu, X, Sun, Moon, Languages, ShieldCheck } from 'lucide-react';
+import { useTheme } from '@/context/ThemeContext';
+import { useLanguage } from '@/context/useLanguage';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
+  const { lang, toggleLanguage, t } = useLanguage();
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'Ventures', path: '/ventures' },
-    { name: 'Contact', path: '/contact' }
+    { name: t('nav_home'), path: '/' },
+    { name: t('nav_about'), path: '/about' },
+    { name: t('nav_solutions'), path: '/solutions' },
+    { name: t('nav_ventures'), path: '/ventures' },
+    { name: t('nav_insights'), path: '/insights' },
+    { name: t('nav_contact'), path: '/contact' }
   ];
 
   useEffect(() => {
@@ -24,92 +29,103 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-
-
   return (
-    <>
-      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${
-        scrolled ? 'py-4 bg-navy-900/80 backdrop-blur-xl border-b border-white/5' : 'py-8 bg-transparent'
-      }`}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          
-          {/* Premium Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-gold flex items-center justify-center text-navy-900 font-black text-xl group-hover:scale-105 transition-transform duration-500 shadow-xl shadow-gold/20">E</div>
-            <span className="text-2xl font-black uppercase tracking-tighter text-white">ETMAM</span>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-[var(--bg-primary)]/80 backdrop-blur-xl border-b border-[var(--border-color)]' : 'py-8 bg-transparent'}`}>
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="flex justify-between items-center">
+          <Link to="/" className="relative z-10 group">
+            <span className="text-3xl font-black tracking-tighter uppercase flex items-center gap-2 text-[var(--text-primary)]">
+              ETMAM <span className="w-2 h-2 bg-[var(--accent-gold)] animate-pulse rounded-full"></span>
+            </span>
           </Link>
 
-          {/* Desktop Intelligence Bridge */}
-          <div className="hidden lg:flex items-center gap-12 glass-card px-10 py-5 rounded-full border-white/5 metallic-glow backdrop-blur-2xl">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={`text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-500 hover:text-gold ${
-                  location.pathname === link.path ? 'text-gold' : 'text-white/60'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+          {/* Desktop Links */}
+          <div className="hidden md:flex items-center gap-12">
+            <div className="flex gap-10">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`text-[10px] font-black uppercase tracking-[0.3em] transition-colors relative group py-2 ${
+                    location.pathname === link.path ? 'text-[var(--accent-gold)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-gold)]'
+                  }`}
+                >
+                  {link.name}
+                  <span className={`absolute bottom-0 left-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-500 ${location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                </Link>
+              ))}
+            </div>
+
+            {/* Toggles */}
+            <div className="flex items-center gap-6 pl-10 border-l border-[var(--border-color)]">
+               <motion.button 
+                 whileHover={{ scale: 1.1 }}
+                 whileTap={{ scale: 0.9 }}
+                 onClick={toggleTheme}
+                 className="p-2 text-[var(--text-secondary)] hover:text-[var(--accent-gold)] transition-colors"
+               >
+                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+               </motion.button>
+               <motion.button 
+                 whileHover={{ scale: 1.1 }}
+                 whileTap={{ scale: 0.9 }}
+                 onClick={toggleLanguage}
+                 className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[var(--accent-gold)]"
+               >
+                 <Languages size={16} />
+                 {lang === 'en' ? 'AR' : 'EN'}
+               </motion.button>
+            </div>
           </div>
 
-          {/* Right Utilities */}
-          <div className="flex items-center gap-6">
-            <button className="hidden sm:flex items-center gap-3 text-white/40 hover:text-gold transition-colors text-[10px] font-black uppercase tracking-widest px-6 py-3 border border-white/5 rounded-full hover:border-gold/30">
-               <Globe size={14} />
-               <span>EN</span>
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center gap-6">
+            <button onClick={toggleTheme} className="text-[var(--text-secondary)]">
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-            <button 
-              onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden text-white hover:text-gold transition-colors"
-            >
+            <button onClick={() => setIsOpen(!isOpen)} className="text-[var(--text-primary)]">
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
-      </nav>
+      </div>
 
-      {/* Mobile Portal */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[90] bg-navy-900/98 backdrop-blur-3xl flex items-center justify-center lg:hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-40 bg-[var(--bg-primary)] flex flex-col items-center justify-center p-8 text-center"
           >
-            <div className="flex flex-col items-center gap-12 p-10 text-center">
-              <span className="text-gold text-[10px] font-black uppercase tracking-[0.8em] mb-4">Strategic Paths</span>
-              {navLinks.map((link, idx) => (
-                <motion.div
-                   key={link.name}
-                   initial={{ opacity: 0, y: 20 }}
-                   animate={{ opacity: 1, y: 0 }}
-                   transition={{ delay: idx * 0.1 }}
+            <div className="flex flex-col gap-10 mb-12">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className="text-4xl font-black uppercase tracking-tighter hover:text-[var(--accent-gold)] transition-colors"
                 >
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`text-5xl font-black uppercase tracking-tighter ${
-                      location.pathname === link.path ? 'gold-gradient-text italic' : 'text-white'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                </motion.div>
+                  {link.name}
+                </Link>
               ))}
-              <div className="mt-20 pt-10 border-t border-white/5 w-full flex flex-col items-center gap-6">
-                 <ShieldCheck className="text-gold opacity-30" size={32} />
-                 <p className="text-white/20 text-[10px] font-black uppercase tracking-widest">ETMAM EXECUTIVE PORTAL</p>
-              </div>
+            </div>
+            
+            <div className="flex flex-col items-center gap-12 pt-12 border-t border-[var(--border-color)] w-full justify-center">
+               <button 
+                 onClick={() => { toggleLanguage(); setIsOpen(false); }}
+                 className="flex items-center gap-3 text-sm font-black uppercase tracking-[0.3em] text-[var(--accent-gold)]"
+               >
+                 <Languages size={20} />
+                 {lang === 'en' ? 'VIEW ARABIC' : 'VIEW ENGLISH'}
+               </button>
+               <ShieldCheck className="text-[var(--accent-gold)] opacity-30" size={32} />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </nav>
   );
 };
 

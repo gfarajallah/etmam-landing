@@ -1,74 +1,78 @@
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, ArrowRight, MessageSquare, Globe, ShieldCheck, Clock, MapPin, Activity } from 'lucide-react';
+import { Mail, Linkedin, ArrowRight, ShieldCheck, Clock, MapPin, Activity } from 'lucide-react';
+import { useLanguage } from '@/context/useLanguage';
 
 const Contact = () => {
-  return (
-    <div className="pt-20 bg-navy-900 min-h-screen text-white relative">
-      <div className="absolute inset-0 bg-grain opacity-[0.02] pointer-events-none" />
+  const { t, lang } = useLanguage();
 
-      {/* 01. Protocol Hero (Rhythm: Deep Theme) */}
-      <section className="relative py-40 md:py-60 overflow-hidden theme-navy-deep z-10">
+  const infoItems = [
+    { 
+      label: lang === 'en' ? "Direct Intelligence" : "المراسلة المباشرة", 
+      value: "info@etmam.net", 
+      icon: <Mail className="text-[var(--accent-gold)]" size={32} />,
+      sub: lang === 'en' ? "Status: 12h Global SLA" : "الحالة: استجابة عالمية خلال 12 ساعة"
+    },
+    { 
+      label: lang === 'en' ? "Executive Network" : "الشبكة التنفيذية", 
+      value: "linkedin.com/in/ghassanfarajallah", 
+      icon: <Linkedin className="text-[var(--accent-gold)]" size={32} />,
+      sub: lang === 'en' ? "Strategic Updates Hub" : "مركز التحديثات الاستراتيجية"
+    },
+    { 
+      label: lang === 'en' ? "Operational HQ" : "المقر التشغيلي", 
+      value: lang === 'en' ? "Dubai, United Arab Emirates" : "دبي، الإمارات العربية المتحدة", 
+      icon: <MapPin className="text-[var(--accent-gold)]" size={32} />,
+      sub: lang === 'en' ? "Financial District (DIFC)" : "مركز دبي المالي العالمي (DIFC)"
+    }
+  ];
+
+  return (
+    <div className={`pt-20 bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 ${lang === 'ar' ? 'font-arabic' : ''}`}>
+      <div className="fixed inset-0 bg-grain opacity-[0.02] pointer-events-none" />
+
+      {/* 01. Protocol Hero */}
+      <section className="relative py-40 md:py-60 overflow-hidden z-10 border-b border-[var(--border-color)]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl"
+            className={`max-w-4xl ${lang === 'ar' ? 'mr-auto ml-0 text-right' : ''}`}
           >
-            <div className="flex items-center gap-4 mb-10">
-               <div className="w-12 h-[1px] bg-gold/50" />
-               <span className="text-gold text-[10px] font-black uppercase tracking-[0.6em]">Engagement Node</span>
+            <div className={`flex items-center gap-4 mb-10 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+               <div className="w-12 h-[1px] bg-[var(--accent-gold)]/50" />
+               <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.6em]">Engagement Node</span>
             </div>
-            <h1 className="text-[clamp(3.5rem,10vw,10rem)] font-black mb-16 leading-[0.8] uppercase tracking-tighter">
-              Initiate <br /><span className="gold-gradient-text italic">Protocol.</span>
+            <h1 className="text-[clamp(3.5rem,8vw,10rem)] font-black mb-16 leading-[0.8] uppercase tracking-tighter italic">
+              {lang === 'en' ? <>Initiate <br /><span className="text-[var(--accent-gold)] not-italic">Protocol.</span></> : <>بدء <br /><span className="text-[var(--accent-gold)] not-italic">البروتوكول.</span></>}
             </h1>
-            <p className="text-2xl md:text-4xl text-white/90 leading-relaxed font-light max-w-3xl">
-              Begin the formal technical and strategic engagement. Our team will review your requirements for institutional alignment.
+            <p className="text-2xl md:text-4xl text-[var(--text-primary)] opacity-60 leading-relaxed font-light max-w-3xl">
+              {t('contact_subtitle')}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* 02. Communication Architecture (Rhythm: Slate Theme) */}
-      <section className="pb-60 theme-navy-slate relative z-10">
+      {/* 02. Architecture */}
+      <section className="py-40 relative z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-32">
           
-          {/* Information Architecture */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: lang === 'en' ? -50 : 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="space-y-20"
           >
              <div className="space-y-16">
-                {[
-                  { 
-                    label: "Direct Intelligence", 
-                    value: "info@etmam.net", 
-                    icon: <Mail className="text-gold" size={32} />,
-                    sub: "Status: 12h Global SLA"
-                  },
-                  { 
-                    label: "Executive Network", 
-                    value: "linkedin.com/in/ghassanfarajallah", 
-                    icon: <Linkedin className="text-gold" size={32} />,
-                    sub: "Strategic Updates Hub"
-                  },
-                  { 
-                    label: "Operational HQ", 
-                    value: "Dubai, United Arab Emirates", 
-                    icon: <MapPin className="text-gold" size={32} />,
-                    sub: "Financial District (DIFC)"
-                  }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-12 group items-start">
-                     <div className="w-24 h-24 bg-white/[0.03] border border-white/5 flex items-center justify-center shrink-0 group-hover:border-gold/50 group-hover:bg-gold/5 transition-all duration-700 metallic-glow">
+                {infoItems.map((item, i) => (
+                  <div key={i} className={`flex gap-12 group items-start ${lang === 'ar' ? 'flex-row-reverse text-right' : ''}`}>
+                     <div className="w-24 h-24 bg-[var(--text-primary)]/[0.03] border border-[var(--border-color)] flex items-center justify-center shrink-0 group-hover:border-[var(--accent-gold)]/50 group-hover:bg-[var(--accent-gold)]/5 transition-all duration-700 metallic-glow">
                         {item.icon}
                      </div>
                      <div className="pt-2">
-                        <h4 className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em] mb-4">{item.label}</h4>
-                        <p className="text-3xl font-black group-hover:text-gold transition-colors">{item.value}</p>
-                        <div className="flex items-center gap-3 mt-4 text-white/20 uppercase font-black text-[9px] tracking-[0.3em]">
-                           <Activity size={12} className="text-gold/40 animate-pulse" />
+                        <h4 className="text-[10px] font-black text-[var(--text-primary)] opacity-20 uppercase tracking-[0.5em] mb-4">{item.label}</h4>
+                        <p className="text-3xl font-black group-hover:text-[var(--accent-gold)] transition-colors">{item.value}</p>
+                        <div className={`flex items-center gap-3 mt-4 text-[var(--text-primary)] opacity-20 uppercase font-black text-[9px] tracking-[0.3em] ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                           <Activity size={12} className="text-[var(--accent-gold)]/40 animate-pulse" />
                            <span>{item.sub}</span>
                         </div>
                      </div>
@@ -76,79 +80,82 @@ const Contact = () => {
                 ))}
              </div>
 
-             <div className="p-16 glass-card rounded-sm border-gold/20 premium-shadow relative overflow-hidden backdrop-blur-3xl">
-                <div className="absolute top-0 right-0 w-48 h-48 bg-gold/5 blur-[80px] translate-x-1/2 -translate-y-1/2" />
-                <h4 className="text-2xl font-black mb-8 uppercase tracking-tight italic">Institutional <span className="not-italic text-gold">Notice.</span></h4>
-                <p className="text-white/40 text-lg leading-relaxed font-light mb-10">
-                  Priority engagement protocol is reserved for institutional partners, family offices, and certified developers.
+             <div className="p-16 glass-card rounded-sm border-[var(--accent-gold)]/20 premium-shadow relative overflow-hidden backdrop-blur-3xl">
+                <div className="absolute top-0 right-0 w-48 h-48 bg-[var(--accent-gold)]/5 blur-[80px] translate-x-1/2 -translate-y-1/2" />
+                <h4 className={`text-2xl font-black mb-8 uppercase tracking-tight italic ${lang === 'ar' ? 'text-right' : ''}`}>
+                  {lang === 'en' ? <>Institutional <span className="not-italic text-[var(--accent-gold)]">Notice.</span></> : <>إشعار <span className="not-italic text-[var(--accent-gold)]">مؤسسي.</span></>}
+                </h4>
+                <p className={`text-[var(--text-primary)] opacity-40 text-lg leading-relaxed font-light mb-10 ${lang === 'ar' ? 'text-right' : ''}`}>
+                  {t('contact_notice_desc')}
                 </p>
-                <div className="flex items-center gap-6 text-[10px] font-black text-gold uppercase tracking-[0.4em]">
+                <div className={`flex items-center gap-6 text-[10px] font-black text-[var(--accent-gold)] uppercase tracking-[0.4em] ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
                    <ShieldCheck size={20} />
                    <span>Vetted // Secure Channels</span>
                 </div>
              </div>
           </motion.div>
 
-          {/* Inquiry Engine */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: lang === 'en' ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="p-16 md:p-24 glass-card rounded-sm border-white/5 premium-shadow metallic-glow bg-navy-800/80 backdrop-blur-3xl"
+            className="p-16 md:p-24 glass-card rounded-sm border-[var(--border-color)] premium-shadow metallic-glow bg-[var(--bg-secondary)]/80 backdrop-blur-3xl"
           >
-             <div className="flex items-center justify-between mb-16">
-                <h3 className="text-4xl font-black uppercase tracking-tighter italic">Strategic <span className="not-italic text-gold">Inquiry.</span></h3>
+             <div className={`flex items-center justify-between mb-16 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                <h3 className="text-4xl font-black uppercase tracking-tighter italic">
+                   {lang === 'en' ? <>Strategic <span className="not-italic text-[var(--accent-gold)]">Inquiry.</span></> : <>استفسار <span className="not-italic text-[var(--accent-gold)]">استراتيجي.</span></>}
+                </h3>
                 <div className="flex items-center gap-3">
                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                   <span className="text-[9px] font-black uppercase tracking-widest text-white/30 italic">Protocol Live</span>
+                   <span className="text-[9px] font-black uppercase tracking-widest text-[var(--text-primary)] opacity-30 italic">Protocol Live</span>
                 </div>
              </div>
              
-             <form className="space-y-12 group">
+             <form className={`space-y-12 group ${lang === 'ar' ? 'text-right' : ''}`}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <div className="relative group/field border-b border-white/5 pb-4 focus-within:border-gold transition-all">
-                    <label className="text-[9px] text-white/20 uppercase font-black mb-4 block group-focus-within/field:text-gold transition-colors tracking-widest">Identity</label>
-                    <input type="text" className="w-full bg-transparent p-0 text-white outline-none placeholder:text-white/10 font-light text-xl" placeholder="Full Name" />
+                  <div className="relative group/field border-b border-[var(--border-color)] pb-4 focus-within:border-[var(--accent-gold)] transition-all">
+                    <label className="text-[9px] text-[var(--text-primary)] opacity-20 uppercase font-black mb-4 block group-focus-within/field:text-[var(--accent-gold)] transition-colors tracking-widest">{t('contact_label_name')}</label>
+                    <input type="text" className={`w-full bg-transparent p-0 text-[var(--text-primary)] outline-none placeholder:text-[var(--text-primary)]/10 font-light text-xl ${lang === 'ar' ? 'text-right' : ''}`} placeholder={t('contact_placeholder_name')} />
                   </div>
-                  <div className="relative group/field border-b border-white/5 pb-4 focus-within:border-gold transition-all">
-                    <label className="text-[9px] text-white/20 uppercase font-black mb-4 block group-focus-within/field:text-gold transition-colors tracking-widest">Organization</label>
-                    <input type="text" className="w-full bg-transparent p-0 text-white outline-none placeholder:text-white/10 font-light text-xl" placeholder="Entity Name" />
+                  <div className="relative group/field border-b border-[var(--border-color)] pb-4 focus-within:border-[var(--accent-gold)] transition-all">
+                    <label className="text-[9px] text-[var(--text-primary)] opacity-20 uppercase font-black mb-4 block group-focus-within/field:text-[var(--accent-gold)] transition-colors tracking-widest">{t('contact_label_org')}</label>
+                    <input type="text" className={`w-full bg-transparent p-0 text-[var(--text-primary)] outline-none placeholder:text-[var(--text-primary)]/10 font-light text-xl ${lang === 'ar' ? 'text-right' : ''}`} placeholder={t('contact_placeholder_org')} />
                   </div>
                 </div>
 
-                <div className="relative group/field border-b border-white/5 pb-4 focus-within:border-gold transition-all">
-                  <label className="text-[9px] text-white/20 uppercase font-black mb-4 block group-focus-within/field:text-gold transition-colors tracking-widest">Communication Path</label>
-                  <input type="email" className="w-full bg-transparent p-0 text-white outline-none placeholder:text-white/10 font-light text-xl" placeholder="professional@domain.com" />
+                <div className="relative group/field border-b border-[var(--border-color)] pb-4 focus-within:border-[var(--accent-gold)] transition-all">
+                  <label className="text-[9px] text-[var(--text-primary)] opacity-20 uppercase font-black mb-4 block group-focus-within/field:text-[var(--accent-gold)] transition-colors tracking-widest">{t('contact_label_email')}</label>
+                  <input type="email" className={`w-full bg-transparent p-0 text-[var(--text-primary)] outline-none placeholder:text-[var(--text-primary)]/10 font-light text-xl ${lang === 'ar' ? 'text-right' : ''}`} placeholder={t('contact_placeholder_email')} />
                 </div>
 
-                <div className="relative group/field border-b border-white/5 pb-4 focus-within:border-gold transition-all">
-                  <label className="text-[9px] text-white/20 uppercase font-black mb-4 block group-focus-within/field:text-gold transition-colors tracking-widest">Engagement Type</label>
-                  <select className="w-full bg-transparent p-0 text-white outline-none font-light text-xl appearance-none cursor-pointer">
-                     <option className="bg-navy-900 text-white">Institutional Consulting</option>
-                     <option className="bg-navy-900 text-white">Venture Partnership</option>
-                     <option className="bg-navy-900 text-white">Technology Auditing</option>
-                     <option className="bg-navy-900 text-white">Guest Speaking / Media</option>
+                <div className="relative group/field border-b border-[var(--border-color)] pb-4 focus-within:border-[var(--accent-gold)] transition-all">
+                  <label className="text-[9px] text-[var(--text-primary)] opacity-20 uppercase font-black mb-4 block group-focus-within/field:text-[var(--accent-gold)] transition-colors tracking-widest">{t('contact_label_type')}</label>
+                  <select className={`w-full bg-transparent p-0 text-[var(--text-primary)] outline-none font-light text-xl appearance-none cursor-pointer ${lang === 'ar' ? 'text-right' : ''}`}>
+                     <option className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Institutional Consulting</option>
+                     <option className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Venture Partnership</option>
+                     <option className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Technology Auditing</option>
+                     <option className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Guest Speaking / Media</option>
                   </select>
                 </div>
 
-                <div className="relative group/field border-b border-white/5 pb-8 focus-within:border-gold transition-all">
-                  <label className="text-[9px] text-white/20 uppercase font-black mb-4 block group-focus-within/field:text-gold transition-colors tracking-widest">The Brief / Vision</label>
-                  <textarea rows="4" className="w-full bg-transparent p-0 text-white outline-none placeholder:text-white/10 font-light text-xl resize-none" placeholder="Primary objectives and scope..."></textarea>
+                <div className="relative group/field border-b border-[var(--border-color)] pb-8 focus-within:border-[var(--accent-gold)] transition-all">
+                  <label className="text-[9px] text-[var(--text-primary)] opacity-20 uppercase font-black mb-4 block group-focus-within/field:text-[var(--accent-gold)] transition-colors tracking-widest">{t('contact_label_brief')}</label>
+                  <textarea rows="4" className={`w-full bg-transparent p-0 text-[var(--text-primary)] outline-none placeholder:text-[var(--text-primary)]/10 font-light text-xl resize-none ${lang === 'ar' ? 'text-right' : ''}`} placeholder={t('contact_placeholder_brief')}></textarea>
                 </div>
 
                 <button className="w-full group/btn relative overflow-hidden btn-premium py-8 text-sm">
-                   <div className="relative z-10 flex items-center justify-center gap-6">
-                      Transmit Protocol <ArrowRight size={20} className="group-hover:translate-x-3 transition-transform duration-500" />
+                   <div className={`relative z-10 flex items-center justify-center gap-6 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                      {t('contact_btn_transmit')} <ArrowRight size={20} className={`group-hover:translate-x-3 transition-transform duration-500 ${lang === 'ar' ? 'rotate-180 group-hover:-translate-x-3' : ''}`} />
                    </div>
                 </button>
              </form>
 
-             <div className="mt-20 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-10">
-                <div className="flex items-center gap-3">
-                   <Clock size={16} className="text-gold/30" />
-                   <span className="text-[10px] font-black uppercase tracking-widest text-white/20 leading-none">Global Sync Status: Operational</span>
+             <div className="mt-20 pt-12 border-t border-[var(--border-color)] flex flex-col md:flex-row items-center justify-between gap-10">
+                <div className={`flex items-center gap-3 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                   <Clock size={16} className="text-[var(--accent-gold)]/30" />
+                   <span className="text-[10px] font-black uppercase tracking-widest text-[var(--text-primary)] opacity-20 leading-none">Global Sync Status: Operational</span>
                 </div>
-                <button className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 hover:text-gold transition-colors">
+                <button className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--text-primary)] opacity-40 hover:text-[var(--accent-gold)] transition-colors">
                    Executive Secretariart // Calendly
                 </button>
              </div>

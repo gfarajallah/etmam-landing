@@ -18,8 +18,12 @@ export default {
         }
       },
       fontFamily: {
-        outfit: ['Outfit', 'sans-serif'],
-        inter: ['Inter', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif'],
+        'outfit': ['Outfit', 'sans-serif'],
+        // Arabic display headings: Azkadinya Bold (system) → Noto Kufi Arabic (web)
+        'arabic': ['Azkadinya', 'AzkadineBold', 'Noto Kufi Arabic', 'sans-serif'],
+        // Arabic body text: 29LT Riwaya Informal (system) → IBM Plex Sans Arabic (web)
+        'arabic-body': ['29LT Riwaya', '29LT Riwaya Informal', 'IBM Plex Sans Arabic', 'Tajawal', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
