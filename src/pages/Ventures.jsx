@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   Globe, 
@@ -18,7 +18,6 @@ import { useLanguage } from '@/context/useLanguage';
 
 const Ventures = () => {
   const { lang } = useLanguage();
-  const [hoveredVenture, setHoveredVenture] = useState(null);
 
   const secondaryVentures = [
     {
@@ -206,8 +205,6 @@ const Ventures = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  onMouseEnter={() => setHoveredVenture(i)}
-                  onMouseLeave={() => setHoveredVenture(null)}
                 >
                    <Link to="/contact"
                     className={`group relative p-16 overflow-hidden border-[var(--border-color)] md:border-r border-b lg:border-b-0 last:border-r-0 block h-full transition-all duration-700 hover:bg-[var(--accent-gold)]/[0.03] ${lang === 'ar' ? 'text-right' : 'text-left'}`}

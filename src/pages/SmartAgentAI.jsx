@@ -16,11 +16,11 @@ import {
   Fingerprint,
   Activity
 } from 'lucide-react';
-import { useState } from 'react';
+
 
 const SmartAgentAI = () => {
   const { lang } = useLanguage();
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+
 
   const strategies = [
     {
@@ -114,8 +114,6 @@ const SmartAgentAI = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(null)}
               >
                 <Link to="/contact"
                   className={`group relative p-16 overflow-hidden border-[var(--border-color)] lg:border-r last:border-r-0 block h-full transition-all duration-700 hover:bg-cyan-500/[0.03] ${lang === 'ar' ? 'text-right' : 'text-left'}`}
