@@ -32,18 +32,22 @@
 }
 
 [data-theme='light'] {
-  /* Royal Light Theme */
-  --bg-primary: #F8F9FA; /* Imperial White */
-  --bg-secondary: #ffffff;
-  --text-primary: #0A192F; /* Royal Navy for strong contrast */
+  /* Royal Light Theme - Imperial White */
+  --bg-primary: #FFFFFF; 
+  --bg-secondary: #F8F9FA;
+  --text-primary: #0A192F; 
   --text-secondary: rgba(10, 25, 47, 0.7);
-  --accent-gold: #B8860B; /* Darker Gold for visibility on white */
+  --accent-gold: #B8860B; 
   --accent-gold-light: #C9A962;
   --accent-gold-dark: #8B7340;
   --accent-navy: #01040f;
-  --border-color: rgba(10, 25, 47, 0.1);
+  --border-color: rgba(10, 25, 47, 0.08);
   
-  /* Gradient variables optimized for light backgrounds */
+  /* White Gradients for Light Mode */
+  --hero-grad-start: rgba(255, 255, 255, 1);
+  --hero-grad-mid: rgba(255, 255, 255, 0.8);
+  --hero-grad-end: rgba(255, 255, 255, 0.5);
+  
   --gold-grad-start: #B8860B;
   --gold-grad-mid: #C9A962;
   --gold-grad-end: #8B7340;
@@ -142,6 +146,23 @@
       background-color: var(--accent-gold);
       opacity: 0.05;
     }
+  }
+
+  /* Standardized Typography System */
+  .display-title {
+    @apply font-black uppercase tracking-tighter leading-[0.9];
+    font-size: clamp(2.5rem, 8vw, 7rem);
+  }
+
+  .section-title {
+    @apply font-black uppercase tracking-tighter leading-[1];
+    font-size: clamp(2rem, 6vw, 5rem);
+  }
+
+  /* Professional Arabic Spacing to prevent clipping */
+  [dir='rtl'] .display-title, [dir='rtl'] .section-title {
+    @apply leading-[1.2] py-2 px-1;
+    overflow: visible !important;
   }
   
   .flagship-border {
