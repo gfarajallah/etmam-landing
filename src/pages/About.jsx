@@ -227,7 +227,7 @@ const About = () => {
                   </div>
                 </Link>
 
-                <div className="p-10 premium-card group border-[var(--border-color)] bg-[var(--text-primary)]/[0.02] relative overflow-hidden transition-all duration-700 cursor-default">
+                <Link to="/solutions" className="p-10 premium-card group border-[var(--border-color)] bg-[var(--text-primary)]/[0.02] block relative overflow-hidden transition-all duration-700">
                   <div className="absolute inset-0 opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 z-0">
                     <img src="/media/khalifa_award.png" alt="Excellence Award" className="w-full h-full object-cover scale-110" />
                   </div>
@@ -237,13 +237,17 @@ const About = () => {
                     <h4 className="font-black uppercase tracking-widest text-xs mb-3 group-hover:text-[var(--accent-gold)] transition-colors duration-500">
                       {lang === 'en' ? 'Mastery & Logic' : 'الإتقان والمنطق'}
                     </h4>
-                    <p className="text-xs opacity-60 flex-1">
+                    <p className="text-xs opacity-60 flex-1 group-hover:opacity-90 transition-opacity">
                       {lang === 'en'
                         ? 'Defining the standard for high-stakes Web3 real estate education and governance.'
                         : 'تحديد معايير التعليم والحوكمة في مشاريع الـ Web3 العقارية عالية المخاطر.'}
                     </p>
+                    <div className={`mt-4 flex items-center gap-2 text-[8px] font-black uppercase tracking-widest text-[var(--accent-gold)] opacity-0 group-hover:opacity-100 transition-all duration-500 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                       <span>{lang === 'en' ? 'Review Logic' : 'مراجعة المنطق'}</span>
+                       <ChevronRight size={12} className={lang === 'ar' ? 'rotate-180' : ''} />
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
             </motion.div>
           </div>

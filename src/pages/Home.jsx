@@ -11,175 +11,166 @@ import {
   Globe, 
   Cpu, 
   BarChart3,
-  ExternalLink
+  ExternalLink,
+  ChevronRight,
+  Zap,
+  Target
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/useLanguage';
 
-import ParallaxHero from '@/components/interactive/ParallaxHero';
-// ... other imports
-
 const Home = () => {
-  const { t, lang } = useLanguage();
+  const { lang, t } = useLanguage();
 
   const stats = [
-    { label: lang === 'en' ? 'Years of Leadership' : 'سنوات من القيادة', value: '10+', icon: <Award className="text-[var(--accent-gold)]" size={24} /> },
-    { label: lang === 'en' ? 'Professionals Trained' : 'متخصص تم تدريبهم', value: '500+', icon: <Users className="text-[var(--accent-gold)]" size={24} /> },
-    { label: lang === 'en' ? 'Asset Value Tokenized' : 'قيمة الأصول المرمزة', value: '$1B+', icon: <TrendingUp className="text-[var(--accent-gold)]" size={24} /> },
+    { label: lang === 'en' ? 'Years of Leadership' : 'عقد من القيادة', value: '10+', icon: <Award className="text-[var(--accent-gold)]" size={24} /> },
+    { label: lang === 'en' ? 'Professionals Trained' : 'خبير تم تأهيلهم', value: '500+', icon: <Users className="text-[var(--accent-gold)]" size={24} /> },
+    { label: lang === 'en' ? 'Asset Value Tokenized' : 'قيمة الأصول المشفرة', value: '$4B+', icon: <TrendingUp className="text-[var(--accent-gold)]" size={24} /> },
   ];
 
   const corePillars = [
     {
-      title: t('track_01_title'),
-      description: lang === 'en' ? "Strategic advisory for real estate enterprises transitioning to digital assets." : "استشارات استراتيجية للمؤسسات العقارية التي تنتقل إلى الأصول الرقمية.",
+      id: "01",
+      title: lang === 'en' ? "ETMAM Engine" : "محرك إتمام الاستراتيجي",
+      subtitle: lang === 'en' ? "Institutional Advisory." : "الاستشارات المؤسسية العليا.",
+      description: lang === 'en' ? "Strategic architectural frameworks for real estate enterprises transitioning to high-efficiency digital assets." : "أطر عمل هندسية استراتيجية للمؤسسات العقارية التي تنتقل إلى الأصول الرقمية عالية الكفاءة.",
       link: "/solutions",
-      role: "ETMAM Engine",
       icon: <Layers size={32} className="text-[var(--accent-gold)]" />,
       tag: "STRATEGY"
     },
     {
-      title: t('track_02_title'),
-      description: lang === 'en' ? "Building the future of finance. Flagship projects defining the tokenization standard." : "بناء مستقبل المالية. مشاريع رائدة تحدد معايير الترميز.",
-      link: "/solutions",
-      role: "Visionary Builder",
+      id: "02",
+      title: lang === 'en' ? "SmartBlocks" : "سمارت بلوكس (العقدة الرائدة)",
+      subtitle: lang === 'en' ? "Technological Dominance." : "الهيمنة التقنية المطلقة.",
+      description: lang === 'en' ? "Building the future of finance. Flagship tokenization project defining the standard for global real asset liquidity." : "بناء مستقبل المالية. المشروع الرائد للترميز الذي يحدد معايير سيولة الأصول العالمية.",
+      link: "/solutions/smartblocks",
       icon: <Cpu size={32} className="text-[var(--accent-gold)]" />,
       tag: "INNOVATION"
     }
   ];
 
   return (
-    <div className="bg-transparent text-[var(--text-primary)] selection:bg-[var(--accent-gold)]/40 scroll-smooth transition-colors duration-700">
-      {/* Unified Background is now in App.jsx */}
+    <div className={`bg-transparent text-[var(--text-primary)] selection:bg-[var(--accent-gold)]/40 scroll-smooth transition-colors duration-700 ${lang === 'ar' ? 'font-arabic' : ''}`}>
+      
+      {/* ── 01. HERO: The Institutional Horizon ── */}
+      <section className="relative min-h-screen flex items-center overflow-hidden z-10 border-b border-[var(--border-color)]">
+        {/* Full Cinematic Video/Image Backdrop */}
+        <div className="absolute inset-0 z-0 group">
+          <img 
+            src="/media/etmam_hero_bg.png" 
+            alt="Etmam Executive Vision" 
+            className="w-full h-full object-cover scale-[1.02] grayscale brightness-[0.35] group-hover:grayscale-0 group-hover:scale-100 group-hover:brightness-[0.6] transition-all duration-[3000ms]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/40 to-transparent" />
+          <div className="absolute inset-0 bg-[var(--accent-gold)]/5 mix-blend-overlay" />
+        </div>
 
-      {/* 01. Hero Section (Prestige Theme) */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden z-10 transition-colors duration-700">
-        <ParallaxHero>
-          <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32 items-center py-20">
-            <motion.div
-              initial={{ opacity: 0, x: lang === 'en' ? -30 : 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className={`relative z-30 ${lang === 'ar' ? 'text-right' : 'text-left'}`}
-            >
-              <motion.div 
-                 initial={{ opacity: 0, y: 10 }}
-                 animate={{ opacity: 1, y: 0 }}
-                 transition={{ delay: 0.2 }}
-                 className={`flex items-center gap-4 mb-10 ${lang === 'ar' ? 'flex-row-reverse' : 'flex-row'}`}
-              >
-                <div className="w-12 h-[1px] bg-[var(--accent-gold)]/50" />
-                <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.6em]">
-                  {lang === 'en' ? 'Executive Leadership' : 'القيادة التنفيذية'}
-                </span>
-              </motion.div>
-              
-              <h1 className={`text-[clamp(3.5rem,7.5vw,8.5rem)] font-black mb-12 leading-[0.9] uppercase tracking-tighter ${lang === 'ar' ? 'font-arabic' : ''}`}>
-                {lang === 'en' ? (
-                  <>Institutional <br /> <span className="gold-gradient-text italic">Precision.</span></>
-                ) : (
-                  <>دقة <br /> <span className="gold-gradient-text italic">مؤسسية.</span></>
-                )}
-              </h1>
-              <p className="text-2xl md:text-3xl text-[var(--text-primary)] leading-relaxed font-light mb-20 max-w-2xl opacity-80">
-                {lang === 'en' 
-                  ? 'Ghassan Farajallah engineers the elite frameworks for the transition to tokenized real estate assets.'
-                  : 'يصمم غسان فرج الله الأطر النخبوية للانتقال إلى الأصول العقارية المرمزة.'}
-              </p>
-              <div className={`flex flex-col sm:flex-row gap-8 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
-                 <Link to="/contact" className="btn-premium flex items-center justify-center gap-4 group border-none">
-                    {t('cta_initiate')} <div className={`w-6 h-6 bg-[var(--bg-primary)] flex items-center justify-center rounded-full group-hover:scale-110 transition-transform ${lang === 'ar' ? 'rotate-180' : ''}`}><ArrowRight size={14} className="text-[var(--accent-gold)]" /></div>
-                 </Link>
-                 <Link to="/solutions" className="px-10 py-5 border border-[var(--border-color)] text-[var(--text-primary)] font-black uppercase tracking-widest text-[10px] hover:bg-[var(--accent-gold)]/5 transition-all flex items-center justify-center">
-                    {lang === 'en' ? 'Review Architecture' : 'مراجعة البنية'}
-                 </Link>
-              </div>
-            </motion.div>
+        <div className={`max-w-7xl mx-auto px-6 md:px-12 relative z-20 w-full ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
+          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
+            <div className={`flex items-center gap-6 mb-12 ${lang === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+              <div className="w-16 h-[1px] bg-[var(--accent-gold)]/50" />
+              <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.7em]">
+                {lang === 'en' ? 'Track 01 // Executive Engine' : 'المسار 01 // المحرك التنفيذي'}
+              </span>
+            </div>
 
-            {/* Founder Visual */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:block relative z-20 justify-self-end"
-            >
-              <div className="relative w-[540px] aspect-[3/4.5] overflow-hidden rounded-sm border border-[var(--border-color)] p-3 bg-[var(--bg-secondary)]/30 backdrop-blur-md metallic-glow group">
-                <img 
-                  src="/founder-1.jpg" 
-                  alt="Ghassan Farajallah" 
-                  className="w-full h-full object-cover object-top grayscale brightness-110 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[2000ms] ease-out shadow-inner"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent opacity-70" />
-                <div className={`absolute bottom-8 p-8 glass-card border-[var(--accent-gold)]/20 backdrop-blur-2xl ${lang === 'en' ? 'left-8' : 'right-8 text-right'}`}>
-                  <span className="text-[var(--accent-gold)] font-black uppercase tracking-[0.5em] text-[10px] mb-4 block">
-                     {lang === 'en' ? 'Founder & Visionary' : 'المؤسس والمبتكر'}
-                  </span>
-                  <h3 className={`text-3xl font-black uppercase tracking-tight text-[var(--text-primary)] ${lang === 'ar' ? 'font-arabic text-right' : ''}`}>
-                    {lang === 'en' ? <>Ghassan <br />Farajallah</> : <>غسان <br />فرج الله</>}
-                  </h3>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </ParallaxHero>
+            <h1 className={`font-black uppercase leading-[0.85] tracking-tighter mb-10 ${lang === 'ar' ? 'font-arabic' : ''}`}
+               style={{ fontSize: 'clamp(4rem, 14vw, 11rem)' }}>
+              {lang === 'en' ? <>Institutional<br /><span className="gold-gradient-text italic">Precision.</span></> : <>الدقة<br /><span className="gold-gradient-text italic">المؤسسية الرصينة.</span></>}
+            </h1>
+
+            <p className="text-[clamp(1.1rem,3vw,1.8rem)] font-light opacity-60 max-w-4xl mb-20 leading-relaxed">
+              {lang === 'en' 
+                ? 'Engineering the elite frameworks for the transition to tokenized real estate assets. Leadership for the digital-first era.'
+                : 'هندسة الأطر النخبوية للانتقال إلى الأصول العقارية المرمزة. القيادة الحقيقية للعصر الرقمي الأول.'}
+            </p>
+
+            <div className={`flex flex-col sm:flex-row gap-10 ${lang === 'ar' ? 'flex-row-reverse justify-start' : 'justify-start'}`}>
+              <Link to="/contact" className="btn-premium px-16 py-8 scale-110 shadow-[0_0_50px_rgba(201,169,98,0.2)]">
+                {t('cta_initiate')}
+                <ArrowRight size={20} className={`inline ${lang === 'ar' ? 'mr-4 rotate-180' : 'ml-4'}`} />
+              </Link>
+              <Link to="/about" className="px-12 py-7 border border-[var(--border-color)] bg-[var(--bg-primary)]/30 backdrop-blur-md text-[var(--text-primary)] font-black uppercase tracking-widest text-[10px] hover:bg-[var(--accent-gold)]/10 hover:border-[var(--accent-gold)] transition-all flex items-center justify-center">
+                {lang === 'en' ? 'DISCOVER THE VISION' : 'اكتشف الرؤية الاستراتيجية'}
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Floating Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-20 hidden md:block animate-bounce">
+          <div className="w-px h-24 bg-gradient-to-t from-[var(--accent-gold)] to-transparent" />
+        </div>
       </section>
 
-      {/* 02. Authority Metrics */}
-      <section className="bg-[var(--bg-secondary)]/5 border-y border-[var(--border-color)] backdrop-blur-sm relative py-24 z-10 transition-colors duration-700">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-20">
+      {/* ── 02. METRICS: Verified Authority ── */}
+      <section className="bg-[var(--bg-secondary)]/5 border-b border-[var(--border-color)] backdrop-blur-sm relative py-32 z-10 transition-colors duration-700">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-24">
           {stats.map((stat, idx) => (
             <motion.div 
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className={`flex flex-col items-center group ${lang === 'en' ? 'md:items-start md:text-left text-center' : 'md:items-end md:text-right text-center'}`}
+              className={`flex flex-col group ${lang === 'ar' ? 'items-end text-right' : 'items-start text-left'}`}
             >
-              <div className="text-[var(--accent-gold)] mb-6 group-hover:scale-110 transition-transform duration-500">{stat.icon}</div>
-              <h4 className="text-6xl font-black mb-2 gold-gradient-text">{stat.value}</h4>
-              <p className="text-[12px] font-black text-[var(--text-primary)] opacity-40 uppercase tracking-[0.4em]">{stat.label}</p>
+              <div className="text-[var(--accent-gold)] mb-8 p-4 bg-[var(--accent-gold)]/5 border border-[var(--accent-gold)]/10 rounded-sm group-hover:scale-110 group-hover:bg-[var(--accent-gold)]/10 transition-all duration-700">
+                {stat.icon}
+              </div>
+              <h4 className="text-7xl font-black mb-4 gold-gradient-text tracking-tighter">{stat.value}</h4>
+              <p className="text-[11px] font-black text-[var(--text-primary)] opacity-30 uppercase tracking-[0.5em]">{stat.label}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* 03. Domains of Authority */}
+      {/* ── 03. DOMAINS: Actionable Intelligence ── */}
       <section className="py-52 relative overflow-hidden z-10 transition-colors duration-700">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className={`flex flex-col lg:flex-row justify-between items-end gap-16 mb-32 ${lang === 'ar' ? 'lg:flex-row-reverse' : ''}`}>
-            <div className={`max-w-3xl ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
+            <div className={`max-w-4xl ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
               <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.6em] mb-8 block">
-                {lang === 'en' ? 'Strategic Architecture' : 'العمارة الاستراتيجية'}
+                {lang === 'en' ? 'Institutional Grade' : 'المستوى المؤسسي الرفيع'}
               </span>
-              <h2 className={`text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85] ${lang === 'ar' ? 'font-arabic' : ''}`}>
-                {lang === 'en' ? <>Domains of <br /><span className="text-[var(--accent-gold)] italic">Authority.</span></> : <>مجالات <br /><span className="text-[var(--accent-gold)] italic">النفوذ.</span></>}
+              <h2 className={`font-black uppercase tracking-tighter leading-[0.85] ${lang === 'ar' ? 'font-arabic' : ''}`}
+                style={{ fontSize: 'clamp(3rem,8vw,8rem)' }}>
+                {lang === 'en' ? <>Domains of <br /><span className="gold-gradient-text italic">Authority.</span></> : <>مجالات <br /><span className="gold-gradient-text italic">النفوذ والسيادة.</span></>}
               </h2>
             </div>
-            <p className={`text-[var(--text-primary)] opacity-30 text-xl font-light max-w-xs lg:mb-4 lg:pl-10 ${lang === 'en' ? 'lg:border-l' : 'lg:border-r text-right'} border-[var(--border-color)]`}>
-              {lang === 'en' ? 'Institutional-grade frameworks for the global digital transformation.' : 'أطر عمل مؤسسية للتحول الرقمي العالمي.'}
+            <p className={`text-[var(--text-primary)] opacity-30 text-2xl font-light max-w-xs lg:mb-4 lg:pl-12 ${lang === 'en' ? 'lg:border-l' : 'lg:border-r text-right'} border-[var(--border-color)] leading-relaxed`}>
+              {lang === 'en' ? 'Proprietary frameworks for the global digital evolution.' : 'أطر عمل حصرية للتحول الرقمي العالمي القادم.'}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-[var(--border-color)] overflow-hidden">
             {corePillars.map((pillar, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className={`premium-card p-16 md:p-24 group relative ${lang === 'ar' ? 'text-right' : 'text-left'}`}
               >
-                <div className={`absolute top-0 p-12 text-[var(--accent-gold)] opacity-[0.04] text-[180px] font-black leading-none select-none group-hover:opacity-[0.08] transition-opacity ${lang === 'en' ? 'right-0' : 'left-0'}`}>0{idx+1}</div>
-                <div className={`w-20 h-20 bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/20 flex items-center justify-center mb-12 group-hover:border-[var(--accent-gold)] group-hover:bg-[var(--accent-gold)]/20 transition-all duration-700 ${lang === 'ar' ? 'mr-0 ml-auto' : ''}`}>
-                   {pillar.icon}
-                </div>
-                <span className="text-[var(--accent-gold)] text-[10px] font-black tracking-[0.5em] uppercase mb-6 block">{pillar.tag}</span>
-                <h3 className="text-4xl md:text-5xl font-black mb-8 tracking-tighter uppercase">{pillar.title}</h3>
-                <p className="text-[var(--text-primary)] opacity-40 text-xl leading-relaxed font-light mb-16 max-w-md">
-                  {pillar.description}
-                </p>
-                <Link to={pillar.link} className={`inline-flex items-center gap-4 text-[var(--text-primary)] font-black text-[10px] uppercase tracking-[0.4em] group-hover:text-[var(--accent-gold)] transition-all ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
-                  {lang === 'en' ? 'Secure Consultation' : 'تأمين استشارة'} <ArrowRight size={16} className={`group-hover:translate-x-3 transition-transform ${lang === 'ar' ? 'rotate-180' : ''}`} />
+                <Link to={pillar.link} className={`group relative p-20 md:p-32 overflow-hidden border-[var(--border-color)] md:border-r last:border-r-0 block h-full transition-all duration-700 hover:bg-[var(--accent-gold)]/[0.03] ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{ boxShadow: 'inset 0 0 0 1px rgba(201,169,98,0.3)' }} />
+                  
+                  <div className={`absolute top-0 p-12 text-[var(--accent-gold)] opacity-[0.03] text-[clamp(8rem,15vw,12rem)] font-black leading-none select-none group-hover:opacity-[0.07] transition-all duration-[1500ms] italic ${lang === 'en' ? 'right-0' : 'left-0'}`}>0{idx+1}</div>
+                  
+                  <div className={`w-24 h-24 border border-[var(--border-color)] flex items-center justify-center mb-16 group-hover:border-[var(--accent-gold)] group-hover:shadow-[0_0_40px_rgba(201,169,98,0.2)] transition-all duration-700 group-hover:scale-110 ${lang === 'ar' ? 'mr-0 ml-auto' : ''}`}>
+                     {pillar.icon}
+                  </div>
+                  
+                  <h5 className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.6em] mb-4 opacity-50">{pillar.tag}</h5>
+                  <h3 className="text-4xl md:text-5xl font-black mb-10 tracking-tighter uppercase group-hover:text-[var(--accent-gold)] transition-colors duration-500">{pillar.title}</h3>
+                  <p className="text-[var(--text-primary)] opacity-40 text-xl leading-relaxed font-light mb-20 max-w-md group-hover:opacity-90 transition-opacity duration-700">
+                    {pillar.description}
+                  </p>
+                  
+                  <div className={`mt-auto pt-10 flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.5em] text-[var(--accent-gold)] opacity-0 group-hover:opacity-100 transition-all duration-500 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                    <span>{lang === 'en' ? 'SECURE ENGAGEMENT' : 'تأمين الارتباط'}</span>
+                    <ArrowRight size={18} className={`group-hover:translate-x-4 transition-transform duration-500 ${lang === 'ar' ? 'rotate-180 group-hover:-translate-x-4' : ''}`} />
+                  </div>
                 </Link>
               </motion.div>
             ))}
@@ -187,102 +178,84 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 04. Flagship Spotlight: SMARTBLOCKS */}
-      <section className="py-60 bg-[var(--bg-primary)] relative overflow-hidden border-y border-[var(--accent-gold)]/10 z-10 transition-colors duration-700">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1400px] h-[700px] bg-[var(--accent-gold)]/[0.04] rounded-full blur-[180px] z-0" />
+      {/* ── 04. FLAGSHIP CASE: SmartBlocks Architecture ── */}
+      <section className="py-60 bg-[var(--bg-secondary)] relative overflow-hidden border-y border-[var(--border-color)] z-10 transition-colors duration-700">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1600px] h-[800px] bg-[var(--accent-gold)]/[0.03] rounded-full blur-[200px] z-0" />
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           <div className="text-center mb-40">
-            <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.8em] mb-12 block">
-               {lang === 'en' ? 'Flagship Case Study' : 'دراسة حالة رائدة'}
+            <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.8em] mb-12 block">
+               {lang === 'en' ? 'Institutional Standard Rev 6.2' : 'المعيار المؤسسي مراجعة 6.2'}
             </span>
-            <h2 className="text-7xl md:text-[11rem] font-black tracking-tighter uppercase leading-[0.8] mb-12">SmartBlocks.</h2>
-            <p className="text-2xl md:text-3xl text-[var(--text-primary)] opacity-30 max-w-4xl mx-auto font-light leading-relaxed">
+            <h2 className="text-7xl md:text-[14rem] font-black tracking-tighter uppercase leading-[0.75] mb-12 grayscale group-hover:grayscale-0 transition-all duration-1000">SmartBlocks.</h2>
+            <p className="text-3xl md:text-4xl text-[var(--text-primary)] opacity-40 max-w-4xl mx-auto font-light leading-relaxed">
               {lang === 'en' 
-                ? 'Defining the gold standard for real estate tokenization. A flagship demonstration of technical excellence.'
-                : 'تحديد المعيار الذهبي لترميز العقارات. عرض رائد للتميز التقني.'}
+                ? 'The technical and regulatory gold standard for real estate tokenization. Absolute precision in digital liquidity.'
+                : 'المعيار الذهبي التقني والتنظيمي لترميز العقارات. دقة مطلقة في السيولة الرقمية.'}
             </p>
           </div>
 
-          <div className="relative group">
-            <motion.div 
-               initial={{ opacity: 0, y: 50 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-               className="glass-card rounded-sm border-[var(--accent-gold)]/20 premium-shadow overflow-hidden group-hover:border-[var(--accent-gold)]/40 transition-all duration-1000"
-            >
-               <div className="bg-white/5 border-b border-[var(--border-color)] px-8 py-4 flex items-center justify-between">
-                  <div className="flex gap-2">
-                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
-                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
-                     <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
-                  </div>
-                  <div className="text-[9px] font-black uppercase tracking-[0.4em] text-[var(--accent-gold)]/40">Operational Protocol 6.2 // Active</div>
-                  <Globe size={14} className="text-[var(--accent-gold)]/30" />
-               </div>
+          {/* Large Action Frame */}
+          <Link to="/solutions/smartblocks" className="group block relative p-2 glass-card border-[var(--border-color)] bg-[var(--bg-primary)]/50 premium-shadow-gold overflow-hidden transition-all duration-1000 hover:border-[var(--accent-gold)]/40 hover:bg-[var(--bg-primary)]/80">
+             <div className="bg-[var(--bg-primary)]/50 p-12 md:p-32 relative overflow-hidden">
+                {/* Visual Background Pattern */}
+                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-1000 grayscale group-hover:grayscale-0">
+                  <img src="/media/etmam_architecture.png" alt="Architecture Pattern" className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[4000ms]" />
+                </div>
+                
+                <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-32 w-full max-w-6xl mx-auto">
+                   {[
+                     { label: lang === 'en' ? "Secondary Liquidity" : "السيولة الثانوية", val: "INSTITUTIONAL", icon: <Layers className="text-[var(--accent-gold)]" /> },
+                     { label: lang === 'en' ? "Compliance Framework" : "إطار الامتثال", val: "100% REGULATED", icon: <ShieldCheck className="text-[var(--accent-gold)]" /> },
+                     { label: lang === 'en' ? "Execution Protocol" : "بروتوكول التنفيذ", val: "REAL-TIME", icon: <Zap className="text-[var(--accent-gold)]" /> }
+                   ].map((m, i) => (
+                     <div key={i} className="text-center group/metric transition-all duration-700">
+                        <div className="flex justify-center mb-10 group-hover/metric:scale-110 transition-transform duration-500 opacity-40 group-hover:opacity-100">{m.icon}</div>
+                        <h5 className="text-xs font-black text-[var(--accent-gold)] mb-4 tracking-[0.4em] uppercase opacity-60 group-hover:opacity-100">{m.label}</h5>
+                        <p className="text-4xl font-black uppercase tracking-tight">{m.val}</p>
+                     </div>
+                   ))}
+                </div>
 
-               <div className="relative aspect-video bg-[var(--bg-secondary)] p-12 md:p-24 overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1551288049-bbda3ef66851?auto=format&fit=crop&q=80&w=2070" 
-                    alt="SmartBlocks Analytics" 
-                    className="w-full h-full object-cover grayscale opacity-20 scale-110 group-hover:scale-100 transition-transform duration-[5000ms]"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full max-w-5xl">
-                       {[
-                         { label: lang === 'en' ? "Asset Liquidity" : "سيولة الأصول", val: "+24.8%", icon: <TrendingUp className="text-[var(--accent-gold)]" /> },
-                         { label: lang === 'en' ? "Compliance Index" : "مؤشر الامتثال", val: "100%", icon: <ShieldCheck className="text-[var(--accent-gold)]" /> },
-                         { label: lang === 'en' ? "Tx Settlement" : "تسوية المعاملات", val: "12ms", icon: <Activity className="text-[var(--accent-gold)]" /> }
-                       ].map((m, i) => (
-                         <div key={i} className="p-10 glass-card bg-[var(--bg-primary)]/80 border-[var(--accent-gold)]/10 text-center hover:border-[var(--accent-gold)] transition-colors">
-                            <div className="flex justify-center mb-6">{m.icon}</div>
-                            <h5 className="text-4xl font-black mb-2">{m.val}</h5>
-                            <p className="text-[10px] font-black text-[var(--text-primary)] opacity-20 uppercase tracking-widest">{m.label}</p>
-                         </div>
-                       ))}
-                    </div>
+                {/* Floating "Enter" badge */}
+                <div className={`absolute bottom-10 ${lang === 'ar' ? 'left-10' : 'right-10'} flex items-center gap-6 p-8 glass-card border-[var(--accent-gold)]/20 backdrop-blur-3xl opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-6 transition-all duration-700`}>
+                  <div className="text-right">
+                    <p className="text-[9px] font-black opacity-30 uppercase tracking-widest">{lang === 'en' ? 'Review Logic' : 'مراجعة المنطق'}</p>
+                    <p className="font-black text-xs uppercase tracking-widest text-[var(--accent-gold)]">{lang === 'en' ? 'Access Case Study' : 'الوصول لدراسة الحالة'}</p>
                   </div>
-               </div>
-            </motion.div>
-            
-            <div className={`mt-20 flex flex-col md:flex-row items-center justify-between gap-10 max-w-4xl mx-auto px-6 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
-              <div className={lang === 'ar' ? 'text-right' : 'text-left'}>
-                 <h4 className="text-xl font-black mb-4 uppercase italic">Institutional <br /><span className="text-[var(--accent-gold)] not-italic">{lang === 'en' ? 'Infrastructure.' : 'بنية تحتية.'}</span></h4>
-                 <p className="text-[var(--text-primary)] opacity-40 text-sm font-light leading-relaxed">
-                   {lang === 'en' ? 'Cross-border settlement architecture vetted by global regulators.' : 'هندسة تسوية عابرة للحدود معتمدة من قبل الجهات التنظيمية العالمية.'}
-                 </p>
-              </div>
-              <Link to="/solutions" className="px-16 py-7 bg-[var(--text-primary)] text-[var(--bg-primary)] font-black uppercase tracking-[0.4em] text-xs hover:bg-[var(--accent-gold)] transition-all premium-shadow flex items-center gap-4 group">
-                 {lang === 'en' ? 'Review Case Study' : 'مراجعة دراسة الحالة'} <ExternalLink size={18} className="group-hover:rotate-45 transition-transform" />
-              </Link>
-            </div>
-          </div>
+                  <div className="w-12 h-12 bg-[var(--accent-gold)] flex items-center justify-center text-[var(--bg-primary)] rounded-full">
+                    <ArrowRight size={20} className={lang === 'ar' ? 'rotate-180' : ''} />
+                  </div>
+                </div>
+             </div>
+          </Link>
         </div>
       </section>
 
-      {/* 05. High-Conversion CTA */}
+      {/* ── 05. FINAL CONVERSION: Command the Future ── */}
       <section className="py-60 relative overflow-hidden z-10">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--accent-gold)]/30 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--accent-gold)]/30 to-transparent" />
-        
-        <div className="max-w-5xl mx-auto px-6 text-center relative z-10 font-arabic">
+        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
             <motion.div
-             initial={{ opacity: 0, scale: 0.9 }}
+             initial={{ opacity: 0, scale: 0.95 }}
              whileInView={{ opacity: 1, scale: 1 }}
              viewport={{ once: true }}
-           >
-              <h2 className={`text-7xl md:text-[10rem] font-black mb-12 uppercase tracking-tighter italic leading-none ${lang === 'ar' ? 'font-arabic' : ''}`}>
-                {lang === 'en' ? <>Ready to <br /><span className="text-[var(--accent-gold)] not-italic">Scale?</span></> : <>جاهز <br /><span className="text-[var(--accent-gold)] not-italic">للتوسع؟</span></>}
+            >
+              <h2 className={`font-black mb-16 uppercase tracking-tighter italic leading-none ${lang === 'ar' ? 'font-arabic' : ''}`}
+                 style={{ fontSize: 'clamp(3.5rem, 15vw, 13rem)' }}>
+                {lang === 'en' ? <>Ready to <span className="text-[var(--accent-gold)] not-italic">Scale?</span></> : <>جاهز <span className="text-[var(--accent-gold)] not-italic">للتوسع؟</span></>}
               </h2>
-              <p className="text-2xl md:text-3xl text-[var(--text-primary)] opacity-90 mb-20 font-light leading-relaxed max-w-3xl mx-auto">
+              <p className="text-2xl md:text-4xl text-[var(--text-primary)] opacity-40 mb-20 font-light leading-relaxed max-w-4xl mx-auto">
                  {lang === 'en' 
-                   ? 'Initiate the protocol for institutional transformation. Join the elite network defining the next era.'
-                   : 'ابدأ بروتوكول التحول المؤسسي. انضم إلى شبكة النخبة التي تحدد العصر القادم.'}
+                   ? 'Initiate the protocol for institutional transformation. Join the network of elite developers and sovereign investors.'
+                   : 'ابدأ بروتوكول التحول المؤسسي. انضم إلى شبكة من نخبة المطورين والمستثمرين السياديين.'}
               </p>
-              <Link to="/contact" className="btn-premium text-lg px-20 py-8 shadow-[var(--accent-gold)]/30 flex items-center justify-center gap-4 group mx-auto w-fit">
-                 {t('cta_command')} <ArrowRight size={24} className={`group-hover:translate-x-4 transition-transform ${lang === 'ar' ? 'rotate-180' : ''}`} />
+              <Link to="/contact" className="btn-premium px-24 py-10 scale-125 shadow-[var(--accent-gold)]/40 flex items-center justify-center gap-6 group mx-auto w-fit">
+                 {t('cta_command')} 
+                 <div className={`w-8 h-8 bg-[var(--bg-primary)] flex items-center justify-center rounded-full group-hover:scale-110 transition-transform ${lang === 'ar' ? 'rotate-180' : ''}`}>
+                   <ArrowRight size={20} className="text-[var(--accent-gold)]" />
+                 </div>
               </Link>
-           </motion.div>
+            </motion.div>
         </div>
       </section>
     </div>
