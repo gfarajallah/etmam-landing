@@ -1,18 +1,19 @@
 import { useLanguage } from '@/context/useLanguage';
-import PricingSlider from '@/components/interactive/PricingSlider';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  Globe, 
-  Cpu, 
-  Zap, 
-  Lock, 
-  ArrowRight, 
-  BarChart4, 
-  ShieldCheck, 
-  Coins, 
+import {
+  Globe,
+  Cpu,
+  Zap,
+  Lock,
+  ArrowRight,
+  BarChart4,
+  ShieldCheck,
+  Coins,
   LayoutDashboard,
-  Wallet
+  Wallet,
+  Users,
+  Layers
 } from 'lucide-react';
 
 const SmartBlocksEngine = () => {
@@ -21,149 +22,267 @@ const SmartBlocksEngine = () => {
   const benefits = [
     {
       title: lang === 'en' ? "Institutional Liquidity" : "السيولة المؤسسية",
-      desc: lang === 'en' ? "Transform illiquid real estate into tradeable digital fractions with sub-second finality." : "تحويل العقارات غير السائلة إلى أجزاء رقمية قابلة للتداول بلمسة نهائية في أجزاء من الثانية.",
+      subtitle: lang === 'en' ? "Transforming brick-and-mortar into liquid capital." : "تحويل الأصول الثابتة إلى عصب مالي سائل.",
+      desc: lang === 'en'
+        ? "Historically, prime real estate locks capital for 5-10 years. SmartBlocks breaks this paradigm by fractioning high-cap assets into ERC-3643 tokens, enabling micro-transactions and borderless secondary market trading with sub-second finality. This ensures an end to trapped equity, creating rolling liquidity for massive institutional operations."
+        : "تاريخياً، العقارات الفاخرة تحتجز رأس المال لسنوات. سمارت بلوكس تكسر هذه القاعدة عبر تجزئة الأصول وتشفيرها لتمكين التداول اللحظي في الأسواق الثانوية بسيولة لا نهائية. هذا يضمن نهاية حقبة احتجاز رأس المال ويخلق سيولة متداولة للعمليات المؤسسية الضخمة.",
       icon: <Zap size={24} className="text-[var(--accent-gold)]" />
     },
     {
-      title: lang === 'en' ? "Fractional Governance" : "الحوكمة المجزأة",
-      desc: lang === 'en' ? "Enable thousands of stakeholders to co-own and govern prime assets through smart contracts." : "تمكين آلاف أصحاب المصلحة من التملك المشترك وحوكمة الأصول الرئيسية من خلال العقود الذكية.",
+      title: lang === 'en' ? "Fractional Governance" : "الحوكمة المجزأة اللامركزية",
+      subtitle: lang === 'en' ? "Empowered stakeholders, immutable transparency." : "مساهمون ممكّنون، بشفافية مطلقة غير قابلة للتلاعب.",
+      desc: lang === 'en'
+        ? "Moving beyond simple ownership, our protocol infuses immutable governance into every digital fraction. Thousands of cross-border stakeholders can collectively vote, govern, and audit tier-1 real estate operations through fully transparent, tamper-proof smart contracts, reducing legal friction to zero."
+        : "تتجاوز بروتوكولاتنا مجرد الملكية لتدمج حوكمة غير قابلة للتلاعب في كل جزء رقمي. يمكن لآلاف المستثمرين عبر الحدود التصويت وإدارة ومراجعة العقارات الفاخرة بشكل جماعي عبر عقود ذكية شفافة كلياً.",
       icon: <ShieldCheck size={24} className="text-[var(--accent-gold)]" />
     },
     {
-      title: lang === 'en' ? "Global Accessibility" : "الوصول العالمي",
-      desc: lang === 'en' ? "Democratize high-yield real estate investment for a borderless investor class." : "إضفاء الطابع الديمقراطي على الاستثمار العقاري عالي العائد لفئة من المستثمرين بلا حدود.",
+      title: lang === 'en' ? "Global Democratization" : "الوصول العالمي الشامل",
+      subtitle: lang === 'en' ? "Dismantling high entry barriers permanently." : "تفكيك الحواجز العالية للدخول بشكل لا رجعة فيه.",
+      desc: lang === 'en'
+        ? "By lowering the entry thresholds and eradicating geographic bureaucracy, we empower a new generation of micro-investors and syndicates to build yielding portfolios. SmartBlocks acts as the ultimate settlement layer, natively adhering to KYC/AML regulations while extending reach."
+        : "من خلال خفض حواجز الدخول وإحباط البيروقراطية الجغرافية، نمكن جيلاً جديداً من المستثمرين لبناء محافظ ذات عائد مالي. تعمل منصتنا كطبقة تسوية نهائية تلتزم كلياً بالقوانين مع توسيع النطاق العالمي.",
       icon: <Globe size={24} className="text-[var(--accent-gold)]" />
     }
   ];
 
-  const processSteps = [
+  const profiles = [
     {
-      num: "01",
-      title: lang === 'en' ? "Asset Wrapping" : "تغليف الأصول",
-      desc: lang === 'en' ? "Legal and technical structuring of the physical asset into a digital container." : "الهيكلة القانونية والتقنية للأصل المادي في حاوية رقمية."
+      title: lang === 'en' ? "Investors" : "المستثمرون",
+      tag: "CAPITAL",
+      icon: <Wallet size={24} className="text-[var(--accent-gold)]" />,
+      levels: [
+        { label: lang === 'en' ? "01. The Barrier (Pain)" : "01. التحدي", text: lang === 'en' ? "High capital requirements and geographic restrictions lock out global investors from premium tier-1 real estate." : "متطلبات رأس المال العالية والقيود الجغرافية تمنع المستثمرين من الوصول للعقارات الفاخرة." },
+        { label: lang === 'en' ? "02. The Engine (Solution)" : "02. المحرك والحل", text: lang === 'en' ? "Fractional tokenization allows entry with micro-capital, completely democratizing access to high-yield properties." : "الترميز المجزأ يسمح بالدخول برؤوس أموال صغيرة، لضمان تساوٍ تام في التملك." },
+        { label: lang === 'en' ? "03. The Protocol (Mechanic)" : "03. الآلية", text: lang === 'en' ? "Smart contracts execute instant, trustless dividend distributions directly to digital wallets without intermediary delays." : "عقود ذكية تنفذ توزيعات أرباح فورية وموثوقة مباشرة للمحافظ الرقمية بلا تأخير ووساطات." },
+        { label: lang === 'en' ? "04. The Horizon (Outcome)" : "04. الأفق والنتيجة", text: lang === 'en' ? "A hyper-liquid, transparent, and globally accessible portfolio yielding passive income 24/7." : "محفظة فائقة السيولة وشفافة تدر دخلاً سلبياً على مدار الساعة بنطاق لا حدود له." }
+      ]
     },
     {
-      num: "02",
-      title: lang === 'en' ? "Protocol Minting" : "سك البروتوكول",
-      desc: lang === 'en' ? "Generation of smart contracts and ERC-3643 compliant security tokens." : "إنشاء العقود الذكية ورموز الأمان المتوافقة مع ERC-3643."
+      title: lang === 'en' ? "Property Owners" : "مُلاّك العقارات",
+      tag: "ASSETS",
+      icon: <LayoutDashboard size={24} className="text-[var(--accent-gold)]" />,
+      levels: [
+        { label: lang === 'en' ? "01. The Barrier (Pain)" : "01. التحدي", text: lang === 'en' ? "Extracting equity requires selling the entire asset, triggering massive taxation and loss of operational control." : "استخراج السيولة يتطلب بيع الأصل بالكامل، مما يؤدي لضرائب ضخمة وفقدان الإدارة." },
+        { label: lang === 'en' ? "02. The Engine (Solution)" : "02. المحرك والحل", text: lang === 'en' ? "Tokenize 20-30% of the asset's equity for immediate capital injection while retaining majority ownership." : "ترميز 20-30٪ من الأسهم لضخ رأس مال فوري مع الاحتفاظ بملكية الأغلبية والتحكم." },
+        { label: lang === 'en' ? "03. The Protocol (Mechanic)" : "03. الآلية", text: lang === 'en' ? "Legal wrapping into an SPV issues digital security tokens backed by verifiable real-world assets." : "هيكلة قانونية عبر شركة ذات غرض خاص لإصدار رموز أمان خاضعة للقانون." },
+        { label: lang === 'en' ? "04. The Horizon (Outcome)" : "04. الأفق والنتيجة", text: lang === 'en' ? "Infinite scalability, instant liquidity access, and automated borderless rent distributions." : "توسع لا نهائي للشركة، وصول فوري للسيولة، وتوزيع تلقائي للإيجارات للمساهمين." }
+      ]
     },
     {
-      num: "03",
-      title: lang === 'en' ? "Market Distribution" : "توزيع السوق",
-      desc: lang === 'en' ? "Onboarding investors and facilitating secondary market trading nodes." : "ضم المستثمرين وتسهيل عقد تداول السوق الثانوية."
+      title: lang === 'en' ? "Developers" : "المطورون",
+      tag: "CREATORS",
+      icon: <Layers size={24} className="text-[var(--accent-gold)]" />,
+      levels: [
+        { label: lang === 'en' ? "01. The Barrier (Pain)" : "01. التحدي", text: lang === 'en' ? "Traditional bank financing is slow, restrictive, and expensive, bottlenecking large-scale developments." : "التمويل البنكي التقليدي مكلف وبطيء، مما يعيق المشاريع واسعة النطاق عن النهوض السريع." },
+        { label: lang === 'en' ? "02. The Engine (Solution)" : "02. المحرك والحل", text: lang === 'en' ? "Direct-to-market crowdfunding via pre-sale tokenization minimizes reliance on legacy institutions." : "تمويل مباشر عبر ترميز ما قبل البيع لتقليل الاعتماد الكلي على المؤسسات المالية التقليدية." },
+        { label: lang === 'en' ? "03. The Protocol (Mechanic)" : "03. الآلية", text: lang === 'en' ? "A multi-layered capitalization table governed by code ensures exact fund allocation and transparent tracking." : "جدول رسملة طبقي ومحكوم برمجياً يضمن التخصيص الدقيق للتمويل والمشتريات." },
+        { label: lang === 'en' ? "04. The Horizon (Outcome)" : "04. الأفق والنتيجة", text: lang === 'en' ? "Accelerated construction cycles backed by a global pool of micro-investors." : "وقت بناء متسارع مدعوم بمجموعة عالمية من المستثمرين المكتتبين وتدفقات نقدية قوية." }
+      ]
+    },
+    {
+      title: lang === 'en' ? "Brokers" : "الوسطاء العقاريون",
+      tag: "AGENTS",
+      icon: <Users size={24} className="text-[var(--accent-gold)]" />,
+      levels: [
+        { label: lang === 'en' ? "01. The Barrier (Pain)" : "01. التحدي", text: lang === 'en' ? "Delayed commission payouts, highly manual contract verifications, and limited local network." : "تأخر دفع العمولات، تعقيدات أوراق المبيعات، ومحدودية قاعدة العملاء المحلية." },
+        { label: lang === 'en' ? "02. The Engine (Solution)" : "02. المحرك والحل", text: lang === 'en' ? "Guaranteed instantaneous commissions encoded directly into the asset's digital smart contract." : "ضمان وتقنية ترميز مبرمجة في العقد الذكي تؤدي لدفع العمولات للمحفظة فوراً." },
+        { label: lang === 'en' ? "03. The Protocol (Mechanic)" : "03. الآلية", text: lang === 'en' ? "On-chain atomic settlements verify the purchase and instantly execute the agreed percentage split." : "تسويات آلية على البلوكشين تتحقق من الشراء وتنفذ النسبة المتفق عليها في ثواني." },
+        { label: lang === 'en' ? "04. The Horizon (Outcome)" : "04. الأفق والنتيجة", text: lang === 'en' ? "Exponential sales throughput with absolute financial certainty." : "قدرة مبيعات مضاعفة ونهائية ويقين مالي من خلال كسر حواجز المبيعات التقليدية." }
+      ]
+    },
+    {
+      title: lang === 'en' ? "Brokerage Firms" : "شركات الوساطة",
+      tag: "AGENCY",
+      icon: <Globe size={24} className="text-[var(--accent-gold)]" />,
+      levels: [
+        { label: lang === 'en' ? "01. The Barrier (Pain)" : "01. التحدي", text: lang === 'en' ? "Geographic constraints limit inventory, and inter-broker trust causes friction in multi-party deals." : "انعدام الثقة يعرقل الصفقات المشتركة، فضفلة العمولات تقتل تعاون الوسطاء." },
+        { label: lang === 'en' ? "02. The Engine (Solution)" : "02. المحرك والحل", text: lang === 'en' ? "A boundless cross-border ecosystem where inventory is shared and splits are cryptographically enforced." : "نظام تشاركي للمخزون العقاري العالمي، وحماية التوزيعات بحقوق التشفير." },
+        { label: lang === 'en' ? "03. The Protocol (Mechanic)" : "03. الآلية", text: lang === 'en' ? "Smart-split commissions automatically routing basis points to all involved agencies simultaneously." : "توجيه النقاط الأساسية آليًا وفي ذات اللحظة لكل الجهات دون أي نزاع." },
+        { label: lang === 'en' ? "04. The Horizon (Outcome)" : "04. الأفق والنتيجة", text: lang === 'en' ? "Transforming local brokerages into global institutional syndicates." : "ارتقاء شركات الوساطة المحلية لمعايير النقابات العالمية العاملة عبر الحدود." }
+      ]
+    },
+    {
+      title: lang === 'en' ? "Service Providers" : "مقدمو الخدمات",
+      tag: "VENDORS",
+      icon: <Zap size={24} className="text-[var(--accent-gold)]" />,
+      levels: [
+        { label: lang === 'en' ? "01. The Barrier (Pain)" : "01. التحدي", text: lang === 'en' ? "Invoicing bottlenecks and disconnected operational systems lead to cash flow disruptions." : "مماطلة وحواجز فواتير الحراسة والنظافة والقانونية تؤدي لاضطراب التدفق المالي." },
+        { label: lang === 'en' ? "02. The Engine (Solution)" : "02. المحرك والحل", text: lang === 'en' ? "Seamless integration with tokenized property wallets for instant service contract settlements." : "ربط متكامل مع المحافظ المركزية للعقار لتسوية عقود مقدمي الخدمات بصورة فورية." },
+        { label: lang === 'en' ? "03. The Protocol (Mechanic)" : "03. الآلية", text: lang === 'en' ? "Maintenance fees are escrowed and released autonomously upon verified completions." : "حفظ الرسوم وتصريفها تلقائياً بعد تأكيد المهام المبرمجة بشكل مدون ولامركزي." },
+        { label: lang === 'en' ? "04. The Horizon (Outcome)" : "04. الأفق والنتيجة", text: lang === 'en' ? "Absolute operational liquidity enabling hyper-efficient property management." : "عمليات تشغيلية ملساء ومستدامة تمكن الإدارة عالية الكفاءة وتقضي على التأخير." }
+      ]
     }
   ];
 
   return (
     <div className={`pt-20 bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 ${lang === 'ar' ? 'font-arabic' : ''}`}>
       <div className="fixed inset-0 bg-grain opacity-[0.03] pointer-events-none" />
-      
-      {/* 01. Hero - The Power of Tokenization */}
+
+      {/* 01. Hero */}
       <section className="relative py-40 md:py-60 overflow-hidden z-10 border-b border-[var(--border-color)]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative flex flex-col items-center text-center">
-           <motion.div
-             initial={{ opacity: 0, scale: 0.98 }}
-             animate={{ opacity: 1, scale: 1 }}
-             className="max-w-5xl"
-           >
-              <div className="flex items-center justify-center gap-4 mb-10">
-                <div className="w-10 h-[1px] bg-[var(--accent-gold)]/50" />
-                <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em]">
-                  {lang === 'en' ? 'SmartBlocks Intelligence' : 'ذكاء سمارت بلوكس'}
-                </span>
-                <div className="w-10 h-[1px] bg-[var(--accent-gold)]/50" />
+        <div className="absolute inset-0 z-0 opacity-40 select-none pointer-events-none">
+          <img
+            src={`/media/smartblocks_expert_${lang === 'ar' ? 'ar' : 'en'}.png`}
+            alt="SmartBlocks Ecosystem"
+            className="w-full h-full object-cover scale-[1.02]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/40 to-[var(--bg-primary)]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative flex flex-col items-center text-center z-10">
+          <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="max-w-5xl">
+            <div className="flex items-center justify-center gap-4 mb-10">
+              <div className="w-10 h-[1px] bg-[var(--accent-gold)]/50" />
+              <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em]">
+                {lang === 'en' ? 'SmartBlocks Intelligence' : 'ذكاء سمارت بلوكس'}
+              </span>
+              <div className="w-10 h-[1px] bg-[var(--accent-gold)]/50" />
+            </div>
+            <h1 className={`font-black mb-12 uppercase tracking-tighter leading-[0.85] ${lang === 'ar' ? 'font-arabic' : ''}`}
+              style={{ fontSize: 'clamp(4rem,10vw,8rem)' }}>
+              {lang === 'en'
+                ? <><span className="gold-gradient-text italic">Empowering</span><br />Real Estate.</>
+                : <><span className="gold-gradient-text italic">تمكين</span><br />العقارات.</>}
+            </h1>
+            <p className="text-[clamp(1rem,2vw,1.5rem)] text-[var(--text-primary)] opacity-50 max-w-3xl mx-auto font-light leading-relaxed mb-16">
+              {lang === 'en'
+                ? 'The definitive engine for high-authority tokenization. Empowering decision-makers with realistic, responsible, and strategic technology.'
+                : 'المحرك النهائي للترميز عالي السلطة. تمكين صناع القرار من تكنولوجيا واقعية ومسؤولة واستراتيجية.'}
+            </p>
+
+            <div className={`flex flex-col sm:flex-row gap-8 justify-center items-center ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+              <Link to="/contact" className="btn-premium">
+                {lang === 'en' ? 'Inquire Protocol' : 'استفسار عن البروتوكول'}
+                <ArrowRight size={18} className={`inline ${lang === 'ar' ? 'mr-3 rotate-180' : 'ml-3'}`} />
+              </Link>
+              <div className="flex items-center gap-6 p-6 border border-[var(--border-color)] bg-[var(--bg-secondary)]/30 backdrop-blur-md">
+                <div className="w-12 h-12 bg-[var(--accent-gold)]/10 flex items-center justify-center">
+                  <BarChart4 size={24} className="text-[var(--accent-gold)]" />
+                </div>
+                <div className="text-left">
+                  <span className="text-[10px] font-black uppercase tracking-widest block opacity-40">Trading Volume Management</span>
+                  <span className="text-xl font-bold">$4.2B+ Potential</span>
+                </div>
               </div>
-              <h1 className={`text-6xl md:text-[8rem] font-black mb-12 uppercase tracking-tighter leading-[0.85] ${lang === 'ar' ? 'font-arabic' : ''}`}>
-                {lang === 'en' ? <>Empowering <br /><span className="gold-gradient-text italic">Real Estate.</span></> : <>تمكين <br /><span className="gold-gradient-text italic">العقارات.</span></>}
-              </h1>
-              <p className="text-2xl text-[var(--text-primary)] opacity-50 max-w-3xl mx-auto font-light leading-relaxed mb-16">
-                 {lang === 'en' 
-                   ? 'The definitive engine for high-authority tokenization. Empowering decision-makers with realistic, responsible, and strategic technology.'
-                   : 'المحرك النهائي للترميز عالي السلطة. تمكين صناع القرار من تكنولوجيا واقعية ومسؤولة واستراتيجية.'}
-              </p>
-              
-              <div className={`flex flex-col sm:flex-row gap-8 justify-center items-center ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
-                 <Link to="/contact" className="btn-premium">
-                    {lang === 'en' ? 'Inquire Protocol' : 'استفسار عن البروتوكول'}
-                    <ArrowRight size={18} className={`inline ${lang === 'ar' ? 'mr-3 rotate-180' : 'ml-3'}`} />
-                 </Link>
-                 <div className="flex items-center gap-6 p-6 border border-[var(--border-color)] bg-[var(--bg-secondary)]/30 backdrop-blur-md">
-                    <div className="w-12 h-12 bg-[var(--accent-gold)]/10 flex items-center justify-center">
-                       <BarChart4 size={24} className="text-[var(--accent-gold)]" />
-                    </div>
-                    <div className="text-left">
-                       <span className="text-[10px] font-black uppercase tracking-widest block opacity-40">Trading Volume Management</span>
-                       <span className="text-xl font-bold">$4.2B+ Potential</span>
-                    </div>
-                 </div>
-              </div>
-           </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* 02. Institutional Features Grid */}
       <section className="py-52 z-10 relative">
-         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-10">
-            {benefits.map((b, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-16 premium-card border-[var(--border-color)] bg-[var(--bg-secondary)]/20 group hover:bg-[var(--bg-secondary)]/40 transition-all duration-700"
-              >
-                 <div className="mb-10 w-16 h-16 border border-[var(--border-color)] flex items-center justify-center group-hover:border-[var(--accent-gold)] transition-colors">
-                   {b.icon}
-                 </div>
-                 <h4 className="text-2xl font-black mb-6 uppercase tracking-tight">{b.title}</h4>
-                 <p className="opacity-30 text-sm leading-relaxed font-light">{b.desc}</p>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-0 border border-[var(--border-color)]">
+          {benefits.map((b, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <Link to="/contact"
+                className={`group block relative p-16 overflow-hidden border-[var(--border-color)] md:border-r last:border-r-0 cursor-pointer transition-all duration-700 bg-[var(--bg-secondary)]/10 ${lang === 'ar' ? 'text-right' : 'text-left'}`}
+                style={{ minHeight: '340px' }}>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                  style={{ boxShadow: 'inset 0 0 0 1px rgba(201,169,98,0.5)' }} />
+                <div className="absolute inset-0 bg-[var(--accent-gold)]/0 group-hover:bg-[var(--accent-gold)]/5 transition-all duration-700 pointer-events-none" />
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="mb-10 w-16 h-16 border border-[var(--border-color)] flex items-center justify-center group-hover:border-[var(--accent-gold)] transition-colors duration-500 group-hover:scale-110 transform">
+                    {b.icon}
+                  </div>
+                  <h4 className="text-xl font-black mb-4 uppercase tracking-tight group-hover:text-[var(--accent-gold)] transition-colors duration-500">{b.title}</h4>
+                  <h5 className="text-[11px] font-black uppercase tracking-widest text-[var(--accent-gold)] mb-6 opacity-90">{b.subtitle}</h5>
+                  <p className="opacity-40 text-sm leading-relaxed font-light flex-1">{b.desc}</p>
+                  <div className={`flex items-center gap-2 mt-8 text-[10px] font-black uppercase tracking-[0.4em] opacity-0 group-hover:opacity-100 text-[var(--accent-gold)] transition-all duration-500 ${lang === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+                    <span>{lang === 'en' ? 'Learn More' : 'اعرف أكثر'}</span>
+                    <ArrowRight size={14} className={`transition-transform duration-500 group-hover:translate-x-1 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* 03. Ecosystem Profiles */}
+      <section className="py-52 bg-[var(--bg-secondary)]/30 z-10 relative border-y border-[var(--border-color)]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className={`mb-32 ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
+            <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.6em] mb-8 block">
+              {lang === 'en' ? 'Ecosystem Solutions' : 'حلول النظام البيئي'}
+            </span>
+            <h2 className={`font-black uppercase tracking-tighter italic ${lang === 'ar' ? 'font-arabic' : ''}`}
+              style={{ fontSize: 'clamp(2.5rem,6vw,6rem)' }}>
+              {lang === 'en'
+                ? <>Radical <span className="not-italic text-[var(--accent-gold)]">Empowerment.</span></>
+                : <>تمكين <span className="not-italic text-[var(--accent-gold)]">جذري.</span></>}
+            </h2>
+            <p className={`mt-8 text-xl font-light text-[var(--text-primary)] opacity-40 max-w-2xl ${lang === 'ar' ? 'mx-0 ml-auto' : ''}`}>
+              {lang === 'en'
+                ? 'Defining the gold standard solutions across every layer of the real estate ecosystem.'
+                : 'تحديد الحلول بالمعيار الذهبي عبر كل طبقة من طبقات النظام البيئي العقاري.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-[var(--border-color)]">
+            {profiles.map((p, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                <Link to="/contact"
+                  className={`group block relative p-12 md:p-16 border-[var(--border-color)] lg:border-r border-b lg:border-b-0 last:border-r-0 overflow-hidden cursor-pointer transition-all duration-700 bg-[var(--text-primary)]/[0.01] h-full ${lang === 'ar' ? 'text-right' : 'text-left'}`}
+                  style={{ minHeight: '400px' }}>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{ boxShadow: 'inset 0 0 0 1px rgba(201,169,98,0.5)' }} />
+                  <div className="absolute inset-0 bg-[var(--accent-gold)]/0 group-hover:bg-[var(--accent-gold)]/5 transition-all duration-700 pointer-events-none" />
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className={`mb-12 flex items-center gap-6 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                      <div className="w-16 h-16 bg-[var(--text-primary)]/[0.03] border border-[var(--border-color)] flex items-center justify-center group-hover:border-[var(--accent-gold)]/50 group-hover:bg-[var(--accent-gold)]/5 transition-all duration-700 shrink-0">
+                        {p.icon}
+                      </div>
+                      <div className={lang === 'ar' ? 'text-right' : 'text-left'}>
+                        <span className="text-[var(--accent-gold)] text-[10px] font-black tracking-[0.4em] uppercase mb-2 block">{p.tag}</span>
+                        <h4 className="text-2xl md:text-3xl font-black uppercase tracking-tight group-hover:text-[var(--accent-gold)] transition-colors duration-500">{p.title}</h4>
+                      </div>
+                    </div>
+                    <div className="space-y-6 flex-1">
+                      {p.levels.map((lvl, j) => (
+                        <div key={j} className="border-t border-[var(--border-color)]/50 pt-5 group-hover:border-[var(--accent-gold)]/30 transition-colors duration-500">
+                          <span className={`text-[10px] font-black uppercase tracking-widest ${j===0?'text-red-400/80':j===1?'text-emerald-400/80':j===2?'text-blue-400/80':'text-[var(--accent-gold)]'} mb-3 block`}>
+                            {lvl.label}
+                          </span>
+                          <p className="text-sm font-light opacity-50 leading-relaxed text-[var(--text-primary)] group-hover:opacity-90 transition-opacity duration-500">{lvl.text}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <div className={`flex items-center gap-3 font-black uppercase tracking-[0.3em] text-[8px] mt-10 pt-6 border-t border-[var(--border-color)] opacity-0 group-hover:opacity-100 text-[var(--accent-gold)] transition-all duration-500 ${lang === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+                      <span>{lang === 'en' ? 'Review Profile' : 'مراجعة الملف'}</span>
+                      <ArrowRight size={12} className={`transition-transform duration-500 group-hover:translate-x-1 ${lang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
+                    </div>
+                  </div>
+                </Link>
               </motion.div>
             ))}
-         </div>
+          </div>
+        </div>
       </section>
 
-      {/* 03. The Tokenization Flow */}
-      <section className="py-52 bg-[var(--bg-secondary)]/30 z-10 relative border-y border-[var(--border-color)]">
-         <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <div className="text-center mb-40">
-               <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter italic">
-                 {lang === 'en' ? <>Tokenization <span className="not-italic text-[var(--accent-gold)]">Flow.</span></> : <>تدفق <span className="not-italic text-[var(--accent-gold)]">الترميز.</span></>}
-               </h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
-               <div className="absolute top-1/2 left-0 w-full h-[1px] bg-[var(--accent-gold)]/10 hidden md:block" />
-               {processSteps.map((s, i) => (
-                 <div key={i} className="relative z-20 group">
-                    <div className="w-24 h-24 bg-[var(--bg-primary)] border border-[var(--border-color)] flex items-center justify-center mb-12 group-hover:border-[var(--accent-gold)] transition-colors mx-auto">
-                       <span className="text-4xl font-black text-[var(--accent-gold)] opacity-20 group-hover:opacity-100 transition-opacity italic">{s.num}</span>
-                    </div>
-                    <div className="text-center">
-                       <h4 className="text-2xl font-black mb-6 uppercase tracking-tight">{s.title}</h4>
-                       <p className="opacity-30 text-sm leading-relaxed font-light max-w-xs mx-auto">{s.desc}</p>
-                    </div>
-                 </div>
-               ))}
-            </div>
-         </div>
-      </section>
-
-      {/* 04. Tactical Control - Dynamic Slider */}
-      <section className="py-60 z-10 relative overflow-hidden">
+      {/* 04. Institutional Banner */}
+      <section className="py-52 z-10 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <h2 className="text-5xl md:text-8xl font-black mb-12 uppercase tracking-tighter leading-tight italic">
-              {lang === 'en' ? <>Scale at the speed of <br /><span className="text-[var(--accent-gold)] not-italic">Light.</span></> : <>توسع بسرعة <br /><span className="text-[var(--accent-gold)] not-italic">الضوء.</span></>}
-            </h2>
-            <p className="text-[var(--text-primary)] opacity-30 text-2xl mb-20 font-light">
-              {lang === 'en' 
-                ? 'Deploy your institutional asset portfolio to the blockchain in under 48 hours.'
-                : 'انشر محفظة أصولك المؤسسية على البلوكتشين في أقل من 48 ساعة.'}
-            </p>
-            <Link to="/contact" className="btn-premium px-20">
-              {lang === 'en' ? 'COMMAND PROTOCOL' : 'قيادة البروتوكول'}
-            </Link>
-         </div>
+          <div className="p-1 border border-[var(--border-color)] premium-card bg-[var(--bg-secondary)]/30 backdrop-blur-md overflow-hidden group">
+            <div className="aspect-[21/9] overflow-hidden relative">
+              <img
+                src="/media/etmam_architecture.png"
+                alt="Etmam Institutional Architecture"
+                className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)]" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[1em] mb-4 block opacity-50">Operational Infrastructure</span>
+                  <h3 className="text-4xl font-black uppercase tracking-tighter">{lang === 'en' ? 'Built for Scale.' : 'بُنيت للتوسع.'}</h3>
+                  <Link to="/contact" className="btn-premium mt-10 inline-block">
+                    {lang === 'en' ? 'COMMAND PROTOCOL' : 'قيادة البروتوكول'}
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );
