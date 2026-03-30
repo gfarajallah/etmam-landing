@@ -16,6 +16,8 @@ import {
   BarChart3
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import PremiumButton from '@/components/ui/PremiumButton';
+import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const EtmamConsulting = () => {
   const { lang } = useLanguage();
@@ -45,50 +47,49 @@ const EtmamConsulting = () => {
   ];
 
   return (
-    <div className={`pt-20 bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 ${lang === 'ar' ? 'font-arabic' : ''}`}>
+    <div className="pt-20 bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 text-start">
       <div className="fixed inset-0 bg-grain opacity-[0.02] pointer-events-none" />
       
       {/* 01. Hero - Institutional Clarity */}
-      <section className="relative py-40 md:py-60 overflow-hidden z-10">
-        <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+      <section className="relative py-40 md:py-60 overflow-hidden z-10 border-b border-[var(--border-color)]">
+        <div className="absolute top-0 end-0 w-full h-full opacity-10 pointer-events-none">
            <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)]" />
-           <div className={`absolute top-0 ${lang === 'en' ? 'right-0' : 'left-0'} w-1/2 h-full bg-[var(--accent-gold)]/5 skew-x-[-12deg] transform origin-top`} />
+           <div className="absolute top-0 end-0 w-1/2 h-full bg-[var(--accent-gold)]/5 skew-x-[-12deg] transform origin-top" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative flex flex-col items-center text-center">
            <motion.div
-             initial={{ opacity: 0, y: 30 }}
-             animate={{ opacity: 1, y: 0 }}
+             initial="hidden" animate="visible" variants={staggerContainer}
              className="max-w-4xl"
            >
               <div className="flex items-center justify-center gap-4 mb-10">
                 <div className="w-10 h-[1px] bg-[var(--accent-gold)]/50" />
-                <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em]">
+                <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em]">
                   {lang === 'en' ? 'ETMAM Business Solutions' : 'إتمام لحلول الأعمال'}
-                </span>
+                </motion.span>
                 <div className="w-10 h-[1px] bg-[var(--accent-gold)]/50" />
               </div>
-              <h1 className={`text-6xl md:text-[8rem] font-black mb-12 uppercase tracking-tighter leading-[0.85] ${lang === 'ar' ? 'font-arabic' : ''}`}>
+              <motion.h1 variants={fadeUpVariant} className="display-title mb-12">
                 {lang === 'en' ? <>Institutional <br /><span className="gold-gradient-text italic">Precision.</span></> : <>دقة <br /><span className="gold-gradient-text italic">مؤسسية.</span></>}
-              </h1>
-              <p className="text-2xl text-[var(--text-primary)] opacity-60 max-w-2xl mx-auto font-light leading-relaxed">
+              </motion.h1>
+              <motion.p variants={fadeUpVariant} className="text-2xl text-[var(--text-primary)] opacity-60 max-w-2xl mx-auto font-light leading-relaxed">
                  {lang === 'en' 
                    ? "A seamless integration of efficient, risk-free, and in-depth business approaches focused on growth and success."
                    : "تكامل سلس لنهج الأعمال الفعال والخالي من المخاطر والعميق الذي يركز على النمو والنجاح."}
-              </p>
+              </motion.p>
            </motion.div>
         </div>
       </section>
 
       {/* 02. Introduction & Philosophy */}
-      <section className="py-40 relative z-10 border-y border-[var(--border-color)] bg-[var(--bg-secondary)]/10">
+      <section className="py-40 relative z-10 border-b border-[var(--border-color)] bg-[var(--bg-secondary)]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-           <div className={lang === 'ar' ? 'text-right' : 'text-left'}>
-              <h2 className="text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter">
+           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="text-start">
+              <motion.h2 variants={fadeUpVariant} className="section-title mb-12">
                 {lang === 'en' ? <>Mission & <span className="text-[var(--accent-gold)] italic">Vision.</span></> : <>المهمة <span className="text-[var(--accent-gold)] italic">والرؤية.</span></>}
-              </h2>
+              </motion.h2>
               <div className="space-y-12">
-                 <div className="flex gap-8 group">
+                 <motion.div variants={fadeUpVariant} className="flex gap-8 group">
                     <div className="p-4 rounded-sm border border-[var(--border-color)] bg-[var(--bg-primary)] group-hover:border-[var(--accent-gold)] transition-colors h-fit">
                        <Target className="text-[var(--accent-gold)]" size={32} />
                     </div>
@@ -100,8 +101,8 @@ const EtmamConsulting = () => {
                             : "جعل الشركات أفضل وأكثر كفاءة وأكثر تنافسية من خلال تقديم حلول مخصصة مصممة لتلبية احتياجاتهم الدقيقة."}
                        </p>
                     </div>
-                 </div>
-                 <div className="flex gap-8 group">
+                 </motion.div>
+                 <motion.div variants={fadeUpVariant} className="flex gap-8 group">
                     <div className="p-4 rounded-sm border border-[var(--border-color)] bg-[var(--bg-primary)] group-hover:border-[var(--accent-gold)] transition-colors h-fit">
                        <Globe className="text-[var(--accent-gold)]" size={32} />
                     </div>
@@ -113,10 +114,10 @@ const EtmamConsulting = () => {
                             : "أن نكون المزود المفضل عالمياً لحلول الأعمال في الإمارات، وخلق القيمة في كل فرصة."}
                        </p>
                     </div>
-                 </div>
+                 </motion.div>
               </div>
-           </div>
-           <div className="relative">
+           </motion.div>
+           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="relative">
               <div className="aspect-video bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-sm overflow-hidden p-2 metallic-glow">
                  <img 
                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426" 
@@ -125,51 +126,48 @@ const EtmamConsulting = () => {
                  />
                  <div className="absolute inset-0 bg-[var(--accent-gold)]/10 mix-blend-overlay" />
               </div>
-           </div>
+           </motion.div>
         </div>
       </section>
 
       {/* 03. Service Framework */}
       <section className="py-52 z-10 relative overflow-hidden">
-        <div className={`absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--accent-gold)]/20 to-transparent -rotate-[15deg]`} />
+        <div className="absolute top-1/2 start-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--accent-gold)]/20 to-transparent -rotate-[15deg] rtl:rotate-[15deg]" />
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center mb-40">
-           <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter italic">
+           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="display-title italic">
               {lang === 'en' ? <>What We <span className="not-italic text-[var(--accent-gold)]">Do.</span></> : <>ما <span className="not-italic text-[var(--accent-gold)]">نفعله.</span></>}
-           </h2>
+           </motion.h2>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-10">
            {capabilities.map((c, i) => (
              <motion.div
                key={i}
-               initial={{ opacity: 0, y: 30 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-               transition={{ delay: i * 0.1 }}
-               className="p-16 premium-card border-[var(--border-color)] bg-[var(--bg-secondary)]/20 group hover:bg-[var(--bg-secondary)]/40 transition-all duration-700"
+               variants={fadeUpVariant}
+               className="p-16 premium-card border border-[var(--border-color)] bg-[var(--bg-secondary)]/20 group hover:bg-[var(--bg-secondary)]/40 transition-all duration-700"
              >
                 <div className="mb-10 w-16 h-16 border border-[var(--border-color)] flex items-center justify-center group-hover:border-[var(--accent-gold)] transition-colors">
                   {c.icon}
                 </div>
                 <h4 className="text-2xl font-black mb-6 uppercase tracking-tight">{c.title}</h4>
-                <p className="opacity-30 text-sm leading-relaxed font-light">{c.desc}</p>
+                <p className="opacity-60 text-sm leading-relaxed font-light">{c.desc}</p>
              </motion.div>
            ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* 04. Zoho Partnership Node */}
-      <section className="py-52 bg-white text-navy-900 z-10 relative">
+      <section className="py-52 bg-[var(--text-primary)] text-[var(--bg-primary)] z-10 relative">
          <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <div className={lang === 'ar' ? 'order-2' : ''}>
-               <div className="flex items-center gap-6 mb-12">
-                  <div className="p-4 bg-navy-900">
-                    <Database className="text-white" size={40} />
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+               <motion.div variants={fadeUpVariant} className="flex items-center gap-6 mb-12">
+                  <div className="p-4 bg-[var(--bg-primary)]">
+                    <Database className="text-[var(--text-primary)]" size={40} />
                   </div>
                   <h3 className="text-4xl font-black uppercase tracking-tighter">ZOHO <span className="text-[var(--accent-gold)]">PARTNER.</span></h3>
-               </div>
-               <div className="space-y-8 text-navy-900/70 text-lg leading-relaxed font-light">
+               </motion.div>
+               <motion.div variants={fadeUpVariant} className="space-y-8 text-[var(--bg-primary)]/80 text-lg leading-relaxed font-light">
                   <p>
                     {lang === 'en' 
                       ? "ETMAM is a certified Zoho Solutions Provider, authorized to deliver reliable custom solutions across all business scales."
@@ -182,50 +180,48 @@ const EtmamConsulting = () => {
                        lang === 'en' ? "Priority Institutional Support" : "دعم مؤسسي ذو أولوية",
                        lang === 'en' ? "Exclusive Partner Billing Rates" : "أسعار فوترة حصرية للشركاء"
                      ].map((item, idx) => (
-                       <li key={idx} className="flex items-center gap-4 text-sm font-black uppercase tracking-widest text-navy-900">
+                       <li key={idx} className="flex items-center gap-4 text-sm font-black uppercase tracking-widest text-[var(--bg-primary)]">
                           <CheckCircle size={16} className="text-[var(--accent-gold)]" /> {item}
                        </li>
                      ))}
                   </ul>
-               </div>
-            </div>
-            <div className="relative">
-               <div className="aspect-square bg-navy-900 flex items-center justify-center p-20 rounded-sm shadow-2xl skew-y-3 transform">
+               </motion.div>
+            </motion.div>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="relative rtl:order-first">
+               <div className="aspect-square bg-[var(--bg-primary)] flex items-center justify-center p-20 rounded-sm shadow-2xl skew-y-3 transform">
                   <div className="text-center">
                     <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Official Partner</span>
-                    <h2 className="text-white text-9xl font-black tracking-tighter">ZOHO</h2>
+                    <h2 className="text-[var(--text-primary)] text-9xl font-black tracking-tighter">ZOHO</h2>
                   </div>
                </div>
-            </div>
+            </motion.div>
          </div>
       </section>
 
       {/* 05. Why ETMAM Metrics */}
       <section className="py-52 z-10 relative border-t border-[var(--border-color)]">
-         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-24">
+         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-24">
             {whyEtmam.map((metric, i) => (
-              <div key={i} className="text-center group">
-                 <h4 className="text-[12rem] md:text-[14rem] font-black leading-none opacity-5 group-hover:opacity-10 transition-opacity absolute -translate-y-20 left-1/2 -translate-x-1/2 pointer-events-none">{metric.label}</h4>
+              <motion.div key={i} variants={fadeUpVariant} className="text-center group relative">
+                 <h4 className="text-[12rem] md:text-[14rem] font-black leading-none opacity-5 group-hover:opacity-10 transition-opacity absolute -translate-y-20 inset-x-0 pointer-events-none">{metric.label}</h4>
                  <div className="relative z-10 pt-20">
-                   <h5 className="text-5xl font-black gold-gradient-text mb-4 italic">{metric.label}</h5>
+                   <h5 className="text-5xl font-black gold-gradient-text mb-4 italic transition-transform duration-700 group-hover:-translate-y-2">{metric.label}</h5>
                    <p className="text-[10px] font-black uppercase tracking-[0.6em] opacity-40">{metric.text}</p>
                  </div>
-              </div>
+              </motion.div>
             ))}
-         </div>
-         <div className="max-w-4xl mx-auto px-6 text-center mt-60">
+         </motion.div>
+         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="max-w-4xl mx-auto px-6 text-center mt-60 flex flex-col items-center">
             <h3 className="text-4xl font-black uppercase tracking-tighter mb-12">
                {lang === 'en' ? "At ETMAM, We Get It Done." : "في إتمام، نحن ننجز المهمة."}
             </h3>
-            <Link to="/contact" className="btn-premium">
+            <PremiumButton to="/contact">
                {lang === 'en' ? 'Initiate Consultation' : 'بدء الاستشارة'}
-               <ArrowRight size={18} className={`inline ${lang === 'ar' ? 'mr-3 rotate-180' : 'ml-3'}`} />
-            </Link>
-         </div>
+            </PremiumButton>
+         </motion.div>
       </section>
     </div>
   );
 };
-
 
 export default EtmamConsulting;

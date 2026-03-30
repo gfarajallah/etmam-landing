@@ -15,9 +15,12 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/useLanguage';
+import PremiumButton from '@/components/ui/PremiumButton';
+import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const Ventures = () => {
   const { lang } = useLanguage();
+  const isArabic = lang === 'ar';
 
   const secondaryVentures = [
     {
@@ -53,7 +56,7 @@ const Ventures = () => {
   ];
 
   return (
-    <div className={`pt-20 bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 ${lang === 'ar' ? 'font-arabic' : ''}`}>
+    <div className="pt-20 bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 text-start">
       <div className="fixed inset-0 bg-grain opacity-[0.03] pointer-events-none" />
 
       {/* ── 01. HERO: The Strategic Horizon ── */}
@@ -69,30 +72,30 @@ const Ventures = () => {
           <div className="absolute inset-0 bg-[var(--accent-gold)]/5 mix-blend-overlay" />
         </div>
 
-        <div className={`max-w-7xl mx-auto px-6 md:px-12 relative z-20 w-full ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
-            <div className={`flex items-center gap-4 mb-10 ${lang === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20 w-full text-start">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
+            <motion.div variants={fadeUpVariant} className="flex items-center gap-4 mb-10">
               <div className="w-12 h-[1px] bg-[var(--accent-gold)]/50" />
               <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.6em]">
                 {lang === 'en' ? 'Track 04 // Enterprise Portfolio' : 'المسار 04 // المحفظة المؤسسية'}
               </span>
-            </div>
+            </motion.div>
 
-            <h1 className={`font-black uppercase leading-[0.85] tracking-tighter mb-8 ${lang === 'ar' ? 'font-arabic' : ''}`}
-              style={{ fontSize: 'clamp(4.5rem, 14vw, 10rem)' }}>
+            <motion.h1 variants={fadeUpVariant} className="display-title mb-8">
               {lang === 'en' ? <>Strategic<br /><span className="gold-gradient-text italic">Ventures.</span></> : <>المشاريع<br /><span className="gold-gradient-text italic">الاستراتيجية.</span></>}
-            </h1>
+            </motion.h1>
 
-            <p className="text-[clamp(1rem,2.5vw,1.6rem)] font-light opacity-50 max-w-3xl mb-16 leading-relaxed">
+            <motion.p variants={fadeUpVariant} className="text-[clamp(1rem,2.5vw,1.6rem)] font-light opacity-50 max-w-3xl mb-16 leading-relaxed">
               {lang === 'en' 
                 ? "We build, invest, and scale high-authority projects that define the next era of real estate institutional liquidity."
                 : "نحن نبني ونستثمر ونوسع المشاريع عالية القوة التي تحدد الحقبة التالية من سيولة العقارات المؤسسية."}
-            </p>
+            </motion.p>
 
-            <Link to="/contact" className="btn-premium scale-110">
-              {lang === 'en' ? 'ACCESS PORTFOLIO' : 'الوصول للمحفظة'}
-              <ArrowRight size={18} className={`inline ${lang === 'ar' ? 'mr-3 rotate-180' : 'ml-3'}`} />
-            </Link>
+            <motion.div variants={fadeUpVariant}>
+              <PremiumButton to="/contact" scale="scale-110">
+                {lang === 'en' ? 'ACCESS PORTFOLIO' : 'الوصول للمحفظة'}
+              </PremiumButton>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -102,19 +105,14 @@ const Ventures = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1600px] h-[800px] bg-[var(--accent-gold)]/[0.04] rounded-full blur-[200px]" />
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
              
-             <motion.div
-               initial={{ opacity: 0, x: lang === 'ar' ? 40 : -40 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               viewport={{ once: true }}
-               className={`relative ${lang === 'ar' ? 'order-2' : ''}`}
-             >
+             <motion.div variants={slowFadeUpVariant} className="relative order-2 lg:order-none">
                   {/* The interactive Frame */}
-                  <Link to="/solutions/smartblocks" className="group block relative p-2 glass-card border-[var(--accent-gold)]/40 metallic-glow hover:border-[var(--accent-gold)]/80 transition-all duration-700">
-                     <div className="bg-[var(--bg-primary)] p-12 md:p-20 border border-[var(--accent-gold)]/10 overflow-hidden relative">
+                  <Link to="/solutions/smartblocks" className="group block relative p-2 glass-card border-[var(--accent-gold)]/40 metallic-glow hover:border-[var(--accent-gold)]/80 transition-all duration-700 text-start">
+                     <div className="bg-[var(--bg-primary)] p-12 md:p-20 border border-[var(--accent-gold)]/10 overflow-hidden relative text-start">
                         {/* Status top bar */}
-                        <div className={`absolute top-0 left-0 w-full p-8 flex justify-between items-center ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                        <div className="absolute top-0 start-0 w-full p-8 flex justify-between items-center rtl:flex-row-reverse">
                           <div className="flex items-center gap-3">
                             <Activity className="text-emerald-500 animate-pulse" size={16} />
                             <span className="text-[9px] font-black uppercase tracking-widest text-emerald-500/60">System: OPTIMAL</span>
@@ -131,11 +129,11 @@ const Ventures = () => {
 
                         {/* Stats rows */}
                         <div className="mt-16 space-y-4">
-                          <div className={`flex justify-between border-b border-[var(--border-color)] pb-3 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                          <div className="flex justify-between border-b border-[var(--border-color)] pb-3 rtl:flex-row-reverse">
                             <span className="text-[10px] font-black uppercase tracking-widest opacity-40">Operational Finality</span>
                             <span className="text-[10px] font-black text-[var(--accent-gold)] text-glow-gold">99.98% REAL-TIME</span>
                           </div>
-                          <div className={`flex justify-between border-b border-[var(--border-color)] pb-3 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                          <div className="flex justify-between border-b border-[var(--border-color)] pb-3 rtl:flex-row-reverse">
                             <span className="text-[10px] font-black uppercase tracking-widest opacity-40">Asset Under Tokenization</span>
                             <span className="text-[10px] font-black text-[var(--accent-gold)] text-glow-gold">$4.2B+ AGGREGATE</span>
                           </div>
@@ -146,7 +144,7 @@ const Ventures = () => {
                      </div>
 
                      {/* The action floating badge */}
-                     <div className={`absolute -bottom-10 ${lang === 'ar' ? '-left-10' : '-right-10'} p-10 bg-[var(--bg-primary)] border border-[var(--accent-gold)]/40 glass-card backdrop-blur-3xl z-20 group-hover:scale-110 transition-transform duration-500`}>
+                     <div className="absolute -bottom-10 -end-10 p-10 bg-[var(--bg-primary)] border border-[var(--accent-gold)]/40 glass-card backdrop-blur-3xl z-20 group-hover:scale-110 transition-transform duration-500 text-start">
                         <Zap className="text-[var(--accent-gold)] mb-4" size={32} />
                         <h5 className="font-black uppercase tracking-widest text-xs mb-2">{lang === 'en' ? 'INITIATE ACCESS' : 'بدء الوصول للبروتوكول'}</h5>
                         <p className="text-[9px] opacity-20 uppercase tracking-widest">{lang === 'en' ? 'Institutional Grade Only' : 'للمستوى المؤسسي فقط'}</p>
@@ -154,20 +152,14 @@ const Ventures = () => {
                   </Link>
              </motion.div>
 
-             <motion.div
-               initial={{ opacity: 0, x: lang === 'ar' ? -40 : 40 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               viewport={{ once: true }}
-               className={`pt-10 ${lang === 'ar' ? 'order-1 text-right' : 'text-left'}`}
-             >
-                <div className={`flex items-center gap-6 mb-12 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+             <motion.div variants={fadeUpVariant} className="pt-10 text-start order-1 lg:order-none">
+                <div className="flex items-center gap-6 mb-12">
                    <Cpu size={36} className="text-[var(--accent-gold)]" />
                    <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.6em]">
                      {lang === 'en' ? 'Flagship Development' : 'التطوير الرائد'}
                    </span>
                 </div>
-                <h2 className={`font-black uppercase tracking-tighter mb-12 leading-[0.9] ${lang === 'ar' ? 'font-arabic' : ''}`}
-                  style={{ fontSize: 'clamp(3rem,8vw,7rem)' }}>
+                <h2 className="section-title mb-12">
                   {lang === 'en' ? <>Smart<br /><span className="gold-gradient-text italic">Blocks.</span></> : <>سمارت<br /><span className="gold-gradient-text italic">بلوكس.</span></>}
                 </h2>
                 <div className="space-y-12 text-2xl font-light opacity-50 mb-16 leading-relaxed">
@@ -175,49 +167,41 @@ const Ventures = () => {
                      ? "The definitive technical and regulatory engine for institutional real estate tokenization. Built on the conviction that legacy capital markets must evolve or perish."
                      : "المحرك التقني والتنظيمي الحاسم لترميز العقارات المؤسسي. بُني على قناعة تامة بأن أسواق رأس المال التقليدية يجب أن تتطور أو تضمحل."}</p>
                 </div>
-                <Link to="/solutions/smartblocks" className="btn-premium px-16">
+                <PremiumButton to="/solutions/smartblocks" className="px-16 border-[var(--accent-gold)] hover:bg-[var(--accent-gold)]/10 text-[var(--accent-gold)]">
                    {lang === 'en' ? 'DISCOVER THE ENGINE' : 'اكتشف المحرك'} 
-                   <ChevronRight size={18} className={`inline ${lang === 'ar' ? 'mr-3 rotate-180' : 'ml-3'}`} />
-                </Link>
+                </PremiumButton>
              </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── 03. ECOSYSTEM: Venture Network ── */}
       <section className="py-52 relative overflow-hidden z-10 transition-colors duration-700">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-           <div className={`mb-32 ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
-              <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.6em] mb-8 block">
+           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="mb-32 text-start">
+              <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.6em] mb-8 block">
                 {lang === 'en' ? 'The Strategic Grid' : 'المخطط الاستراتيجي'}
-              </span>
-              <h2 className={`font-black uppercase tracking-tighter italic ${lang === 'ar' ? 'font-arabic' : ''}`}
-                style={{ fontSize: 'clamp(2.5rem,6vw,6rem)' }}>
+              </motion.span>
+              <motion.h2 variants={fadeUpVariant} className="section-title italic">
                 {lang === 'en' ? <>Network <span className="gold-gradient-text not-italic">Expansion.</span></> : <>توسع <span className="gold-gradient-text not-italic">الشبكة المعرفية.</span></>}
-              </h2>
-           </div>
+              </motion.h2>
+           </motion.div>
 
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-[var(--border-color)]">
+           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-[var(--border-color)]">
               {secondaryVentures.map((v, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
+                <motion.div key={i} variants={fadeUpVariant}>
                    <Link to="/contact"
-                    className={`group relative p-16 overflow-hidden border-[var(--border-color)] md:border-r border-b lg:border-b-0 last:border-r-0 block h-full transition-all duration-700 hover:bg-[var(--accent-gold)]/[0.03] ${lang === 'ar' ? 'text-right' : 'text-left'}`}
+                    className="group relative p-16 overflow-hidden border-[var(--border-color)] border-b md:border-b-0 md:border-e lg:border-b-0 last:border-b-0 last:border-e-0 block h-full transition-all duration-700 hover:bg-[var(--accent-gold)]/[0.03] text-start"
                     style={{ minHeight: '420px' }}>
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                       style={{ boxShadow: 'inset 0 0 0 1px rgba(201,169,98,0.3)' }} />
                     
                     {/* ID Badge */}
-                    <span className="absolute top-10 right-10 text-xs font-black opacity-[0.2] transition-all duration-1000 select-none tracking-[0.4em] text-[var(--accent-gold)]">
+                    <span className="absolute top-10 end-10 text-xs font-black opacity-[0.2] transition-all duration-1000 select-none tracking-[0.4em] text-[var(--accent-gold)]">
                       {v.id}
                     </span>
 
-                    <div className="relative z-10 flex flex-col h-full">
+                    <div className="relative z-10 flex flex-col h-full text-start">
                        <div className="mb-12 w-20 h-20 border border-[var(--border-color)] flex items-center justify-center group-hover:border-[var(--accent-gold)] transition-all duration-700 group-hover:scale-110">
                           {v.icon}
                        </div>
@@ -228,24 +212,23 @@ const Ventures = () => {
                        <p className="opacity-40 text-sm leading-relaxed font-light flex-1 group-hover:opacity-90 transition-opacity duration-700">
                         {v.desc}
                        </p>
-                       <div className={`mt-10 pt-6 border-t border-[var(--border-color)] flex items-center gap-3 text-[9px] font-black uppercase tracking-[0.4em] text-[var(--accent-gold)] opacity-0 group-hover:opacity-100 transition-all duration-500 uppercase ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                       <div className="mt-10 pt-6 border-t border-[var(--border-color)] flex items-center gap-3 text-[9px] font-black uppercase tracking-[0.4em] text-[var(--accent-gold)] opacity-0 group-hover:opacity-100 transition-all duration-500 rtl:flex-row-reverse">
                           <span>{lang === 'en' ? 'Review Protocol' : 'مراجعة البروتوكول'}</span>
-                          <ChevronRight size={14} className={`transition-transform duration-500 group-hover:translate-x-2 ${lang === 'ar' ? 'rotate-180 group-hover:-translate-x-2' : ''}`} />
+                          <ChevronRight size={14} className={`transition-transform duration-500 group-hover:translate-x-2 rtl:group-hover:-translate-x-2 ${isArabic ? 'rotate-180' : ''}`} />
                        </div>
                     </div>
                    </Link>
                 </motion.div>
               ))}
-           </div>
+           </motion.div>
         </div>
       </section>
 
       {/* ── 04. FINAL CTA: Global Influence ── */}
       <section className="py-60 relative z-10 border-t border-[var(--border-color)] text-center">
          <div className="max-w-5xl mx-auto px-6 relative z-10">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className={`font-black mb-12 uppercase tracking-tighter italic leading-[0.85] ${lang === 'ar' ? 'font-arabic' : ''}`}
-                style={{ fontSize: 'clamp(3rem, 12vw, 10rem)' }}>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant}>
+              <h2 className="display-title italic mb-12">
                  {lang === 'en' ? <>Collaborate <br /><span className="gold-gradient-text not-italic">Globally.</span></> : <>التعاون <br /><span className="gold-gradient-text not-italic">عالمياً.</span></>}
               </h2>
               <p className="opacity-30 text-[clamp(1rem,2.5vw,1.8rem)] mb-20 font-light max-w-3xl mx-auto leading-relaxed">
@@ -253,10 +236,9 @@ const Ventures = () => {
                   ? "We engineer new markets for those who demand institutional precision and high-authority results. Let's define the next cycle."
                   : "نحن نهندس أسواقاً جديدة لأولئك الذين يطلبون الدقة المؤسسية والنتائج عالية القوة. لنرسم ملامح الدورة القادمة سوياً."}
               </p>
-              <Link to="/contact" className="btn-premium px-20 py-8 scale-125 shadow-[0_0_50px_rgba(201,169,98,0.2)]">
+              <PremiumButton to="/contact" scale="scale-125">
                  {lang === 'en' ? 'INITIATE PARTNER PROTOCOL' : 'بدء بروتوكول الشراكة العالمي'}
-                 <ArrowRight size={20} className={`inline ${lang === 'ar' ? 'mr-3 rotate-180' : 'ml-3'}`} />
-              </Link>
+              </PremiumButton>
             </motion.div>
          </div>
       </section>

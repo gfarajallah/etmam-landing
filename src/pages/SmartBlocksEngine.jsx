@@ -15,9 +15,12 @@ import {
   Users,
   Layers
 } from 'lucide-react';
+import PremiumButton from '@/components/ui/PremiumButton';
+import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const SmartBlocksEngine = () => {
   const { lang } = useLanguage();
+  const isArabic = lang === 'ar';
 
   const benefits = [
     {
@@ -116,7 +119,7 @@ const SmartBlocksEngine = () => {
   ];
 
   return (
-    <div className={`pt-20 bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 ${lang === 'ar' ? 'font-arabic' : ''}`}>
+    <div className="pt-20 bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 text-start">
       <div className="fixed inset-0 bg-grain opacity-[0.03] pointer-events-none" />
 
       {/* 01. Hero */}
@@ -131,52 +134,53 @@ const SmartBlocksEngine = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative flex flex-col items-center text-center z-10">
-          <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="max-w-5xl">
-            <div className="flex items-center justify-center gap-4 mb-10">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-5xl">
+            <motion.div variants={fadeUpVariant} className="flex items-center justify-center gap-4 mb-10">
               <div className="w-10 h-[1px] bg-[var(--accent-gold)]/50" />
               <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em]">
                 {lang === 'en' ? 'SmartBlocks Intelligence' : 'ذكاء سمارت بلوكس'}
               </span>
               <div className="w-10 h-[1px] bg-[var(--accent-gold)]/50" />
-            </div>
-            <h1 className={`font-black mb-12 uppercase tracking-tighter leading-[0.85] ${lang === 'ar' ? 'font-arabic' : ''}`}
+            </motion.div>
+            
+            <motion.h1 variants={fadeUpVariant} className="font-black mb-12 uppercase tracking-tighter leading-[0.85]"
               style={{ fontSize: 'clamp(4rem,10vw,8rem)' }}>
               {lang === 'en'
                 ? <><span className="gold-gradient-text italic">Empowering</span><br />Real Estate.</>
                 : <><span className="gold-gradient-text italic">تمكين</span><br />العقارات.</>}
-            </h1>
-            <p className="text-[clamp(1rem,2vw,1.5rem)] text-[var(--text-primary)] opacity-50 max-w-3xl mx-auto font-light leading-relaxed mb-16">
+            </motion.h1>
+            
+            <motion.p variants={fadeUpVariant} className="text-[clamp(1rem,2vw,1.5rem)] text-[var(--text-primary)] opacity-50 max-w-3xl mx-auto font-light leading-relaxed mb-16">
               {lang === 'en'
                 ? 'The definitive engine for high-authority tokenization. Empowering decision-makers with realistic, responsible, and strategic technology.'
                 : 'المحرك النهائي للترميز عالي السلطة. تمكين صناع القرار من تكنولوجيا واقعية ومسؤولة واستراتيجية.'}
-            </p>
+            </motion.p>
 
-            <div className={`flex flex-col sm:flex-row gap-8 justify-center items-center ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
-              <Link to="/contact" className="btn-premium">
+            <motion.div variants={fadeUpVariant} className="flex flex-col sm:flex-row gap-8 justify-center items-center">
+              <PremiumButton to="/contact">
                 {lang === 'en' ? 'Inquire Protocol' : 'استفسار عن البروتوكول'}
-                <ArrowRight size={18} className={`inline ${lang === 'ar' ? 'mr-3 rotate-180' : 'ml-3'}`} />
-              </Link>
-              <div className="flex items-center gap-6 p-6 border border-[var(--border-color)] bg-[var(--bg-secondary)]/30 backdrop-blur-md">
+              </PremiumButton>
+              <div className="flex items-center gap-6 p-6 border border-[var(--border-color)] bg-[var(--bg-secondary)]/30 backdrop-blur-md text-start">
                 <div className="w-12 h-12 bg-[var(--accent-gold)]/10 flex items-center justify-center">
                   <BarChart4 size={24} className="text-[var(--accent-gold)]" />
                 </div>
-                <div className="text-left">
+                <div>
                   <span className="text-[10px] font-black uppercase tracking-widest block opacity-40">Trading Volume Management</span>
                   <span className="text-xl font-bold">$4.2B+ Potential</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* 02. Institutional Features Grid */}
       <section className="py-52 z-10 relative">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-0 border border-[var(--border-color)]">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-0 border border-[var(--border-color)]">
           {benefits.map((b, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+            <motion.div key={i} variants={fadeUpVariant}>
               <Link to="/contact"
-                className={`group block relative p-16 overflow-hidden border-[var(--border-color)] md:border-r last:border-r-0 cursor-pointer transition-all duration-700 bg-[var(--bg-secondary)]/10 ${lang === 'ar' ? 'text-right' : 'text-left'}`}
+                className="group block relative p-16 overflow-hidden border-[var(--border-color)] border-b md:border-b-0 md:border-e last:border-b-0 last:border-e-0 cursor-pointer transition-all duration-700 bg-[var(--bg-secondary)]/10 text-start"
                 style={{ minHeight: '340px' }}>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                   style={{ boxShadow: 'inset 0 0 0 1px rgba(201,169,98,0.5)' }} />
@@ -188,52 +192,52 @@ const SmartBlocksEngine = () => {
                   <h4 className="text-xl font-black mb-4 uppercase tracking-tight group-hover:text-[var(--accent-gold)] transition-colors duration-500">{b.title}</h4>
                   <h5 className="text-[11px] font-black uppercase tracking-widest text-[var(--accent-gold)] mb-6 opacity-90">{b.subtitle}</h5>
                   <p className="opacity-40 text-sm leading-relaxed font-light flex-1">{b.desc}</p>
-                  <div className={`flex items-center gap-2 mt-8 text-[10px] font-black uppercase tracking-[0.4em] opacity-0 group-hover:opacity-100 text-[var(--accent-gold)] transition-all duration-500 ${lang === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+                  <div className="flex items-center gap-3 mt-8 text-[10px] font-black uppercase tracking-[0.4em] opacity-0 group-hover:opacity-100 text-[var(--accent-gold)] transition-all duration-500 rtl:flex-row-reverse">
                     <span>{lang === 'en' ? 'Learn More' : 'اعرف أكثر'}</span>
-                    <ArrowRight size={14} className={`transition-transform duration-500 group-hover:translate-x-1 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+                    <ArrowRight size={14} className={`transition-transform duration-500 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 ${isArabic ? 'rotate-180' : ''}`} />
                   </div>
                 </div>
               </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* 03. Ecosystem Profiles */}
       <section className="py-52 bg-[var(--bg-secondary)]/30 z-10 relative border-y border-[var(--border-color)]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className={`mb-32 ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
-            <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.6em] mb-8 block">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 border-b border-[var(--border-color)]">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="mb-32 text-start">
+            <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.6em] mb-8 block">
               {lang === 'en' ? 'Ecosystem Solutions' : 'حلول النظام البيئي'}
-            </span>
-            <h2 className={`font-black uppercase tracking-tighter italic ${lang === 'ar' ? 'font-arabic' : ''}`}
+            </motion.span>
+            <motion.h2 variants={fadeUpVariant} className="font-black uppercase tracking-tighter italic"
               style={{ fontSize: 'clamp(2.5rem,6vw,6rem)' }}>
               {lang === 'en'
                 ? <>Radical <span className="not-italic text-[var(--accent-gold)]">Empowerment.</span></>
                 : <>تمكين <span className="not-italic text-[var(--accent-gold)]">جذري.</span></>}
-            </h2>
-            <p className={`mt-8 text-xl font-light text-[var(--text-primary)] opacity-40 max-w-2xl ${lang === 'ar' ? 'mx-0 ml-auto' : ''}`}>
+            </motion.h2>
+            <motion.p variants={fadeUpVariant} className="mt-8 text-xl font-light text-[var(--text-primary)] opacity-40 max-w-2xl">
               {lang === 'en'
                 ? 'Defining the gold standard solutions across every layer of the real estate ecosystem.'
                 : 'تحديد الحلول بالمعيار الذهبي عبر كل طبقة من طبقات النظام البيئي العقاري.'}
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-[var(--border-color)]">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-2 gap-0 border-x border-[var(--border-color)]">
             {profiles.map((p, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <motion.div key={i} variants={fadeUpVariant}>
                 <Link to="/contact"
-                  className={`group block relative p-12 md:p-16 border-[var(--border-color)] lg:border-r border-b lg:border-b-0 last:border-r-0 overflow-hidden cursor-pointer transition-all duration-700 bg-[var(--text-primary)]/[0.01] h-full ${lang === 'ar' ? 'text-right' : 'text-left'}`}
+                  className="group block relative p-12 md:p-16 border-[var(--border-color)] lg:border-e border-t lg:border-b-0 overflow-hidden cursor-pointer transition-all duration-700 bg-[var(--text-primary)]/[0.01] h-full text-start"
                   style={{ minHeight: '400px' }}>
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                     style={{ boxShadow: 'inset 0 0 0 1px rgba(201,169,98,0.5)' }} />
                   <div className="absolute inset-0 bg-[var(--accent-gold)]/0 group-hover:bg-[var(--accent-gold)]/5 transition-all duration-700 pointer-events-none" />
                   <div className="relative z-10 flex flex-col h-full">
-                    <div className={`mb-12 flex items-center gap-6 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                    <div className="mb-12 flex items-center gap-6">
                       <div className="w-16 h-16 bg-[var(--text-primary)]/[0.03] border border-[var(--border-color)] flex items-center justify-center group-hover:border-[var(--accent-gold)]/50 group-hover:bg-[var(--accent-gold)]/5 transition-all duration-700 shrink-0">
                         {p.icon}
                       </div>
-                      <div className={lang === 'ar' ? 'text-right' : 'text-left'}>
+                      <div className="text-start">
                         <span className="text-[var(--accent-gold)] text-[10px] font-black tracking-[0.4em] uppercase mb-2 block">{p.tag}</span>
                         <h4 className="text-2xl md:text-3xl font-black uppercase tracking-tight group-hover:text-[var(--accent-gold)] transition-colors duration-500">{p.title}</h4>
                       </div>
@@ -248,21 +252,21 @@ const SmartBlocksEngine = () => {
                         </div>
                       ))}
                     </div>
-                    <div className={`flex items-center gap-3 font-black uppercase tracking-[0.3em] text-[8px] mt-10 pt-6 border-t border-[var(--border-color)] opacity-0 group-hover:opacity-100 text-[var(--accent-gold)] transition-all duration-500 ${lang === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+                    <div className="flex items-center gap-3 font-black uppercase tracking-[0.3em] text-[8px] mt-10 pt-6 border-t border-[var(--border-color)] opacity-0 group-hover:opacity-100 text-[var(--accent-gold)] transition-all duration-500 rtl:flex-row-reverse">
                       <span>{lang === 'en' ? 'Review Profile' : 'مراجعة الملف'}</span>
-                      <ArrowRight size={12} className={`transition-transform duration-500 group-hover:translate-x-1 ${lang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
+                      <ArrowRight size={12} className={`transition-transform duration-500 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 ${isArabic ? 'rotate-180' : ''}`} />
                     </div>
                   </div>
                 </Link>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* 04. Institutional Banner */}
       <section className="py-52 z-10 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="p-1 border border-[var(--border-color)] premium-card bg-[var(--bg-secondary)]/30 backdrop-blur-md overflow-hidden group">
             <div className="aspect-[21/9] overflow-hidden relative">
               <img
@@ -272,17 +276,17 @@ const SmartBlocksEngine = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)]" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
+                <div className="text-center flex flex-col items-center">
                   <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[1em] mb-4 block opacity-50">Operational Infrastructure</span>
-                  <h3 className="text-4xl font-black uppercase tracking-tighter">{lang === 'en' ? 'Built for Scale.' : 'بُنيت للتوسع.'}</h3>
-                  <Link to="/contact" className="btn-premium mt-10 inline-block">
+                  <h3 className="text-4xl font-black uppercase tracking-tighter mb-10">{lang === 'en' ? 'Built for Scale.' : 'بُنيت للتوسع.'}</h3>
+                  <PremiumButton to="/contact" scale="scale-110">
                     {lang === 'en' ? 'COMMAND PROTOCOL' : 'قيادة البروتوكول'}
-                  </Link>
+                  </PremiumButton>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

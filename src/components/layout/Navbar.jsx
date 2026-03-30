@@ -11,6 +11,7 @@ const Navbar = () => {
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const { lang, toggleLanguage, t } = useLanguage();
+  const isArabic = lang === 'ar';
 
   const navLinks = [
     { name: t('nav_home'), path: '/' },
@@ -34,7 +35,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex justify-between items-center">
           <Link to="/" className="relative z-10 group">
-            <span className="text-3xl font-black tracking-tighter uppercase flex items-center gap-2 text-[var(--text-primary)]">
+            <span className="text-3xl font-black tracking-tighter uppercase flex items-center gap-2 text-[var(--text-primary)] group-hover:text-[var(--accent-gold)] group-hover:text-glow-gold transition-all duration-500">
               ETMAM <span className="w-2 h-2 bg-[var(--accent-gold)] animate-pulse rounded-full"></span>
             </span>
           </Link>
@@ -51,13 +52,13 @@ const Navbar = () => {
                   }`}
                 >
                   {link.name}
-                  <span className={`absolute bottom-0 left-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-500 ${location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                  <span className={`absolute bottom-0 ${isArabic ? 'right-0' : 'left-0'} h-[1px] bg-[var(--accent-gold)] transition-all duration-500 ${location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                 </Link>
               ))}
             </div>
 
             {/* Toggles */}
-            <div className="flex items-center gap-6 pl-10 border-l border-[var(--border-color)]">
+            <div className="flex items-center gap-6 ps-10 border-s border-[var(--border-color)]">
                <motion.button 
                  whileHover={{ scale: 1.1 }}
                  whileTap={{ scale: 0.9 }}
