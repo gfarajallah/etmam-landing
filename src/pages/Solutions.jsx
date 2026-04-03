@@ -58,16 +58,16 @@ const Solutions = () => {
 
       {/* ── 01. HERO: The High-Authority Opening ── */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden z-10 border-b border-[var(--border-color)]">
-        {/* Background Dashboard Image - Highly Visible with Bottom Fade */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none group">
+        {/* Background Dashboard Image - Global Interactive Theme */}
+        <div className="absolute inset-0 z-0 bg-black overflow-hidden pointer-events-none group">
           <img 
             src="/media/solutions_hero_dashboard.jpg" 
             alt="Solutions Dashboard Concept" 
-            className="absolute top-0 left-0 w-full h-full object-cover opacity-60 scale-105 group-hover:scale-100 group-hover:opacity-80 transition-all duration-[5000ms] ease-out"
+            className="absolute top-0 left-0 w-full h-full object-cover opacity-30 grayscale brightness-[0.6] mix-blend-screen scale-105 group-hover:scale-100 group-hover:grayscale-0 group-hover:opacity-50 group-hover:brightness-[0.8] transition-all duration-[3000ms] ease-out"
           />
-          {/* Dark at the bottom, transparent at the top */}
+          {/* Institutional Gradients ensuring seamless blend to background */}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/60 to-transparent" />
-          <div className="absolute inset-0 bg-[var(--bg-primary)]/30" /> {/* Slight dark tint so text remains readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)]/80 via-transparent to-[var(--bg-primary)]/80" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center relative z-10 w-full">
