@@ -22,7 +22,7 @@ const Solutions = () => {
       icon: <Globe size={48} />,
       link: "/solutions/etmam",
       color: "rgba(59, 130, 246, 0.5)",
-      bgImage: "/media/etmam_architecture.png"
+      bgImage: "/media/blade_consultancy.jpg"
     },
     {
       id: "smart-blocks",
@@ -35,7 +35,7 @@ const Solutions = () => {
       icon: <Cpu size={48} />,
       link: "/solutions/smartblocks",
       color: "rgba(201, 169, 98, 0.5)",
-      bgImage: "/media/ventures_hero.png"
+      bgImage: "/media/blade_smartblocks.jpg"
     },
     {
       id: "smart-agent",
@@ -48,7 +48,7 @@ const Solutions = () => {
       icon: <Bot size={48} />,
       link: "/solutions/smartagent",
       color: "rgba(34, 211, 238, 0.5)",
-      bgImage: "/media/smartagent_hero.png"
+      bgImage: "/media/blade_smartagent.jpg"
     }
   ];
 
@@ -105,10 +105,10 @@ const Solutions = () => {
               <img 
                 src={track.bgImage} 
                 alt="" 
-                className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[2000ms] grayscale brightness-[0.2] group-hover:grayscale-0 group-hover:brightness-[0.4]" 
+                className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-all duration-[6000ms] ease-out grayscale brightness-[0.25] group-hover:grayscale-0 group-hover:brightness-[0.5]" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent opacity-80" />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-multiply" />
             </div>
 
             {/* Accent Glow */}
