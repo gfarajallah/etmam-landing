@@ -75,7 +75,8 @@ const About = () => {
                   controls: 0, 
                   modestbranding: 1, 
                   rel: 0,
-                  disablekb: 1
+                  disablekb: 1,
+                  origin: typeof window !== 'undefined' ? window.location.origin : 'https://etmam-landing.vercel.app'
                 }
               }
             }}
