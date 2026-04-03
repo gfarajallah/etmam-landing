@@ -22,7 +22,7 @@ const Solutions = () => {
       icon: <Globe size={48} />,
       link: "/solutions/etmam",
       color: "rgba(59, 130, 246, 0.5)",
-      bgImage: "/media/final_blade_consultancy.jpg"
+      bgImage: "/media/Presentation - EliteWay Engine133.jpg"
     },
     {
       id: "smart-blocks",
@@ -35,7 +35,7 @@ const Solutions = () => {
       icon: <Cpu size={48} />,
       link: "/solutions/smartblocks",
       color: "rgba(201, 169, 98, 0.5)",
-      bgImage: "/media/final_blade_smartblocks.jpg"
+      bgImage: "/media/Presentation - EliteWay Engine1225.jpg"
     },
     {
       id: "smart-agent",
@@ -48,7 +48,7 @@ const Solutions = () => {
       icon: <Bot size={48} />,
       link: "/solutions/smartagent",
       color: "rgba(34, 211, 238, 0.5)",
-      bgImage: "/media/final_blade_smartagent.png"
+      bgImage: "/media/Presentation - Unified Engine9991254.png"
     }
   ];
 
