@@ -128,7 +128,7 @@ const EtmamConsulting = () => {
                  <img 
                    src="/media/SmartBlocks Investors_SZOHO.png" 
                    alt="Mission & Vision Handshake" 
-                   className="w-full max-w-2xl object-contain smart-blend-drawing hover:scale-105 transition-transform duration-[2000ms] ease-out drop-shadow-2xl"
+                   className="w-full max-w-2xl object-contain filter invert mix-blend-screen grayscale opacity-60 hover:opacity-100 hover:scale-105 transition-all duration-[2000ms] ease-out drop-shadow-2xl"
                  />
            </motion.div>
         </div>
@@ -198,7 +198,7 @@ const EtmamConsulting = () => {
                    alt="Zoho One Partner UAE" 
                    animate={{ y: [0, -15, 0] }}
                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                   className="w-full max-w-lg object-contain smart-blend-drawing drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10"
+                   className="w-full max-w-lg object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10"
                  />
                
                {/* Institutional Floating Badge Over the image */}
@@ -218,10 +218,10 @@ const EtmamConsulting = () => {
           <img 
             src="/media/SmartBlocks Investors_SZOHO1234.png" 
             alt="Cityscape Background" 
-            className="w-full h-full object-cover object-bottom smart-blend-drawing opacity-90"
+            className="w-full h-full object-cover object-bottom filter invert mix-blend-screen grayscale opacity-100"
           />
-          {/* Subtle gradient to keep white text readable, without hiding image */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/70 via-[var(--bg-primary)]/20 to-[var(--bg-primary)]/70" />
+          {/* Extremely subtle gradient just for text readability at the very bottom/top */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/80 via-transparent to-[var(--bg-primary)]/40" />
         </div>
 
         <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
