@@ -192,28 +192,27 @@ const EtmamConsulting = () => {
                   </ul>
                </motion.div>
             </motion.div>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative rtl:order-first w-full h-[350px] group perspectives-1000">
-               {/* Premium Framed Container */}
-               <div className="absolute inset-0 rounded-sm border border-[var(--border-color)] bg-[var(--bg-secondary)]/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden metallic-glow transition-all duration-[1500ms] group-hover:scale-105 group-hover:shadow-[0_30px_60px_rgba(0,0,0,0.7)] group-hover:border-[var(--accent-gold)]/50">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative rtl:order-first flex flex-col justify-center items-center">
                  
-                 {/* The User's Banner, suppressed for branding, revealed on hover */}
-                 <img 
-                   src="/media/Zoho-One-Partner-Dubai-UAE.png" 
-                   alt="Zoho One Partner UAE" 
-                   className="w-full h-full object-cover object-center filter grayscale opacity-30 mix-blend-luminosity scale-110 group-hover:grayscale-0 group-hover:opacity-100 group-hover:mix-blend-normal transition-all duration-[1500ms] ease-out group-hover:scale-100"
-                 />
-                 
-                 {/* Deep vignette gradient to blend the image into the dark theme */}
-                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)] opacity-90 group-hover:opacity-10 transition-opacity duration-[1500ms] pointer-events-none" />
-                 <div className="absolute inset-0 bg-gradient-to-l from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)] opacity-90 group-hover:opacity-10 transition-opacity duration-[1500ms] pointer-events-none" />
-
-               </div>
+                 {/* Clean Premium Image Card */}
+                 <motion.div 
+                   animate={{ y: [0, -10, 0] }}
+                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                   className="w-full max-w-sm rounded-[2rem] p-10 bg-white/90 backdrop-blur-sm shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-[var(--accent-gold)]/20 hover:scale-105 hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] transition-all duration-700 z-10"
+                 >
+                    <img 
+                      src="/media/Zoho-One-Partner-Dubai-UAE.png" 
+                      alt="Zoho One Partner UAE" 
+                      className="w-full h-auto object-contain"
+                    />
+                 </motion.div>
                
-               {/* Central Floating Badge - strictly on-brand */}
-               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[var(--bg-primary)]/90 px-10 py-8 border border-[var(--border-color)] shadow-2xl backdrop-blur-md w-max text-center transition-all duration-700 group-hover:scale-95 group-hover:opacity-0 pointer-events-none">
-                    <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.5em] mb-4 block">Certified Integration</span>
-                    <h2 className="text-[var(--text-primary)] text-4xl font-black tracking-widest uppercase">ZOHO Architects</h2>
-               </div>
+                 {/* Clean Typography Block Below Image - Dark Color matching the Brand */}
+                 <div className="text-center mt-10 z-20">
+                      <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.5em] mb-2 block">Certified Integration</span>
+                      <h2 className="text-[var(--bg-primary)] text-4xl sm:text-5xl font-black tracking-tighter">ZOHO ARCHITECTS</h2>
+                 </div>
+
             </motion.div>
          </div>
       </section>
