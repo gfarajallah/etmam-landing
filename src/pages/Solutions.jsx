@@ -149,7 +149,7 @@ const Solutions = () => {
               {/* Bottom: Action */}
               <div className="opacity-0 group-hover:opacity-100 translate-y-8 group-hover:translate-y-0 transition-all duration-700 delay-100">
                 <Magnetic strength={0.3}>
-                  <PremiumButton to={track.link} className="w-fit px-12 py-5 bg-[var(--accent-gold)] text-black border-none hover:bg-white transition-colors duration-500">
+                  <PremiumButton to={track.link} className="w-fit">
                     {lang === 'en' ? 'ENTER THE TRACK' : 'دخول المسار'}
                   </PremiumButton>
                 </Magnetic>

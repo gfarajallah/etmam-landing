@@ -192,31 +192,43 @@
   .theme-navy-slate { @apply bg-gradient-to-b from-[#01040f] via-[#050B1A] to-[#01040f]; }
   .theme-navy-gold { @apply relative overflow-hidden bg-[#01040f]; }
   
-  /* Buttons - More Aggressive */
+  /* Buttons - Sleek High-End Institutional */
   .btn-premium {
-    @apply relative overflow-hidden px-12 py-6 font-black uppercase tracking-[0.25em] text-[11px] transition-all duration-500;
-    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
-    color: var(--btn-text);
+    @apply relative overflow-hidden px-10 py-5 font-bold uppercase tracking-[0.25em] text-[12px] transition-all duration-700 block text-center;
+    background: transparent;
+    border: 1px solid rgba(201, 169, 98, 0.3);
+    color: white;
   }
   
+  .btn-premium::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent-gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 0;
+  }
+  
+  .btn-premium:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
   .btn-premium:hover {
-    @apply scale-[1.1] shadow-2xl;
-    background-color: var(--accent-gold-light);
-    box-shadow: 0 25px 50px -12px rgba(201, 169, 98, 0.2);
+    @apply scale-[1.02] shadow-[0_0_40px_rgba(201,169,98,0.2)];
+    border-color: var(--accent-gold);
+    color: black !important;
   }
 
   .btn-premium:active {
     @apply scale-[0.98];
   }
   
-  .btn-premium::after {
-    @apply content-[''] absolute inset-0 bg-white/30;
-    transform: skewX(-20deg) translateX(-150%);
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  
-  .btn-premium:hover::after {
-    transform: skewX(-20deg) translateX(150%);
+  /* IMPORTANT: Keep child spans above the background slide effect */
+  .btn-premium > span {
+    @apply relative z-10 transition-colors duration-700;
   }
   
   .text-glow-gold {
