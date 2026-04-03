@@ -1,5 +1,5 @@
 import { useLanguage } from '@/context/useLanguage';
-import CommandTerminal from '@/components/interactive/CommandTerminal';
+import EcosystemCore from '@/components/interactive/EcosystemCore';
 import { motion } from 'framer-motion';
 import { Globe, Cpu, Bot } from 'lucide-react';
 import PremiumButton from '@/components/ui/PremiumButton';
@@ -191,10 +191,8 @@ const Solutions = () => {
                 </Magnetic>
               </motion.div>
             </motion.div>
-
-            <motion.div variants={slowFadeUpVariant} className="relative">
-              <CommandTerminal />
-              <div className="absolute -top-10 -end-10 w-40 h-40 bg-[var(--accent-gold)]/10 rounded-full blur-3xl -z-10" />
+            <motion.div variants={slowFadeUpVariant} className="relative flex justify-center py-10 lg:py-0">
+              <EcosystemCore />
             </motion.div>
           </div>
         </div>
