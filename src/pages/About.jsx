@@ -6,21 +6,24 @@ import {
   BookOpen,
   ArrowRight,
   Quote,
-  Target,
-  Layers,
-  Award,
   Lock,
   Volume2,
   VolumeX
 } from 'lucide-react';
-import { useState } from 'react';
-import ReactPlayer from 'react-player';
+import { useState, useRef, useEffect } from 'react';
 import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const About = () => {
   const { lang } = useLanguage();
   const isArabic = lang === 'ar';
+  const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = muted;
+    }
+  }, [muted]);
 
   const toggleMute = () => setMuted(!muted);
 
@@ -56,30 +59,18 @@ const About = () => {
       <div className="fixed inset-0 bg-grain opacity-[0.03] pointer-events-none" />
 
       {/* ── 01. HERO: THE TRIPLE S ARCHITECTURE ── */}
-      <section className="relative h-[95vh] w-full flex items-center overflow-hidden z-20 border-b border-[var(--border-color)]">
+      <section className="relative h-[95vh] w-full flex items-center overflow-hidden z-20 border-b border-[var(--border-color)] group">
         
-        {/* React Player Wrapper to ensure natural 16:9 scaling without aggressive cropping */}
         <div className="absolute inset-0 z-0 bg-black pointer-events-none flex items-center justify-center">
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=69z-oU9PxO4"
-            playing={true}
-            loop={true}
+          <video
+            ref={videoRef}
+            src="/media/ghassan_strategic.mp4"
+            className="w-full h-full object-cover opacity-80 dark:opacity-50"
+            loop
             muted={muted}
-            width="100vw"
-            height="100vh"
-            style={{ pointerEvents: 'none', opacity: 0.7 }}
-            config={{
-              youtube: {
-                playerVars: { 
-                  showinfo: 0, 
-                  controls: 0, 
-                  modestbranding: 1, 
-                  rel: 0,
-                  disablekb: 1,
-                  origin: typeof window !== 'undefined' ? window.location.origin : 'https://etmam-landing.vercel.app'
-                }
-              }
-            }}
+            playsInline
+            autoPlay
+            preload="auto"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/40 to-transparent pointer-events-none" />
         </div>
