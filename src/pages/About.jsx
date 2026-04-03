@@ -71,9 +71,14 @@ const About = () => {
             className="w-full h-full object-cover opacity-80 dark:opacity-50"
             loop
             muted={muted}
+            defaultMuted
             playsInline
             autoPlay
-            preload="auto"
+            controls={false}
+            preload="metadata"
+            onCanPlay={(e) => {
+              e.target.play().catch(err => console.warn("Video play error:", err));
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/40 to-transparent pointer-events-none" />
         </div>
