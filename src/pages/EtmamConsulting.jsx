@@ -124,11 +124,11 @@ const EtmamConsulting = () => {
                  </motion.div>
               </div>
            </motion.div>
-           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="relative group flex items-center justify-center p-6">
+           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="relative flex justify-center items-center">
                  <img 
                    src="/media/SmartBlocks Investors_SZOHO.png" 
                    alt="Mission & Vision Handshake" 
-                   className="w-full max-w-lg object-contain filter invert mix-blend-screen opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2000ms] ease-out drop-shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+                   className="w-full max-w-2xl object-contain smart-blend-drawing hover:scale-105 transition-transform duration-[2000ms] ease-out drop-shadow-2xl"
                  />
            </motion.div>
         </div>
@@ -192,18 +192,17 @@ const EtmamConsulting = () => {
                   </ul>
                </motion.div>
             </motion.div>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative rtl:order-first group perspectives-1000">
-               <div className="aspect-square bg-black border border-[var(--border-color)] rounded-sm overflow-hidden p-2 metallic-glow shadow-[0_20px_50px_rgba(0,0,0,0.5)] -skew-y-3 transform transition-all duration-[1500ms] group-hover:skew-y-0 hover:rotate-y-[5deg] group-hover:scale-105">
-                 <img 
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative rtl:order-first flex justify-center items-center">
+                 <motion.img 
                    src="/media/Zoho-One-Partner-Dubai-UAE.png" 
                    alt="Zoho One Partner UAE" 
-                   className="w-full h-full object-cover object-center grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-[1500ms] ease-out scale-110 group-hover:scale-105"
+                   animate={{ y: [0, -15, 0] }}
+                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                   className="w-full max-w-lg object-contain smart-blend-drawing drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10"
                  />
-                 <div className="absolute inset-0 bg-blue-500/10 mix-blend-overlay pointer-events-none" />
-               </div>
                
                {/* Institutional Floating Badge Over the image */}
-               <div className="absolute -bottom-8 -end-8 bg-[var(--bg-primary)] px-8 py-6 border border-[var(--border-color)] shadow-2xl backdrop-blur-xl group-hover:-translate-y-4 transition-transform duration-700">
+               <div className="absolute -bottom-8 -end-8 bg-[var(--bg-primary)]/90 px-8 py-6 border border-[var(--border-color)] shadow-2xl backdrop-blur-xl hover:-translate-y-4 transition-transform duration-700 z-20">
                     <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em] mb-2 block">Certified Integration</span>
                     <h2 className="text-[var(--text-primary)] text-4xl font-black tracking-tighter w-max">ZOHO ARCHITECTS</h2>
                </div>
@@ -214,14 +213,15 @@ const EtmamConsulting = () => {
       {/* 05. LAUNCH PROTOCOL: Discovery & Portfolio */}
       <section className="py-60 z-10 relative overflow-hidden text-center bg-black border-t border-[var(--border-color)]">
         
-        {/* Full-width inverted cityscape background */}
-        <div className="absolute inset-0 z-0 opacity-40">
+        {/* Full-width clear cityscape background */ /* Made prominent so information is fully visible */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <img 
             src="/media/SmartBlocks Investors_SZOHO1234.png" 
             alt="Cityscape Background" 
-            className="w-full h-full object-cover object-bottom filter invert mix-blend-screen opacity-60 scale-105"
+            className="w-full h-full object-cover object-bottom smart-blend-drawing opacity-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)]" />
+          {/* Subtle gradient to keep white text readable, without hiding image */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/70 via-[var(--bg-primary)]/20 to-[var(--bg-primary)]/70" />
         </div>
 
         <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
