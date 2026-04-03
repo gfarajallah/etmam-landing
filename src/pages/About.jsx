@@ -68,16 +68,13 @@ const About = () => {
           <video
             ref={videoRef}
             src="/media/ghassan_strategic.mp4"
-            poster="/media/ghassan_keynote.jpg"
-            className="w-full h-full object-cover opacity-80 dark:opacity-50 transition-opacity duration-1000"
+            className="w-full h-full object-cover opacity-80 dark:opacity-50"
             loop
             muted={muted}
+            defaultMuted
             playsInline
             autoPlay
             preload="auto"
-            onLoadedData={(e) => {
-              e.target.play().catch(err => console.warn("Video play error:", err));
-            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/40 to-transparent pointer-events-none" />
         </div>
