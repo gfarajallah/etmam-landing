@@ -56,7 +56,7 @@ const SmartAgentAI = () => {
   ];
 
   return (
-    <div className="pt-20 bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 text-start">
+    <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 text-start">
       <div className="fixed inset-0 bg-grain opacity-[0.03] pointer-events-none" />
       
       {/* ── 01. HERO: The Computational Horizon ── */}
