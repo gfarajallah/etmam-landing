@@ -217,20 +217,22 @@ const EtmamConsulting = () => {
          </div>
       </section>
 
-      {/* 05. LAUNCH PROTOCOL: Discovery & Portfolio */}
-      <section className="py-60 z-10 relative overflow-hidden text-center bg-black border-t border-[var(--border-color)]">
-        
-        {/* Full-width clear cityscape background */ /* Made prominent so information is fully visible */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <img 
-            src="/media/SmartBlocks Investors_SZOHO1234.png" 
-            alt="Cityscape Background" 
-            className="w-full h-full object-cover object-bottom filter invert mix-blend-screen grayscale opacity-100"
-          />
-          {/* Extremely subtle gradient just for text readability at the very bottom/top */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/80 via-transparent to-[var(--bg-primary)]/40" />
-        </div>
+      {/* 04.5. ZOHO Consulting Integration Banner (Dedicated Cityscape Layer) */}
+      <section className="py-20 bg-[var(--text-primary)] relative border-b border-[var(--border-color)]/20 z-10 flex justify-center items-center">
+         <div className="max-w-7xl mx-auto px-6 w-full opacity-90 hover:opacity-100 transition-opacity duration-700">
+            <img 
+               src="/media/SmartBlocks Investors_SZOHO1234.png" 
+               alt="Zoho Consulting and Implementation Cityscape" 
+               className="w-full h-auto max-h-[600px] object-contain drop-shadow-2xl"
+            />
+         </div>
+      </section>
 
+      {/* 05. LAUNCH PROTOCOL: Discovery & Portfolio */}
+      <section className="py-60 z-10 relative overflow-hidden text-center bg-[var(--bg-primary)] border-t border-[var(--border-color)]">
+        
+        {/* Clean, Non-conflicting Dark/Cybernetic Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-secondary)] to-[var(--bg-primary)] z-0 pointer-events-none" />
         <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/10 blur-[120px] pointer-events-none rounded-full" />
         
