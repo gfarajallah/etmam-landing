@@ -124,11 +124,11 @@ const EtmamConsulting = () => {
                  </motion.div>
               </div>
            </motion.div>
-           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="relative flex justify-center items-center">
+           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="relative flex justify-center items-center w-full">
                  <img 
                    src="/media/SmartBlocks Investors_SZOHO.png" 
                    alt="Mission & Vision Handshake" 
-                   className="w-full max-w-2xl object-contain filter invert mix-blend-screen grayscale opacity-60 hover:opacity-100 hover:scale-105 transition-all duration-[2000ms] ease-out drop-shadow-2xl"
+                   className="w-[120%] max-w-none -ms-[10%] object-contain filter invert mix-blend-screen grayscale opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-[2000ms] ease-out drop-shadow-2xl"
                  />
            </motion.div>
         </div>
@@ -194,20 +194,16 @@ const EtmamConsulting = () => {
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative rtl:order-first flex flex-col justify-center items-center">
                  
-                 {/* Clean Premium Image Card */}
-                 <motion.div 
+                 {/* Clean Unbounded Image */}
+                 <motion.img 
+                   src="/media/Zoho-One-Partner-Dubai-UAE.png" 
+                   alt="Zoho One Partner UAE" 
                    animate={{ y: [0, -10, 0] }}
                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                   className="w-full max-w-sm rounded-[2rem] p-10 bg-white/90 backdrop-blur-sm shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-[var(--accent-gold)]/20 hover:scale-105 hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] transition-all duration-700 z-10"
-                 >
-                    <img 
-                      src="/media/Zoho-One-Partner-Dubai-UAE.png" 
-                      alt="Zoho One Partner UAE" 
-                      className="w-full h-auto object-contain"
-                    />
-                 </motion.div>
+                   className="w-full max-w-sm object-contain z-10 hover:scale-105 transition-transform duration-700 drop-shadow-xl"
+                 />
                
-                 {/* Clean Typography Block Below Image - Dark Color matching the Brand */}
+                 {/* Clean Typography Block Below Image */}
                  <div className="text-center mt-10 z-20">
                       <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.5em] mb-2 block">Certified Integration</span>
                       <h2 className="text-[var(--bg-primary)] text-4xl sm:text-5xl font-black tracking-tighter">ZOHO ARCHITECTS</h2>
@@ -218,12 +214,15 @@ const EtmamConsulting = () => {
       </section>
 
       {/* 04.5. ZOHO Consulting Integration Banner (Dedicated Cityscape Layer) */}
-      <section className="py-20 bg-[var(--text-primary)] relative border-b border-[var(--border-color)]/20 z-10 flex justify-center items-center">
-         <div className="max-w-7xl mx-auto px-6 w-full opacity-90 hover:opacity-100 transition-opacity duration-700">
+      <section className="py-20 bg-black relative border-b border-[var(--border-color)] z-10 flex justify-center items-center overflow-hidden">
+         <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
+         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black z-10 pointer-events-none" />
+         
+         <div className="max-w-5xl mx-auto px-6 w-full opacity-60 hover:opacity-100 transition-opacity duration-700 relative z-0">
             <img 
                src="/media/SmartBlocks Investors_SZOHO1234.png" 
                alt="Zoho Consulting and Implementation Cityscape" 
-               className="w-full h-auto max-h-[600px] object-contain drop-shadow-2xl"
+               className="w-full h-auto max-h-[500px] object-contain filter invert mix-blend-screen grayscale"
             />
          </div>
       </section>
