@@ -124,15 +124,12 @@ const EtmamConsulting = () => {
                  </motion.div>
               </div>
            </motion.div>
-           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="relative group">
-              <div className="aspect-[4/3] bg-black border border-[var(--border-color)] rounded-sm overflow-hidden p-2 metallic-glow shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="relative group flex items-center justify-center p-6">
                  <img 
                    src="/media/SmartBlocks Investors_SZOHO.png" 
-                   alt="Business Optimization" 
-                   className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2000ms] ease-out"
+                   alt="Mission & Vision Handshake" 
+                   className="w-full max-w-lg object-contain filter invert mix-blend-screen opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2000ms] ease-out drop-shadow-[0_0_30px_rgba(255,255,255,0.05)]"
                  />
-                 <div className="absolute inset-0 bg-[var(--accent-gold)]/10 mix-blend-overlay pointer-events-none" />
-              </div>
            </motion.div>
         </div>
       </section>
@@ -198,9 +195,9 @@ const EtmamConsulting = () => {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative rtl:order-first group perspectives-1000">
                <div className="aspect-square bg-black border border-[var(--border-color)] rounded-sm overflow-hidden p-2 metallic-glow shadow-[0_20px_50px_rgba(0,0,0,0.5)] -skew-y-3 transform transition-all duration-[1500ms] group-hover:skew-y-0 hover:rotate-y-[5deg] group-hover:scale-105">
                  <img 
-                   src="/media/SmartBlocks Investors_SZOHO1234.png" 
-                   alt="Zoho Partnership Node" 
-                   className="w-full h-full object-cover object-left grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-[1500ms] ease-out scale-110 group-hover:scale-100"
+                   src="/media/Zoho-One-Partner-Dubai-UAE.png" 
+                   alt="Zoho One Partner UAE" 
+                   className="w-full h-full object-cover object-center grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-[1500ms] ease-out scale-110 group-hover:scale-105"
                  />
                  <div className="absolute inset-0 bg-blue-500/10 mix-blend-overlay pointer-events-none" />
                </div>
@@ -215,9 +212,20 @@ const EtmamConsulting = () => {
       </section>
 
       {/* 05. LAUNCH PROTOCOL: Discovery & Portfolio */}
-      <section className="py-60 z-10 relative overflow-hidden text-center bg-black/40 border-t border-[var(--border-color)]">
+      <section className="py-60 z-10 relative overflow-hidden text-center bg-black border-t border-[var(--border-color)]">
+        
+        {/* Full-width inverted cityscape background */}
+        <div className="absolute inset-0 z-0 opacity-40">
+          <img 
+            src="/media/SmartBlocks Investors_SZOHO1234.png" 
+            alt="Cityscape Background" 
+            className="w-full h-full object-cover object-bottom filter invert mix-blend-screen opacity-60 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)]" />
+        </div>
+
         <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 blur-[120px] pointer-events-none rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/10 blur-[120px] pointer-events-none rounded-full" />
         
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
           <motion.span variants={fadeUpVariant} className="text-blue-400 text-[12px] font-black uppercase tracking-[1em] mb-8 block opacity-80 drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">
