@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 import PremiumButton from '@/components/ui/PremiumButton';
 import Magnetic from '@/components/ui/Magnetic';
 import TextReveal from '@/components/ui/TextReveal';
-import { fadeUpVariant, staggerContainer } from '@/lib/animations';
+import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const EtmamConsulting = () => {
   const { lang } = useLanguage();

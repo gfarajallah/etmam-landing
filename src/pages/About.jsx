@@ -8,7 +8,10 @@ import {
   Quote,
   Lock,
   Volume2,
-  VolumeX
+  VolumeX,
+  Layers,
+  Target,
+  Award
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
