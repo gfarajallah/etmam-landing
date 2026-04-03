@@ -50,9 +50,16 @@ const EtmamConsulting = () => {
       
       {/* 01. Hero - Institutional Clarity */}
       <section className="relative py-40 md:py-60 overflow-hidden z-10 border-b border-[var(--border-color)]">
-        <div className="absolute top-0 end-0 w-full h-full opacity-10 pointer-events-none">
-           <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)]" />
-           <div className="absolute top-0 end-0 w-1/2 h-full bg-[var(--accent-gold)]/5 skew-x-[-12deg] transform origin-top" />
+        <div className="absolute inset-0 z-0 bg-black">
+          <img 
+            src="/media/13.01.2026_02.55.56_REC.png" 
+            alt="ETMAM Consulting Hero" 
+            className="w-full h-full object-cover object-[center_top] grayscale opacity-40 scale-105" 
+          />
+          {/* Gradients to blend the image seamlessly into the background */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)]" />
+          <div className="absolute inset-0 bg-[var(--accent-gold)]/5 mix-blend-overlay" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative flex flex-col items-center text-center">
@@ -117,14 +124,14 @@ const EtmamConsulting = () => {
                  </motion.div>
               </div>
            </motion.div>
-           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="relative">
-              <div className="aspect-video bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-sm overflow-hidden p-2 metallic-glow">
+           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="relative group">
+              <div className="aspect-[4/3] bg-black border border-[var(--border-color)] rounded-sm overflow-hidden p-2 metallic-glow shadow-[0_0_50px_rgba(0,0,0,0.5)]">
                  <img 
-                   src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426" 
+                   src="/media/SmartBlocks Investors_SZOHO.png" 
                    alt="Business Optimization" 
-                   className="w-full h-full object-cover grayscale opacity-50"
+                   className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2000ms] ease-out"
                  />
-                 <div className="absolute inset-0 bg-[var(--accent-gold)]/10 mix-blend-overlay" />
+                 <div className="absolute inset-0 bg-[var(--accent-gold)]/10 mix-blend-overlay pointer-events-none" />
               </div>
            </motion.div>
         </div>
@@ -188,12 +195,20 @@ const EtmamConsulting = () => {
                   </ul>
                </motion.div>
             </motion.div>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative rtl:order-first">
-               <div className="aspect-square bg-[var(--bg-primary)] flex items-center justify-center p-20 rounded-sm shadow-2xl skew-y-3 transform">
-                  <div className="text-center">
-                    <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Official Partner</span>
-                    <h2 className="text-[var(--text-primary)] text-9xl font-black tracking-tighter">ZOHO</h2>
-                  </div>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative rtl:order-first group perspectives-1000">
+               <div className="aspect-square bg-black border border-[var(--border-color)] rounded-sm overflow-hidden p-2 metallic-glow shadow-[0_20px_50px_rgba(0,0,0,0.5)] -skew-y-3 transform transition-all duration-[1500ms] group-hover:skew-y-0 hover:rotate-y-[5deg] group-hover:scale-105">
+                 <img 
+                   src="/media/SmartBlocks Investors_SZOHO1234.png" 
+                   alt="Zoho Partnership Node" 
+                   className="w-full h-full object-cover object-left grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-[1500ms] ease-out scale-110 group-hover:scale-100"
+                 />
+                 <div className="absolute inset-0 bg-blue-500/10 mix-blend-overlay pointer-events-none" />
+               </div>
+               
+               {/* Institutional Floating Badge Over the image */}
+               <div className="absolute -bottom-8 -end-8 bg-[var(--bg-primary)] px-8 py-6 border border-[var(--border-color)] shadow-2xl backdrop-blur-xl group-hover:-translate-y-4 transition-transform duration-700">
+                    <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em] mb-2 block">Certified Integration</span>
+                    <h2 className="text-[var(--text-primary)] text-4xl font-black tracking-tighter w-max">ZOHO ARCHITECTS</h2>
                </div>
             </motion.div>
          </div>
