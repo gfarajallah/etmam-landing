@@ -17,7 +17,9 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PremiumButton from '@/components/ui/PremiumButton';
-import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
+import Magnetic from '@/components/ui/Magnetic';
+import TextReveal from '@/components/ui/TextReveal';
+import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const EtmamConsulting = () => {
   const { lang } = useLanguage();
@@ -40,11 +42,7 @@ const EtmamConsulting = () => {
     }
   ];
 
-  const whyEtmam = [
-    { label: "10+", text: lang === 'en' ? "Years of Excellence" : "سنوات من التميز" },
-    { label: "80%+", text: lang === 'en' ? "Client Retention" : "الاحتفاظ بالعملاء" },
-    { label: "95%+", text: lang === 'en' ? "Revenue Growth" : "نمو الإيرادات" }
-  ];
+
 
   return (
     <div className="pt-20 bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 text-start">
@@ -69,9 +67,10 @@ const EtmamConsulting = () => {
                 </motion.span>
                 <div className="w-10 h-[1px] bg-[var(--accent-gold)]/50" />
               </div>
-              <motion.h1 variants={fadeUpVariant} className="display-title mb-12">
-                {lang === 'en' ? <>Institutional <br /><span className="gold-gradient-text italic">Precision.</span></> : <>دقة <br /><span className="gold-gradient-text italic">مؤسسية.</span></>}
-              </motion.h1>
+              <TextReveal 
+                text={lang === 'en' ? 'Institutional Precision.' : 'دقة مؤسسية.'}
+                className="display-title mb-12 justify-center"
+              />
               <motion.p variants={fadeUpVariant} className="text-2xl text-[var(--text-primary)] opacity-60 max-w-2xl mx-auto font-light leading-relaxed">
                  {lang === 'en' 
                    ? "A seamless integration of efficient, risk-free, and in-depth business approaches focused on growth and success."
@@ -85,9 +84,10 @@ const EtmamConsulting = () => {
       <section className="py-40 relative z-10 border-b border-[var(--border-color)] bg-[var(--bg-secondary)]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="text-start">
-              <motion.h2 variants={fadeUpVariant} className="section-title mb-12">
-                {lang === 'en' ? <>Mission & <span className="text-[var(--accent-gold)] italic">Vision.</span></> : <>المهمة <span className="text-[var(--accent-gold)] italic">والرؤية.</span></>}
-              </motion.h2>
+              <TextReveal 
+                text={lang === 'en' ? 'Mission & Vision.' : 'المهمة والرؤية.'}
+                className="section-title mb-12"
+              />
               <div className="space-y-12">
                  <motion.div variants={fadeUpVariant} className="flex gap-8 group">
                     <div className="p-4 rounded-sm border border-[var(--border-color)] bg-[var(--bg-primary)] group-hover:border-[var(--accent-gold)] transition-colors h-fit">
@@ -135,9 +135,10 @@ const EtmamConsulting = () => {
         <div className="absolute top-1/2 start-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--accent-gold)]/20 to-transparent -rotate-[15deg] rtl:rotate-[15deg]" />
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center mb-40">
-           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="display-title italic">
-              {lang === 'en' ? <>What We <span className="not-italic text-[var(--accent-gold)]">Do.</span></> : <>ما <span className="not-italic text-[var(--accent-gold)]">نفعله.</span></>}
-           </motion.h2>
+           <TextReveal 
+              text={lang === 'en' ? 'What We Do.' : 'ما نفعله.'}
+              className="display-title justify-center"
+            />
         </div>
 
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -187,7 +188,7 @@ const EtmamConsulting = () => {
                   </ul>
                </motion.div>
             </motion.div>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="relative rtl:order-first">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative rtl:order-first">
                <div className="aspect-square bg-[var(--bg-primary)] flex items-center justify-center p-20 rounded-sm shadow-2xl skew-y-3 transform">
                   <div className="text-center">
                     <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Official Partner</span>
@@ -198,27 +199,47 @@ const EtmamConsulting = () => {
          </div>
       </section>
 
-      {/* 05. Why ETMAM Metrics */}
-      <section className="py-52 z-10 relative border-t border-[var(--border-color)]">
-         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-24">
-            {whyEtmam.map((metric, i) => (
-              <motion.div key={i} variants={fadeUpVariant} className="text-center group relative">
-                 <h4 className="text-[12rem] md:text-[14rem] font-black leading-none opacity-5 group-hover:opacity-10 transition-opacity absolute -translate-y-20 inset-x-0 pointer-events-none">{metric.label}</h4>
-                 <div className="relative z-10 pt-20">
-                   <h5 className="text-5xl font-black gold-gradient-text mb-4 italic transition-transform duration-700 group-hover:-translate-y-2">{metric.label}</h5>
-                   <p className="text-[10px] font-black uppercase tracking-[0.6em] opacity-40">{metric.text}</p>
-                 </div>
-              </motion.div>
-            ))}
-         </motion.div>
-         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="max-w-4xl mx-auto px-6 text-center mt-60 flex flex-col items-center">
-            <h3 className="text-4xl font-black uppercase tracking-tighter mb-12">
-               {lang === 'en' ? "At ETMAM, We Get It Done." : "في إتمام، نحن ننجز المهمة."}
-            </h3>
-            <PremiumButton to="/contact">
-               {lang === 'en' ? 'Initiate Consultation' : 'بدء الاستشارة'}
-            </PremiumButton>
-         </motion.div>
+      {/* 05. LAUNCH PROTOCOL: Discovery & Portfolio */}
+      <section className="py-60 z-10 relative overflow-hidden text-center bg-black/40 border-t border-[var(--border-color)]">
+        <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 blur-[120px] pointer-events-none rounded-full" />
+        
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
+          <motion.span variants={fadeUpVariant} className="text-blue-400 text-[12px] font-black uppercase tracking-[1em] mb-8 block opacity-80 drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">
+            {lang === 'en' ? 'Protocol Access' : 'صلاحية الدخول للبروتوكول'}
+          </motion.span>
+          
+          <TextReveal 
+            text={lang === 'en' ? 'Ready to Optimize?' : 'جاهز للتحول؟'}
+            className="display-title mb-20 justify-center"
+          />
+
+          <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Action 1: Discovery Call */}
+            <Link to="/contact" 
+               className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]">
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <Briefcase size={48} className="text-blue-400 mb-10 group-hover:scale-125 transition-transform duration-700" />
+              <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{lang === 'en' ? 'Book Discovery' : 'حجز جلسة اكتشاف'}</h3>
+              <p className="text-[11px] font-black uppercase tracking-widest opacity-40 mb-10">{lang === 'en' ? 'Define the Strategy' : 'تحديد الاستراتيجية'}</p>
+              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-blue-400 group-hover:text-black group-hover:border-blue-400 transition-all duration-500">
+                <ArrowRight size={20} className={`${lang === 'ar' ? 'rotate-180' : ''}`} />
+              </div>
+            </Link>
+
+            {/* Action 2: Portfolio */}
+            <Link to="/ventures" 
+               className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]">
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <BarChart3 size={48} className="text-blue-400 mb-10 group-hover:scale-125 transition-transform duration-700" />
+              <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{lang === 'en' ? 'Review Portfolio' : 'مراجعة المحفظة'}</h3>
+              <p className="text-[11px] font-black uppercase tracking-widest opacity-40 mb-10">{lang === 'en' ? 'Institutional Success' : 'النجاح المؤسسي'}</p>
+              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-blue-400 group-hover:text-black group-hover:border-blue-400 transition-all duration-500">
+                <ArrowRight size={20} className={`${lang === 'ar' ? 'rotate-180' : ''}`} />
+              </div>
+            </Link>
+          </motion.div>
+        </motion.div>
       </section>
     </div>
   );

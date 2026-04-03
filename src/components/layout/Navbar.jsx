@@ -31,7 +31,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-[var(--bg-primary)]/80 backdrop-blur-xl border-b border-[var(--border-color)]' : 'py-8 bg-transparent'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-700 ${scrolled ? 'py-4 bg-black/30 backdrop-blur-md border-b border-white/5' : 'py-8 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex justify-between items-center">
           <Link to="/" className="relative z-10 group">
@@ -47,7 +47,7 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`text-[10px] font-black uppercase tracking-[0.3em] transition-colors relative group py-2 ${
+                  className={`text-[13px] font-black uppercase tracking-[0.2em] transition-colors relative group py-2 ${
                     location.pathname === link.path ? 'text-[var(--accent-gold)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-gold)]'
                   }`}
                 >

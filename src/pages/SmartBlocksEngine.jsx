@@ -16,7 +16,9 @@ import {
   Layers
 } from 'lucide-react';
 import PremiumButton from '@/components/ui/PremiumButton';
-import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
+import Magnetic from '@/components/ui/Magnetic';
+import TextReveal from '@/components/ui/TextReveal';
+import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const SmartBlocksEngine = () => {
   const { lang } = useLanguage();
@@ -143,12 +145,10 @@ const SmartBlocksEngine = () => {
               <div className="w-10 h-[1px] bg-[var(--accent-gold)]/50" />
             </motion.div>
             
-            <motion.h1 variants={fadeUpVariant} className="font-black mb-12 uppercase tracking-tighter leading-[0.85]"
-              style={{ fontSize: 'clamp(4rem,10vw,8rem)' }}>
-              {lang === 'en'
-                ? <><span className="gold-gradient-text italic">Empowering</span><br />Real Estate.</>
-                : <><span className="gold-gradient-text italic">تمكين</span><br />العقارات.</>}
-            </motion.h1>
+            <TextReveal 
+              text={lang === 'en' ? 'Empowering Real Estate.' : 'تمكين العقارات.'}
+              className={`font-black mb-12 uppercase tracking-tighter leading-[0.9] flex justify-center w-full display-title`}
+            />
             
             <motion.p variants={fadeUpVariant} className="text-[clamp(1rem,2vw,1.5rem)] text-[var(--text-primary)] opacity-50 max-w-3xl mx-auto font-light leading-relaxed mb-16">
               {lang === 'en'
@@ -157,9 +157,11 @@ const SmartBlocksEngine = () => {
             </motion.p>
 
             <motion.div variants={fadeUpVariant} className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-              <PremiumButton to="/contact">
-                {lang === 'en' ? 'Inquire Protocol' : 'استفسار عن البروتوكول'}
-              </PremiumButton>
+              <Magnetic strength={0.4}>
+                <PremiumButton to="/contact">
+                  {lang === 'en' ? 'Inquire Protocol' : 'استفسار عن البروتوكول'}
+                </PremiumButton>
+              </Magnetic>
               <div className="flex items-center gap-6 p-6 border border-[var(--border-color)] bg-[var(--bg-secondary)]/30 backdrop-blur-md text-start">
                 <div className="w-12 h-12 bg-[var(--accent-gold)]/10 flex items-center justify-center">
                   <BarChart4 size={24} className="text-[var(--accent-gold)]" />
@@ -210,12 +212,10 @@ const SmartBlocksEngine = () => {
             <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.6em] mb-8 block">
               {lang === 'en' ? 'Ecosystem Solutions' : 'حلول النظام البيئي'}
             </motion.span>
-            <motion.h2 variants={fadeUpVariant} className="font-black uppercase tracking-tighter italic"
-              style={{ fontSize: 'clamp(2.5rem,6vw,6rem)' }}>
-              {lang === 'en'
-                ? <>Radical <span className="not-italic text-[var(--accent-gold)]">Empowerment.</span></>
-                : <>تمكين <span className="not-italic text-[var(--accent-gold)]">جذري.</span></>}
-            </motion.h2>
+            <TextReveal 
+              text={lang === 'en' ? 'Radical Empowerment.' : 'تمكين جذري.'}
+              className="font-black uppercase tracking-tighter display-title"
+            />
             <motion.p variants={fadeUpVariant} className="mt-8 text-xl font-light text-[var(--text-primary)] opacity-40 max-w-2xl">
               {lang === 'en'
                 ? 'Defining the gold standard solutions across every layer of the real estate ecosystem.'
@@ -264,28 +264,48 @@ const SmartBlocksEngine = () => {
         </div>
       </section>
 
-      {/* 04. Institutional Banner */}
-      <section className="py-52 z-10 relative overflow-hidden">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="p-1 border border-[var(--border-color)] premium-card bg-[var(--bg-secondary)]/30 backdrop-blur-md overflow-hidden group">
-            <div className="aspect-[21/9] overflow-hidden relative">
-              <img
-                src="/media/etmam_architecture.png"
-                alt="Etmam Institutional Architecture"
-                className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)]" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center flex flex-col items-center">
-                  <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[1em] mb-4 block opacity-50">Operational Infrastructure</span>
-                  <h3 className="text-4xl font-black uppercase tracking-tighter mb-10">{lang === 'en' ? 'Built for Scale.' : 'بُنيت للتوسع.'}</h3>
-                  <PremiumButton to="/contact" scale="scale-110">
-                    {lang === 'en' ? 'COMMAND PROTOCOL' : 'قيادة البروتوكول'}
-                  </PremiumButton>
-                </div>
+      {/* 04. LAUNCH PROTOCOL: Platform & Masterclass */}
+      <section className="py-60 z-10 relative overflow-hidden text-center bg-black/40 border-t border-[var(--border-color)]">
+        <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--accent-gold)]/5 blur-[120px] pointer-events-none rounded-full" />
+        
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
+          <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[12px] font-black uppercase tracking-[1em] mb-8 block opacity-80 drop-shadow-[0_0_10px_rgba(201,169,98,0.5)]">
+            {lang === 'en' ? 'Protocol Access' : 'صلاحية الدخول للبروتوكول'}
+          </motion.span>
+          
+          <motion.h2 variants={fadeUpVariant} className="font-black uppercase tracking-tighter italic mb-20"
+            style={{ fontSize: 'clamp(3rem,8vw,7rem)' }}>
+            {lang === 'en'
+              ? <>Initiate <span className="not-italic text-[var(--accent-gold)]">Sequence.</span></>
+              : <>بدء <span className="not-italic text-[var(--accent-gold)]">المحرك.</span></>}
+          </motion.h2>
+
+          <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Action 1: The Platform */}
+            <a href="https://smartblocks.etmam.io" target="_blank" rel="noopener noreferrer" 
+               className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:shadow-gold-glow">
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <Cpu size={48} className="text-[var(--accent-gold)] mb-10 group-hover:scale-125 transition-transform duration-700" />
+              <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{lang === 'en' ? 'Launch Platform' : 'إطلاق المنصة التقنية'}</h3>
+              <p className="text-[11px] font-black uppercase tracking-widest opacity-40 mb-10">{lang === 'en' ? 'Enter the Ecosystem' : 'ادخل للنظام البيئي'}</p>
+              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-500">
+                <ArrowRight size={20} className={`${isArabic ? 'rotate-180' : ''}`} />
               </div>
-            </div>
-          </div>
+            </a>
+
+            {/* Action 2: The Masterclass */}
+            <a href="https://academy.etmam.io/smartblocks" target="_blank" rel="noopener noreferrer" 
+               className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:shadow-gold-glow">
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <Lock size={48} className="text-[var(--accent-gold)] mb-10 group-hover:scale-125 transition-transform duration-700" />
+              <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{lang === 'en' ? 'Explore Masterclass' : 'دورة الإتقان الشاملة'}</h3>
+              <p className="text-[11px] font-black uppercase tracking-widest opacity-40 mb-10">{lang === 'en' ? 'Master the Logic' : 'أتقن المنطق التشغيلي'}</p>
+              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-500">
+                <ArrowRight size={20} className={`${isArabic ? 'rotate-180' : ''}`} />
+              </div>
+            </a>
+          </motion.div>
         </motion.div>
       </section>
     </div>

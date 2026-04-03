@@ -14,6 +14,8 @@ import {
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/useLanguage';
 import PremiumButton from '@/components/ui/PremiumButton';
+import Magnetic from '@/components/ui/Magnetic';
+import TextReveal from '@/components/ui/TextReveal';
 import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const Home = () => {
@@ -21,9 +23,9 @@ const Home = () => {
   const isArabic = lang === 'ar';
 
   const stats = [
-    { label: lang === 'en' ? 'Years of Leadership' : 'سنوات من القيادة', value: '10+', icon: <Award className="text-[var(--accent-gold)]" size={24} /> },
-    { label: lang === 'en' ? 'Professionals Trained' : 'خبير تم تأهيلهم', value: '500+', icon: <Users className="text-[var(--accent-gold)]" size={24} /> },
-    { label: lang === 'en' ? 'Asset Value Tokenized' : 'قيمة الأصول المشفرة', value: '$4B+', icon: <TrendingUp className="text-[var(--accent-gold)]" size={24} /> },
+    { label: lang === 'en' ? 'Years of Strategic Expertise' : 'سنوات من الخبرة الاستراتيجية', value: '15+', icon: <Award className="text-[var(--accent-gold)]" size={24} /> },
+    { label: lang === 'en' ? 'Digital Asset Strategies' : 'استراتيجيات الأصول الرقمية', value: '50+', icon: <Layers className="text-[var(--accent-gold)]" size={24} /> },
+    { label: lang === 'en' ? 'Targeting Global Liquidity' : 'نستهدف السيولة العالمية', value: 'Promise', icon: <TrendingUp className="text-[var(--accent-gold)]" size={24} /> },
   ];
 
   const corePillars = [
@@ -62,41 +64,56 @@ const Home = () => {
       {/* ── 01. HERO ── */}
       <section className="relative min-h-screen flex items-center overflow-hidden z-20 border-b border-[var(--border-color)]">
         {/* Background Image / Overlay */}
-        <div className="absolute inset-0 z-0 bg-black group">
+        <div className={`absolute inset-0 z-0 bg-black group overflow-hidden`}>
           <img 
             src="/media/etmam_executive_hero_premium.png" 
             alt="Etmam Vision - Ghassan Farajallah" 
-            className="w-full h-full object-cover grayscale brightness-[0.4] group-hover:grayscale-0 group-hover:brightness-[0.7] transition-all duration-[5000ms] animate-slow-zoom"
+            className={`absolute top-0 h-full transition-all duration-[5000ms] animate-slow-zoom brightness-[0.4] group-hover:brightness-[0.6] grayscale group-hover:grayscale-0
+              ${isArabic ? 'left-0 scale-x-[-1]' : 'right-0'} `}
+            style={{ 
+              objectPosition: 'top center',
+              width: '65%',
+              objectFit: 'cover',
+              maskImage: `linear-gradient(${isArabic ? 'to right' : 'to left'}, black 45%, transparent 100%)`,
+              WebkitMaskImage: `linear-gradient(${isArabic ? 'to right' : 'to left'}, black 45%, transparent 100%)`
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)] via-[var(--bg-primary)]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--bg-primary)]/80" />
+          <div className={`absolute inset-0 bg-gradient-to-r ${isArabic ? 'from-transparent via-[var(--bg-primary)]/30 to-[var(--bg-primary)]' : 'from-[var(--bg-primary)] via-[var(--bg-primary)]/30 to-transparent'}`} />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-30 w-full text-start">
-          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-4xl">
-            <motion.div variants={fadeUpVariant} className="flex items-center gap-6 mb-8">
-              <div className="w-12 h-[1px] bg-[var(--accent-gold)]" />
-              <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em]">
+        <div className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-32 relative z-30 w-full">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} 
+            className={`max-w-5xl ${isArabic ? 'mr-auto text-end pl-20' : 'text-start pr-20'}`}>
+            <motion.div variants={fadeUpVariant} className={`flex items-center gap-6 mb-12 ${isArabic ? 'flex-row-reverse' : ''}`}>
+              <div className="w-16 h-[1px] bg-[var(--accent-gold)]" />
+              <span className="text-[var(--accent-gold)] text-[12px] font-black uppercase tracking-[0.8em]">
                 {lang === 'en' ? 'Track 01 // Executive Engine' : 'المسار 01 // المحرك التنفيذي'}
               </span>
             </motion.div>
 
-            <motion.h1 variants={fadeUpVariant} className="display-title mb-8">
-              {lang === 'en' ? <>Institutional<br /><span className="gold-gradient-text italic">Precision.</span></> : <>الدقة<br /><span className="gold-gradient-text italic">المؤسسية الرصينة.</span></>}
-            </motion.h1>
+            <TextReveal 
+              text={lang === 'en' ? 'Engineering the Future.' : 'هندسة مـسـتـقـبـل السيولة الرقمية.'}
+              className={`display-title mb-10 tracking-tighter ${isArabic ? 'leading-[1.4]' : 'leading-[0.85]'}`}
+            />
 
-            <motion.p variants={fadeUpVariant} className="text-[clamp(1.1rem,2vw,1.6rem)] font-light opacity-60 max-w-3xl mb-12 leading-relaxed">
+            <motion.p variants={fadeUpVariant} className={`text-[clamp(1rem,1.8vw,1.4rem)] font-light opacity-60 max-w-3xl mb-16 leading-relaxed`}>
               {lang === 'en' 
-                ? 'Engineering the elite frameworks for the transition to tokenized real estate assets. Leadership for the digital-first era.'
-                : 'يصمم إتمام الأطر النخبوية للانتقال إلى الأصول العقارية المرمزة. القيادة الحقيقية للعصر الرقمي الأول.'}
+                ? 'Building the institutional bridge for the digital-first era. A visionary platform engineering the transition to tokenized real assets.'
+                : 'بناء الجسر المؤسسي للعصر الرقمي الأول. منصة طموحة تهندس الانتقال نحو الأصول الحقيقية المرمزة.'}
             </motion.p>
 
-            <motion.div variants={fadeUpVariant} className="flex flex-col sm:flex-row gap-6 items-start">
-              <PremiumButton to="/contact" scale="scale-110">
-                {t('cta_initiate')}
-              </PremiumButton>
-              <Link to="/about" className="px-10 py-5 border border-[var(--border-color)] bg-white/5 backdrop-blur-sm text-[var(--text-primary)] font-black uppercase tracking-widest text-[9px] hover:bg-[var(--accent-gold)]/10 transition-all flex items-center justify-center">
-                {lang === 'en' ? 'DISCOVER THE VISION' : 'اكتشف الرؤية الاستراتيجية'}
-              </Link>
+            <motion.div variants={fadeUpVariant} className={`flex flex-col sm:flex-row gap-10 items-center sm:items-start`}>
+              <Magnetic strength={0.4}>
+                <PremiumButton to="/contact" scale="scale-110">
+                  {t('cta_initiate')}
+                </PremiumButton>
+              </Magnetic>
+              <Magnetic strength={0.2}>
+                <Link to="/about" className="px-16 py-7 border border-[var(--border-color)] bg-white/5 backdrop-blur-md text-[var(--text-primary)] font-black uppercase tracking-[0.3em] text-[11px] hover:bg-[var(--accent-gold)]/10 hover:border-[var(--accent-gold)] transition-all flex items-center justify-center">
+                  {lang === 'en' ? 'DISCOVER THE VISION' : 'اكتشف الرؤية الاستراتيجية'}
+                </Link>
+              </Magnetic>
             </motion.div>
           </motion.div>
         </div>
@@ -172,8 +189,8 @@ const Home = () => {
           className="max-w-7xl mx-auto px-6 md:px-12 relative z-10"
         >
           <div className="text-center mb-24">
-            <h2 className="text-6xl md:text-[10rem] font-black tracking-tighter uppercase leading-[0.8] mb-8 animate-slow-y text-glow-gold">SmartBlocks.</h2>
-            <p className="text-2xl md:text-3xl text-[var(--text-primary)] opacity-40 max-w-4xl mx-auto font-light leading-relaxed">
+            <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.8] mb-8 animate-slow-y text-glow-gold">SmartBlocks.</h2>
+            <p className="text-xl md:text-2xl text-[var(--text-primary)] opacity-40 max-w-4xl mx-auto font-light leading-relaxed">
               {lang === 'en' 
                 ? 'Defining the gold standard for real estate tokenization. Absolute precision in digital liquidity.'
                 : 'تحديد المعيار الذهبي لترميز العقارات. دقة مطلقة في السيولة الرقمية.'}
@@ -207,31 +224,56 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* ── 05. TRIPLE-TRACK SECTION ── */}
-      <section className="py-52 relative overflow-hidden z-10 text-center border-b border-[var(--border-color)]">
-         <motion.div 
-           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant}
-           className="max-w-7xl mx-auto px-6"
-         >
-            <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.6em] mb-12 block">
-               {lang === 'en' ? 'The Strategic Framework' : 'المخطط الاستراتيجي'}
-            </span>
-            <div className="mb-20">
-               <h2 className="text-7xl md:text-[11rem] font-black uppercase tracking-tighter leading-none italic">
-                 <span className="block mb-4">{lang === 'en' ? 'TRIPLE-TRACK' : 'ترايبل-تراك'}</span>
-                 <span className="gold-gradient-text not-italic block">{lang === 'en' ? 'SOLUTIONS.' : 'سـولوشـنـز.'}</span>
-               </h2>
-               <p className="text-xl md:text-2xl text-[var(--text-primary)] opacity-40 max-w-4xl mx-auto font-light mt-12">
-                  {lang === 'en' ? 'Three specialized pathways engineering the future of institutional liquidity.' : 'ثلاثة مسارات متخصصة تهندس مستقبلاً من السيولة المؤسسية.'}
-               </p>
-            </div>
-            
-            <div className="flex justify-center">
-              <PremiumButton to="/contact" scale="scale-125">
-                {t('cta_command')}
-              </PremiumButton>
-            </div>
-         </motion.div>
+      {/* ── 05. LAUNCH PROTOCOL: The Gateway ── */}
+      <section className="py-60 relative overflow-hidden text-center bg-black/60 border-t border-[var(--border-color)]">
+        <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[var(--accent-gold)]/5 blur-[150px] pointer-events-none rounded-full" />
+        
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[12px] font-black uppercase tracking-[1.2em] mb-12 block opacity-80">
+            {lang === 'en' ? 'Final Protocol' : 'البروتوكول النهائي'}
+          </motion.span>
+          
+          <motion.h2 
+            variants={fadeUpVariant} 
+            className="font-black uppercase tracking-tighter mb-24 leading-[0.9]"
+            style={{ fontSize: 'clamp(2.5rem,8vw,7rem)' }}
+          >
+            {lang === 'en'
+              ? <>Enter the <span className="text-[var(--accent-gold)]">Arena.</span></>
+              : <>ادخل <span className="text-[var(--accent-gold)]">الميدان.</span></>}
+          </motion.h2>
+
+          <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Action 1: Institutional Engagement */}
+            <Link to="/contact" 
+               className="group flex flex-col items-center justify-center p-20 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-3xl relative overflow-hidden transition-all duration-1000 hover:border-[var(--accent-gold)] hover:shadow-[0_0_60px_rgba(201,169,98,0.25)]">
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <ShieldCheck size={64} className="text-[var(--accent-gold)] mb-12 group-hover:scale-110 transition-transform duration-1000" />
+              <h3 className="text-4xl font-black uppercase tracking-tight mb-6">{lang === 'en' ? 'The Platform' : 'المنصة المؤسسية'}</h3>
+              <p className="text-[12px] font-black uppercase tracking-[0.5em] opacity-40 mb-12">{lang === 'en' ? 'Secure Login // Onboarding' : 'تسجيل دخول آمن // انضمام'}</p>
+              <div className="w-20 h-20 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-700">
+                <ArrowRight size={24} className={`${lang === 'ar' ? 'rotate-180' : ''}`} />
+              </div>
+            </Link>
+
+            {/* Action 2: Academy & Research */}
+            <Link to="/insights" 
+               className="group flex flex-col items-center justify-center p-20 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-3xl relative overflow-hidden transition-all duration-1000 hover:border-[var(--accent-gold)] hover:shadow-[0_0_60px_rgba(201,169,98,0.25)]">
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <Zap size={64} className="text-[var(--accent-gold)] mb-12 group-hover:scale-110 transition-transform duration-1000" />
+              <h3 className="text-4xl font-black uppercase tracking-tight mb-6">{lang === 'en' ? 'The Academy' : 'أكاديمية الإتقان'}</h3>
+              <p className="text-[12px] font-black uppercase tracking-[0.5em] opacity-40 mb-12">{lang === 'en' ? 'Intelligence // Masterclass' : 'الذكاء // الماستر كلاس'}</p>
+              <div className="w-20 h-20 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-700">
+                <ArrowRight size={24} className={`${lang === 'ar' ? 'rotate-180' : ''}`} />
+              </div>
+            </Link>
+          </motion.div>
+
+          <motion.div variants={fadeUpVariant} className="mt-32 opacity-30 text-[10px] md:text-xs font-black tracking-[0.5em] uppercase font-inter leading-none">
+             Institutional Engine // Layer 0.0 Gateway
+          </motion.div>
+        </motion.div>
       </section>
     </div>
   );

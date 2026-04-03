@@ -1,137 +1,189 @@
 import { useLanguage } from '@/context/useLanguage';
 import CommandTerminal from '@/components/interactive/CommandTerminal';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Globe, Cpu, Layers, Zap, BarChart, Bot, ArrowRight } from 'lucide-react';
+import { Globe, Cpu, Bot } from 'lucide-react';
 import PremiumButton from '@/components/ui/PremiumButton';
+import Magnetic from '@/components/ui/Magnetic';
+import TextReveal from '@/components/ui/TextReveal';
 import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const Solutions = () => {
-  const { t, lang } = useLanguage();
-  const isArabic = lang === 'ar';
+  const { lang } = useLanguage();
 
   const tracks = [
     {
       id: "etmam",
-      title: t('track_01_title'),
-      subtitle: lang === 'en' ? "CONSULTANCY" : "استشارات",
-      desc: lang === 'en' ? "Institutional advisory and regulatory engineering for global real asset digital transitions." : "استشارات مؤسسية وهندسة تنظيمية للتحولات الرقمية للأصول العقارية العالمية.",
-      icon: <Globe size={40} className="text-blue-400" />,
+      number: "01",
+      title: lang === 'en' ? "ETMAM Consultancy" : "إتمام للاستشارات",
+      subtitle: lang === 'en' ? "STRATEGIC ADVISORY" : "استشارات استراتيجية",
+      desc: lang === 'en' 
+        ? "Engineering the legal and regulatory architecture for monumental digital asset transitions. We bridge legacy real estate with future-ready liquidity."
+        : "هندسة العمارة القانونية والتنظيمية لتحولات الأصول الرقمية الضخمة. نحن نجسر العقارات التقليدية مع السيولة الجاهزة للمستقبل.",
+      icon: <Globe size={48} />,
       link: "/solutions/etmam",
-      theme: "from-blue-600/10 to-transparent",
-      tag: "TRACK 01"
+      color: "rgba(59, 130, 246, 0.5)",
+      bgImage: "/media/etmam_architecture.png"
     },
     {
       id: "smart-blocks",
-      title: t('track_02_title'),
-      subtitle: lang === 'en' ? "TOKENIZATION ENGINE" : "محرك الترميز",
-      desc: lang === 'en' ? "The definitive high-performance infrastructure for asset liquidity and blockchain settlement." : "البنية التحتية عالية الأداء لسيولة الأصول وتسوية البلوكتشين.",
-      icon: <Cpu size={40} className="text-[var(--accent-gold)]" />,
-      link: "/solutions/smart-blocks",
-      theme: "from-[var(--accent-gold)]/10 to-transparent",
-      tag: "TRACK 02"
+      number: "02",
+      title: lang === 'en' ? "SmartBlocks Engine" : "محرك سمارت بلوكس",
+      subtitle: lang === 'en' ? "TOKENIZATION CORE" : "نواة الترميز",
+      desc: lang === 'en' 
+        ? "The definitive high-performance infrastructure for institutional asset settlement. Fractionalizing the world's most valuable assets at scale."
+        : "البنية التحتية النهائية عالية الأداء لتسوية الأصول المؤسسية. تجزئة أغلى أصول العالم على نطاق واسع.",
+      icon: <Cpu size={48} />,
+      link: "/solutions/smartblocks",
+      color: "rgba(201, 169, 98, 0.5)",
+      bgImage: "/media/ventures_hero.png"
     },
     {
       id: "smart-agent",
-      title: t('track_03_title'),
-      subtitle: lang === 'en' ? "AI INTELLIGENCE" : "ذكاء اصطناعي",
-      desc: lang === 'en' ? "Computational supremacy and predictive analytics applied to high-stakes market data." : "التفوق الحسابي والتحليلات التنبؤية المطبقة على بيانات السوق ذات المخاطر العالية.",
-      icon: <Bot size={40} className="text-cyan-400" />,
-      link: "/solutions/smart-agent",
-      theme: "from-cyan-400/10 to-transparent",
-      tag: "TRACK 03"
+      number: "03",
+      title: lang === 'en' ? "SmartAgent AI" : "ذكاء سمارتي إيجنتس",
+      subtitle: lang === 'en' ? "NEURAL INTELLIGENCE" : "الذكاء العصبي",
+      desc: lang === 'en' 
+        ? "Computational supremacy applied to real estate market data. Predictive matching and autonomous deal qualification for the elite."
+        : "التفوق الحسابي المطبق على بيانات سوق العقارات. المطابقة التنبؤية وتأهيل الصفقات المستقل للنخبة.",
+      icon: <Bot size={48} />,
+      link: "/solutions/smartagent",
+      color: "rgba(34, 211, 238, 0.5)",
+      bgImage: "/media/smartagent_hero.png"
     }
   ];
 
   return (
-    <div className="pt-20 bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 text-start">
-      <div className="fixed inset-0 bg-grain opacity-[0.02] pointer-events-none" />
+    <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 overflow-x-hidden">
+      <div className="fixed inset-0 bg-grain opacity-[0.03] pointer-events-none z-50" />
 
-      {/* Solutions Hero */}
-      <section className="relative py-40 md:py-60 overflow-hidden z-10 border-b border-[var(--border-color)]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative flex flex-col items-center text-center">
-           <motion.div
-             initial="hidden" animate="visible" variants={staggerContainer}
-             className="max-w-4xl"
-           >
-              <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.8em] mb-12 block">
-                {lang === 'en' ? 'The Strategic Framework' : 'الإطار الاستراتيجي'}
-              </motion.span>
-              <motion.h1 variants={fadeUpVariant} className="text-7xl md:text-[9rem] font-black mb-12 uppercase tracking-tighter leading-[0.8]">
-                 {lang === 'en' ? <>Triple-Track <br /><span className="gold-gradient-text italic">Solutions.</span></> : <>حلول <br /><span className="gold-gradient-text italic">المسارات الثلاثة.</span></>}
-              </motion.h1>
-              <motion.p variants={fadeUpVariant} className="text-2xl text-[var(--text-primary)] opacity-40 max-w-2xl mx-auto font-light leading-relaxed">
-                 {t('solutions_subtitle')}
-              </motion.p>
-           </motion.div>
+      {/* ── 01. HERO: The High-Authority Opening ── */}
+      <section className="relative pt-40 pb-20 z-10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col items-center">
+            <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[1em] mb-12 block">
+              {lang === 'en' ? 'Institutional Framework' : 'الإطار المؤسسي'}
+            </motion.span>
+            
+            <TextReveal 
+              text={lang === 'en' ? 'TRIPLE-TRACK SOLUTIONS.' : 'حلول المسارات الثلاثة.'}
+              className="text-6xl md:text-[8rem] font-black tracking-tighter uppercase leading-[0.8] mb-12"
+            />
+            
+            <motion.p variants={fadeUpVariant} className="text-xl md:text-2xl opacity-40 max-w-2xl font-light leading-relaxed">
+              {lang === 'en' 
+                ? 'The definitive convergence of regulatory intelligence, tokenization infrastructure, and neural AI.'
+                : 'التقارب النهائي بين الذكاء التنظيمي، وبنية الترميز التحتية، والذكاء الاصطناعي العصبي.'}
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Triple-Track Display */}
-      <section className="py-40 z-10 relative">
-         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-7xl mx-auto px-6 md:px-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[var(--border-color)]">
-               {tracks.map((track) => (
-                 <motion.div
-                   key={track.id}
-                   variants={fadeUpVariant}
-                   className={`group relative p-16 md:p-20 border-[var(--border-color)] border-b md:border-b-0 md:border-e last:border-b-0 last:border-e-0 overflow-hidden transition-all duration-1000 bg-gradient-to-b ${track.theme}`}
-                 >
-                    <div className="absolute top-0 end-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity duration-1000">
-                       {track.icon}
-                    </div>
-
-                    <div className="relative z-10">
-                       <span className="text-[var(--accent-gold)] text-[10px] font-black tracking-[0.5em] mb-12 block">{track.tag}</span>
-                       <h3 className="text-xl font-black text-[var(--text-primary)] opacity-40 mb-2 uppercase tracking-widest">{track.subtitle}</h3>
-                       <h2 className="text-4xl md:text-5xl font-black mb-10 uppercase tracking-tighter group-hover:scale-105 transition-transform duration-1000 origin-start">{track.title}</h2>
-                       <p className="text-[var(--text-primary)] opacity-30 text-lg font-light leading-relaxed mb-16 h-28">{track.desc}</p>
-                       
-                       <Link to={track.link} className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.4em] group-hover:text-[var(--accent-gold)] transition-all">
-                          {lang === 'en' ? 'Initiate Deep-Dive' : 'بدء التحليل العميق'} 
-                          <ArrowRight size={20} className={`group-hover:translate-x-4 rtl:group-hover:-translate-x-4 transition-transform ${isArabic ? 'rotate-180' : ''}`} />
-                       </Link>
-                    </div>
-
-                    <div className="absolute inset-0 bg-[var(--accent-gold)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
-                 </motion.div>
-               ))}
+      {/* ── 02. THE BLADE SYSTEM: Interactive Shards ── */}
+      <section className="relative h-screen md:h-[80vh] w-full z-20 flex flex-col md:flex-row overflow-hidden border-y border-[var(--border-color)]">
+        {tracks.map((track) => (
+          <motion.div
+            key={track.id}
+            initial={{ flex: 1 }}
+            whileHover={{ flex: 2 }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            className="group relative flex-1 min-w-0 border-b md:border-b-0 md:border-e border-[var(--border-color)] last:border-0 overflow-hidden cursor-pointer"
+          >
+            {/* Background Image with Deep Overlay */}
+            <div className="absolute inset-0 z-0">
+              <img 
+                src={track.bgImage} 
+                alt="" 
+                className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[2000ms] grayscale brightness-[0.2] group-hover:grayscale-0 group-hover:brightness-[0.4]" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
-         </motion.div>
+
+            {/* Accent Glow */}
+            <div 
+              className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-1000 z-10"
+              style={{ background: `radial-gradient(circle at center, ${track.color}, transparent 70%)` }}
+            />
+
+            {/* Blade Content */}
+            <div className="relative z-20 h-full flex flex-col justify-between p-12 md:p-20">
+              {/* Top: Track Identifier */}
+              <div className="flex justify-between items-start">
+                <span className="text-5xl md:text-8xl font-black opacity-10 group-hover:opacity-30 group-hover:text-[var(--accent-gold)] transition-all duration-700 tracking-tighter">
+                  {track.number}
+                </span>
+                <div className="p-4 border border-white/10 rounded-full group-hover:border-[var(--accent-gold)] transition-colors duration-700 group-hover:text-[var(--accent-gold)]">
+                  {track.icon}
+                </div>
+              </div>
+
+              {/* Middle: Title & Subtitle */}
+              <div>
+                <h4 className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em] mb-4 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-700">
+                  {track.subtitle}
+                </h4>
+                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 leading-none">
+                  {track.title}
+                </h2>
+                <div className="h-0 group-hover:h-auto opacity-0 group-hover:opacity-60 transition-all duration-700 overflow-hidden">
+                  <p className="text-lg md:text-xl font-light leading-relaxed max-w-md pb-10">
+                    {track.desc}
+                  </p>
+                </div>
+              </div>
+
+              {/* Bottom: Action */}
+              <div className="opacity-0 group-hover:opacity-100 translate-y-8 group-hover:translate-y-0 transition-all duration-700 delay-100">
+                <Magnetic strength={0.3}>
+                  <PremiumButton to={track.link} className="w-fit px-12 py-5 bg-[var(--accent-gold)] text-black border-none hover:bg-white transition-colors duration-500">
+                    {lang === 'en' ? 'ENTER THE TRACK' : 'دخول المسار'}
+                  </PremiumButton>
+                </Magnetic>
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </section>
 
-      {/* Lively Synergy Section */}
-      <section className="py-60 z-10 relative overflow-hidden border-t border-[var(--border-color)] bg-[var(--bg-secondary)]/30 transition-colors duration-700">
-         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--accent-gold)]/5 to-transparent" />
-         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+      {/* ── 03. SYNERGY: The Collective Execution ── */}
+      <section className="py-60 relative overflow-hidden z-10 bg-[var(--bg-secondary)]/20">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-radial-at-c from-[var(--accent-gold)]/5 to-transparent blur-[120px]" />
+        
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="text-start">
+              <motion.div variants={fadeUpVariant} className="flex gap-4 mb-12">
+                <Globe className="text-blue-400" size={32} />
+                <Cpu className="text-[var(--accent-gold)]" size={32} />
+                <Bot className="text-cyan-400" size={32} />
+              </motion.div>
+              
+              <TextReveal 
+                text={lang === 'en' ? 'Ecosystem Integrity.' : 'تكامل النظام الشامل.'}
+                className="text-5xl md:text-8xl font-black uppercase tracking-tighter italic leading-none mb-12"
+              />
+              
+              <motion.p variants={fadeUpVariant} className="text-2xl font-light opacity-40 mb-16 leading-relaxed max-w-xl">
+                {lang === 'en'
+                  ? 'Each track operates as a specialized node, yet they converge in the ETMAM Execution Engine to create absolute market superiority.'
+                  : 'يعمل كل مسار كعقدة متخصصة، ومع ذلك فإنها تلتقي في محرك تنفيذ إتمام لخلق تفوق سوقي مطلق.'}
+              </motion.p>
+              
               <motion.div variants={fadeUpVariant}>
-                <div className="flex gap-8 mb-16">
-                   <Globe className="text-blue-400" size={32} />
-                   <Cpu className="text-[var(--accent-gold)]" size={32} />
-                   <Bot className="text-cyan-400" size={32} />
-                </div>
-                <h2 className="text-5xl md:text-[8rem] font-black mb-12 uppercase tracking-tighter leading-none italic">
-                   {lang === 'en' ? <>Total Ecosystem <br /><span className="text-[var(--accent-gold)] not-italic">Integrity.</span></> : <>تكامل النظام <br /><span className="text-[var(--accent-gold)] not-italic">الشامل.</span></>}
-                </h2>
-                <p className="text-[var(--text-primary)] opacity-40 text-2xl mb-20 font-light max-w-xl">
-                  {lang === 'en' 
-                    ? 'Each track operates independently but integrates seamlessly into the ETMAM Execution Engine.'
-                    : 'يعمل كل مسار بشكل مستقل ولكنه يتكامل بسلاسة في محرك تنفيذ إتمام.'}
-                </p>
-                <div className="flex">
-                  <PremiumButton to="/contact">
+                <Magnetic>
+                  <PremiumButton to="/contact" scale="scale-110">
                     {lang === 'en' ? 'INITIATE PARTNER PROTOCOL' : 'بدء بروتوكول الشراكة'}
                   </PremiumButton>
-                </div>
+                </Magnetic>
               </motion.div>
+            </motion.div>
 
-              {/* Live Terminal Insight */}
-              <motion.div variants={slowFadeUpVariant}>
-                <CommandTerminal />
-              </motion.div>
-            </div>
-         </motion.div>
+            <motion.div variants={slowFadeUpVariant} className="relative">
+              <CommandTerminal />
+              <div className="absolute -top-10 -end-10 w-40 h-40 bg-[var(--accent-gold)]/10 rounded-full blur-3xl -z-10" />
+            </motion.div>
+          </div>
+        </div>
       </section>
     </div>
   );

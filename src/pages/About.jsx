@@ -22,7 +22,8 @@ import PremiumButton from '@/components/ui/PremiumButton';
 import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const About = () => {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
+  const isArabic = lang === 'ar';
   const videoRef = useRef(null);
   const [playing, setPlaying] = useState(true);
   const [muted, setMuted] = useState(true);
@@ -43,24 +44,24 @@ const About = () => {
       id: 'S1',
       title: lang === 'en' ? 'Systematic Qualifying' : 'التأهيل المنهجي',
       desc: lang === 'en'
-        ? 'Proprietary IP for qualifying high-net-worth intent before the first exchange.'
-        : 'ملكية فكرية حصرية لتأهيل نية المستثمرين ذوي الملاءة العالية قبل أول تواصل.',
+        ? 'A structured approach to qualifying high-net-worth interest through early-stage alignment.'
+        : 'منهجية هيكلية لتأهيل اهتمامات كبار المستثمرين من خلال التوافق في المراحل الأولى.',
       icon: <Layers size={24} className="text-[var(--accent-gold)]" />
     },
     {
       id: 'S2',
       title: lang === 'en' ? 'Structured Scaling' : 'التوسع الهيكلي',
       desc: lang === 'en'
-        ? 'The architectural logic of converting legacy property into programmable digital assets.'
-        : 'المنطق الهندسي لتحويل العقارات التقليدية إلى أصول رقمية قابلة للبرمجة.',
+        ? 'Developing the logic needed to convert legacy property models into digital asset frameworks.'
+        : 'تطوير المنطق اللازم لتحويل نماذج العقارات التقليدية إلى أطر أصول رقمية.',
       icon: <Target size={24} className="text-[var(--accent-gold)]" />
     },
     {
       id: 'S3',
-      title: lang === 'en' ? 'Sovereign Closure' : 'الإغلاق السيادي',
+      title: lang === 'en' ? 'Strategic Integration' : 'التكامل الاستراتيجي',
       desc: lang === 'en'
-        ? 'The final stage of the Triple S: Absolute governance through cryptographic truth.'
-        : 'المرحلة النهائية من الـ Triple S: الحوكمة المطلقة من خلال الحقيقة التشفيرية.',
+        ? 'Forging the final link between technology and real-world implementation.'
+        : 'صياغة الحلقة النهائية بين التكنولوجيا والتنفيذ الفعلي على أرض الواقع.',
       icon: <Award size={24} className="text-[var(--accent-gold)]" />
     }
   ];
@@ -69,13 +70,13 @@ const About = () => {
     <div className="pt-20 bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 overflow-visible text-start">
       <div className="fixed inset-0 bg-grain opacity-[0.03] pointer-events-none" />
 
-      {/* ── 01. HERO: The IP Ownership ── */}
+      {/* ── 01. HERO: THE TRIPLE S ARCHITECTURE ── */}
       <section className="relative h-[95vh] flex items-center overflow-hidden z-20 border-b border-[var(--border-color)]">
         <div className="absolute inset-0 z-0 bg-white dark:bg-black group">
           <video
             ref={videoRef}
-            src="/media/welcome_video.mp4"
-            className="w-full h-full object-cover opacity-80 dark:opacity-40 grayscale group-hover:grayscale-0 transition-all duration-[3000ms] will-change-transform transform-gpu"
+            src="/media/_كلمه ~1.mp4"
+            className="w-full h-full object-cover opacity-80 dark:opacity-50 grayscale group-hover:grayscale-0 transition-all duration-[3000ms] will-change-transform transform-gpu"
             loop
             muted
             playsInline
@@ -84,31 +85,43 @@ const About = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/40 to-transparent" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-30 w-full flex">
+        <div className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-32 relative z-30 w-full flex">
           <motion.div
             initial="hidden" animate="visible" variants={staggerContainer}
-            className="max-w-2xl"
+            className="max-w-4xl"
           >
-            <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.8em] mb-10 block">
-              {lang === 'en' ? 'Proprietary IP // THE TRIPLE S' : 'ملكية فكرية حصرية // الـ TRIPLE S'}
+            <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[12px] font-black uppercase tracking-[0.8em] mb-10 block">
+              {lang === 'en' ? 'The Foundation // THE TRIPLE S' : 'جوهر المنهجية // الـ TRIPLE S'}
             </motion.span>
 
-            <motion.h1 variants={fadeUpVariant} className="display-title mb-10">
-              {lang === 'en' ? <>Institutional<br /><span className="gold-gradient-text italic">Inheritance.</span></> : <>الميراث<br /><span className="gold-gradient-text italic">المؤسسي الرصين.</span></>}
+            <motion.h1 
+              variants={fadeUpVariant} 
+              animate={{ opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className={`display-title mb-10 text-[var(--text-primary)] mt-40 ${isArabic ? 'leading-[1.2]' : 'leading-[0.9]'}`}
+            >
+              {lang === 'en' 
+                ? <>Systematic<br /><span className="gold-gradient-text italic">Sovereignty.</span></> 
+                : <>السيادة المنهجية<br /><span className="gold-gradient-text italic">الرصينة.</span></>}
             </motion.h1>
 
-            <motion.p variants={fadeUpVariant} className="text-[clamp(1.1rem,2vw,1.6rem)] font-light opacity-60 mb-16 leading-relaxed">
+            <motion.p 
+              variants={fadeUpVariant}
+              animate={{ opacity: [0.6, 1, 0.6] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="text-[clamp(1.1rem,2vw,1.6rem)] font-light opacity-70 mb-16 leading-relaxed max-w-3xl"
+            >
               {lang === 'en'
-                ? 'Ghassan Farajallah engineers the elite frameworks for the transition to tokenized real estate assets through his proprietary Systematic Selling Strategy.'
-                : 'يصمم غسان فرج الله الأطر النخبوية للانتقال إلى الأصول العقارية المرمزة من خلال استراتيجيته الحصرية للبيع المنهجي.'}
+                ? 'Engineering the transition to the digital asset economy through the proprietary Triple S methodology: Qualifying, Scaling, and Integration.'
+                : 'يتم تحقيق النجاح في عالم الأعمال من خلال البراعة في تقديم المستمر والتطوير، والحفاظ عليه.'}
             </motion.p>
 
             <motion.div variants={fadeUpVariant} className="flex items-center gap-10">
               <button
                 onClick={togglePlay}
-                className="w-20 h-20 border border-[var(--accent-gold)]/50 flex items-center justify-center text-[var(--accent-gold)] hover:bg-[var(--accent-gold)] hover:text-black transition-all rounded-full scale-110 premium-shadow-gold"
+                className="w-24 h-24 border border-[var(--accent-gold)]/50 flex items-center justify-center text-[var(--accent-gold)] hover:bg-[var(--accent-gold)] hover:text-black transition-all rounded-full scale-110 premium-shadow-gold"
               >
-                {playing ? <Pause size={28} /> : <Play size={28} className="ps-1" />}
+                {playing ? <Pause size={32} /> : <Play size={32} className="ps-1" />}
               </button>
               <button
                 onClick={toggleMute}
@@ -126,16 +139,16 @@ const About = () => {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 overflow-visible">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 items-center overflow-visible">
 
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="overflow-visible">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="flex flex-col gap-12">
               <div className="aspect-[4/5] overflow-hidden border border-[var(--border-color)] p-4 bg-white/5 relative group metallic-glow shadow-2xl">
                 <img src="/media/home_founder.png" alt="Founder" className="w-full h-full object-cover grayscale transition-all duration-[3000ms] group-hover:grayscale-0 group-hover:scale-105" />
-                <div className="absolute -bottom-16 -end-16 p-12 glass-card bg-[var(--bg-primary)]/90 border border-[var(--accent-gold)]/40 max-w-sm shadow-[0_0_30px_rgba(201,169,98,0.1)] overflow-visible z-40">
-                  <Quote className="text-[var(--accent-gold)] mb-6" size={40} />
-                  <p className="text-xl font-light italic leading-relaxed text-[var(--text-primary)]">
-                    {lang === 'en' ? '"Legacy is not what we build, it is the systematic logic we leave for the future."' : '"الإرث ليس ما نبنيه، بل هو المنطق المنهجي الذي نتركه للمستقبل."'}
-                  </p>
-                </div>
               </div>
+              <motion.div variants={fadeUpVariant} className="p-12 glass-card bg-[var(--bg-primary)]/90 border border-[var(--accent-gold)]/40 max-w-xl shadow-[0_0_30px_rgba(201,169,98,0.15)] relative z-40 self-center lg:self-start -mt-20 lg:-mt-32 lg:-ml-12 lg:rtl:-mr-12">
+                <Quote className="text-[var(--accent-gold)] mb-6" size={40} />
+                <p className="text-2xl font-light italic leading-relaxed text-[var(--text-primary)]">
+                  {lang === 'en' ? '"Legacy is not what we build, it is the systematic logic we leave for the future."' : '"الإرث ليس ما نبنيه، بل هو المنطق المنهجي الذي نتركه للمستقبل."'}
+                </p>
+              </motion.div>
             </motion.div>
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="pt-20 overflow-visible">
@@ -188,15 +201,48 @@ const About = () => {
         </motion.div>
       </section>
 
-      {/* ── 04. FINAL CALL: Systematic Growth ── */}
-      <section className="py-60 z-10 relative text-center overflow-visible">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="max-w-6xl mx-auto px-6 flex flex-col items-center">
-          <h2 className="section-title italic mb-16 px-4">
-            {lang === 'en' ? <>Ready to <span className="not-italic text-[var(--accent-gold)]">Scale?</span></> : <>جاهز <span className="not-italic text-[var(--accent-gold)]">للتوسع؟</span></>}
-          </h2>
-          <PremiumButton to="/contact" scale="scale-125 hover:scale-[1.35]">
-            {lang === 'en' ? 'INITIATE THE PROTOCOL' : 'بدء البروتوكول الحصري'}
-          </PremiumButton>
+      {/* ── 04. LAUNCH PROTOCOL: Systematic Growth ── */}
+      <section className="py-60 z-10 relative overflow-hidden text-center bg-black/40 border-t border-[var(--border-color)]">
+        <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--accent-gold)]/5 blur-[120px] pointer-events-none rounded-full" />
+        
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
+          <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[12px] font-black uppercase tracking-[1em] mb-8 block opacity-80 drop-shadow-[0_0_10px_rgba(201,169,98,0.5)]">
+            {lang === 'en' ? 'Launch Protocol' : 'بروتوكول الإطلاق'}
+          </motion.span>
+          
+          <motion.h2 variants={fadeUpVariant} className="font-black uppercase tracking-tighter italic mb-20 leading-[0.9]"
+            style={{ fontSize: 'clamp(3rem,8vw,7rem)' }}>
+            {lang === 'en'
+              ? <>Scale the <span className="not-italic text-[var(--accent-gold)]">Legacy?</span></>
+              : <>وسع <span className="not-italic text-[var(--accent-gold)]">الإرث؟</span></>}
+          </motion.h2>
+
+          <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Action 1: Direct Protocol */}
+            <Link to="/contact" 
+               className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:shadow-[0_0_40px_rgba(201,169,98,0.2)]">
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <Lock size={48} className="text-[var(--accent-gold)] mb-10 group-hover:scale-125 transition-transform duration-700" />
+              <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{lang === 'en' ? 'Direct Protocol' : 'بروتوكول مباشر'}</h3>
+              <p className="text-[11px] font-black uppercase tracking-widest opacity-40 mb-10">{lang === 'en' ? 'Secure Engagement' : 'ارتباط آمن'}</p>
+              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-500">
+                <ArrowRight size={20} className={`${lang === 'ar' ? 'rotate-180' : ''}`} />
+              </div>
+            </Link>
+
+            {/* Action 2: Operational Solutions */}
+            <Link to="/solutions" 
+               className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:shadow-[0_0_40px_rgba(201,169,98,0.2)]">
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <Layers size={48} className="text-[var(--accent-gold)] mb-10 group-hover:scale-125 transition-transform duration-700" />
+              <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{lang === 'en' ? 'The Solutions' : 'الحلول التشغيلية'}</h3>
+              <p className="text-[11px] font-black uppercase tracking-widest opacity-40 mb-10">{lang === 'en' ? 'View Operational Tracks' : 'عرض مسارات العمل'}</p>
+              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-500">
+                <ArrowRight size={20} className={`${lang === 'ar' ? 'rotate-180' : ''}`} />
+              </div>
+            </Link>
+          </motion.div>
         </motion.div>
       </section>
     </div>

@@ -17,7 +17,9 @@ import {
   Activity
 } from 'lucide-react';
 import PremiumButton from '@/components/ui/PremiumButton';
-import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
+import Magnetic from '@/components/ui/Magnetic';
+import TextReveal from '@/components/ui/TextReveal';
+import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const SmartAgentAI = () => {
   const { lang } = useLanguage();
@@ -79,10 +81,10 @@ const SmartAgentAI = () => {
               </span>
             </motion.div>
 
-            <motion.h1 variants={fadeUpVariant} className="font-black uppercase leading-[0.85] tracking-tighter mb-8"
-              style={{ fontSize: 'clamp(4rem, 12vw, 10rem)' }}>
-              {lang === 'en' ? <><span className="text-cyan-400 italic">Automated</span><br />Domination.</> : <><span className="text-cyan-400 italic">هيمنة</span><br />آلية ثورية.</>}
-            </motion.h1>
+            <TextReveal 
+              text={lang === 'en' ? 'Automated Domination.' : 'هيمنة آلية ثورية.'}
+              className="display-title mb-8 tracking-tighter"
+            />
 
             <motion.p variants={fadeUpVariant} className="text-[clamp(1rem,2.5vw,1.5rem)] font-light opacity-50 max-w-3xl mb-16 leading-relaxed">
               {lang === 'en' 
@@ -91,9 +93,11 @@ const SmartAgentAI = () => {
             </motion.p>
 
             <motion.div variants={fadeUpVariant} className="flex flex-col sm:flex-row gap-8 items-start">
-              <PremiumButton to="/contact" className="bg-cyan-500 text-black border-none hover:bg-cyan-400" scale="scale-110">
-                {lang === 'en' ? 'COMMAND THE NODE' : 'قيادة العقدة الرقمية'}
-              </PremiumButton>
+              <Magnetic strength={0.4}>
+                <PremiumButton to="/contact" className="bg-cyan-500 text-black border-none hover:bg-cyan-400" scale="scale-110">
+                  {lang === 'en' ? 'COMMAND THE NODE' : 'قيادة العقدة الرقمية'}
+                </PremiumButton>
+              </Magnetic>
               <div className="flex items-center gap-4 px-6 py-2 border border-cyan-500/20 bg-cyan-900/10 backdrop-blur-md">
                 <Activity size={16} className="text-cyan-400" />
                 <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400/60 leading-none">Status: Neural Link Active</span>
@@ -152,7 +156,7 @@ const SmartAgentAI = () => {
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
             
-            <motion.div variants={slowFadeUpVariant} className="relative p-1 glass-card border-cyan-500/20 bg-cyan-900/10 metallic-glow text-center">
+            <motion.div variants={fadeUpVariant} className="relative p-1 glass-card border-cyan-500/20 bg-cyan-900/10 metallic-glow text-center">
               <div className="p-8 md:p-14 relative overflow-hidden">
                 <div className="absolute top-0 start-0 w-full h-1 bg-cyan-500/50 animate-pulse" />
                 <h4 className="text-[10px] font-black uppercase tracking-[0.8em] mb-12 opacity-30">Neural Engine Status: OPTIMAL</h4>
@@ -169,10 +173,10 @@ const SmartAgentAI = () => {
               <span className="text-cyan-400 text-[10px] font-black uppercase tracking-[0.6em] mb-8 block">
                 {lang === 'en' ? 'Institutional Intelligence' : 'الذكاء المؤسسي الرصين'}
               </span>
-              <h2 className="font-black uppercase tracking-tighter mb-10 leading-[0.9]"
-                style={{ fontSize: 'clamp(2.5rem,6vw,6rem)' }}>
-                {lang === 'en' ? <>Computational<br /><span className="text-cyan-400 italic">Inheritance.</span></> : <>الميراث<br /><span className="text-cyan-400 italic">الحسابي.</span></>}
-              </h2>
+              <TextReveal 
+                text={lang === 'en' ? 'Computational Inheritance.' : 'الميراث الحسابي.'}
+                className="display-title mb-10"
+              />
               <div className="space-y-8 text-xl font-light opacity-40 leading-relaxed mb-16">
                 <p>
                   {lang === 'en' 
@@ -193,24 +197,49 @@ const SmartAgentAI = () => {
         </motion.div>
       </section>
 
-      {/* ── 04. FINAL CTA: Ascend ── */}
-      <section className="py-60 z-10 relative text-center">
-        <div className="max-w-5xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slowFadeUpVariant} className="flex flex-col items-center">
-            <h3 className="font-black uppercase tracking-tighter italic mb-16 leading-none"
-              style={{ fontSize: 'clamp(3rem,15vw,12rem)' }}>
-              {lang === 'en' ? <>READY TO <span className="text-cyan-400 not-italic">ASCEND?</span></> : <>جاهز <span className="text-cyan-400 not-italic">للالتقاء؟</span></>}
-            </h3>
-            <p className="text-[clamp(1rem,3vw,1.8rem)] opacity-30 mb-20 font-light max-w-3xl mx-auto leading-relaxed">
-              {lang === 'en' 
-                ? "The era of the manual agent is extinct. Welcome to the SmartiAgents lineage of autonomous profit." 
-                : "عصر الوكيل اليدوي قد انتهى. مرحباً بك في سلالة سمارتي إيجنتس للربحية المستقلة."}
-            </p>
-            <PremiumButton to="/contact" className="bg-cyan-500 text-black border-none hover:bg-cyan-400 shadow-[0_0_50px_rgba(34,211,238,0.2)]" scale="scale-125">
-              {lang === 'en' ? 'INSTANTIATE NODE' : 'إنشاء العقدة الجديدة'}
-            </PremiumButton>
+      {/* ── 04. LAUNCH PROTOCOL: AI Platform & Masterclass ── */}
+      <section className="py-60 z-10 relative overflow-hidden text-center bg-black/40 border-t border-[var(--border-color)]">
+        <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/5 blur-[120px] pointer-events-none rounded-full" />
+        
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
+          <motion.span variants={fadeUpVariant} className="text-cyan-400 text-[12px] font-black uppercase tracking-[1em] mb-8 block opacity-80 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">
+            {lang === 'en' ? 'Protocol Access' : 'صلاحية الدخول للبروتوكول'}
+          </motion.span>
+          
+          <motion.h2 variants={fadeUpVariant} className="font-black uppercase tracking-tighter italic mb-20"
+            style={{ fontSize: 'clamp(3rem,8vw,7rem)' }}>
+            {lang === 'en'
+              ? <>Ready to <span className="not-italic text-cyan-400">Ascend?</span></>
+              : <>جاهز <span className="not-italic text-cyan-400">للالتقاء؟</span></>}
+          </motion.h2>
+
+          <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Action 1: The AI Platform */}
+            <a href="https://smartagent.etmam.io" target="_blank" rel="noopener noreferrer" 
+               className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]">
+              <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <Bot size={48} className="text-cyan-400 mb-10 group-hover:scale-125 transition-transform duration-700" />
+              <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{lang === 'en' ? 'Launch SmartAgent' : 'إطلاق وكيلك الذكي'}</h3>
+              <p className="text-[11px] font-black uppercase tracking-widest opacity-40 mb-10">{lang === 'en' ? 'Initialize the AI' : 'تهيئة الذكاء الاصطناعي'}</p>
+              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-cyan-400 group-hover:text-black group-hover:border-cyan-400 transition-all duration-500">
+                <ArrowRight size={20} className={`${isArabic ? 'rotate-180' : ''}`} />
+              </div>
+            </a>
+
+            {/* Action 2: The Masterclass */}
+            <a href="https://academy.etmam.io/smartagent" target="_blank" rel="noopener noreferrer" 
+               className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]">
+              <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <Brain size={48} className="text-cyan-400 mb-10 group-hover:scale-125 transition-transform duration-700" />
+              <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{lang === 'en' ? 'Explore Masterclass' : 'دورة الإتقان الشاملة'}</h3>
+              <p className="text-[11px] font-black uppercase tracking-widest opacity-40 mb-10">{lang === 'en' ? 'Master the Logic' : 'أتقن المنطق التشغيلي'}</p>
+              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-cyan-400 group-hover:text-black group-hover:border-cyan-400 transition-all duration-500">
+                <ArrowRight size={20} className={`${isArabic ? 'rotate-180' : ''}`} />
+              </div>
+            </a>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
