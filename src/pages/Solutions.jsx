@@ -22,7 +22,7 @@ const Solutions = () => {
       icon: <Globe size={48} />,
       link: "/solutions/etmam",
       color: "rgba(59, 130, 246, 0.5)",
-      bgImage: "/media/Presentation - EliteWay Engine133.jpg"
+      bgImage: "/media/sol_track_1.jpg"
     },
     {
       id: "smart-blocks",
@@ -35,7 +35,7 @@ const Solutions = () => {
       icon: <Cpu size={48} />,
       link: "/solutions/smartblocks",
       color: "rgba(201, 169, 98, 0.5)",
-      bgImage: "/media/Presentation - EliteWay Engine1225.jpg"
+      bgImage: "/media/sol_track_2.jpg"
     },
     {
       id: "smart-agent",
@@ -48,7 +48,7 @@ const Solutions = () => {
       icon: <Bot size={48} />,
       link: "/solutions/smartagent",
       color: "rgba(34, 211, 238, 0.5)",
-      bgImage: "/media/Presentation - Unified Engine9991254.png"
+      bgImage: "/media/sol_track_3.png"
     }
   ];
 
@@ -101,16 +101,17 @@ const Solutions = () => {
             className="group relative flex-1 min-w-0 border-b md:border-b-0 md:border-e border-[var(--border-color)] last:border-0 overflow-hidden cursor-pointer"
           >
             {/* Background Image with Deep Overlay */}
-            <div className="absolute inset-0 z-0 bg-black">
+            <div className="absolute inset-0 z-0 bg-[var(--bg-primary)]">
               {track.bgImage && (
                 <img 
                   src={track.bgImage} 
                   alt="" 
-                  className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-all duration-[6000ms] ease-out grayscale brightness-[0.4] group-hover:grayscale-0 group-hover:brightness-[0.7]" 
+                  className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-[6000ms] ease-out mix-blend-luminosity opacity-40 group-hover:mix-blend-normal group-hover:opacity-100" 
                 />
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)]/50 opacity-90" />
-              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-multiply" />
+              {/* Subtle gradient so text remains readable without destroying the image */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/10 to-[var(--bg-primary)]/40 pointer-events-none transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-[var(--accent-gold)]/0 group-hover:bg-[var(--accent-gold)]/10 transition-colors duration-700 pointer-events-none mix-blend-overlay" />
             </div>
 
             {/* Accent Glow */}
