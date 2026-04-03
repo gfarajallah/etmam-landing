@@ -57,10 +57,22 @@ const Solutions = () => {
       <div className="fixed inset-0 bg-grain opacity-[0.03] pointer-events-none z-50" />
 
       {/* ── 01. HERO: The High-Authority Opening ── */}
-      <section className="relative pt-40 pb-20 z-10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden z-10 border-b border-[var(--border-color)]">
+        {/* Background Dashboard Image */}
+        <div className="absolute inset-0 z-0 bg-black overflow-hidden pointer-events-none group">
+          <img 
+            src="/media/solutions_hero_dashboard.png" 
+            alt="Solutions Dashboard Concept" 
+            className="absolute top-0 left-0 w-full h-full object-cover opacity-20 grayscale brightness-75 mix-blend-screen transition-all duration-[5000ms] animate-slow-zoom group-hover:opacity-40 group-hover:grayscale-[40%]"
+          />
+          {/* Institutional Grandients for legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)]/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center relative z-10 w-full">
           <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col items-center">
-            <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[1em] mb-12 block">
+            <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[1em] mb-12 block drop-shadow-md">
               {lang === 'en' ? 'Institutional Framework' : 'الإطار المؤسسي'}
             </motion.span>
             
@@ -69,7 +81,7 @@ const Solutions = () => {
               className="text-6xl md:text-[8rem] font-black tracking-tighter uppercase leading-[0.8] mb-12"
             />
             
-            <motion.p variants={fadeUpVariant} className="text-xl md:text-2xl opacity-40 max-w-2xl font-light leading-relaxed">
+            <motion.p variants={fadeUpVariant} className="text-xl md:text-2xl text-[var(--text-primary)] opacity-60 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-xl">
               {lang === 'en' 
                 ? 'The definitive convergence of regulatory intelligence, tokenization infrastructure, and neural AI.'
                 : 'التقارب النهائي بين الذكاء التنظيمي، وبنية الترميز التحتية، والذكاء الاصطناعي العصبي.'}
