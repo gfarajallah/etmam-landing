@@ -19,16 +19,62 @@ import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animat
 const About = () => {
   const { lang } = useLanguage();
   const isArabic = lang === 'ar';
-  const videoRef = useRef(null);
+  const playerRef = useRef(null);
   const [muted, setMuted] = useState(true);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = muted;
-    }
-  }, [muted]);
+    const initPlayer = () => {
+      playerRef.current = new window.YT.Player('yt-player', {
+        videoId: '69z-oU9PxO4',
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          rel: 0,
+          showinfo: 0,
+          mute: 1,
+          loop: 1,
+          playlist: '69z-oU9PxO4', // Required for loop
+          modestbranding: 1,
+          playsinline: 1,
+          disablekb: 1
+        },
+        events: {
+          onReady: (event) => {
+            event.target.mute();
+            event.target.playVideo();
+          }
+        }
+      });
+    };
 
-  const toggleMute = () => setMuted(!muted);
+    if (!window.YT) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      window.onYouTubeIframeAPIReady = initPlayer;
+    } else if (window.YT && window.YT.Player) {
+      initPlayer();
+    }
+
+    return () => {
+      if (playerRef.current && playerRef.current.destroy) {
+        playerRef.current.destroy();
+      }
+    };
+  }, []);
+
+  const toggleMute = () => {
+    if (!playerRef.current || typeof playerRef.current.isMuted !== 'function') return;
+    
+    if (muted) {
+      playerRef.current.unMute();
+      setMuted(false);
+    } else {
+      playerRef.current.mute();
+      setMuted(true);
+    }
+  };
 
   const pillars = [
     {
@@ -64,17 +110,11 @@ const About = () => {
       {/* ── 01. HERO: THE TRIPLE S ARCHITECTURE ── */}
       <section className="relative h-[95vh] w-full flex items-center overflow-hidden z-20 border-b border-[var(--border-color)] group">
         
-        <div className="absolute inset-0 z-0 bg-black pointer-events-none flex items-center justify-center">
-          <video
-            ref={videoRef}
-            src="/media/ghassan_strategic.mp4"
-            className="w-full h-full object-cover opacity-80 dark:opacity-50"
-            loop
-            muted={muted}
-            defaultMuted
-            playsInline
-            autoPlay
-            preload="auto"
+        <div className="absolute inset-0 z-0 bg-black pointer-events-none overflow-hidden">
+          <div 
+            id="yt-player" 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80 dark:opacity-50 pointer-events-none"
+            style={{ width: '100vw', height: '56.25vw', minHeight: '100vh', minWidth: '177.77vh' }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/40 to-transparent pointer-events-none" />
         </div>
