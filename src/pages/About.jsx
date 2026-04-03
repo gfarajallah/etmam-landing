@@ -1,43 +1,21 @@
 import { useLanguage } from '@/context/useLanguage';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   ShieldCheck,
   BookOpen,
   ArrowRight,
-  Zap,
   Quote,
-  ChevronRight,
-  Play,
-  Pause,
-  Volume2,
-  VolumeX,
   Target,
   Layers,
   Award,
   Lock
 } from 'lucide-react';
-import { useRef, useState, useEffect } from 'react';
-import PremiumButton from '@/components/ui/PremiumButton';
 import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const About = () => {
-  const { lang, t } = useLanguage();
+  const { lang } = useLanguage();
   const isArabic = lang === 'ar';
-  const videoRef = useRef(null);
-  const [playing, setPlaying] = useState(true);
-  const [muted, setMuted] = useState(true);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      if (playing) videoRef.current.play().catch(() => setPlaying(false));
-      else videoRef.current.pause();
-      videoRef.current.muted = muted;
-    }
-  }, [playing, muted]);
-
-  const togglePlay = () => setPlaying(!playing);
-  const toggleMute = () => setMuted(!muted);
 
   const pillars = [
     {
@@ -72,17 +50,14 @@ const About = () => {
 
       {/* ── 01. HERO: THE TRIPLE S ARCHITECTURE ── */}
       <section className="relative h-[95vh] flex items-center overflow-hidden z-20 border-b border-[var(--border-color)]">
-        <div className="absolute inset-0 z-0 bg-white dark:bg-black group">
-          <video
-            ref={videoRef}
-            src="/media/_كلمه ~1.mp4"
-            className="w-full h-full object-cover opacity-80 dark:opacity-50 grayscale group-hover:grayscale-0 transition-all duration-[3000ms] will-change-transform transform-gpu"
-            loop
-            muted
-            playsInline
-            autoPlay
+        <div className="absolute inset-0 z-0 bg-white dark:bg-black group pointer-events-none overflow-hidden">
+          <iframe
+            src="https://www.youtube.com/embed/69z-oU9PxO4?autoplay=1&mute=1&controls=0&loop=1&playlist=69z-oU9PxO4&modestbranding=1&rel=0&playsinline=1"
+            className="w-[150vw] h-[150vh] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover opacity-80 dark:opacity-50"
+            allow="autoplay; encrypted-media"
+            style={{ border: 'none', pointerEvents: 'none' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/40 to-transparent pointer-events-none" />
         </div>
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-32 relative z-30 w-full flex">
@@ -116,20 +91,7 @@ const About = () => {
                 : 'يتم تحقيق النجاح في عالم الأعمال من خلال البراعة في تقديم المستمر والتطوير، والحفاظ عليه.'}
             </motion.p>
 
-            <motion.div variants={fadeUpVariant} className="flex items-center gap-10">
-              <button
-                onClick={togglePlay}
-                className="w-24 h-24 border border-[var(--accent-gold)]/50 flex items-center justify-center text-[var(--accent-gold)] hover:bg-[var(--accent-gold)] hover:text-black transition-all rounded-full scale-110 premium-shadow-gold"
-              >
-                {playing ? <Pause size={32} /> : <Play size={32} className="ps-1" />}
-              </button>
-              <button
-                onClick={toggleMute}
-                className="w-16 h-16 border border-white/20 flex items-center justify-center text-white/50 hover:text-[var(--accent-gold)] hover:border-[var(--accent-gold)] transition-all rounded-full"
-              >
-                {muted ? <VolumeX size={24} /> : <Volume2 size={24} />}
-              </button>
-            </motion.div>
+
           </motion.div>
         </div>
       </section>
