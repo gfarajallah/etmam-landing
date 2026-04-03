@@ -61,7 +61,7 @@ const Solutions = () => {
         {/* Background Dashboard Image */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden pointer-events-none group">
           <img 
-            src="/media/solutions_hero_dashboard.png" 
+            src="/media/solutions_hero_dashboard.jpg" 
             alt="Solutions Dashboard Concept" 
             className="absolute top-0 left-0 w-full h-full object-cover opacity-20 grayscale brightness-75 mix-blend-screen transition-all duration-[5000ms] animate-slow-zoom group-hover:opacity-40 group-hover:grayscale-[40%]"
           />
