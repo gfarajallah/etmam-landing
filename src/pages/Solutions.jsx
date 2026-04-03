@@ -101,14 +101,14 @@ const Solutions = () => {
             className="group relative flex-1 min-w-0 border-b md:border-b-0 md:border-e border-[var(--border-color)] last:border-0 overflow-hidden cursor-pointer"
           >
             {/* Background Image with Deep Overlay */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 bg-black">
               <img 
                 src={track.bgImage} 
                 alt="" 
-                className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-all duration-[6000ms] ease-out grayscale brightness-[0.25] group-hover:grayscale-0 group-hover:brightness-[0.5]" 
+                className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-all duration-[6000ms] ease-out grayscale brightness-[0.4] group-hover:grayscale-0 group-hover:brightness-[0.7]" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent opacity-90" />
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-multiply" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)]/50 opacity-90" />
+              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-multiply" />
             </div>
 
             {/* Accent Glow */}
