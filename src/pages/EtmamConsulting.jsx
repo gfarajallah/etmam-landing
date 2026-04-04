@@ -217,16 +217,14 @@ const EtmamConsulting = () => {
          </div>
       </section>
 
-      {/* 04.5. ZOHO Consulting Integration Banner (Dedicated Cityscape Layer) */}
-      <section className="bg-black relative border-b border-[var(--border-color)] z-10 flex justify-center items-center overflow-hidden">
-         <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
-         
-         <div className="w-full opacity-100 relative z-0 flex justify-center items-center">
-            {/* Removing all distracting filters and gradients to show the HD image in its original glory */}
+      {/* 04.5. ZOHO Consulting Integration Banner (Dedicated Transparent Cityscape Section) */}
+      <section className="bg-black py-0 relative border-b border-[var(--border-color)] z-10 overflow-hidden">
+         <div className="w-full flex justify-center items-center">
+            {/* Drastic increase in scale and brightness to make fine lines 'pop' */}
             <img 
                src="/media/SmartBlocks Investors_SZOHO1234.png" 
                alt="Zoho Consulting and Implementation Cityscape" 
-               className="w-full h-auto object-cover md:object-contain min-h-[400px] lg:min-h-[800px] drop-shadow-[0_0_50px_rgba(255,255,255,0.1)] transition-transform duration-1000"
+               className="w-full h-auto md:w-[110%] md:-ms-[5%] lg:w-[120%] lg:-ms-[10%] object-contain brightness-150 contrast-110 drop-shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-1000"
             />
          </div>
       </section>
