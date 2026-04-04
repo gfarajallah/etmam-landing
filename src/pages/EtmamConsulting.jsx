@@ -128,7 +128,7 @@ const EtmamConsulting = () => {
                  <img 
                    src="/media/SmartBlocks Investors_SZOHO.png" 
                    alt="Mission & Vision Handshake" 
-                   className="w-[130%] max-w-none -ms-[15%] object-contain mix-blend-multiply dark:invert dark:mix-blend-screen opacity-100 hover:scale-105 transition-all duration-[2000ms] ease-out drop-shadow-2xl"
+                   className="w-[110%] max-w-none -ms-[5%] object-contain mix-blend-multiply dark:invert dark:mix-blend-screen opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-700"
                  />
            </motion.div>
         </div>
@@ -218,13 +218,13 @@ const EtmamConsulting = () => {
       </section>
 
       {/* 04.5. ZOHO Consulting Integration Banner (Dedicated Transparent Cityscape Section) */}
-      <section className="bg-black py-0 relative border-b border-[var(--border-color)] z-10 overflow-hidden">
-         <div className="w-full flex justify-center items-center">
-            {/* Drastic increase in scale and brightness to make fine lines 'pop' */}
+      <section className="bg-black py-24 relative border-b border-[var(--border-color)] z-10 overflow-hidden">
+         <div className="max-w-7xl mx-auto px-6 w-full flex justify-center items-center">
+            {/* Logic Sizing (max-w-7xl) with balanced filters for Dark Mode clarity */}
             <img 
                src="/media/SmartBlocks Investors_SZOHO1234.png" 
                alt="Zoho Consulting and Implementation Cityscape" 
-               className="w-full h-auto md:w-[110%] md:-ms-[5%] lg:w-[120%] lg:-ms-[10%] object-contain brightness-150 contrast-110 drop-shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-1000"
+               className="w-full h-auto object-contain invert mix-blend-screen brightness-110 contrast-110 transition-all duration-700"
             />
          </div>
       </section>
