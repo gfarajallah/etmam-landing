@@ -222,11 +222,12 @@ const EtmamConsulting = () => {
          <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black z-10 pointer-events-none" />
          
-         <div className="max-w-7xl mx-auto px-6 w-full opacity-100 relative z-0">
+         <div className="w-full max-w-[1600px] mx-auto px-6 opacity-100 relative z-10 flex justify-center items-center">
+            {/* Using simple invert for flawless Dark Mode without breaking blending modes. Scaling up massively. */}
             <img 
                src="/media/SmartBlocks Investors_SZOHO1234.png" 
                alt="Zoho Consulting and Implementation Cityscape" 
-               className="w-full h-auto object-contain filter invert mix-blend-screen brightness-150 contrast-125 grayscale"
+               className="w-full h-[600px] object-contain invert brightness-125 contrast-125 drop-shadow-[0_0_20px_rgba(255,255,255,0.05)] scale-110 md:scale-[1.15]"
             />
          </div>
       </section>
