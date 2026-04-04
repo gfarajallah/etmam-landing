@@ -59,51 +59,95 @@ const SmartAgentAI = () => {
     <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 text-start">
       <div className="fixed inset-0 bg-grain opacity-[0.03] pointer-events-none" />
       
-      {/* ── 01. HERO: The Computational Horizon ── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden z-10 border-b border-[var(--border-color)]">
-        {/* Cinematic Backdrop */}
-        <div className="absolute inset-0 z-0 group">
-          <img 
-            src="/media/smartagent_hero.png" 
-            alt="AI Digital City" 
-            className="w-full h-full object-cover scale-[1.02] grayscale brightness-50 group-hover:grayscale-0 group-hover:scale-100 group-hover:brightness-75 transition-all duration-[2000ms]"
+      {/* ── 01. HERO: The Computational Horizon (REDESIGNED) ── */}
+      <section className="relative min-h-[110vh] flex items-center overflow-hidden z-10 border-b border-[var(--border-color)] bg-black">
+        {/* Cinematic Backdrop with Particle Overlay Simulation */}
+        <div className="absolute inset-0 z-0">
+          <motion.div 
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.6 }}
+            transition={{ duration: 3, ease: "easeOut" }}
+            className="absolute inset-0"
+          >
+            <img 
+              src="/media/smartagent_hero.png" 
+              alt="AI Core Architecture" 
+              className="w-full h-full object-cover grayscale brightness-50 contrast-125"
+            />
+          </motion.div>
+          {/* Neural Mesh Overlay - High-end Procedural Feel */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,0.1)_0%,transparent_80%)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
+          
+          {/* Animated Scanning Line */}
+          <motion.div 
+            animate={{ top: ['-10%', '110%'] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            className="absolute left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent z-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/40 to-transparent" />
-          <div className="absolute inset-0 bg-[var(--bg-primary)]/20 mix-blend-overlay" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20 w-full text-start">
-          <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
-            <motion.div variants={fadeUpVariant} className="flex items-center gap-4 mb-10">
-              <Cpu className="text-cyan-400 animate-pulse" size={20} />
-              <span className="text-cyan-400 text-[10px] font-black uppercase tracking-[0.6em]">
-                {lang === 'en' ? 'Track 03 // SmartAgent Architecture' : 'المسار 03 // هندسة سمارتي إيجنتس'}
-              </span>
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-20 w-full py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            
+            <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="text-start">
+              <motion.div variants={fadeUpVariant} className="flex items-center gap-6 mb-12">
+                <div className="relative">
+                   <div className="absolute inset-0 bg-cyan-500/20 blur-md rounded-full animate-pulse" />
+                   <Cpu className="text-cyan-400 relative z-10" size={24} />
+                </div>
+                <div className="h-[1px] w-20 bg-gradient-to-r from-cyan-400 to-transparent" />
+                <span className="text-cyan-400 text-[11px] font-black uppercase tracking-[0.8em] drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]">
+                  {lang === 'en' ? 'Core Node // 03' : 'النواة المركزية // 03'}
+                </span>
+              </motion.div>
+
+              <TextReveal 
+                text={lang === 'en' ? 'Absolute Neural Hegemony.' : 'هيمنة عصبية مطلقة.'}
+                className="text-[clamp(3.5rem,10vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.85] mb-12 italic"
+              />
+
+              <motion.p variants={fadeUpVariant} className="text-[clamp(1.1rem,2vw,1.6rem)] font-light opacity-50 max-w-2xl mb-20 leading-relaxed border-l-2 border-cyan-500/30 pl-8 rtl:pl-0 rtl:pr-8 rtl:border-l-0 rtl:border-r-2">
+                {lang === 'en' 
+                  ? 'Transcend traditional human-led workflows. We deploy autonomous intelligence that doesn\'t just resolve inquiries—it dictates the high-equity sales narrative.'
+                  : 'تجاوز سير العمل التقليدي الذي يقوده البشر. نحن ننشر ذكاءً مستقلاً لا يكتفي بمجرد الرد على الاستفسارات، بل يملي مسار المبيعات عالي القيمة.'}
+              </motion.p>
+
+              <motion.div variants={fadeUpVariant} className="flex flex-wrap gap-10 items-center">
+                <Magnetic strength={0.2}>
+                  <PremiumButton to="/contact" className="bg-cyan-500 text-black border-none hover:bg-white hover:scale-110 transition-all duration-500 shadow-[0_0_40px_rgba(34,211,238,0.3)]">
+                    {lang === 'en' ? 'INITIALIZE PROTOCOL' : 'بدء البروتوكول'}
+                  </PremiumButton>
+                </Magnetic>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-cyan-500 animate-ping" />
+                    <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">Sync Status: Live</span>
+                  </div>
+                  <span className="text-[9px] opacity-30 uppercase tracking-[0.3em]">Latency: 0.12ms // Optimal</span>
+                </div>
+              </motion.div>
             </motion.div>
 
-            <TextReveal 
-              text={lang === 'en' ? 'Automated Domination.' : 'هيمنة آلية ثورية.'}
-              className="display-title mb-8 tracking-tighter"
-            />
-
-            <motion.p variants={fadeUpVariant} className="text-[clamp(1rem,2.5vw,1.5rem)] font-light opacity-50 max-w-3xl mb-16 leading-relaxed">
-              {lang === 'en' 
-                ? 'Deploying neural-grade agents to manage, qualify, and convert leads with sub-second finality. The era of manual sales is officially over.'
-                : 'نشر وكلاء بدرجة عصبية لإدارة وتأهيل وتحويل العملاء المحتملين بكفاءة جراحية. عصر المبيعات اليدوية انتهى رسمياً.'}
-            </motion.p>
-
-            <motion.div variants={fadeUpVariant} className="flex flex-col sm:flex-row gap-8 items-start">
-              <Magnetic strength={0.4}>
-                <PremiumButton to="/contact" className="bg-cyan-500 text-black border-none hover:bg-cyan-400" scale="scale-110">
-                  {lang === 'en' ? 'COMMAND THE NODE' : 'قيادة العقدة الرقمية'}
-                </PremiumButton>
-              </Magnetic>
-              <div className="flex items-center gap-4 px-6 py-2 border border-cyan-500/20 bg-cyan-900/10 backdrop-blur-md">
-                <Activity size={16} className="text-cyan-400" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400/60 leading-none">Status: Neural Link Active</span>
-              </div>
+            {/* Hero Right Visual: Data Flow / Hologram Feel */}
+            <motion.div 
+               initial={{ opacity: 0, scale: 0.8 }}
+               animate={{ opacity: 1, scale: 1 }}
+               transition={{ duration: 1.5, ease: "easeOut" }}
+               className="hidden lg:flex justify-end p-20"
+            >
+               <div className="relative w-full max-w-lg aspect-square">
+                  <div className="absolute inset-0 border-2 border-cyan-500/10 rounded-full animate-[spin_20s_linear_infinite]" />
+                  <div className="absolute inset-10 border border-cyan-500/5 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                     <Brain size={200} className="text-cyan-400 opacity-20 blur-[2px] animate-pulse" />
+                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.15)_0%,transparent_60%)]" />
+                  </div>
+               </div>
             </motion.div>
-          </motion.div>
+
+          </div>
         </div>
       </section>
 
@@ -147,51 +191,80 @@ const SmartAgentAI = () => {
         </motion.div>
       </section>
 
-      {/* ── 03. INTERACTIVE: Live Node Processing ── */}
-      <section className="py-60 z-10 relative bg-[var(--bg-secondary)]/30 border-y border-[var(--border-color)] overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
-          <div className="absolute top-0 start-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.3)_0%,transparent_70%)]" />
+      {/* ── 03. REDESIGNED: Cognitive Dashboard & Neural Intelligence ── */}
+      <section className="py-60 z-10 relative bg-black border-y border-[var(--border-color)] overflow-hidden">
+        {/* Procedural Data Streams */}
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none select-none overflow-hidden text-[8px] font-mono leading-none text-cyan-500 whitespace-pre">
+           {Array(20).fill('0 1 0 1 1 0 1 0 0 1 0 1 1 1 0 1 0 1 0 1 0 1 1 0 1 0 0 1 0 1 1 1 0').join('\n')}
         </div>
 
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-[1600px] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-stretch">
             
-            <motion.div variants={fadeUpVariant} className="relative p-1 glass-card border-cyan-500/20 bg-cyan-900/10 metallic-glow text-center">
-              <div className="p-8 md:p-14 relative overflow-hidden">
-                <div className="absolute top-0 start-0 w-full h-1 bg-cyan-500/50 animate-pulse" />
-                <h4 className="text-[10px] font-black uppercase tracking-[0.8em] mb-12 opacity-30">Neural Engine Status: OPTIMAL</h4>
-                <CommandTerminal />
-                <div className="absolute bottom-4 start-0 w-full flex justify-center gap-10 opacity-20">
-                  <Fingerprint size={16} />
-                  <Cpu size={16} />
-                  <Radar size={16} />
+            {/* Left: The Processing Node (Redesigned Terminal + Stats) */}
+            <motion.div variants={fadeUpVariant} className="lg:col-span-7 flex flex-col gap-10">
+              <div className="relative p-1 glass-card border-cyan-500/20 bg-cyan-900/5 metallic-glow">
+                <div className="p-10 relative overflow-hidden">
+                   <div className="flex items-center justify-between mb-8">
+                      <div className="flex items-center gap-3">
+                         <div className="w-1.5 h-1.5 bg-cyan-500 animate-pulse" />
+                         <span className="text-[9px] font-black uppercase tracking-[0.5em] text-cyan-400/60">System Registry // Active</span>
+                      </div>
+                      <span className="text-[8px] font-mono opacity-20">0x882_NEURAL_CORE</span>
+                   </div>
+                   <CommandTerminal />
                 </div>
+              </div>
+
+              {/* Cognitive Stats Dashboard */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                 {[
+                   { label: 'Neural Purity', val: '99.9%', desc: 'Consistency ratio' },
+                   { label: 'Synaptic Speed', val: '0.04s', desc: 'Average response' },
+                   { label: 'Asset Match', val: 'PRECISE', desc: 'Listing accuracy' }
+                 ].map((stat, idx) => (
+                   <div key={idx} className="p-8 border border-white/5 bg-white/[0.02] hover:bg-cyan-500/[0.05] transition-all duration-500">
+                      <span className="text-[9px] font-black uppercase tracking-widest opacity-30 mb-2 block">{stat.label}</span>
+                      <div className="text-3xl font-black text-cyan-400 mb-1">{stat.val}</div>
+                      <span className="text-[8px] uppercase opacity-20">{stat.desc}</span>
+                   </div>
+                 ))}
               </div>
             </motion.div>
 
-            <motion.div variants={fadeUpVariant} className="text-start">
-              <span className="text-cyan-400 text-[10px] font-black uppercase tracking-[0.6em] mb-8 block">
-                {lang === 'en' ? 'Institutional Intelligence' : 'الذكاء المؤسسي الرصين'}
-              </span>
-              <TextReveal 
-                text={lang === 'en' ? 'Computational Inheritance.' : 'الميراث الحسابي.'}
-                className="display-title mb-10"
-              />
-              <div className="space-y-8 text-xl font-light opacity-40 leading-relaxed mb-16">
+            {/* Right: The Strategic Overview */}
+            <motion.div variants={fadeUpVariant} className="lg:col-span-5 flex flex-col justify-center text-start">
+              <div className="mb-12">
+                 <span className="text-cyan-400 text-[11px] font-black uppercase tracking-[0.8em] mb-6 block drop-shadow-sm">
+                   {lang === 'en' ? 'Institutional Intelligence' : 'الذكاء المؤسسي الرصين'}
+                 </span>
+                 <TextReveal 
+                   text={lang === 'en' ? 'Computational Inheritance.' : 'الميراث الحسابي.'}
+                   className="text-[clamp(2.5rem,6vw,5.5rem)] font-black uppercase tracking-tighter leading-[0.9] mb-12"
+                 />
+              </div>
+
+              <div className="space-y-10 text-lg md:text-xl font-light opacity-50 leading-relaxed mb-20 border-r-2 border-cyan-500/10 pr-12 rtl:pr-0 rtl:pl-12 rtl:border-r-0 rtl:border-l-2">
                 <p>
                   {lang === 'en' 
-                    ? "SmartAgents isn't just software; it's the digital embodiment of your enterprise legacy. We build systems that don't just mimic human interaction, but transcend it with absolute logical consistency."
-                    : "سمارتي إيجنتس ليست مجرد برمجيات؛ إنها التجسيد الرقمي لإرثك المؤسسي. نحن نبني أنظمة لا تحاكي التفاعل البشري فحسب، بل تتجاوزه باتساق منطقي مطلق."}
+                    ? "SmartAgents aren't just software; they are the digital embodiment of your enterprise legacy. We build architectures that don't just mimic human interaction, but transcend it with absolute logical consistency."
+                    : "سمارتي إيجنتس ليست مجرد برمجيات؛ إنها التجسيد الرقمي لإرثك المؤسسي. نحن نبني هياكل لا تحاكي التفاعل البشري فحسب، بل تتجاوزه باتساق منطقي مطلق."}
                 </p>
-                <p>
-                  {lang === 'en'
-                    ? "Your high-performing agents are encoded with behavioral excellence, meaning every single lead is greeted by the best version of your vision, 24 hours a day."
-                    : "وكلاؤك ذوو الأداء العالي مبرمجون على التميز السلوكي، مما يعني أن كل عميل يتم استقباله بأفضل نسخة من رؤيتك، 24 ساعة في اليوم."}
-                </p>
+                <div className="flex items-start gap-6 p-8 bg-cyan-950/20 border-l-4 border-cyan-500">
+                   <Zap size={24} className="text-cyan-400 shrink-0" />
+                   <p className="text-sm italic opacity-80">
+                     {lang === 'en'
+                       ? "Our agents are encoded with behavioral excellence, ensuring the best version of your vision greets every lead, 24/7."
+                       : "وكلاؤنا مبرمجون على التميز السلوكي، مما يضمن أن أفضل نسخة من رؤيتك هي ما يستقبل كل عميل، على مدار الساعة."}
+                   </p>
+                </div>
               </div>
-              <PremiumButton to="/contact" className="border-cyan-500/40 hover:bg-cyan-500/10 hover:text-cyan-400 px-12">
-                {lang === 'en' ? 'INITIALIZE SYSTEM' : 'تهيئة النظام المتكامل'}
-              </PremiumButton>
+
+              <Magnetic strength={0.3}>
+                 <PremiumButton to="/contact" className="border-cyan-500/40 hover:bg-cyan-500/10 hover:text-cyan-400 px-16 w-fit">
+                   {lang === 'en' ? 'COMMAND THE CORE' : 'التحكم في النواة'}
+                 </PremiumButton>
+              </Magnetic>
             </motion.div>
           </div>
         </motion.div>
