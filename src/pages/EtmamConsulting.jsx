@@ -128,7 +128,7 @@ const EtmamConsulting = () => {
                  <img 
                    src="/media/SmartBlocks Investors_SZOHO.png" 
                    alt="Mission & Vision Handshake" 
-                   className="w-[120%] max-w-none -ms-[10%] object-contain grayscale mix-blend-multiply dark:invert dark:mix-blend-screen opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-[2000ms] ease-out drop-shadow-2xl"
+                   className="w-[130%] max-w-none -ms-[15%] object-contain mix-blend-multiply dark:invert dark:mix-blend-screen opacity-100 hover:scale-105 transition-all duration-[2000ms] ease-out drop-shadow-2xl"
                  />
            </motion.div>
         </div>
@@ -210,7 +210,7 @@ const EtmamConsulting = () => {
                  {/* Clean Typography Block Below Image */}
                  <div className="text-center mt-10 z-20">
                       <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.5em] mb-2 block">Certified Integration</span>
-                      <h2 className="text-4xl sm:text-5xl font-black tracking-tighter">ZOHO ARCHITECTS</h2>
+                      <h2 className="text-[var(--text-primary)] text-4xl sm:text-5xl font-black tracking-tighter uppercase whitespace-nowrap">ZOHO ARCHITECTS</h2>
                  </div>
 
             </motion.div>
@@ -218,16 +218,15 @@ const EtmamConsulting = () => {
       </section>
 
       {/* 04.5. ZOHO Consulting Integration Banner (Dedicated Cityscape Layer) */}
-      <section className="py-20 bg-black relative border-b border-[var(--border-color)] z-10 flex justify-center items-center overflow-hidden">
+      <section className="bg-black relative border-b border-[var(--border-color)] z-10 flex justify-center items-center overflow-hidden">
          <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
-         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black z-10 pointer-events-none" />
          
-         <div className="w-full max-w-[1600px] mx-auto px-6 opacity-100 relative z-10 flex justify-center items-center">
-            {/* Using simple invert for flawless Dark Mode without breaking blending modes. Scaling up massively. */}
+         <div className="w-full opacity-100 relative z-0 flex justify-center items-center">
+            {/* Removing all distracting filters and gradients to show the HD image in its original glory */}
             <img 
                src="/media/SmartBlocks Investors_SZOHO1234.png" 
                alt="Zoho Consulting and Implementation Cityscape" 
-               className="w-full h-[600px] object-contain invert brightness-125 contrast-125 drop-shadow-[0_0_20px_rgba(255,255,255,0.05)] scale-110 md:scale-[1.15]"
+               className="w-full h-auto object-cover md:object-contain min-h-[400px] lg:min-h-[800px] drop-shadow-[0_0_50px_rgba(255,255,255,0.1)] transition-transform duration-1000"
             />
          </div>
       </section>
