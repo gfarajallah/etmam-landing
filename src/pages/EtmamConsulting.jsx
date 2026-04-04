@@ -128,7 +128,7 @@ const EtmamConsulting = () => {
                  <img 
                    src="/media/SmartBlocks Investors_SZOHO.png" 
                    alt="Mission & Vision Handshake" 
-                   className="w-[120%] max-w-none -ms-[10%] object-contain filter invert mix-blend-screen grayscale opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-[2000ms] ease-out drop-shadow-2xl"
+                   className="w-[120%] max-w-none -ms-[10%] object-contain grayscale mix-blend-multiply dark:invert dark:mix-blend-screen opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-[2000ms] ease-out drop-shadow-2xl"
                  />
            </motion.div>
         </div>
@@ -163,30 +163,34 @@ const EtmamConsulting = () => {
       </section>
 
       {/* 04. Zoho Partnership Node */}
-      <section className="py-52 bg-[var(--text-primary)] text-[var(--bg-primary)] z-10 relative">
-         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-               <motion.div variants={fadeUpVariant} className="flex items-center gap-6 mb-12">
-                  <div className="p-4 bg-[var(--bg-primary)]">
-                    <Database className="text-[var(--text-primary)]" size={40} />
-                  </div>
-                  <h3 className="text-4xl font-black uppercase tracking-tighter">ZOHO <span className="text-[var(--accent-gold)]">PARTNER.</span></h3>
-               </motion.div>
-               <motion.div variants={fadeUpVariant} className="space-y-8 text-[var(--bg-primary)]/80 text-lg leading-relaxed font-light">
-                  <p>
-                    {lang === 'en' 
-                      ? "ETMAM is a certified Zoho Solutions Provider, authorized to deliver reliable custom solutions across all business scales."
-                      : "إتمام هي مزود حلول زوهو معتمد، وفوضت بتقديم حلول مخصصة موثوقة عبر جميع أحجام الأعمال."}
-                  </p>
+      <section className="py-60 relative z-10 border-b border-[var(--border-color)] overflow-hidden">
+         {/* Subtle Background Glow */}
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--accent-gold)]/5 blur-[100px] pointer-events-none rounded-full" />
+         
+         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="text-start">
+               <TextReveal 
+                 text={lang === 'en' ? 'Certified Master Architects.' : 'مهندسون معتمدون.'}
+                 className="section-title mb-10"
+               />
+               <motion.p variants={fadeUpVariant} className="text-xl font-light opacity-60 leading-relaxed mb-12 border-l border-[var(--accent-gold)] pl-6 rtl:pl-0 rtl:pr-6 rtl:border-l-0 rtl:border-r">
+                   {lang === 'en' 
+                     ? "As an Advanced Zoho Partner in Dubai, ETMAM transcends basic configuration. We engineer complex, cross-departmental architectures that transform how institutions operate."
+                     : "بصفتنا شريك زوهو المتقدم في دبي، نتجاوز في إتمام حدود الإعدادات الأساسية. نحن نصمم هياكل عابرة للإدارات تحول طريقة عمل المؤسسات بالكامل."}
+               </motion.p>
+
+               <motion.div variants={fadeUpVariant} className="space-y-6">
                   <ul className="space-y-4">
                      {[
-                       lang === 'en' ? "Certified Implementation Strategy" : "استراتيجية تنفيذ معتمدة",
-                       lang === 'en' ? "End-User Training Ecosystem" : "نظام تدريب المستخدم النهائي",
-                       lang === 'en' ? "Priority Institutional Support" : "دعم مؤسسي ذو أولوية",
-                       lang === 'en' ? "Exclusive Partner Billing Rates" : "أسعار فوترة حصرية للشركاء"
-                     ].map((item, idx) => (
-                       <li key={idx} className="flex items-center gap-4 text-sm font-black uppercase tracking-widest text-[var(--bg-primary)]">
-                          <CheckCircle size={16} className="text-[var(--accent-gold)]" /> {item}
+                       lang === 'en' ? 'Certified Implementation Strategy' : 'استراتيجية تنفيذ معتمدة',
+                       lang === 'en' ? 'End-User Training Ecosystem' : 'بيئة تدريب متقدمة للمستخدمين',
+                       lang === 'en' ? 'Priority Institutional Support' : 'دعم مؤسسي ذو أولوية عالية',
+                       lang === 'en' ? 'Exclusive Partner Billing Rates' : 'أسعار فوترة حصرية للشركاء'
+                     ].map((item, i) => (
+                       <li key={i} className="flex items-center gap-4 text-sm font-black uppercase tracking-widest opacity-80">
+                         <div className="w-4 h-4 rounded-full border border-[var(--accent-gold)] flex items-center justify-center text-[var(--accent-gold)] text-[8px] bg-[var(--bg-primary)]">✓</div>
+                         {item}
                        </li>
                      ))}
                   </ul>
@@ -206,7 +210,7 @@ const EtmamConsulting = () => {
                  {/* Clean Typography Block Below Image */}
                  <div className="text-center mt-10 z-20">
                       <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.5em] mb-2 block">Certified Integration</span>
-                      <h2 className="text-[var(--bg-primary)] text-4xl sm:text-5xl font-black tracking-tighter">ZOHO ARCHITECTS</h2>
+                      <h2 className="text-4xl sm:text-5xl font-black tracking-tighter">ZOHO ARCHITECTS</h2>
                  </div>
 
             </motion.div>
@@ -218,11 +222,11 @@ const EtmamConsulting = () => {
          <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black z-10 pointer-events-none" />
          
-         <div className="max-w-5xl mx-auto px-6 w-full opacity-60 hover:opacity-100 transition-opacity duration-700 relative z-0">
+         <div className="max-w-7xl mx-auto px-6 w-full opacity-100 relative z-0">
             <img 
                src="/media/SmartBlocks Investors_SZOHO1234.png" 
                alt="Zoho Consulting and Implementation Cityscape" 
-               className="w-full h-auto max-h-[500px] object-contain filter invert mix-blend-screen grayscale"
+               className="w-full h-auto object-contain filter invert mix-blend-screen brightness-150 contrast-125 grayscale"
             />
          </div>
       </section>
