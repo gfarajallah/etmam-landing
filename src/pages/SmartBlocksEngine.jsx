@@ -1,3 +1,4 @@
+import React from 'react';
 import { useLanguage } from '@/context/useLanguage';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -24,6 +25,8 @@ import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 const SmartBlocksEngine = () => {
   const { lang } = useLanguage();
   const isArabic = lang === 'ar';
+
+  const barHeights = [45, 72, 38, 65, 88, 42, 55, 92, 34, 66, 48, 77, 52, 83, 39, 61, 44, 73, 50, 68];
 
   const benefits = [
     {
@@ -206,8 +209,8 @@ const SmartBlocksEngine = () => {
                           className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--accent-gold)]/10 to-transparent skew-x-12" 
                         />
                         <div className="absolute inset-0 flex items-center justify-around opacity-20">
-                           {[...Array(20)].map((_, i) => (
-                             <div key={i} className="w-[2px] bg-white/20" style={{ height: `${Math.random() * 80}%` }} />
+                           {barHeights.map((h, i) => (
+                             <div key={i} className="w-[2px] bg-white/20" style={{ height: `${h}%` }} />
                            ))}
                         </div>
                      </div>
