@@ -90,7 +90,46 @@ const Solutions = () => {
         </div>
       </section>
 
-      {/* ── 02. THE BLADE SYSTEM: Interactive Shards ── */}
+      {/* ── 02. SYNERGY: The Collective Execution ── */}
+      <section className="py-60 relative overflow-hidden z-10 bg-[var(--bg-secondary)]/20">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-radial-at-c from-[var(--accent-gold)]/5 to-transparent blur-[120px]" />
+        
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="text-start">
+              <motion.div variants={fadeUpVariant} className="flex gap-4 mb-12">
+                <Globe className="text-blue-400" size={32} />
+                <Cpu className="text-[var(--accent-gold)]" size={32} />
+                <Bot className="text-cyan-400" size={32} />
+              </motion.div>
+              
+              <TextReveal 
+                text={lang === 'en' ? 'ECOSYSTEM INTEGRITY.' : 'تكامل النظام الشامل.'}
+                className="text-5xl md:text-8xl font-black uppercase tracking-tighter italic leading-none mb-12"
+              />
+              
+              <motion.p variants={fadeUpVariant} className="text-2xl font-light opacity-40 mb-16 leading-relaxed max-w-xl">
+                {lang === 'en'
+                  ? 'Each track operates as a specialized node, yet they converge in the ETMAM Execution Engine to create absolute market superiority.'
+                  : 'يعمل كل مسار كعقدة متخصصة، ومع ذلك فإنها تلتقي في محرك تنفيذ إتمام لخلق تفوق سوقي مطلق.'}
+              </motion.p>
+              
+              <motion.div variants={fadeUpVariant}>
+                <Magnetic>
+                  <PremiumButton to="/contact" scale="scale-110">
+                    {lang === 'en' ? 'INITIATE PARTNER PROTOCOL' : 'بدء بروتوكول الشراكة'}
+                  </PremiumButton>
+                </Magnetic>
+              </motion.div>
+            </motion.div>
+            <motion.div variants={slowFadeUpVariant} className="relative flex justify-center py-10 lg:py-0">
+              <EcosystemCore />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 03. THE BLADE SYSTEM: Interactive Shards ── */}
       <section className="relative h-screen md:h-[80vh] w-full z-20 flex flex-col md:flex-row overflow-hidden border-y border-[var(--border-color)]">
         {tracks.map((track) => (
           <motion.div
@@ -158,45 +197,6 @@ const Solutions = () => {
             </div>
           </motion.div>
         ))}
-      </section>
-
-      {/* ── 03. SYNERGY: The Collective Execution ── */}
-      <section className="py-60 relative overflow-hidden z-10 bg-[var(--bg-secondary)]/20">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-radial-at-c from-[var(--accent-gold)]/5 to-transparent blur-[120px]" />
-        
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="text-start">
-              <motion.div variants={fadeUpVariant} className="flex gap-4 mb-12">
-                <Globe className="text-blue-400" size={32} />
-                <Cpu className="text-[var(--accent-gold)]" size={32} />
-                <Bot className="text-cyan-400" size={32} />
-              </motion.div>
-              
-              <TextReveal 
-                text={lang === 'en' ? 'Ecosystem Integrity.' : 'تكامل النظام الشامل.'}
-                className="text-5xl md:text-8xl font-black uppercase tracking-tighter italic leading-none mb-12"
-              />
-              
-              <motion.p variants={fadeUpVariant} className="text-2xl font-light opacity-40 mb-16 leading-relaxed max-w-xl">
-                {lang === 'en'
-                  ? 'Each track operates as a specialized node, yet they converge in the ETMAM Execution Engine to create absolute market superiority.'
-                  : 'يعمل كل مسار كعقدة متخصصة، ومع ذلك فإنها تلتقي في محرك تنفيذ إتمام لخلق تفوق سوقي مطلق.'}
-              </motion.p>
-              
-              <motion.div variants={fadeUpVariant}>
-                <Magnetic>
-                  <PremiumButton to="/contact" scale="scale-110">
-                    {lang === 'en' ? 'INITIATE PARTNER PROTOCOL' : 'بدء بروتوكول الشراكة'}
-                  </PremiumButton>
-                </Magnetic>
-              </motion.div>
-            </motion.div>
-            <motion.div variants={slowFadeUpVariant} className="relative flex justify-center py-10 lg:py-0">
-              <EcosystemCore />
-            </motion.div>
-          </div>
-        </div>
       </section>
     </div>
   );
