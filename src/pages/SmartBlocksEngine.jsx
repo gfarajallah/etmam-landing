@@ -99,6 +99,28 @@ const SmartBlocksEngine = () => {
         { label: lang === 'en' ? "03. The Protocol (Mechanic)" : "03. الآلية", text: lang === 'en' ? "On-chain atomic settlements verify the purchase and instantly execute the agreed percentage split." : "تسويات آلية على البلوكشين تتحقق من الشراء وتنفذ النسبة المتفق عليها في ثواني." },
         { label: lang === 'en' ? "04. The Horizon (Outcome)" : "04. الأفق والنتيجة", text: lang === 'en' ? "Exponential sales throughput with absolute financial certainty." : "قدرة مبيعات مضاعفة ونهائية ويقين مالي من خلال كسر حواجز المبيعات التقليدية." }
       ]
+    },
+    {
+      title: lang === 'en' ? "Broker Firms" : "شركات الوساطة",
+      tag: "ENTERPRISE",
+      icon: <Globe size={24} className="text-[var(--accent-gold)]" />,
+      levels: [
+        { label: lang === 'en' ? "01. The Barrier (Pain)" : "01. التحدي", text: lang === 'en' ? "Managing distributed teams and tracking complex commission splits across multi-layered legal compliance." : "إدارة الفرق الموزعة وتتبع انقسامات العمولات المعقدة عبر طبقات الامتثال القانوني المتعددة." },
+        { label: lang === 'en' ? "02. The Engine (Solution)" : "02. المحرك والحل", text: lang === 'en' ? "Centralized institutional dashboard with automated real-time settlement of agency-wide commissions." : "لوحة تحكم مؤسسية مركزية مع تسوية تلقائية في الوقت الفعلي للعمولات على مستوى الوكالة بالكامل." },
+        { label: lang === 'en' ? "03. The Protocol (Mechanic)" : "03. الآلية", text: lang === 'en' ? "Multi-sig smart contracts escrow and release funds across the firm's organizational structure instantly." : "عقود ذكية متعددة التوقيع تضمن وتحرر الأموال عبر الهيكل التنظيمي للشركة بشكل فوري." },
+        { label: lang === 'en' ? "04. The Horizon (Outcome)" : "04. الأفق والنتيجة", text: lang === 'en' ? "100% operational transparency and high-velocity asset distribution at massive scale." : "شفافية تشغيلية بنسبة 100٪ وتوزيع أصول عالي السرعة على نطاق مؤسسي واسع." }
+      ]
+    },
+    {
+      title: lang === 'en' ? "Service Providers" : "مزودو الخدمات",
+      tag: "OPERATIONS",
+      icon: <Activity size={24} className="text-[var(--accent-gold)]" />,
+      levels: [
+        { label: lang === 'en' ? "01. The Barrier (Pain)" : "01. التحدي", text: lang === 'en' ? "Delayed service fees, disjointed management data, and manual auditing of asset performance." : "تأخر رسوم الخدمة، وتشتت بيانات الإدارة، والتدقيق اليدوي لأداء الأصول التقليدية." },
+        { label: lang === 'en' ? "02. The Engine (Solution)" : "02. المحرك والحل", text: lang === 'en' ? "Direct integration into the asset's digital twin, allowing for automated fee-streaming." : "التكامل المباشر في التوأم الرقمي للأصل، مما يسمح بالتدفق التلقائي والشفاف للرسوم." },
+        { label: lang === 'en' ? "03. The Protocol (Mechanic)" : "03. الآلية", text: lang === 'en' ? "Smart contract triggers tied to performance benchmarks auto-release management fees." : "محفزات العقود الذكية المرتبطة بمعايير الأداء تقوم بتحرير رسوم الإدارة تلقائياً." },
+        { label: lang === 'en' ? "04. The Horizon (Outcome)" : "04. الأفق والنتيجة", text: lang === 'en' ? "Absolute financial certainty and automated performance-linked operational rewards." : "يقين مالي مطلق ومكافآت تشغيلية آليا مرتبطة بالأداء الفعلي للأصل." }
+      ]
     }
   ];
 
@@ -355,7 +377,7 @@ const SmartBlocksEngine = () => {
             </motion.p>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/5 border border-white/5 overflow-hidden">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-white/5 border border-white/5 overflow-hidden">
             {profiles.map((p, i) => (
               <motion.div key={i} variants={fadeUpVariant}>
                 <Link to="/contact"
