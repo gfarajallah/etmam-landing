@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { useLanguage } from '@/context/useLanguage';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Globe, 
   ShieldCheck, 
@@ -13,7 +14,9 @@ import {
   Zap,
   CheckCircle,
   Database,
-  BarChart3
+  BarChart3,
+  Play,
+  X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PremiumButton from '@/components/ui/PremiumButton';
@@ -23,6 +26,9 @@ import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animat
 
 const EtmamConsulting = () => {
   const { lang } = useLanguage();
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  const videoUrl = "https://www.youtube.com/embed/1HJAHe0FsOw?autoplay=1";
 
   const capabilities = [
     {
@@ -196,26 +202,83 @@ const EtmamConsulting = () => {
                   </ul>
                </motion.div>
             </motion.div>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative rtl:order-first flex flex-col justify-center items-center">
-                 
+            <motion.div 
+               initial="hidden" 
+               whileInView="visible" 
+               viewport={{ once: true }} 
+               variants={fadeUpVariant} 
+               className="relative rtl:order-first flex flex-col justify-center items-center cursor-pointer group/video"
+               onClick={() => setIsVideoOpen(true)}
+            >
+                 {/* Cinematic Play Trigger Overlay */}
+                 <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+                    <motion.div 
+                       animate={{ scale: [1, 1.1, 1] }}
+                       transition={{ duration: 2, repeat: Infinity }}
+                       className="w-20 h-20 bg-[var(--accent-gold)] rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(201,169,98,0.4)] group-hover/video:scale-125 transition-transform duration-500"
+                    >
+                       <Play size={32} className="text-black fill-current translate-x-1" />
+                    </motion.div>
+                 </div>
+
                  {/* Clean Unbounded Image */}
                  <motion.img 
                    src="/media/Zoho-One-Partner-Dubai-UAE.png" 
                    alt="Zoho One Partner UAE" 
                    animate={{ y: [0, -10, 0] }}
                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                   className="w-full max-w-sm object-contain z-10 hover:scale-105 transition-transform duration-700 drop-shadow-xl"
+                   className="w-full max-w-sm object-contain z-10 group-hover/video:scale-105 transition-transform duration-700 drop-shadow-2xl brightness-90 group-hover/video:brightness-100"
                  />
                
                  {/* Clean Typography Block Below Image */}
                  <div className="text-center mt-10 z-20">
-                      <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.5em] mb-2 block">Certified Integration</span>
+                      <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.5em] mb-2 block group-hover/video:tracking-[0.8em] transition-all duration-700">Certified Integration</span>
                       <h2 className="text-[var(--text-primary)] text-4xl sm:text-5xl font-black tracking-tighter uppercase whitespace-nowrap">ZOHO ARCHITECTS</h2>
                  </div>
 
             </motion.div>
          </div>
       </section>
+
+      {/* Video Modal Interface */}
+      <AnimatePresence>
+         {isVideoOpen && (
+           <motion.div 
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             exit={{ opacity: 0 }}
+             className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-20 bg-black/90 backdrop-blur-3xl"
+           >
+              <motion.div 
+                initial={{ scale: 0.9, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.9, y: 20 }}
+                className="relative w-full max-w-6xl aspect-video bg-black shadow-2xl border border-white/10 overflow-hidden"
+              >
+                 <button 
+                   onClick={() => setIsVideoOpen(false)}
+                   className="absolute top-6 right-6 z-[110] w-12 h-12 bg-white/5 hover:bg-white/10 backdrop-blur-xl border border-white/10 rounded-full flex items-center justify-center transition-all group"
+                 >
+                    <X size={24} className="text-white group-hover:rotate-90 transition-transform" />
+                 </button>
+
+                 <iframe 
+                   src={videoUrl}
+                   title="Zoho One Introduction"
+                   className="w-full h-full"
+                   frameBorder="0"
+                   allow="autoplay; encrypted-media"
+                   allowFullScreen
+                 />
+                 
+                 <div className="absolute inset-x-0 bottom-0 p-8 pt-20 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none">
+                    <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[1em] mb-4 block">Official Partnership // Protocol 01</span>
+                    <h4 className="text-3xl font-black italic uppercase tracking-tighter text-white">Engineering Global Liquidity with Zoho One</h4>
+                 </div>
+              </motion.div>
+           </motion.div>
+         )}
+      </AnimatePresence>
 
       {/* 04.5. ZOHO Consulting Integration Banner (Dedicated Transparent Cityscape Section) */}
       <section className="bg-black py-24 relative border-b border-[var(--border-color)] z-10 overflow-hidden">
