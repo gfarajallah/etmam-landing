@@ -443,7 +443,7 @@ const SmartBlocksEngine = () => {
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <a href="https://smartblocks.etmam.io" target="_blank" rel="noopener noreferrer" 
+            <a href="https://www.smartblocks.ae" target="_blank" rel="noopener noreferrer" 
                className="group flex flex-col items-center justify-center p-24 border border-white/5 bg-white/[0.01] backdrop-blur-3xl relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:shadow-[0_0_80px_rgba(201,169,98,0.15)]">
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="relative mb-16 w-28 h-28 flex items-center justify-center">
