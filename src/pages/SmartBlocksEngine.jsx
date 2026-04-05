@@ -12,7 +12,9 @@ import {
   Layers,
   Wallet,
   LayoutDashboard,
-  Users
+  Users,
+  Fingerprint,
+  Activity
 } from 'lucide-react';
 import PremiumButton from '@/components/ui/PremiumButton';
 import Magnetic from '@/components/ui/Magnetic';
@@ -101,187 +103,203 @@ const SmartBlocksEngine = () => {
     <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative transition-colors duration-700 text-start selection:bg-[var(--accent-gold)]/30">
       <div className="fixed inset-0 bg-grain opacity-[0.03] pointer-events-none" />
 
-      {/* ── 01. INSTITUTIONAL HERO ── */}
-      <section className="relative min-h-[105vh] flex items-center overflow-hidden z-10 border-b border-[var(--border-color)]">
-        <div className="absolute inset-0 z-0 bg-black">
+      {/* ── 01. INSTITUTIONAL HERO: The Computational Horizon (REDESIGNED) ── */}
+      <section className="relative min-h-[110vh] flex items-center overflow-hidden z-10 border-b border-[var(--border-color)] bg-black">
+        {/* Cinematic Backdrop with Asset Network Illustration */}
+        <div className="absolute inset-0 z-0">
           <motion.div 
             initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.45 }}
-            transition={{ duration: 2.5, ease: "easeOut" }}
+            animate={{ scale: 1, opacity: 0.55 }}
+            transition={{ duration: 3.5, ease: "easeOut" }}
             className="absolute inset-0"
           >
             <img 
-              src={`/media/smartblocks_expert_${lang === 'ar' ? 'ar' : 'en'}.png`}
-              alt="Tokenization Architecture" 
+              src="/media/smartblocks_institutional_hero.png" 
+              alt="Institutional Tokenization Core" 
               className="w-full h-full object-cover grayscale brightness-50 contrast-125"
             />
           </motion.div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,169,98,0.12)_0%,transparent_70%)]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-black" />
-          <div className={`absolute inset-0 bg-gradient-to-r ${isArabic ? 'from-transparent via-transparent to-black/80' : 'from-black/80 via-transparent to-transparent'}`} />
+          {/* Gold Asset Mesh Overlay - Procedural Authority */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(201,169,98,0.12)_0%,transparent_70%)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-black/60" />
           
+          {/* Animated Audit Scan Line */}
           <motion.div 
-            animate={{ top: ['0%', '100%'] }}
-            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-            className="absolute left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--accent-gold)]/40 to-transparent z-10 shadow-[0_0_15px_rgba(201,169,98,0.3)]"
+            animate={{ top: ['-10%', '110%'] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[var(--accent-gold)]/40 to-transparent z-10 shadow-[0_0_20px_rgba(201,169,98,0.3)]"
           />
         </div>
 
-        <div className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-24 relative z-20 w-full py-40">
-          <div className="max-w-5xl">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-20 w-full py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            
             <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="text-start">
               <motion.div variants={fadeUpVariant} className="flex items-center gap-6 mb-12">
                 <div className="relative group">
-                   <div className="absolute inset-0 bg-[var(--accent-gold)]/40 blur-xl rounded-full group-hover:scale-150 transition-transform duration-700" />
-                   <div className="w-5 h-5 bg-black border border-[var(--accent-gold)] relative z-10 flex items-center justify-center">
-                      <div className="w-1.5 h-1.5 bg-[var(--accent-gold)] animate-pulse" />
-                   </div>
+                   <div className="absolute inset-0 bg-[var(--accent-gold)]/30 blur-xl rounded-full group-hover:scale-150 transition-all duration-700" />
+                   <Fingerprint className="text-[var(--accent-gold)] relative z-10" size={24} />
                 </div>
-                <div className="h-[1px] w-20 bg-gradient-to-r from-[var(--accent-gold)] to-transparent" />
-                <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[1em] drop-shadow-[0_0_10px_rgba(201,169,98,0.5)]">
-                  {lang === 'en' ? 'Track 02 // Financial Liquidity' : 'المسار 02 // السيولة المالية'}
+                <div className="h-[1px] w-24 bg-gradient-to-r from-[var(--accent-gold)] to-transparent" />
+                <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[1em] drop-shadow-[0_0_10px_rgba(201,169,98,0.5)]">
+                  {lang === 'en' ? 'Track 02 // Asset Engineering' : 'المسار 02 // هندسة الأصول'}
                 </span>
               </motion.div>
 
               <TextReveal 
                 text={lang === 'en' ? 'Empowering Real Estate.' : 'تمكين العقارات.'}
-                className="text-[clamp(3rem,8.5vw,7.5rem)] font-black uppercase tracking-tighter leading-[0.9] mb-12 italic text-white drop-shadow-2xl"
+                className="text-[clamp(3.5rem,9.5vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.9] text-white italic drop-shadow-2xl"
               />
 
-              <motion.p variants={fadeUpVariant} className="text-[clamp(1.1rem,1.8vw,1.5rem)] font-light opacity-60 max-w-2xl mb-20 leading-relaxed border-l border-[var(--accent-gold)]/40 pl-10 rtl:pl-0 rtl:pr-10 rtl:border-l-0 rtl:border-r transition-all duration-700">
+              <motion.p variants={fadeUpVariant} className="text-[clamp(1.1rem,1.9vw,1.6rem)] font-light opacity-60 max-w-2xl mt-12 mb-20 leading-relaxed border-l-2 border-[var(--accent-gold)]/40 pl-12 rtl:pl-0 rtl:pr-12 rtl:border-l-0 rtl:border-r-2">
                 {lang === 'en' 
-                  ? 'The definitive settlement engine for institutional-grade tokenization. Orchestrating hyper-liquid wealth through realistic, strategic architecture.'
-                  : 'محرك التسوية النهائي للترميز على المستوى المؤسسي. إدارة الثروات فائقة السيولة عبر هندسة استراتيجية جراحية.'}
+                  ? 'Orchestrating the definitive settlement engine for institutional-grade tokenization. Building realistic, strategic architecture for hyper-liquid wealth.'
+                  : 'إدارة محرك التسوية النهائي للترميز على المستوى المؤسسي. بناء هندسة استراتيجية واقعية للثروات فائقة السيولة.'}
               </motion.p>
 
-              <motion.div variants={fadeUpVariant} className="flex flex-wrap gap-10 items-center">
-                <Magnetic strength={0.3}>
-                  <PremiumButton to="/contact" className="px-16 py-8 text-lg border-[var(--accent-gold)]/20 shadow-xl">
+              <motion.div variants={fadeUpVariant} className="flex flex-wrap gap-12 items-center">
+                <Magnetic strength={0.25}>
+                  <PremiumButton to="/contact" className="px-20 py-10 text-xl border-[var(--accent-gold)]/20 shadow-gold-glow">
                     {lang === 'en' ? 'Inquire Protocol' : 'استفسار عن البروتوكول'}
                   </PremiumButton>
                 </Magnetic>
                 
-                <div className="flex gap-10 items-center p-8 border border-white/5 bg-white/[0.02] backdrop-blur-md">
+                <div className="flex gap-12 items-center p-10 bg-white/[0.02] border border-white/5 backdrop-blur-xl">
                    <div className="text-start">
-                      <span className="text-[9px] uppercase tracking-[0.4em] opacity-40 block mb-2">{isArabic ? 'السيولة المعتمدة' : 'Validated Liquidity'}</span>
-                      <span className="text-3xl font-black text-[var(--accent-gold)] italic">$4.2B+</span>
+                      <span className="text-[10px] uppercase tracking-[0.4em] opacity-40 block mb-2">{isArabic ? 'السيولة المعتمدة' : 'Validated Liquidity'}</span>
+                      <span className="text-4xl font-black text-[var(--accent-gold)] italic leading-none">$4.2B+</span>
                    </div>
-                   <div className="w-[1px] h-12 bg-white/10" />
-                   <BarChart4 size={32} className="text-[var(--accent-gold)] opacity-50" />
+                   <div className="w-[1px] h-16 bg-white/10" />
+                   <Activity size={36} className="text-[var(--accent-gold)] opacity-50 animate-pulse" />
                 </div>
               </motion.div>
+            </motion.div>
+
+            {/* Visual Hook - Computational Data Node */}
+            <motion.div 
+               initial={{ opacity: 0, x: 50 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ duration: 1.5, delay: 0.5 }}
+               className="hidden lg:block relative"
+            >
+               <div className="absolute inset-0 bg-[var(--accent-gold)]/5 blur-[120px] rounded-full" />
+               <div className="relative p-1 border border-white/5 bg-black/40 backdrop-blur-3xl overflow-hidden">
+                  <div className="p-12 border border-white/10 flex flex-col gap-10">
+                     <div className="flex justify-between items-center pb-8 border-b border-white/5">
+                        <span className="text-[11px] font-black uppercase tracking-[0.5em] text-[var(--accent-gold)]">Audit // Live Stream</span>
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full animate-ping" />
+                     </div>
+                     <div className="grid grid-cols-2 gap-10">
+                        <div>
+                           <span className="text-[9px] uppercase tracking-widest opacity-40 block mb-2">Sync Rate</span>
+                           <span className="text-2xl font-black italic">99.98%</span>
+                        </div>
+                        <div>
+                           <span className="text-[9px] uppercase tracking-widest opacity-40 block mb-2">Node Status</span>
+                           <span className="text-2xl font-black italic text-emerald-400 font-mono">ACTIVE</span>
+                        </div>
+                     </div>
+                     <div className="h-24 w-full bg-white/[0.02] relative overflow-hidden">
+                        <motion.div 
+                          animate={{ x: ['-100%', '100%'] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--accent-gold)]/10 to-transparent skew-x-12" 
+                        />
+                        <div className="absolute inset-0 flex items-center justify-around opacity-20">
+                           {[...Array(20)].map((_, i) => (
+                             <div key={i} className="w-[2px] bg-white/20" style={{ height: `${Math.random() * 80}%` }} />
+                           ))}
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── 02. THE HOOK: Neural Matrix ── */}
-      <section className="py-52 z-10 relative bg-[#050505] overflow-hidden border-b border-white/5 text-start">
-         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--accent-gold)]/5 blur-[180px] pointer-events-none rounded-full" />
+      {/* ── 02. THE HOOK: Neural Matrix (ASSET DASHBOARD) ── */}
+      <section className="py-60 z-10 relative bg-[#050505] overflow-hidden border-b border-white/5 text-start">
+         <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-[var(--accent-gold)]/5 blur-[200px] pointer-events-none rounded-full" />
          
-         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-24">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="flex flex-col md:flex-row justify-between items-end gap-12 mb-32">
-               <div className="max-w-3xl">
+         <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="flex flex-col md:flex-row justify-between items-end gap-12 mb-40">
+               <div className="max-w-4xl">
                   <div className="flex items-center gap-4 mb-8">
-                     <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
-                     <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.6em]">{isArabic?'بروتوكول المقارنة نشط':'Comparison Protocol Active'}</span>
+                     <div className="w-3 h-3 bg-[var(--accent-gold)] rounded-full animate-pulse shadow-gold-glow" />
+                     <span className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[1em]">{isArabic?'مصفوفة الملكية الرقمية':'Digital Ownership Matrix'}</span>
                   </div>
                   <TextReveal 
-                    text={lang === 'en' ? 'Neural Matrix.' : 'المصفوفة العصبية.'}
-                    className="text-[clamp(2.5rem,6vw,5.5rem)] font-black uppercase tracking-tighter italic leading-none"
+                    text={lang === 'en' ? 'Institutional Hook.' : 'الهوك المؤسسي المطلق.'}
+                    className="text-[clamp(2.5rem,7vw,6.5rem)] font-black uppercase tracking-tighter italic leading-none text-white"
                   />
-                  <p className="mt-8 text-xl font-light opacity-50 max-w-xl">{lang === 'en' ? 'Measuring the delta between legacy constraints and SmartBlocks high-authority execution.' : 'قياس الفجوة بين القيود التقليدية والتنفيذ عالي الجودة لسمارت بلوكس.'}</p>
-               </div>
-               
-               <div className="grid grid-cols-2 gap-4 w-full md:w-fit">
-                  <div className="p-6 bg-white/[0.02] border border-white/5 backdrop-blur-sm text-center">
-                     <span className="text-[9px] uppercase tracking-widest opacity-40 block mb-2">{lang === 'en' ? 'Sync Rate' : 'معدل المزامنة'}</span>
-                     <span className="text-xl font-black text-white italic">99.9%</span>
-                  </div>
-                  <div className="p-6 bg-white/[0.02] border border-white/5 backdrop-blur-sm text-center">
-                     <span className="text-[9px] uppercase tracking-widest opacity-40 block mb-2">{lang === 'en' ? 'LATENCE' : 'التأخر'}</span>
-                     <span className="text-xl font-black text-emerald-400 italic">0.02s</span>
-                  </div>
+                  <p className="mt-10 text-2xl font-light opacity-50 max-w-2xl leading-relaxed border-l-2 border-white/10 pl-10 rtl:pl-0 rtl:pr-10 rtl:border-l-0 rtl:border-r-2 transition-all duration-700">
+                    {lang === 'en' ? 'Bridging the high-friction gap between legacy real estate and hyper-liquid digital asset engineering.' : 'سد الفجوة عالية الاحتكاك بين العقارات التقليدية وهندسة الأصول الرقمية فائقة السيولة.'}
+                  </p>
                </div>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                {[
                  {
                    title: lang === 'en' ? "Equity Layer" : "طبقة الملكية",
                    tag: "LIQUID SPV",
                    metric: "100%",
-                   metricLabel: isArabic ? "كفاءة المزامنة" : "Sync Efficiency",
                    features: [
-                     { label: lang === 'en' ? "Settlement" : "التسويات", val: lang === 'en' ? "Atomic" : "ذرية فورية" },
-                     { label: lang === 'en' ? "Secondary Market" : "السوق الثانوي", val: lang === 'en' ? "Enabled" : "مفعّل بالكامل" },
-                     { label: lang === 'en' ? "Compliance" : "الامتثال", val: lang === 'en' ? "On-Chain" : "على الشبكة" }
+                     { label: lang === 'en' ? "Settlement" : "التسويات", val: "Instant" },
+                     { label: lang === 'en' ? "Ownership" : "الملكية", val: "Fractional" },
+                     { label: lang === 'en' ? "Access" : "الوصول", val: "Global" }
                    ]
                  },
                  {
                    title: lang === 'en' ? "Yield Protocol" : "بروتوكول العوائد",
-                   tag: "DEBT YIELD",
+                   tag: "DEBT INSTRUMENT",
                    metric: "88M+",
-                   metricLabel: isArabic ? "إنتاجية المعاملات" : "Tx Throughput",
                    features: [
-                     { label: lang === 'en' ? "Distributions" : "التوزيعات", val: lang === 'en' ? "Automated" : "تلقائية بالكامل" },
-                     { label: lang === 'en' ? "Verification" : "التحقق", val: lang === 'en' ? "Instant" : "فوري وحقيقي" },
-                     { label: lang === 'en' ? "Security" : "الأمان", val: lang === 'en' ? "AES-256" : "تشفير عسكري" }
+                     { label: lang === 'en' ? "Verification" : "التحقق", val: "On-Chain" },
+                     { label: lang === 'en' ? "Security" : "الأمان", val: "Military" },
+                     { label: lang === 'en' ? "Reporting" : "التقارير", val: "Real-time" }
                    ]
                  },
                  {
                    title: lang === 'en' ? "Real Estate Deeds" : "الصكوك العقارية",
-                   tag: "FRACTIONAL",
+                   tag: "FRACTIONAL DEEDS",
                    metric: "∞",
-                   metricLabel: isArabic ? "مؤشر القابلية للتوسع" : "Scalability Index",
                    features: [
-                     { label: lang === 'en' ? "Fragmentation" : "تجزئة الصكوك", val: lang === 'en' ? "Nano-Scale" : "مقياس النانو" },
-                     { label: lang === 'en' ? "Registry" : "السجل", val: lang === 'en' ? "Immutable" : "غير قابل للتعديل" },
-                     { label: lang === 'en' ? "Governance" : "الحوكمة", val: lang === 'en' ? "Embedded" : "حوكمة مدمجة" }
+                     { label: lang === 'en' ? "Immutability" : "عدم التلاعب", val: "Absolute" },
+                     { label: lang === 'en' ? "Registry" : "السجل", val: "Decentral" },
+                     { label: lang === 'en' ? "Governance" : "الحوكمة", val: "Embedded" }
                    ]
                  }
                ].map((card, i) => (
                  <motion.div 
                    key={i} 
                    variants={fadeUpVariant}
-                   whileHover={{ y: -10 }}
-                   className="group relative p-12 bg-white/[0.03] border border-white/10 hover:border-[var(--accent-gold)]/40 transition-all duration-700 overflow-hidden text-start"
+                   whileHover={{ y: -15, borderColor: 'rgba(201,169,98,0.4)' }}
+                   className="group relative p-16 bg-white/[0.02] border border-white/10 transition-all duration-700 overflow-hidden text-start"
                  >
-                    <div className="absolute top-0 right-0 w-32 h-[1px] bg-gradient-to-l from-[var(--accent-gold)]/40 to-transparent" />
-                    <div className="absolute top-0 right-0 w-[1px] h-32 bg-gradient-to-b from-[var(--accent-gold)]/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[var(--accent-gold)]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     
-                    <div className="relative z-10">
-                       <span className="text-[var(--accent-gold)] text-[9px] font-black uppercase tracking-[0.4em] mb-4 block opacity-60">{card.tag} // ARCHITECTURE</span>
-                       <h4 className="text-2xl font-black uppercase tracking-tight mb-12 text-white italic group-hover:text-[var(--accent-gold)] transition-colors duration-500">{card.title}</h4>
-                       
-                       <div className="flex items-end justify-between mb-12 border-b border-white/5 pb-8">
-                          <div className="text-4xl font-black text-white italic">{card.metric}</div>
-                          <div className="text-end">
-                             <div className="text-[9px] uppercase tracking-widest opacity-30 mb-1">{card.metricLabel}</div>
-                             <div className="w-24 h-[2px] bg-white/5 overflow-hidden">
-                                <motion.div 
-                                  initial={{ width: 0 }}
-                                  whileInView={{ width: '70%' }}
-                                  transition={{ duration: 2, delay: 0.5 }}
-                                  className="h-full bg-[var(--accent-gold)]" 
-                                />
-                             </div>
-                          </div>
-                       </div>
+                    <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em] mb-6 block opacity-60">{card.tag} // ARCHITECTURE</span>
+                    <h4 className="text-3xl font-black uppercase tracking-tight mb-20 text-white italic group-hover:text-[var(--accent-gold)] transition-colors duration-500">{card.title}</h4>
+                    
+                    <div className="flex items-baseline gap-4 mb-16">
+                       <span className="text-6xl font-black text-white italic">{card.metric}</span>
+                       <span className="text-[11px] font-black uppercase tracking-widest opacity-20">Capacity Index</span>
+                    </div>
 
-                       <div className="space-y-6">
-                          {card.features.map((feat, j) => (
-                            <div key={j} className="flex items-center justify-between group/feat">
-                               <span className="text-[10px] uppercase tracking-widest opacity-30 font-light group-hover/feat:opacity-100 transition-opacity">{feat.label}</span>
-                               <span className="text-[11px] font-black text-emerald-400 opacity-80">{feat.val}</span>
-                            </div>
-                          ))}
-                       </div>
-                       
-                       <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
-                          <span className="text-[8px] uppercase tracking-[0.4em] opacity-40 group-hover:opacity-100 group-hover:text-[var(--accent-gold)] transition-all">Validated Stream</span>
-                          <ArrowRight size={14} className={`opacity-0 group-hover:opacity-100 text-[var(--accent-gold)] transition-all ${isArabic?'translate-x-[-1rem] group-hover:translate-x-0 rotate-180':'translate-x-4 group-hover:translate-x-0'}`} />
-                       </div>
+                    <div className="space-y-8 mb-12">
+                       {card.features.map((feat, j) => (
+                         <div key={j} className="flex items-center justify-between group/line">
+                            <span className="text-[11px] uppercase tracking-widest opacity-30 group-hover/line:opacity-100 transition-opacity">{feat.label}</span>
+                            <span className="text-[12px] font-black text-emerald-400">{feat.val}</span>
+                         </div>
+                       ))}
+                    </div>
+                    
+                    <div className="pt-10 border-t border-white/5 flex items-center justify-between group-hover:border-[var(--accent-gold)]/20 transition-all">
+                       <span className="text-[9px] uppercase tracking-[0.5em] opacity-40">Protocol Initialized</span>
+                       <ArrowRight size={18} className={`text-[var(--accent-gold)] transition-all ${isArabic?'rotate-180 -translate-x-4 group-hover:translate-x-0':'translate-x-4 group-hover:translate-x-0'} opacity-0 group-hover:opacity-100`} />
                     </div>
                  </motion.div>
                ))}
@@ -289,26 +307,25 @@ const SmartBlocksEngine = () => {
          </div>
       </section>
 
-      {/* ── 03. BENEFITS GRID ── */}
-      <section className="py-52 z-10 relative bg-[var(--bg-primary)]">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-3 gap-0 border border-white/5">
+      {/* ── 03. BENEFITS: Spacing & Standard Align ── */}
+      <section className="py-52 z-10 relative bg-[var(--bg-primary)] border-b border-white/5">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-[1600px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-0 border border-white/5">
           {benefits.map((b, i) => (
             <motion.div key={i} variants={fadeUpVariant}>
               <Link to="/contact"
                 className="group block relative p-16 overflow-hidden border-white/5 border-b md:border-b-0 md:border-e last:border-b-0 last:border-e-0 cursor-pointer transition-all duration-700 bg-white/[0.01] text-start"
-                style={{ minHeight: '360px' }}>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none shadow-[inset_0_0_80px_rgba(201,169,98,0.05)]" />
+                style={{ minHeight: '400px' }}>
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="mb-12 w-16 h-16 border border-white/10 flex items-center justify-center group-hover:border-[var(--accent-gold)] transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(201,169,98,0.2)]">
+                  <div className="mb-16 w-20 h-20 border border-white/10 flex items-center justify-center group-hover:border-[var(--accent-gold)] transition-all duration-500 shadow-xl group-hover:shadow-gold-glow">
                     {b.icon}
                   </div>
-                  <h4 className="text-2xl font-black mb-4 uppercase tracking-tight group-hover:text-[var(--accent-gold)] transition-colors duration-500">{b.title}</h4>
-                  <h5 className="text-[11px] font-black uppercase tracking-widest text-[var(--accent-gold)] mb-8 opacity-90">{b.subtitle}</h5>
-                  <p className="opacity-40 text-[15px] leading-relaxed font-light flex-1 line-clamp-4 group-hover:opacity-80 transition-opacity">{b.desc}</p>
-                  <div className="flex items-center gap-4 mt-10 text-[10px] font-black uppercase tracking-[0.4em] opacity-0 group-hover:opacity-100 text-[var(--accent-gold)] transition-all duration-500 rtl:flex-row-reverse">
+                  <h4 className="text-3xl font-black mb-4 uppercase tracking-tight group-hover:text-[var(--accent-gold)] transition-colors duration-500 text-white italic">{b.title}</h4>
+                  <h5 className="text-[12px] font-black uppercase tracking-widest text-[var(--accent-gold)] mb-10 opacity-90">{b.subtitle}</h5>
+                  <p className="opacity-40 text-[17px] leading-relaxed font-light flex-1 line-clamp-4 group-hover:opacity-90">{b.desc}</p>
+                  <div className="flex items-center gap-6 mt-16 text-[11px] font-black uppercase tracking-[0.5em] opacity-0 group-hover:opacity-100 text-[var(--accent-gold)] transition-all duration-500 rtl:flex-row-reverse">
                     <span>{lang === 'en' ? 'Learn More' : 'اعرف أكثر'}</span>
-                    <ArrowRight size={16} className={`transition-transform duration-500 group-hover:translate-x-2 rtl:group-hover:-translate-x-2 ${isArabic ? 'rotate-180' : ''}`} />
+                    <ArrowRight size={20} className={`transition-transform duration-500 group-hover:translate-x-4 rtl:group-hover:-translate-x-4 ${isArabic ? 'rotate-180' : ''}`} />
                   </div>
                 </div>
               </Link>
@@ -317,59 +334,59 @@ const SmartBlocksEngine = () => {
         </motion.div>
       </section>
 
-      {/* ── 04. ECOSYSTEM PROFILES ── */}
+      {/* ── 04. ECOSYSTEM PROFILES (INSTITUTIONAL STANDARD) ── */}
       <section className="py-60 bg-[#050505] z-10 relative border-y border-white/5">
-        <div className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-24">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="mb-40 text-start max-w-5xl">
-            <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[11px] font-black uppercase tracking-[0.6em] mb-10 block opacity-60">
-              {lang === 'en' ? 'Structural Empowerment' : 'التمكين الهيكلي'}
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="mb-40 text-start max-w-6xl">
+            <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[12px] font-black uppercase tracking-[0.8em] mb-12 block opacity-80">
+              {lang === 'en' ? 'Institutional Infrastructure' : 'البنية التحتية المؤسسية'}
             </motion.span>
             <TextReveal 
               text={lang === 'en' ? 'Ecosystem Logic.' : 'منطق النظام البيئي.'}
-              className="text-[clamp(2.5rem,7vw,6rem)] font-black uppercase tracking-tighter leading-[0.9]"
+              className="text-[clamp(2.5rem,8.5vw,7.5rem)] font-black uppercase tracking-tighter leading-none text-white italic"
             />
-            <motion.p variants={fadeUpVariant} className="mt-12 text-2xl font-light opacity-50 leading-relaxed border-l-3 border-[var(--accent-gold)] pl-12 rtl:pl-0 rtl:pr-12 rtl:border-l-0 rtl:border-r-3 max-w-3xl text-start">
+            <motion.p variants={fadeUpVariant} className="mt-16 text-3xl font-light opacity-50 leading-relaxed border-l-4 border-[var(--accent-gold)] pl-16 rtl:pl-0 rtl:pr-16 rtl:border-l-0 rtl:border-r-4 max-w-4xl text-start">
               {lang === 'en'
-                ? 'Architecting the definitive gold standard for every strategic stakeholder in the real estate value chain.'
-                : 'هندسة المعيار الذهبي النهائي لكل صاحب مصلحة استراتيجي في سلسلة القيمة العقارية.'}
+                ? 'Providing the absolute gold standard for every strategic stakeholder in the real estate value chain.'
+                : 'توفير المعيار الذهبي المطلق لكل صاحب مصلحة استراتيجي في سلسلة القيمة العقارية.'}
             </motion.p>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/5 border border-white/5">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/5 border border-white/5 overflow-hidden">
             {profiles.map((p, i) => (
               <motion.div key={i} variants={fadeUpVariant}>
                 <Link to="/contact"
-                  className="group block relative p-16 bg-black overflow-hidden cursor-pointer transition-all duration-700 h-full text-start"
-                  style={{ minHeight: '450px' }}>
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[var(--accent-gold)]/[0.015] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  className="group block relative p-20 bg-black overflow-hidden cursor-pointer transition-all duration-700 h-full text-start"
+                  style={{ minHeight: '520px' }}>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[var(--accent-gold)]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   <div className="relative z-10 flex flex-col h-full">
-                    <div className="mb-20 flex items-center justify-between">
-                      <div className="flex items-center gap-8">
-                        <div className="w-20 h-20 bg-white/[0.02] border border-white/10 flex items-center justify-center group-hover:border-[var(--accent-gold)] group-hover:bg-[var(--accent-gold)]/10 transition-all duration-700 shrink-0 shadow-lg">
+                    <div className="mb-24 flex items-center justify-between">
+                      <div className="flex items-center gap-10">
+                        <div className="w-24 h-24 bg-white/[0.02] border border-white/10 flex items-center justify-center group-hover:border-[var(--accent-gold)] group-hover:bg-[var(--accent-gold)]/10 transition-all duration-700 shrink-0 shadow-2xl">
                           {p.icon}
                         </div>
                         <div className="text-start">
-                          <span className="text-[var(--accent-gold)] text-[11px] font-black tracking-[0.4em] uppercase mb-3 block opacity-60">{p.tag}</span>
-                          <h4 className="text-3xl font-black uppercase tracking-tight group-hover:text-white transition-colors duration-500 italic">{p.title}</h4>
+                          <span className="text-[var(--accent-gold)] text-[12px] font-black tracking-[0.5em] uppercase mb-4 block opacity-70">{p.tag}</span>
+                          <h4 className="text-4xl font-black uppercase tracking-tight group-hover:text-white transition-colors duration-500 italic text-white">{p.title}</h4>
                         </div>
                       </div>
                     </div>
-                    <div className="space-y-10 flex-1">
+                    <div className="space-y-12 flex-1">
                       {p.levels.map((lvl, j) => (
-                        <div key={j} className="border-t border-white/5 pt-8 group-hover:border-[var(--accent-gold)]/20 transition-all duration-500">
-                          <div className="flex items-center gap-4 mb-4">
-                             <div className={`w-2 h-2 rounded-full ${j===0?'bg-red-500':j===1?'bg-emerald-500':j===2?'bg-blue-500':'bg-[var(--accent-gold)]'} opacity-20 group-hover:opacity-100 transition-all`} />
-                             <span className={`text-[10px] font-black uppercase tracking-[0.2em] opacity-40 group-hover:opacity-100 transition-all`}>
+                        <div key={j} className="border-t border-white/5 pt-10 group-hover:border-[var(--accent-gold)]/20 transition-all duration-500">
+                          <div className="flex items-center gap-6 mb-4">
+                             <div className={`w-2.5 h-2.5 rounded-full ${j===0?'bg-red-500':j===1?'bg-emerald-500':j===2?'bg-blue-500':'bg-[var(--accent-gold)]'} opacity-20 group-hover:opacity-100 transition-all shadow-glow`} />
+                             <span className={`text-[11px] font-black uppercase tracking-[0.3em] opacity-40 group-hover:opacity-100 transition-all text-white`}>
                                {lvl.label}
                              </span>
                           </div>
-                          <p className="text-[15px] font-light opacity-40 leading-relaxed group-hover:opacity-90 group-hover:text-white/90 transition-all pl-6 rtl:pl-0 rtl:pr-6">{lvl.text}</p>
+                          <p className="text-[17px] font-light opacity-40 leading-relaxed group-hover:opacity-100 transition-all pl-8 rtl:pl-0 rtl:pr-8">{lvl.text}</p>
                         </div>
                       ))}
                     </div>
-                    <div className="flex items-center gap-4 font-black uppercase tracking-[0.4em] text-[10px] mt-16 pt-10 border-t border-white/10 opacity-30 group-hover:opacity-100 text-[var(--accent-gold)] transition-all duration-700 rtl:flex-row-reverse">
-                      <span>{lang === 'en' ? 'Review Institutional Framework' : 'مراجعة الإطار المؤسسي'}</span>
-                      <ArrowRight size={16} className={`transition-transform duration-700 group-hover:translate-x-4 rtl:group-hover:-translate-x-4 ${isArabic ? 'rotate-180' : ''}`} />
+                    <div className="flex items-center gap-6 font-black uppercase tracking-[0.5em] text-[11px] mt-20 pt-10 border-t border-white/10 opacity-30 group-hover:opacity-100 text-[var(--accent-gold)] transition-all duration-700 rtl:flex-row-reverse">
+                      <span>{lang === 'en' ? 'Institutional Framework' : 'الإطار المؤسسي'}</span>
+                      <ArrowRight size={20} className={`transition-transform duration-700 group-hover:translate-x-6 rtl:group-hover:-translate-x-6 ${isArabic ? 'rotate-180' : ''}`} />
                     </div>
                   </div>
                 </Link>
@@ -379,56 +396,56 @@ const SmartBlocksEngine = () => {
         </div>
       </section>
 
-      {/* ── 05. CALL TO ACTION ── */}
+      {/* ── 05. CALL TO ACTION: Unified Standard ── */}
       <section className="py-60 z-10 relative overflow-hidden text-center bg-black">
-        <div className="absolute inset-0 bg-grain opacity-[0.05] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[var(--accent-gold)]/5 blur-[200px] pointer-events-none rounded-full" />
+        <div className="absolute inset-0 bg-grain opacity-[0.06] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-[var(--accent-gold)]/5 blur-[250px] pointer-events-none rounded-full" />
         
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
-          <motion.div variants={fadeUpVariant} className="flex items-center justify-center gap-6 mb-12">
-             <div className="w-12 h-[1px] bg-white/20" />
-             <span className="text-[var(--accent-gold)] text-[12px] font-black uppercase tracking-[1.5em] opacity-80">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+          <motion.div variants={fadeUpVariant} className="flex items-center justify-center gap-8 mb-16">
+             <div className="w-16 h-[1px] bg-white/10" />
+             <span className="text-[var(--accent-gold)] text-[14px] font-black uppercase tracking-[1.5em] opacity-90 drop-shadow-gold-glow">
                {lang === 'en' ? 'Governance' : 'الحوكمة'}
              </span>
-             <div className="w-12 h-[1px] bg-white/20" />
+             <div className="w-16 h-[1px] bg-white/10" />
           </motion.div>
           
-          <motion.h2 variants={fadeUpVariant} className="font-black uppercase tracking-tighter italic mb-20 text-white"
-            style={{ fontSize: 'clamp(3.5rem,10vw,8rem)' }}>
+          <motion.h2 variants={fadeUpVariant} className="font-black uppercase tracking-tighter italic mb-24 text-white leading-none"
+            style={{ fontSize: 'clamp(4rem,12vw,10rem)' }}>
             {lang === 'en'
               ? <>Initiate <span className="not-italic text-[var(--accent-gold)]">Protocol.</span></>
               : <>بدء <span className="not-italic text-[var(--accent-gold)]">الـبـروتـوكـول.</span></>}
           </motion.h2>
 
-          <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <a href="https://smartblocks.etmam.io" target="_blank" rel="noopener noreferrer" 
-               className="group flex flex-col items-center justify-center p-20 border border-white/5 bg-white/[0.01] backdrop-blur-3xl relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:shadow-[0_0_60px_rgba(201,169,98,0.1)]">
+               className="group flex flex-col items-center justify-center p-24 border border-white/5 bg-white/[0.01] backdrop-blur-3xl relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:shadow-[0_0_80px_rgba(201,169,98,0.15)]">
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <div className="relative mb-12 w-24 h-24 flex items-center justify-center">
-                 <div className="absolute inset-0 bg-[var(--accent-gold)]/10 blur-2xl rounded-full scale-110 group-hover:scale-150 transition-all duration-700" />
-                 <Cpu size={64} className="text-[var(--accent-gold)] relative z-10 group-hover:scale-110 transition-transform duration-700" />
+              <div className="relative mb-16 w-28 h-28 flex items-center justify-center">
+                 <div className="absolute inset-0 bg-[var(--accent-gold)]/20 blur-3xl rounded-full scale-110 group-hover:scale-150 transition-all duration-700" />
+                 <Cpu size={80} className="text-[var(--accent-gold)] relative z-10 group-hover:scale-110 transition-transform duration-700" />
               </div>
-              <h3 className="text-4xl font-black uppercase tracking-tight mb-4 text-white italic">{lang === 'en' ? 'Platform' : 'المنصة'}</h3>
-              <p className="text-[11px] font-black uppercase tracking-widest opacity-40 mb-12">{lang === 'en' ? 'Engine Access' : 'صلاحية الدخول للمحرك'}</p>
-              <div className="w-24 h-24 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-700 shadow-2xl">
-                <ArrowRight size={32} className={`${isArabic ? 'rotate-180' : ''}`} />
+              <h3 className="text-5xl font-black uppercase tracking-tight mb-6 text-white italic">{lang === 'en' ? 'Platform' : 'المنصة'}</h3>
+              <p className="text-[12px] font-black uppercase tracking-[0.5em] opacity-40 mb-16">{lang === 'en' ? 'Institutional Engine Access' : 'صلاحية الدخول للمحرك المؤسسي'}</p>
+              <div className="w-28 h-28 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-700 shadow-2xl">
+                <ArrowRight size={40} className={`${isArabic ? 'rotate-180' : ''}`} />
               </div>
             </a>
 
             <a href="https://academy.etmam.io/smartblocks" target="_blank" rel="noopener noreferrer" 
-               className="group flex flex-col items-center justify-center p-20 border border-white/5 bg-white/[0.01] backdrop-blur-3xl relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:shadow-[0_0_60px_rgba(201,169,98,0.1)]">
+               className="group flex flex-col items-center justify-center p-24 border border-white/5 bg-white/[0.01] backdrop-blur-3xl relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:shadow-[0_0_80px_rgba(201,169,98,0.15)]">
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <div className="relative mb-12 w-24 h-24 flex items-center justify-center">
-                 <div className="absolute inset-0 bg-[var(--accent-gold)]/10 blur-2xl rounded-full scale-110 group-hover:scale-150 transition-all duration-700" />
-                 <Lock size={64} className="text-[var(--accent-gold)] relative z-10 group-hover:scale-110 transition-transform duration-700" />
+              <div className="relative mb-16 w-28 h-28 flex items-center justify-center">
+                 <div className="absolute inset-0 bg-[var(--accent-gold)]/20 blur-3xl rounded-full scale-110 group-hover:scale-150 transition-all duration-700" />
+                 <Lock size={80} className="text-[var(--accent-gold)] relative z-10 group-hover:scale-110 transition-transform duration-700" />
               </div>
-              <h3 className="text-4xl font-black uppercase tracking-tight mb-4 text-white italic">{lang === 'en' ? 'Masterclass' : 'الماستركلاس'}</h3>
-              <p className="text-[11px] font-black uppercase tracking-widest opacity-40 mb-12">{lang === 'en' ? 'Strategic Mastery' : 'الإتقان الاستراتيجي'}</p>
-              <div className="w-24 h-24 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-700 shadow-2xl">
-                <ArrowRight size={32} className={`${isArabic ? 'rotate-180' : ''}`} />
+              <h3 className="text-5xl font-black uppercase tracking-tight mb-6 text-white italic">{lang === 'en' ? 'Masterclass' : 'الماستركلاس'}</h3>
+              <p className="text-[12px] font-black uppercase tracking-[0.5em] opacity-40 mb-16">{lang === 'en' ? 'Strategic Mastery' : 'الإتقان الاستراتيجي'}</p>
+              <div className="w-28 h-28 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-700 shadow-2xl">
+                <ArrowRight size={40} className={`${isArabic ? 'rotate-180' : ''}`} />
               </div>
             </a>
-          </motion.div>
+          </div>
         </motion.div>
       </section>
     </div>
