@@ -210,15 +210,20 @@ const EtmamConsulting = () => {
                className="relative rtl:order-first flex flex-col justify-center items-center cursor-pointer group/video"
                onClick={() => setIsVideoOpen(true)}
             >
-                 {/* Cinematic Play Trigger Overlay */}
+                 {/* Subtle Cinematic Pulsing Ring (Sonar Effect) over the image's play button */}
                  <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
                     <motion.div 
-                       animate={{ scale: [1, 1.1, 1] }}
-                       transition={{ duration: 2, repeat: Infinity }}
-                       className="w-20 h-20 bg-[var(--accent-gold)] rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(201,169,98,0.4)] group-hover/video:scale-125 transition-transform duration-500"
-                    >
-                       <Play size={32} className="text-black fill-current translate-x-1" />
-                    </motion.div>
+                       animate={{ 
+                         scale: [1, 1.5, 2],
+                         opacity: [0.5, 0.2, 0] 
+                       }}
+                       transition={{ 
+                         duration: 2.5, 
+                         repeat: Infinity,
+                         ease: "easeOut"
+                       }}
+                       className="w-16 h-16 border-2 border-[var(--accent-gold)] rounded-full shadow-[0_0_30px_rgba(201,169,98,0.3)]"
+                    />
                  </div>
 
                  {/* Clean Unbounded Image */}
