@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { useLanguage } from '@/context/useLanguage';
 import CommandTerminal from '@/components/interactive/CommandTerminal';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -23,7 +24,36 @@ import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const SmartAgentAI = () => {
   const { lang } = useLanguage();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [step, setStep] = useState(1);
+  const [isSuccess, setIsSuccess] = useState(false);
   const isArabic = lang === 'ar';
+  
+  const [formData, setFormData] = useState({
+    role: '',
+    scale: '',
+    objective: '',
+    name: '',
+    email: '',
+    phone: ''
+  });
+
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+  const handleComplete = (e) => {
+    e.preventDefault();
+    setIsSuccess(true);
+    // Future: Integration with CRM/Email Endpoint
+    console.log('Lead Captured:', formData);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => {
+       setStep(1);
+       setIsSuccess(false);
+    }, 500);
+  };
 
   const strategies = [
     {
@@ -288,9 +318,11 @@ const SmartAgentAI = () => {
           </motion.h2>
 
           <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* Action 1: The AI Platform */}
-            <a href="https://smartagent.etmam.io" target="_blank" rel="noopener noreferrer" 
-               className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]">
+            {/* Action 1: The AI Platform (Now a Trigger for Lead Gen Hook) */}
+            <motion.div 
+               onClick={() => setIsModalOpen(true)}
+               className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] cursor-pointer"
+            >
               <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <Bot size={48} className="text-cyan-400 mb-10 group-hover:scale-125 transition-transform duration-700" />
               <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{lang === 'en' ? 'Launch SmartAgent' : 'إطلاق وكيلك الذكي'}</h3>
@@ -298,7 +330,7 @@ const SmartAgentAI = () => {
               <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-cyan-400 group-hover:text-black group-hover:border-cyan-400 transition-all duration-500">
                 <ArrowRight size={20} className={`${isArabic ? 'rotate-180' : ''}`} />
               </div>
-            </a>
+            </motion.div>
 
             {/* Action 2: The Masterclass */}
             <a href="https://academy.etmam.io/smartagent" target="_blank" rel="noopener noreferrer" 
@@ -314,8 +346,212 @@ const SmartAgentAI = () => {
           </motion.div>
         </motion.div>
       </section>
+      {/* ── 05. NEURAL ONBOARDING MODAL ── */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-12 bg-black/90 backdrop-blur-3xl overflow-y-auto"
+          >
+             <motion.div 
+               initial={{ scale: 0.95, y: 20 }}
+               animate={{ scale: 1, y: 0 }}
+               exit={{ scale: 0.95, y: 20 }}
+               className="w-full max-w-4xl bg-[#0a0a0a] border border-cyan-500/20 shadow-[0_0_100px_rgba(34,211,238,0.1)] relative"
+             >
+                {/* Close Button */}
+                <button 
+                  onClick={closeModal}
+                  className="absolute top-8 end-8 text-white/40 hover:text-cyan-400 transition-colors z-20"
+                >
+                  <X size={24} />
+                </button>
+
+                {!isSuccess ? (
+                  <div className="p-12 md:p-24">
+                    {/* Header Progress */}
+                    <div className="flex items-center gap-4 mb-16 opacity-40 text-[10px] font-black uppercase tracking-[0.5em]">
+                       <span className={step === 1 ? 'text-cyan-400' : ''}>01</span>
+                       <div className="h-[1px] flex-1 bg-white/10 relative">
+                          <motion.div 
+                             initial={{ width: '0%' }}
+                             animate={{ width: `${(step/4)*100}%` }}
+                             className="absolute inset-0 bg-cyan-400"
+                          />
+                       </div>
+                       <span className={step === 4 ? 'text-cyan-400' : ''}>04</span>
+                    </div>
+
+                    <AnimatePresence mode="wait">
+                      {step === 1 && (
+                        <motion.div 
+                          key="step1" 
+                          initial={{ x: isArabic ? 20 : -20, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: isArabic ? -20 : 20, opacity: 0 }}
+                          className="text-start"
+                        >
+                           <h2 className="text-4xl md:text-5xl font-black italic uppercase tracking-tighter text-white mb-10">
+                              {lang === 'en' ? 'Identity Context.' : 'سياق الهوية.'}
+                           </h2>
+                           <p className="text-lg opacity-50 mb-12 font-light">{lang === 'en' ? 'Select your institutional role to calibrate the neural engine.' : 'اختر دورك المؤسسي لمعايرة المحرك العصبي.'}</p>
+                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                              {['Developer', 'Broker Firm', 'Investor', 'Service Provider'].map((role) => (
+                                <button 
+                                  key={role}
+                                  onClick={() => { setFormData({...formData, role}); nextStep(); }}
+                                  className="p-8 border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/5 text-start transition-all uppercase font-black text-xs tracking-widest"
+                                >
+                                  {role}
+                                </button>
+                              ))}
+                           </div>
+                        </motion.div>
+                      )}
+
+                      {step === 2 && (
+                        <motion.div 
+                          key="step2" 
+                          initial={{ x: isArabic ? 20 : -20, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: isArabic ? -20 : 20, opacity: 0 }}
+                          className="text-start"
+                        >
+                           <h2 className="text-4xl md:text-5xl font-black italic uppercase tracking-tighter text-white mb-10">
+                              {lang === 'en' ? 'Operational Scale.' : 'النطاق التشغيلي.'}
+                           </h2>
+                           <p className="text-lg opacity-50 mb-12 font-light">{lang === 'en' ? 'How many units or active leads require synchronization?' : 'ما عدد الوحدات أو العملاء النشطين الذين يتطلبون المزامنة؟'}</p>
+                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                              {['1-50 Units', '50-200 Units', '200-1000 Units', '1000+ Institutional'].map((scale) => (
+                                <button 
+                                  key={scale}
+                                  onClick={() => { setFormData({...formData, scale}); nextStep(); }}
+                                  className="p-8 border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/5 text-start transition-all uppercase font-black text-xs tracking-widest"
+                                >
+                                  {scale}
+                                </button>
+                              ))}
+                           </div>
+                           <button onClick={prevStep} className="mt-10 text-[10px] uppercase tracking-widest opacity-30 hover:opacity-100">{lang === 'en' ? 'Go Back' : 'رجوع'}</button>
+                        </motion.div>
+                      )}
+
+                      {step === 3 && (
+                        <motion.div 
+                          key="step3" 
+                          initial={{ x: isArabic ? 20 : -20, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: isArabic ? -20 : 20, opacity: 0 }}
+                          className="text-start"
+                        >
+                           <h2 className="text-4xl md:text-5xl font-black italic uppercase tracking-tighter text-white mb-10">
+                              {lang === 'en' ? 'Primary Objective.' : 'الهدف الأساسي.'}
+                           </h2>
+                           <p className="text-lg opacity-50 mb-12 font-light">{lang === 'en' ? 'Define the neural priority for your autonomous agents.' : 'حدد الأولوية العصبية لوكلائك المستقلين.'}</p>
+                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                              {['Lead Qualification', '24/7 Engagement', 'Predictive Matching', 'Market Analytics'].map((obj) => (
+                                <button 
+                                  key={obj}
+                                  onClick={() => { setFormData({...formData, objective: obj}); nextStep(); }}
+                                  className="p-8 border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/5 text-start transition-all uppercase font-black text-xs tracking-widest"
+                                >
+                                  {obj}
+                                </button>
+                              ))}
+                           </div>
+                           <button onClick={prevStep} className="mt-10 text-[10px] uppercase tracking-widest opacity-30 hover:opacity-100">{lang === 'en' ? 'Go Back' : 'رجوع'}</button>
+                        </motion.div>
+                      )}
+
+                      {step === 4 && (
+                        <motion.div 
+                          key="step4" 
+                          initial={{ x: isArabic ? 20 : -20, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: isArabic ? -20 : 20, opacity: 0 }}
+                          className="text-start"
+                        >
+                           <h2 className="text-4xl md:text-5xl font-black italic uppercase tracking-tighter text-white mb-10">
+                              {lang === 'en' ? 'Initialize Sync.' : 'بدء المزامنة.'}
+                           </h2>
+                           <p className="text-lg opacity-50 mb-12 font-light">{lang === 'en' ? 'Provide contact directives to finalize the AI strategy blueprint.' : 'قدم توجيهات الاتصال لإنهاء مخطط استراتيجية الذكاء الاصطناعي.'}</p>
+                           
+                           <form onSubmit={handleComplete} className="space-y-6">
+                              <input 
+                                required
+                                type="text"
+                                placeholder={lang === 'en' ? "Full Name" : "الاسم الكامل"}
+                                className="w-full bg-white/5 border border-white/10 p-6 focus:border-cyan-400 transition-colors outline-none"
+                                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                              />
+                              <input 
+                                required
+                                type="email"
+                                placeholder={lang === 'en' ? "Institutional Email" : "البريد الإلكتروني المؤسسي"}
+                                className="w-full bg-white/5 border border-white/10 p-6 focus:border-cyan-400 transition-colors outline-none"
+                                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                              />
+                              <input 
+                                required
+                                type="tel"
+                                placeholder={lang === 'en' ? "Phone Reference" : "رقم الهاتف المرجعي"}
+                                className="w-full bg-white/5 border border-white/10 p-6 focus:border-cyan-400 transition-colors outline-none"
+                                onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                              />
+                              <div className="pt-6">
+                                <PremiumButton type="submit" className="w-full bg-cyan-400 text-black border-none hover:bg-white transition-all h-20 text-lg uppercase tracking-[1em]">
+                                   {lang === 'en' ? 'INITIATE' : 'بدء البروتوكول'}
+                                </PremiumButton>
+                              </div>
+                           </form>
+                           <button onClick={prevStep} className="mt-10 text-[10px] uppercase tracking-widest opacity-30 hover:opacity-100">{lang === 'en' ? 'Go Back' : 'رجوع'}</button>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="p-12 md:p-32 text-center"
+                  >
+                     <div className="w-24 h-24 border-2 border-cyan-400 rounded-full flex items-center justify-center mx-auto mb-12 shadow-[0_0_50px_rgba(34,211,238,0.3)]">
+                        <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }}>
+                           <Bot size={48} className="text-cyan-400" />
+                        </motion.div>
+                     </div>
+                     <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-white mb-8">
+                        {lang === 'en' ? 'Protocol Locked.' : 'تم قفل البروتوكول.'}
+                     </h2>
+                     <p className="text-xl opacity-50 mb-16 font-light leading-relaxed max-w-xl mx-auto">
+                        {lang === 'en' 
+                          ? 'Operational sync initiated. An ETMAM AI Strategist will contact you within 24 hours to review your neural blueprint.'
+                          : 'بدأت مزامنة العمليات. سيتصل بك خبير استراتيجيات الذكاء الاصطناعي في إتمام خلال 24 ساعة لمراجعة مخططك العصبي.'}
+                     </p>
+                     <div className="w-full h-[1px] bg-white/10 mb-16 relative">
+                        <motion.div 
+                           initial={{ width: '0%' }}
+                           animate={{ width: '100%' }}
+                           transition={{ duration: 3, ease: "linear" }}
+                           className="absolute inset-0 bg-cyan-400"
+                        />
+                     </div>
+                     <Magnetic>
+                        <button onClick={closeModal} className="text-xs font-black uppercase tracking-[1.5em] text-cyan-400 hover:text-white transition-colors">
+                           {lang === 'en' ? 'Return to Core' : 'العودة للنواة'}
+                        </button>
+                     </Magnetic>
+                  </motion.div>
+                )}
+             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
 export default SmartAgentAI;
+
