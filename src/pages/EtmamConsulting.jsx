@@ -328,8 +328,8 @@ const EtmamConsulting = () => {
               </div>
             </Link>
 
-            {/* Action 2: Portfolio */}
-            <Link to="/ventures" 
+            {/* Action 2: Portfolio (External Canva Link) */}
+            <a href="https://canva.link/223hcy1rjlk4y7u" target="_blank" rel="noopener noreferrer"
                className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]">
               <div className="absolute inset-0 bg-gradient-to-t from-blue-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <BarChart3 size={48} className="text-blue-400 mb-10 group-hover:scale-125 transition-transform duration-700" />
@@ -338,7 +338,7 @@ const EtmamConsulting = () => {
               <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-blue-400 group-hover:text-black group-hover:border-blue-400 transition-all duration-500">
                 <ArrowRight size={20} className={`${lang === 'ar' ? 'rotate-180' : ''}`} />
               </div>
-            </Link>
+            </a>
           </motion.div>
         </motion.div>
       </section>
