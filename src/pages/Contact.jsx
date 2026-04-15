@@ -89,7 +89,7 @@ const Contact = () => {
                      ? "For immediate institutional queries and strategic emergencies, our WhatsApp Protocol is online."
                      : "للاستفسارات المؤسسية الفورية وحالات الطوارئ الاستراتيجية، بروتوكول واتساب متاح الآن."}
                 </p>
-                <a href="https://wa.me/message/YOUR_LINK" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-6 px-12 py-5 bg-[var(--accent-gold)] text-black text-xs font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-700 shadow-[0_10px_40px_rgba(201,169,98,0.3)]">
+                <a href="https://wa.me/971565450000" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-6 px-12 py-5 bg-[var(--accent-gold)] text-black text-xs font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-700 shadow-[0_10px_40px_rgba(201,169,98,0.3)]">
                    {lang === 'en' ? "INITIATE CHAT" : "بدء المحادثة"}
                    <ArrowRight size={18} className={isArabic ? 'rotate-180' : ''} />
                 </a>

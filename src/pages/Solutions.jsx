@@ -33,7 +33,7 @@ const Solutions = () => {
         ? "The definitive high-performance infrastructure for institutional asset settlement. Fractionalizing the world's most valuable assets at scale."
         : "البنية التحتية النهائية عالية الأداء لتسوية الأصول المؤسسية. تجزئة أغلى أصول العالم على نطاق واسع.",
       icon: <Cpu size={48} />,
-      link: "/solutions/smartblocks",
+      link: "/solutions/smart-blocks",
       color: "rgba(201, 169, 98, 0.5)",
       bgImage: "/media/sol_track_2.jpg"
     },
@@ -46,7 +46,7 @@ const Solutions = () => {
         ? "Computational supremacy applied to real estate market data. Predictive matching and autonomous deal qualification for the elite."
         : "التفوق الحسابي المطبق على بيانات سوق العقارات. المطابقة التنبؤية وتأهيل الصفقات المستقل للنخبة.",
       icon: <Bot size={48} />,
-      link: "/solutions/smartagent",
+      link: "/solutions/smart-agent",
       color: "rgba(34, 211, 238, 0.5)",
       bgImage: "/media/sol_track_3.png"
     }
