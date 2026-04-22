@@ -106,7 +106,7 @@ const Ventures = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
              
              <motion.div variants={slowFadeUpVariant} className="relative order-2 lg:order-none">
-                <Link to="/solutions/smartblocks" className="group block relative p-1 glass-card border-[var(--accent-gold)]/20 metallic-glow hover:border-[var(--accent-gold)]/60 transition-all duration-700">
+                <Link to="/solutions/smart-blocks" className="group block relative p-1 glass-card border-[var(--accent-gold)]/20 metallic-glow hover:border-[var(--accent-gold)]/60 transition-all duration-700">
                    <div className="bg-[var(--bg-primary)] p-12 md:p-20 border border-[var(--accent-gold)]/5 overflow-hidden relative">
                       {/* HUD Overlays */}
                       <div className="absolute top-0 start-0 w-full p-8 flex justify-between items-center rtl:flex-row-reverse">
@@ -157,7 +157,7 @@ const Ventures = () => {
                      : "محرك الترميز النهائي. عمارة برمجية حاسمة للتحول الرقمي للأصول."}
                 </p>
                 <Magnetic>
-                  <PremiumButton to="/solutions/smartblocks" className="px-16 border-[var(--accent-gold)] text-[var(--accent-gold)]">
+                  <PremiumButton to="/solutions/smart-blocks" className="px-16 border-[var(--accent-gold)] text-[var(--accent-gold)]">
                      {lang === 'en' ? 'DISCOVER ENGINE' : 'اكتشف المحرك'} 
                   </PremiumButton>
                 </Magnetic>
