@@ -52,12 +52,12 @@ return (
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.4 }}
     >
-      <a href="https://tally.so/r/mJ5WOr" target="_blank" rel="noopener noreferrer">
+      <div data-tally-open="mJ5WOr" data-tally-overlay="1" data-tally-emoji-text="🚀" data-tally-emoji-animation="wave" className="cursor-pointer inline-block">
         <Button className="bg-[#C9A962] hover:bg-[#E5C87B] text-[#0F172A] px-10 py-6 text-lg font-bold rounded-xl">
           {t.cta}
           <Arrow className={`w-5 h-5 ${isRTL ? 'mr-2' : 'ml-2'}`} />
         </Button>
-      </a>
+      </div>
     </motion.div>
 
   </div>

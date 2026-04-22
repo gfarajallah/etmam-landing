@@ -96,12 +96,12 @@ return (
           ))}
         </ul>
 
-        <a href="https://tally.so/r/mJ5WOr" target="_blank" rel="noopener noreferrer">
+        <div data-tally-open="mJ5WOr" data-tally-overlay="1" data-tally-emoji-text="✨" data-tally-emoji-animation="wave" className="cursor-pointer inline-block w-full">
           <Button className="w-full py-6 text-lg font-bold rounded-xl bg-[#C9A962] hover:bg-[#E5C87B] text-[#0F172A]">
             {t.tier.cta}
             <Arrow className={`w-5 h-5 ${isRTL ? 'mr-2' : 'ml-2'}`} />
           </Button>
-        </a>
+        </div>
 
       </div>
     </div>
@@ -119,11 +119,11 @@ return (
         </div>
       </div>
 
-      <a href="https://tally.so/r/mJ5WOr" target="_blank" rel="noopener noreferrer">
+      <div data-tally-open="mJ5WOr" data-tally-overlay="1" data-tally-emoji-text="🏢" data-tally-emoji-animation="wave" className="cursor-pointer inline-block">
         <Button variant="outline" className="px-6 py-4 rounded-xl">
           {t.corporate.cta}
         </Button>
-      </a>
+      </div>
     </div>
 
   </div>
