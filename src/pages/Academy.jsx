@@ -192,8 +192,17 @@ const Academy = () => {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1 }} className="relative">
-               <div className="aspect-video bg-[var(--bg-primary)] border border-white/10 relative overflow-hidden group">
-                  <img src="/media/academy_logic_visualization.png" alt="Logic Visualization" className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-1000" />
+               <a 
+                 href="https://youtu.be/qcwlee48aBU?si=8ewpLtXfx_r1EKwb" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="block aspect-video bg-[var(--bg-primary)] border border-white/10 relative overflow-hidden group"
+               >
+                  <img 
+                    src="https://img.youtube.com/vi/qcwlee48aBU/maxresdefault.jpg" 
+                    alt="Logic Visualization" 
+                    className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-1000" 
+                  />
                   <div className="absolute inset-0 flex items-center justify-center">
                      <div className="w-20 h-20 bg-[var(--accent-gold)] rounded-full flex items-center justify-center shadow-gold-glow animate-pulse cursor-pointer group-hover:scale-125 transition-transform">
                         <PlayCircle size={40} className="text-black" />
@@ -203,7 +212,7 @@ const Academy = () => {
                      <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[var(--accent-gold)]">Preview // Session 01</span>
                      <h4 className="text-xl font-black italic">The Institutional Arbitrage Logic</h4>
                   </div>
-               </div>
+               </a>
             </motion.div>
          </div>
       </section>
