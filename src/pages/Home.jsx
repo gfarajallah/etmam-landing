@@ -94,10 +94,10 @@ const Home = () => {
 
             <TextReveal 
               text={lang === 'en' ? 'Engineering the Future.' : 'هندسة مـسـتـقـبـل السيولة الرقمية.'}
-              className={`display-title mb-10 tracking-tighter ${isArabic ? 'leading-[1.4]' : 'leading-[0.85]'}`}
+              className="display-title mb-10"
             />
 
-            <motion.p variants={fadeUpVariant} className={`text-[clamp(1rem,1.8vw,1.4rem)] font-light opacity-60 max-w-3xl mb-16 leading-relaxed`}>
+            <motion.p variants={fadeUpVariant} className="body-text max-w-3xl mb-16">
               {lang === 'en' 
                 ? 'Building the institutional bridge for the digital-first era. A visionary platform engineering the transition to tokenized real assets.'
                 : 'بناء الجسر المؤسسي للعصر الرقمي الأول. منصة طموحة تهندس الانتقال نحو الأصول الحقيقية المرمزة.'}
@@ -144,13 +144,13 @@ const Home = () => {
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
             className="text-center"
           >
-            <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.8em] mb-8 block">
+            <motion.span variants={fadeUpVariant} className="section-subtitle">
               {lang === 'en' ? 'Trusted Authority' : 'السلطة الموثوقة'}
             </motion.span>
             <motion.h3 variants={fadeUpVariant} className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-20">
               {lang === 'en' 
-                ? <><span className="gold-gradient-text italic">Connected.</span> Everywhere.</>
-                : <><span className="gold-gradient-text italic">متصل.</span> في كل مكان.</>}
+                ? <><span className="gold-gradient-text italic text-glow-gold">Connected.</span> Everywhere.</>
+                : <><span className="gold-gradient-text italic text-glow-gold">متصل.</span> في كل مكان.</>}
             </motion.h3>
 
             {/* Social Media Cards */}
@@ -203,7 +203,7 @@ const Home = () => {
             className="flex flex-col lg:flex-row justify-between items-end gap-16 mb-24"
           >
             <div className="max-w-4xl text-start w-full">
-              <span className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">
+              <span className="section-subtitle">
                 {lang === 'en' ? 'Institutional Grade' : 'المستوى المؤسسي الرفيع'}
               </span>
               <h2 className="section-title">
@@ -303,25 +303,23 @@ const Home = () => {
 
           <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Action 1: Institutional Engagement */}
-            <Link to="/contact" 
-               className="group flex flex-col items-center justify-center p-20 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-3xl relative overflow-hidden transition-all duration-1000 hover:border-[var(--accent-gold)] hover:shadow-[0_0_60px_rgba(201,169,98,0.25)]">
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-              <ShieldCheck size={64} className="text-[var(--accent-gold)] mb-12 group-hover:scale-110 transition-transform duration-1000" />
-              <h3 className="text-4xl font-black uppercase tracking-tight mb-6">{lang === 'en' ? 'The Platform' : 'المنصة المؤسسية'}</h3>
-              <p className="text-[12px] font-black uppercase tracking-[0.5em] opacity-40 mb-12">{lang === 'en' ? 'Secure Login // Onboarding' : 'تسجيل دخول آمن // انضمام'}</p>
-              <div className="w-20 h-20 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-700">
+            <Link to="/contact" className="action-card">
+              <div className="action-card-overlay" />
+              <ShieldCheck className="action-card-icon" size={64} />
+              <h3 className="action-card-title">{lang === 'en' ? 'The Platform' : 'المنصة المؤسسية'}</h3>
+              <p className="action-card-desc">{lang === 'en' ? 'Secure Login // Onboarding' : 'تسجيل دخول آمن // انضمام'}</p>
+              <div className="action-card-btn">
                 <ArrowRight size={24} className={`${lang === 'ar' ? 'rotate-180' : ''}`} />
               </div>
             </Link>
 
             {/* Action 2: Academy & Research */}
-            <Link to="/insights" 
-               className="group flex flex-col items-center justify-center p-20 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-3xl relative overflow-hidden transition-all duration-1000 hover:border-[var(--accent-gold)] hover:shadow-[0_0_60px_rgba(201,169,98,0.25)]">
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-              <Zap size={64} className="text-[var(--accent-gold)] mb-12 group-hover:scale-110 transition-transform duration-1000" />
-              <h3 className="text-4xl font-black uppercase tracking-tight mb-6">{lang === 'en' ? 'The Academy' : 'أكاديمية الإتقان'}</h3>
-              <p className="text-[12px] font-black uppercase tracking-[0.5em] opacity-40 mb-12">{lang === 'en' ? 'Intelligence // Masterclass' : 'الذكاء // الماستر كلاس'}</p>
-              <div className="w-20 h-20 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-700">
+            <Link to="/academy" className="action-card">
+              <div className="action-card-overlay" />
+              <Zap className="action-card-icon" size={64} />
+              <h3 className="action-card-title">{lang === 'en' ? 'The Academy' : 'أكاديمية الإتقان'}</h3>
+              <p className="action-card-desc">{lang === 'en' ? 'Intelligence // Masterclass' : 'الذكاء // الماستر كلاس'}</p>
+              <div className="action-card-btn">
                 <ArrowRight size={24} className={`${lang === 'ar' ? 'rotate-180' : ''}`} />
               </div>
             </Link>

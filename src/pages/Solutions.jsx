@@ -54,7 +54,7 @@ const Solutions = () => {
   ];
 
   const offerings = [
-{
+    {
       id: "01",
       title: lang === 'en' ? "Institutional Tokenization" : "الترميز المؤسسي للأصول",
       subtitle: lang === 'en' ? "High-Authority Digital Structuring." : "الهيكلة الرقمية عالية السلطة.",
@@ -104,30 +104,28 @@ const Solutions = () => {
 
       {/* ── 01. HERO: The High-Authority Opening ── */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden z-10 border-b border-[var(--border-color)]">
-        {/* Background Dashboard Image - Global Interactive Theme */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden pointer-events-none group">
           <img 
             src="/media/solutions_hero_dashboard.jpg" 
             alt="Solutions Dashboard Concept" 
             className="absolute top-0 left-0 w-full h-full object-cover opacity-30 grayscale brightness-[0.6] mix-blend-screen scale-105 group-hover:scale-100 group-hover:grayscale-0 group-hover:opacity-50 group-hover:brightness-[0.8] transition-all duration-[3000ms] ease-out"
           />
-          {/* Institutional Gradients ensuring seamless blend to background */}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/60 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)]/80 via-transparent to-[var(--bg-primary)]/80" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center relative z-10 w-full">
           <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col items-center">
-            <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[1em] mb-12 block drop-shadow-md">
+            <motion.span variants={fadeUpVariant} className="section-subtitle">
               {lang === 'en' ? 'Institutional Framework' : 'الإطار المؤسسي'}
             </motion.span>
             
             <TextReveal 
               text={lang === 'en' ? 'TRIPLE-TRACK SOLUTIONS.' : 'حلول المسارات الثلاثة.'}
-              className="text-6xl md:text-[8rem] font-black tracking-tighter uppercase leading-[0.8] mb-12"
+              className="display-title mb-12"
             />
             
-            <motion.p variants={fadeUpVariant} className="text-xl md:text-2xl text-[var(--text-primary)] opacity-60 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-xl">
+            <motion.p variants={fadeUpVariant} className="body-text max-w-2xl mx-auto">
               {lang === 'en' 
                 ? 'The definitive convergence of regulatory intelligence, tokenization infrastructure, and neural AI.'
                 : 'التقارب النهائي بين الذكاء التنظيمي، وبنية الترميز التحتية، والذكاء الاصطناعي العصبي.'}
@@ -141,14 +139,14 @@ const Solutions = () => {
       <section className="py-32 relative z-10 bg-[var(--bg-primary)]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center mb-20">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-            <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[1em] mb-6 block">
+            <motion.span variants={fadeUpVariant} className="section-subtitle">
               {lang === 'en' ? 'Our Services' : 'خدماتنا'}
             </motion.span>
             <TextReveal 
               text={lang === 'en' ? 'THE DOMAINS OF EXPERTISE.' : 'مجالات الخبرة.'}
-              className="text-4xl md:text-6xl font-black tracking-tighter uppercase mb-6"
+              className="section-title mb-6"
             />
-            <motion.p variants={fadeUpVariant} className="text-xl text-[var(--text-primary)] opacity-60 max-w-3xl mx-auto font-light leading-relaxed">
+            <motion.p variants={fadeUpVariant} className="body-text max-w-3xl mx-auto">
               {lang === 'en' 
                 ? 'We define the standard for institutional engagement through these core service domains.'
                 : 'نحن نحدد معيار الارتباط المؤسسي من خلال مجالات الخدمة الأساسية هذه.'}
@@ -167,13 +165,11 @@ const Solutions = () => {
                 className="group"
               >
                 <Link to="/contact" className="block relative p-1 glass-card border-[var(--border-color)] bg-[var(--bg-secondary)]/10 metallic-glow overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)]/30 hover:bg-[var(--accent-gold)]/[0.02]">
-                  {/* Floating ID large background */}
                   <span className="absolute top-0 right-10 text-[clamp(10rem,30vw,20rem)] font-black opacity-[0.02] group-hover:opacity-[0.05] transition-all duration-[1500ms] pointer-events-none select-none italic text-[var(--accent-gold)]">
                     {service.id}
                   </span>
 
                   <div className={`p-16 md:p-24 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-24 items-start ${lang === 'ar' ? 'direction-rtl' : ''}`}>
-                    {/* Left content */}
                     <div className={lang === 'ar' ? 'text-right' : 'text-left'}>
                        <div className={`flex items-center gap-6 mb-12 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
                           <div className="w-20 h-20 border border-[var(--border-color)] flex items-center justify-center group-hover:border-[var(--accent-gold)] group-hover:shadow-[0_0_40px_rgba(201,169,98,0.2)] transition-all duration-700 group-hover:scale-110">
@@ -193,7 +189,6 @@ const Solutions = () => {
                           {service.desc}
                        </p>
                        
-                       {/* Metric Badge */}
                        <div className={`flex items-center gap-6 p-8 border border-[var(--border-color)] bg-[var(--text-primary)]/[0.02] inline-flex group-hover:border-[var(--accent-gold)]/30 transition-all ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
                           <Activity size={24} className="text-[var(--accent-gold)] animate-pulse" />
                           <div className={lang === 'ar' ? 'text-right' : 'text-left'}>
@@ -203,7 +198,6 @@ const Solutions = () => {
                        </div>
                     </div>
 
-                    {/* Right features list */}
                     <div className={`lg:pl-24 lg:border-l lg:border-[var(--border-color)] h-full flex flex-col justify-center ${lang === 'ar' ? 'lg:border-l-0 lg:border-r lg:pl-0 lg:pr-24 text-right' : ''}`}>
                        <span className="text-[10px] font-black uppercase tracking-[0.5em] opacity-20 block mb-12">{lang === 'en' ? 'Standard Deliverables' : 'المخرجات المعيارية'}</span>
                        <div className="space-y-10 mb-16">
@@ -242,10 +236,10 @@ const Solutions = () => {
               
               <TextReveal 
                 text={lang === 'en' ? 'ECOSYSTEM INTEGRITY.' : 'تكامل النظام الشامل.'}
-                className="text-5xl md:text-8xl font-black uppercase tracking-tighter italic leading-none mb-12"
+                className="section-title mb-12"
               />
               
-              <motion.p variants={fadeUpVariant} className="text-2xl font-light opacity-40 mb-16 leading-relaxed max-w-xl">
+              <motion.p variants={fadeUpVariant} className="body-text mb-16 max-w-xl">
                 {lang === 'en'
                   ? 'Each track operates as a specialized node, yet they converge in the ETMAM Execution Engine to create absolute market superiority.'
                   : 'يعمل كل مسار كعقدة متخصصة، ومع ذلك فإنها تلتقي في محرك تنفيذ إتمام لخلق تفوق سوقي مطلق.'}
@@ -271,14 +265,14 @@ const Solutions = () => {
       <section className="pt-40 pb-20 relative z-10 bg-[var(--bg-primary)] text-center">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-            <motion.span variants={fadeUpVariant} className="text-cyan-400 text-[10px] font-black uppercase tracking-[1em] mb-6 block">
+            <motion.span variants={fadeUpVariant} className="section-subtitle">
               {lang === 'en' ? 'Our Solutions' : 'حلولنا'}
             </motion.span>
             <TextReveal 
               text={lang === 'en' ? 'PROPRIETARY ENGINES.' : 'محركاتنا الخاصة.'}
-              className="text-4xl md:text-6xl font-black tracking-tighter uppercase mb-6"
+              className="section-title mb-6"
             />
-            <motion.p variants={fadeUpVariant} className="text-xl text-[var(--text-primary)] opacity-60 max-w-3xl mx-auto font-light leading-relaxed">
+            <motion.p variants={fadeUpVariant} className="body-text max-w-3xl mx-auto">
               {lang === 'en' 
                 ? 'The tangible products and digital architectures we deploy to execute our services.'
                 : 'المنتجات الملموسة والبنى الرقمية التي ننشرها لتنفيذ خدماتنا.'}
@@ -297,7 +291,6 @@ const Solutions = () => {
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
             className="group relative flex-1 min-w-0 border-b md:border-b-0 md:border-e border-[var(--border-color)] last:border-0 overflow-hidden cursor-pointer"
           >
-            {/* Background Image with Deep Overlay */}
             <div className="absolute inset-0 z-0 bg-[var(--bg-primary)]">
               {track.bgImage && (
                 <img 
@@ -306,20 +299,16 @@ const Solutions = () => {
                   className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-[6000ms] ease-out mix-blend-luminosity opacity-40 group-hover:mix-blend-normal group-hover:opacity-100" 
                 />
               )}
-              {/* Subtle gradient so text remains readable without destroying the image */}
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/10 to-[var(--bg-primary)]/40 pointer-events-none transition-opacity duration-700" />
               <div className="absolute inset-0 bg-[var(--accent-gold)]/0 group-hover:bg-[var(--accent-gold)]/10 transition-colors duration-700 pointer-events-none mix-blend-overlay" />
             </div>
 
-            {/* Accent Glow */}
             <div 
               className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-1000 z-10"
               style={{ background: `radial-gradient(circle at center, ${track.color}, transparent 70%)` }}
             />
 
-            {/* Blade Content */}
             <div className="relative z-20 h-full flex flex-col justify-between p-12 md:p-20">
-              {/* Top: Track Identifier */}
               <div className="flex justify-between items-start">
                 <span className="text-5xl md:text-8xl font-black opacity-10 group-hover:opacity-30 group-hover:text-[var(--accent-gold)] transition-all duration-700 tracking-tighter">
                   {track.number}
@@ -329,7 +318,6 @@ const Solutions = () => {
                 </div>
               </div>
 
-              {/* Middle: Title & Subtitle */}
               <div>
                 <h4 className="text-[var(--accent-gold)] text-[10px] font-black uppercase tracking-[0.5em] mb-4 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-700">
                   {track.subtitle}
@@ -344,7 +332,6 @@ const Solutions = () => {
                 </div>
               </div>
 
-              {/* Bottom: Action */}
               <div className="opacity-0 group-hover:opacity-100 translate-y-8 group-hover:translate-y-0 transition-all duration-700 delay-100">
                 <Magnetic strength={0.3}>
                   <PremiumButton to={track.link} className="w-fit">

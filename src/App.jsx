@@ -12,6 +12,7 @@ import SmartAgentAI from '@/pages/SmartAgentAI';
 import Ventures from '@/pages/Ventures';
 import Insights from '@/pages/Insights';
 import Contact from '@/pages/Contact';
+import Academy from '@/pages/Academy';
 import { pageTransition } from '@/lib/animations';
 
 const AnimatedRoutes = () => {
@@ -30,6 +31,7 @@ const AnimatedRoutes = () => {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/academy" element={<Academy />} />
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/solutions/etmam" element={<EtmamConsulting />} />
           <Route path="/solutions/smart-blocks" element={<SmartBlocksEngine />} />

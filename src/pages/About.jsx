@@ -127,15 +127,13 @@ const About = () => {
             initial="hidden" animate="visible" variants={staggerContainer}
             className="max-w-4xl"
           >
-            <motion.span variants={fadeUpVariant} className="text-[var(--accent-gold)] text-[12px] font-black uppercase tracking-[0.8em] mb-10 block">
+            <motion.span variants={fadeUpVariant} className="section-subtitle">
               {lang === 'en' ? 'The Foundation // THE TRIPLE S' : 'جوهر المنهجية // الـ TRIPLE S'}
             </motion.span>
 
             <motion.h1 
               variants={fadeUpVariant} 
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className={`display-title mb-10 text-[var(--text-primary)] mt-40 ${isArabic ? 'leading-[1.2]' : 'leading-[0.9]'}`}
+              className="display-title mb-10"
             >
               {lang === 'en' 
                 ? <>Systematic<br /><span className="gold-gradient-text italic">Sovereignty.</span></> 
@@ -144,13 +142,11 @@ const About = () => {
 
             <motion.p 
               variants={fadeUpVariant}
-              animate={{ opacity: [0.6, 1, 0.6] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="text-[clamp(1.1rem,2vw,1.6rem)] font-light opacity-70 mb-16 leading-relaxed max-w-3xl"
+              className="body-text max-w-3xl mb-16"
             >
               {lang === 'en'
                 ? 'Engineering the transition to the digital asset economy through the proprietary Triple S methodology: Qualifying, Scaling, and Integration.'
-                : 'يتم تحقيق النجاح في عالم الأعمال من خلال البراعة في تقديم المستمر والتطوير، والحفاظ عليه.'}
+                : 'هندسة الانتقال إلى اقتصاد الأصول الرقمية من خلال منهجية Triple S الحصرية: التأهيل، التوسع، والتكامل.'}
             </motion.p>
 
             <motion.div variants={fadeUpVariant} className="flex items-center gap-10 mt-10">
@@ -195,15 +191,15 @@ const About = () => {
 
               {/* Action Frames: Unified Branding */}
               <motion.div variants={fadeUpVariant} className="grid grid-cols-2 gap-10 mt-20">
-                <Link to="/contact" className="group p-10 border border-[var(--border-color)] bg-[var(--bg-secondary)] relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:-translate-y-2">
-                  <div className="absolute inset-0 bg-[var(--accent-gold)]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <ShieldCheck className="text-[var(--accent-gold)] mb-8 scale-125" />
+                <Link to="/contact" className="action-card p-10 items-start text-start">
+                  <div className="action-card-overlay" />
+                  <ShieldCheck className="action-card-icon" size={32} />
                   <h4 className="text-[11px] font-black uppercase tracking-[0.4em] mb-3">{lang === 'en' ? 'Institutional Trust' : 'الثقة المؤسسية'}</h4>
                   <p className="text-[10px] opacity-40 uppercase tracking-widest leading-none group-hover:opacity-100 transition-opacity">Keynote Case Study</p>
                 </Link>
-                <Link to="/solutions" className="group p-10 border border-[var(--border-color)] bg-[var(--bg-secondary)] relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:-translate-y-2">
-                  <div className="absolute inset-0 bg-[var(--accent-gold)]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <BookOpen className="text-[var(--accent-gold)] mb-8 scale-125" />
+                <Link to="/solutions" className="action-card p-10 items-start text-start">
+                  <div className="action-card-overlay" />
+                  <BookOpen className="action-card-icon" size={32} />
                   <h4 className="text-[11px] font-black uppercase tracking-[0.4em] mb-3">{lang === 'en' ? 'Mastery & Logic' : 'الإتقان والمنطق'}</h4>
                   <p className="text-[10px] opacity-40 uppercase tracking-widest leading-none group-hover:opacity-100 transition-opacity">Tokenization Protocol</p>
                 </Link>
@@ -256,26 +252,24 @@ const About = () => {
 
           <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Action 1: Direct Protocol */}
-            <Link to="/contact" 
-               className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:shadow-[0_0_40px_rgba(201,169,98,0.2)]">
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <Lock size={48} className="text-[var(--accent-gold)] mb-10 group-hover:scale-125 transition-transform duration-700" />
-              <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{lang === 'en' ? 'Direct Protocol' : 'بروتوكول مباشر'}</h3>
-              <p className="text-[11px] font-black uppercase tracking-widest opacity-40 mb-10">{lang === 'en' ? 'Secure Engagement' : 'ارتباط آمن'}</p>
-              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-500">
-                <ArrowRight size={20} className={`${lang === 'ar' ? 'rotate-180' : ''}`} />
+            <Link to="/contact" className="action-card">
+              <div className="action-card-overlay" />
+              <Lock className="action-card-icon" size={48} />
+              <h3 className="action-card-title">{lang === 'en' ? 'Direct Protocol' : 'بروتوكول مباشر'}</h3>
+              <p className="action-card-desc">{lang === 'en' ? 'Secure Engagement' : 'ارتباط آمن'}</p>
+              <div className="action-card-btn">
+                <ArrowRight size={24} className={`${isArabic ? 'rotate-180' : ''}`} />
               </div>
             </Link>
 
-            {/* Action 2: Operational Solutions */}
-            <Link to="/solutions" 
-               className="group flex flex-col items-center justify-center p-16 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)] hover:shadow-[0_0_40px_rgba(201,169,98,0.2)]">
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <Layers size={48} className="text-[var(--accent-gold)] mb-10 group-hover:scale-125 transition-transform duration-700" />
-              <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{lang === 'en' ? 'The Solutions' : 'الحلول التشغيلية'}</h3>
-              <p className="text-[11px] font-black uppercase tracking-widest opacity-40 mb-10">{lang === 'en' ? 'View Operational Tracks' : 'عرض مسارات العمل'}</p>
-              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all duration-500">
-                <ArrowRight size={20} className={`${lang === 'ar' ? 'rotate-180' : ''}`} />
+            {/* Action 2: Academy Access */}
+            <Link to="/academy" className="action-card">
+              <div className="action-card-overlay" />
+              <Layers className="action-card-icon" size={48} />
+              <h3 className="action-card-title">{lang === 'en' ? 'The Academy' : 'أكاديمية الإتقان'}</h3>
+              <p className="action-card-desc">{lang === 'en' ? 'Mastery & Training' : 'الإتقان والتدريب المؤسسي'}</p>
+              <div className="action-card-btn">
+                <ArrowRight size={24} className={`${isArabic ? 'rotate-180' : ''}`} />
               </div>
             </Link>
           </motion.div>

@@ -39,12 +39,12 @@ const Contact = () => {
           <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-4xl text-start uppercase">
             <motion.div variants={fadeUpVariant} className="flex items-center gap-4 mb-10 rtl:flex-row-reverse">
                <div className="w-12 h-[1px] bg-[var(--accent-gold)]/50" />
-               <span className="text-[var(--accent-gold)] text-[10px] font-black tracking-[0.6em]">{lang === 'en' ? 'Engagement Node' : 'نموذج التفاعل المستمر'}</span>
+               <span className="section-subtitle mb-0">{lang === 'en' ? 'Engagement Node' : 'نموذج التفاعل المستمر'}</span>
             </motion.div>
-            <motion.h1 variants={fadeUpVariant} className="text-[clamp(3.5rem,8vw,10rem)] font-black mb-16 leading-[0.8] tracking-tighter italic">
+            <motion.h1 variants={fadeUpVariant} className="display-title mb-16 italic">
               {lang === 'en' ? <>Initiate <br /><span className="text-[var(--accent-gold)] not-italic">Protocol.</span></> : <>بدء <br /><span className="text-[var(--accent-gold)] not-italic">البروتوكول.</span></>}
             </motion.h1>
-            <motion.p variants={fadeUpVariant} className="text-2xl md:text-3xl text-[var(--text-primary)] opacity-60 leading-relaxed font-light max-w-3xl lowercase first-letter:uppercase">
+            <motion.p variants={fadeUpVariant} className="body-text max-w-3xl lowercase first-letter:uppercase">
               {t('contact_subtitle')}
             </motion.p>
           </motion.div>
@@ -60,19 +60,19 @@ const Contact = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="space-y-20 order-2 lg:order-none">
              <div className="space-y-10">
                 {infoItems.map((item, i) => (
-                  <motion.div key={i} variants={fadeUpVariant} className="flex gap-10 group items-center text-start border border-[var(--border-color)] p-10 bg-[var(--bg-secondary)]/30 backdrop-blur-xl metallic-glow">
-                     <div className="w-20 h-20 bg-[var(--bg-primary)] border border-[var(--border-color)] flex items-center justify-center shrink-0 group-hover:border-[var(--accent-gold)] transition-all duration-700">
-                        {item.icon}
-                     </div>
-                     <div className="flex-grow">
-                        <h4 className="text-[9px] font-black text-[var(--accent-gold)] opacity-40 uppercase tracking-[0.5em] mb-3">{item.label}</h4>
-                        <p className="text-2xl font-black group-hover:text-[var(--accent-gold)] transition-colors">{item.value}</p>
-                        <div className="flex items-center gap-3 mt-3 text-[var(--text-primary)] opacity-20 uppercase font-black text-[8px] tracking-[0.3em]">
-                           <Activity size={10} className="text-emerald-500 animate-pulse" />
-                           <span>{item.sub}</span>
-                        </div>
-                     </div>
-                  </motion.div>
+                   <motion.div key={i} variants={fadeUpVariant} className="flex gap-10 group items-center text-start border border-[var(--border-color)] p-10 bg-[var(--bg-secondary)]/30 backdrop-blur-xl metallic-glow">
+                      <div className="w-20 h-20 bg-[var(--bg-primary)] border border-[var(--border-color)] flex items-center justify-center shrink-0 group-hover:border-[var(--accent-gold)] transition-all duration-700">
+                         {item.icon}
+                      </div>
+                      <div className="flex-grow">
+                         <h4 className="text-[9px] font-black text-[var(--accent-gold)] opacity-40 uppercase tracking-[0.5em] mb-3">{item.label}</h4>
+                         <p className="text-2xl font-black group-hover:text-[var(--accent-gold)] transition-colors">{item.value}</p>
+                         <div className="flex items-center gap-3 mt-3 text-[var(--text-primary)] opacity-20 uppercase font-black text-[8px] tracking-[0.3em]">
+                            <Activity size={10} className="text-emerald-500 animate-pulse" />
+                            <span>{item.sub}</span>
+                         </div>
+                      </div>
+                   </motion.div>
                 ))}
              </div>
 
