@@ -28,8 +28,8 @@ const About = () => {
       year: '2025', 
       title: lang === 'en' ? 'Global Leadership' : 'القيادة العالمية', 
       desc: lang === 'en' 
-        ? 'Ranked among the top 5 global entrepreneurs in the sector. Selected from 300+ international candidates for the Outstanding Leadership Award at CXO 2.0 Conference.' 
-        : 'تم تصنيفه ضمن أفضل 5 رواد أعمال عالميين في القطاع. تم الاختيار من بين أكثر من 300 مرشح دولي لجائزة التميز في قيادة الأعمال في مؤتمر CXO 2.0.' 
+        ? 'Recognized for Outstanding Leadership at the CXO 2.0 Conference, contributing to the evolution of AI and Blockchain integration.' 
+        : 'تكريم التميز في القيادة في مؤتمر CXO 2.0، والمساهمة في تطوير تكامل الذكاء الاصطناعي والبلوكشين.' 
     }
   ];
 
@@ -86,28 +86,37 @@ const About = () => {
       {/* ── 02. ARCHITECTURE: The Journey ── */}
       <section className="py-40 relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="order-2 lg:order-none">
                <div className="space-y-16">
                   {milestones.map((m, i) => (
                     <motion.div key={i} variants={fadeUpVariant} className="flex gap-10 group text-start">
-                       <div className="text-4xl md:text-5xl font-black italic opacity-10 group-hover:opacity-40 group-hover:text-[var(--accent-gold)] transition-all duration-700 shrink-0">
-                          {m.year}
-                       </div>
-                       <div>
-                          <h4 className="text-xl font-black mb-3 uppercase tracking-tight">{m.title}</h4>
-                          <p className="opacity-40 text-lg leading-relaxed font-light group-hover:opacity-100 transition-opacity duration-700">{m.desc}</p>
-                       </div>
+                      <div className="text-[10px] font-black opacity-20 group-hover:opacity-100 transition-opacity pt-2">
+                        {m.year}
+                      </div>
+                      <div className="space-y-4">
+                        <h4 className="text-xl font-black uppercase tracking-tight">{m.title}</h4>
+                        <p className="body-text text-sm opacity-60 leading-relaxed max-w-md">{m.desc}</p>
+                      </div>
                     </motion.div>
                   ))}
                </div>
             </motion.div>
+            
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative aspect-square">
+               <div className="absolute inset-0 bg-[var(--accent-gold)]/5 rounded-full blur-[120px] animate-pulse-slow" />
+                <div className="relative border border-[var(--border-color)] h-full p-2 bg-black/40 backdrop-blur-3xl overflow-hidden group">
+                   <img src="/media/ghassan_skea_holding.png" alt="Ghassan Farajallah - SKEA Award" className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-[2000ms]" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+                   <div className="absolute bottom-12 start-12 text-start">
+                      <p className="text-xs font-black text-[var(--accent-gold)] uppercase tracking-[0.6em] mb-4">VETTED EXCELLENCE</p>
+                      <p className="text-3xl font-black italic">Sheikh Khalifa Award.</p>
+                   </div>
+                </div>
+            </motion.div>
           </div>
         </div>
       </section>
-
-      {/* ── 02.5 CINEMATIC HONORS ── */}
-      <GlobalHonors />
 
       {/* ── 03. PRINCIPLES: Core Pillars ── */}
       <section className="py-40 bg-[var(--bg-secondary)]/30 border-y border-[var(--border-color)] relative z-10 overflow-hidden">

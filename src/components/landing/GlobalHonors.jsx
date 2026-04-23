@@ -50,16 +50,16 @@ const GlobalHonors = () => {
             <div className="grid grid-cols-1 gap-10">
               <motion.div variants={fadeUpVariant} className="p-10 bg-white/[0.02] border-l-2 border-[var(--accent-gold)] backdrop-blur-xl rtl:border-l-0 rtl:border-r-2">
                 <h4 className="text-xl font-black uppercase mb-4 tracking-tight">
-                  {lang === 'en' ? 'Outstanding Leadership Award' : 'جائزة التميز في قيادة الأعمال'}
+                  {lang === 'en' ? 'Outstanding Leadership Award' : 'جائزة التميز في القيادة'}
                 </h4>
                 <p className="body-text text-sm opacity-70 leading-relaxed">
                   {lang === 'en' 
-                    ? "Ghassan Farajallah was selected from over 300 global candidates at the CXO 2.0 Conference (Dubai 2025). This merit-based award recognizes visionaries who are actively shaping the future of AI and Blockchain."
-                    : "تم اختيار غسان فرج الله من بين أكثر من 300 مرشح عالمي في مؤتمر CXO 2.0 (دبي 2025). تُمنح هذه الجائزة القائمة على الجدارة للقادة الذين يشكلون مستقبل الذكاء الاصطناعي والبلوكشين."}
+                    ? "Recognized at the CXO 2.0 Conference for visionary contributions to the evolution of AI and Blockchain integration in the corporate sector."
+                    : "تم التكريم في مؤتمر CXO 2.0 تقديراً للمساهمات الرؤيوية في تطوير تكامل الذكاء الاصطناعي والبلوكشين في القطاع المؤسسي."}
                 </p>
                 <div className="mt-8 flex items-center gap-4 text-[var(--accent-gold)] text-[10px] font-black tracking-widest uppercase">
                   <ShieldCheck size={18} />
-                  <span>{lang === 'en' ? 'Non-Promotional // 100% Merit Based' : 'جائزة غير ترويجية // قائمة على الجدارة بنسبة 100%'}</span>
+                  <span>{lang === 'en' ? 'Merit-Based Recognition' : 'تكريم قائم على الاستحقاق والجدارة'}</span>
                 </div>
               </motion.div>
 
@@ -160,7 +160,7 @@ const GlobalHonors = () => {
                       <p className="text-white font-black text-2xl tracking-tight">GHASSAN <br />FARAJALLAH</p>
                     </div>
                     <div className="mt-8 pt-6 border-t border-white/10">
-                      <p className="text-[var(--accent-gold)] font-black text-xs tracking-widest">DUBAI, UAE 2025</p>
+                      <p className="text-[var(--accent-gold)] font-black text-xs tracking-widest">CXO 2.0 CONFERENCE</p>
                     </div>
                   </div>
                 </div>
@@ -168,7 +168,7 @@ const GlobalHonors = () => {
                 {/* Status Badges */}
                 <div className="absolute top-6 left-6 z-20 flex flex-col gap-2">
                   <div className="bg-black/80 backdrop-blur-md border border-[var(--accent-gold)]/30 px-4 py-2 rounded-full">
-                    <span className="text-[var(--accent-gold)] text-[9px] font-black uppercase tracking-widest">Vetted Candidate 2025</span>
+                    <span className="text-[var(--accent-gold)] text-[9px] font-black uppercase tracking-widest">Official Awardee</span>
                   </div>
                 </div>
               </div>

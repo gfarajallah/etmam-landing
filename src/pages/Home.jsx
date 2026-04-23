@@ -16,6 +16,7 @@ import PremiumButton from '@/components/ui/PremiumButton';
 import Magnetic from '@/components/ui/Magnetic';
 import TextReveal from '@/components/ui/TextReveal';
 import MediaRecognition from '@/components/landing/MediaRecognition';
+import GlobalHonors from '@/components/landing/GlobalHonors';
 import InstitutionalAction from '@/components/layout/InstitutionalAction';
 import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
 
@@ -230,6 +231,7 @@ const Home = () => {
       </section>
 
       {/* ── 04. GLOBAL HONORS ── */}
+      <GlobalHonors />
 
 
       {/* ── 04.5 AUTHORITY: Media & Recognition ── */}
