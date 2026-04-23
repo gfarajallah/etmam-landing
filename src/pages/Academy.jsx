@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/context/useLanguage';
 import { translations } from '@/context/translations';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   BookOpen, 
   PlayCircle, 
@@ -13,7 +13,8 @@ import {
   Cpu, 
   Layers,
   ShieldCheck,
-  Globe
+  Globe,
+  X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PremiumButton from '@/components/ui/PremiumButton';
@@ -26,6 +27,7 @@ const Academy = () => {
   const { lang } = useLanguage();
   const t = translations[lang];
   const isArabic = lang === 'ar';
+  const [showVideo, setShowVideo] = useState(false);
 
   const courses = [
     {
@@ -156,8 +158,8 @@ const Academy = () => {
       <section className="py-60 z-10 relative overflow-hidden bg-black border-b border-[var(--border-color)]">
          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-blue-500/5 blur-[150px] pointer-events-none rounded-full" />
          
-         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="text-start">
+         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="lg:col-span-5 text-start">
                <span className="section-subtitle text-[var(--accent-gold)] mb-6 block">
                   {lang === 'en' ? 'The Logic Deep-Dive' : 'الغوص العميق في المنطق'}
                </span>
@@ -191,30 +193,63 @@ const Academy = () => {
                </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1 }} className="relative">
-               <a 
-                 href="https://youtu.be/qcwlee48aBU?si=8ewpLtXfx_r1EKwb" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className="block aspect-video bg-[var(--bg-primary)] border border-white/10 relative overflow-hidden group"
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }} className="lg:col-span-7 relative">
+               <div 
+                 onClick={() => setShowVideo(true)}
+                 className="aspect-video bg-[var(--bg-primary)] border border-white/10 relative overflow-hidden group cursor-pointer shadow-2xl"
                >
                   <img 
                     src="https://img.youtube.com/vi/qcwlee48aBU/maxresdefault.jpg" 
                     alt="Logic Visualization" 
-                    className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-1000" 
+                    className="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000 grayscale group-hover:grayscale-0" 
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
-                     <div className="w-20 h-20 bg-[var(--accent-gold)] rounded-full flex items-center justify-center shadow-gold-glow animate-pulse cursor-pointer group-hover:scale-125 transition-transform">
-                        <PlayCircle size={40} className="text-black" />
+                     <div className="w-24 h-24 bg-[var(--accent-gold)] rounded-full flex items-center justify-center shadow-gold-glow group-hover:scale-110 transition-transform duration-500">
+                        <PlayCircle size={48} className="text-black" />
                      </div>
                   </div>
-                  <div className="absolute bottom-0 inset-x-0 p-8 bg-gradient-to-t from-black to-transparent">
-                     <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[var(--accent-gold)]">Preview // Session 01</span>
-                     <h4 className="text-xl font-black italic">The Institutional Arbitrage Logic</h4>
+                  <div className="absolute bottom-0 inset-x-0 p-12 bg-gradient-to-t from-black to-transparent">
+                     <span className="text-[11px] font-black uppercase tracking-[0.5em] text-[var(--accent-gold)]">Session 01 // Masterclass</span>
+                     <h4 className="text-2xl md:text-3xl font-black italic">The Institutional Arbitrage Logic</h4>
                   </div>
-               </a>
+               </div>
             </motion.div>
          </div>
+
+         {/* Video Modal Overlay */}
+         <AnimatePresence>
+           {showVideo && (
+             <motion.div 
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               exit={{ opacity: 0 }}
+               className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-6 md:p-20"
+             >
+               <motion.div 
+                 initial={{ scale: 0.9, opacity: 0 }}
+                 animate={{ scale: 1, opacity: 1 }}
+                 exit={{ scale: 0.9, opacity: 0 }}
+                 className="relative w-full max-w-6xl aspect-video bg-black shadow-2xl border border-white/10"
+               >
+                 <button 
+                   onClick={() => setShowVideo(false)}
+                   className="absolute -top-16 right-0 text-white hover:text-[var(--accent-gold)] transition-colors flex items-center gap-2 uppercase text-[10px] font-black tracking-widest"
+                 >
+                   <span>Close</span>
+                   <X size={24} />
+                 </button>
+                 <iframe 
+                   src="https://www.youtube.com/embed/qcwlee48aBU?autoplay=1" 
+                   title="YouTube video player" 
+                   frameBorder="0" 
+                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                   allowFullScreen
+                   className="w-full h-full"
+                 ></iframe>
+               </motion.div>
+             </motion.div>
+           )}
+         </AnimatePresence>
       </section>
 
       {/* ── 04. DOWNLOADS ── */}
