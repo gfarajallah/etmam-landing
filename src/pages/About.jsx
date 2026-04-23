@@ -104,14 +104,14 @@ const About = () => {
             
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative aspect-square">
                <div className="absolute inset-0 bg-[var(--accent-gold)]/5 rounded-full blur-[120px] animate-pulse-slow" />
-               <div className="relative border border-[var(--border-color)] h-full p-2 bg-black/40 backdrop-blur-3xl overflow-hidden group">
-                  <img src="/media/cxo_leadership_award.png" alt="Strategic Architecture" className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-[2000ms]" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
-                  <div className="absolute bottom-12 start-12 text-start">
-                     <p className="text-xs font-black text-[var(--accent-gold)] uppercase tracking-[0.6em] mb-4">VETTED EXPERIENCE</p>
-                     <p className="text-3xl font-black italic">The Visionary Edge.</p>
-                  </div>
-               </div>
+                <div className="relative border border-[var(--border-color)] h-full p-2 bg-black/40 backdrop-blur-3xl overflow-hidden group">
+                   <img src="/media/ghassan_skea_holding.png" alt="Ghassan Farajallah - SKEA Award" className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-[2000ms]" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+                   <div className="absolute bottom-12 start-12 text-start">
+                      <p className="text-xs font-black text-[var(--accent-gold)] uppercase tracking-[0.6em] mb-4">VETTED EXCELLENCE</p>
+                      <p className="text-3xl font-black italic">Sheikh Khalifa Award.</p>
+                   </div>
+                </div>
             </motion.div>
           </div>
         </div>
