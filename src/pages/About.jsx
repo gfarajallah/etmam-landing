@@ -22,7 +22,14 @@ const About = () => {
     { year: '2010', title: lang === 'en' ? 'Inception' : 'البداية', desc: lang === 'en' ? 'Core strategic architecture phase.' : 'مرحلة هندسة الاستراتيجية الجوهرية.' },
     { year: '2015', title: lang === 'en' ? 'Global SLA' : 'اتفاقية عالمية', desc: lang === 'en' ? 'Defining 12h Global executive response.' : 'تحديد الاستجابة التنفيذية العالمية خلال 12 ساعة.' },
     { year: '2020', title: lang === 'en' ? 'Digital Pivot' : 'التحول الرقمي', desc: lang === 'en' ? 'Engineering the real asset tokenization bridge.' : 'هندسة جسر ترميز الأصول الحقيقية.' },
-    { year: '2024', title: lang === 'en' ? 'Institutional Engine' : 'المحرك المؤسسي', desc: lang === 'en' ? 'The flagship era of digital liquidity.' : 'عصر السيولة الرقمية الرائد.' }
+    { year: '2024', title: lang === 'en' ? 'Institutional Engine' : 'المحرك المؤسسي', desc: lang === 'en' ? 'The flagship era of digital liquidity.' : 'عصر السيولة الرقمية الرائد.' },
+    { 
+      year: '2025', 
+      title: lang === 'en' ? 'Global Leadership' : 'القيادة العالمية', 
+      desc: lang === 'en' 
+        ? 'Selected from 300+ global candidates for the Outstanding Leadership Award at CXO 2.0.' 
+        : 'اختيار غسان فرج الله من بين أكثر من 300 مرشح عالمي لجائزة التميز في قيادة الأعمال.' 
+    }
   ];
 
   const pillars = [

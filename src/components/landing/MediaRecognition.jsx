@@ -9,6 +9,16 @@ const MediaRecognition = () => {
 
   const pressItems = [
     {
+      id: 0,
+      source: "CXO 2.0 Conference",
+      date: "Global Honor // Dec 2025",
+      headline: lang === 'en' 
+        ? "Outstanding Leadership Award: Selected among 300+ global candidates for merit-based excellence in AI & Blockchain" 
+        : "جائزة التميز في قيادة الأعمال: اختيار غسان فرج الله من بين أكثر من 300 مرشح عالمي للتميز في الذكاء الاصطناعي والبلوكشين",
+      link: "https://www.linkedin.com/posts/ghassan-farajallah_aeiaebaepaeuabraepaezaeuabraepaesaesaev-aesaebaesabraetaesaevaexaetabraesaevaepaeyaeaaey-activity-7374095666995748864-FmIC",
+      icon: <Award size={20} className="text-[var(--accent-gold)]" />
+    },
+    {
       id: 1,
       source: "UAE Stories",
       date: "Featured Coverage",
@@ -23,14 +33,6 @@ const MediaRecognition = () => {
       headline: lang === 'en' ? "Architecting Excellence: Strategic Contributor to the Sheikh Khalifa Excellence Award" : "هندسة التميز المؤسسي: مساهم رئيسي في حصد جائزة الشيخ خليفة للامتياز",
       link: "#",
       icon: <Award size={20} className="text-[var(--accent-gold)]" />
-    },
-    {
-      id: 3,
-      source: "Bloomberg Arabia",
-      date: "Upcoming Feature",
-      headline: lang === 'en' ? "The Future of Institutional Tokenization" : "مستقبل الترميز المؤسسي للعقارات",
-      link: "#",
-      icon: <Newspaper size={20} className="text-[var(--accent-gold)]" />
     }
   ];
 
@@ -139,11 +141,11 @@ const MediaRecognition = () => {
            <p className="text-[10px] font-black uppercase tracking-[0.5em] opacity-30 mb-12">
              {lang === 'en' ? 'TRUSTED BY & FEATURED IN' : 'شراكات وتغطيات إعلامية'}
            </p>
-           <div className="flex flex-wrap justify-center gap-16 md:gap-32 opacity-20 grayscale">
+           <div className="flex flex-wrap justify-center gap-16 md:gap-32 opacity-20 grayscale items-center">
               <div className="text-2xl font-black uppercase tracking-tighter">FORBES</div>
               <div className="text-2xl font-black uppercase tracking-tighter">BLOOMBERG</div>
               <div className="text-2xl font-black uppercase tracking-tighter">REUTERS</div>
-              <div className="text-2xl font-black uppercase tracking-tighter">WSJ</div>
+              <div className="text-xl font-black uppercase tracking-widest border border-white px-4 py-2">CXO 2.0</div>
            </div>
         </motion.div>
       </div>
