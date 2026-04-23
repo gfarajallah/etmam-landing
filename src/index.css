@@ -181,6 +181,7 @@
   /* Standardized Action Card (The large boxes at the bottom of sections) */
   .action-card {
     @apply flex flex-col items-center justify-center p-12 md:p-20 border border-[var(--border-color)] backdrop-blur-3xl relative overflow-hidden transition-all duration-1000 hover:border-[var(--accent-gold)] hover:shadow-[0_0_60px_rgba(201,169,98,0.25)];
+    background-color: rgba(1, 4, 15, 0.5); /* Fallback for older browsers */
     background-color: color-mix(in srgb, var(--bg-primary), transparent 50%);
   }
 
