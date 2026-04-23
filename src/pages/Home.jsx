@@ -269,7 +269,7 @@ const Home = () => {
               <div className="absolute -inset-4 bg-[var(--accent-gold)]/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               <div className="relative border border-[var(--border-color)] bg-black p-1">
                  <img 
-                   src="/media/academy_concept.jpg" 
+                   src="/media/ghassan_keynote.jpg" 
                    alt="Academy Dashboard" 
                    className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-1000" 
                  />

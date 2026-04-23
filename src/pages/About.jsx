@@ -27,8 +27,8 @@ const About = () => {
       year: '2025', 
       title: lang === 'en' ? 'Global Leadership' : 'القيادة العالمية', 
       desc: lang === 'en' 
-        ? 'Selected from 300+ global candidates for the Outstanding Leadership Award at CXO 2.0.' 
-        : 'اختيار غسان فرج الله من بين أكثر من 300 مرشح عالمي لجائزة التميز في قيادة الأعمال.' 
+        ? 'Ranked among the top 5 global entrepreneurs in the sector. Selected from 300+ international candidates for the Outstanding Leadership Award at CXO 2.0 Conference.' 
+        : 'تم تصنيفه ضمن أفضل 5 رواد أعمال عالميين في القطاع. تم الاختيار من بين أكثر من 300 مرشح دولي لجائزة التميز في قيادة الأعمال في مؤتمر CXO 2.0.' 
     }
   ];
 
@@ -89,7 +89,7 @@ const About = () => {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative aspect-square">
                <div className="absolute inset-0 bg-[var(--accent-gold)]/5 rounded-full blur-[120px] animate-pulse-slow" />
                <div className="relative border border-[var(--border-color)] h-full p-2 bg-black/40 backdrop-blur-3xl overflow-hidden group">
-                  <img src="/media/about_architect.jpg" alt="Strategic Architecture" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms]" />
+                  <img src="/media/ghassan_award.png" alt="Strategic Architecture" className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-[2000ms]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
                   <div className="absolute bottom-12 start-12 text-start">
                      <p className="text-xs font-black text-[var(--accent-gold)] uppercase tracking-[0.6em] mb-4">VETTED EXPERIENCE</p>
