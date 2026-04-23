@@ -9,16 +9,6 @@ const MediaRecognition = () => {
 
   const pressItems = [
     {
-      id: 0,
-      source: "CXO 2.0 Conference",
-      date: "Global Honor // Dec 2025",
-      headline: lang === 'en' 
-        ? "Outstanding Leadership Award: Selected among 300+ global candidates for merit-based excellence in AI & Blockchain" 
-        : "جائزة التميز في قيادة الأعمال: اختيار غسان فرج الله من بين أكثر من 300 مرشح عالمي للتميز في الذكاء الاصطناعي والبلوكشين",
-      link: "https://www.linkedin.com/posts/ghassan-farajallah_aeiaebaepaeuabraepaezaeuabraepaesaesaev-aesaebaesabraetaesaevaexaetabraesaevaepaeyaeaaey-activity-7374095666995748864-FmIC",
-      icon: <Award size={20} className="text-[var(--accent-gold)]" />
-    },
-    {
       id: 1,
       source: "UAE Stories",
       date: "Featured Coverage",
@@ -33,6 +23,14 @@ const MediaRecognition = () => {
       headline: lang === 'en' ? "Architecting Excellence: Strategic Contributor to the Sheikh Khalifa Excellence Award" : "هندسة التميز المؤسسي: مساهم رئيسي في حصد جائزة الشيخ خليفة للامتياز",
       link: "#",
       icon: <Award size={20} className="text-[var(--accent-gold)]" />
+    },
+    {
+      id: 3,
+      source: "Bloomberg Arabia",
+      date: "Upcoming Feature",
+      headline: lang === 'en' ? "The Future of Institutional Tokenization" : "مستقبل الترميز المؤسسي للعقارات",
+      link: "#",
+      icon: <Newspaper size={20} className="text-[var(--accent-gold)]" />
     }
   ];
 
