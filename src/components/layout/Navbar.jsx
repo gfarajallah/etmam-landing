@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon, Languages, ShieldCheck } from 'lucide-react';
-import { useTheme } from '@/context/ThemeContext';
+import { Menu, X, Languages, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '@/context/useLanguage';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const { theme, toggleTheme } = useTheme();
   const { lang, toggleLanguage, t } = useLanguage();
   const isArabic = lang === 'ar';
 
@@ -18,7 +16,6 @@ const Navbar = () => {
     { name: t('nav_about'), path: '/about' },
     { name: t('nav_solutions'), path: '/solutions' },
     { name: t('nav_ventures'), path: '/ventures' },
-    { name: t('nav_insights'), path: '/insights' },
     { name: t('nav_contact'), path: '/contact' }
   ];
 
@@ -57,16 +54,8 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Toggles */}
+            {/* Language Toggle */}
             <div className="flex items-center gap-6 ps-10 border-s border-[var(--border-color)]">
-               <motion.button 
-                 whileHover={{ scale: 1.1 }}
-                 whileTap={{ scale: 0.9 }}
-                 onClick={toggleTheme}
-                 className="p-2 text-[var(--text-secondary)] hover:text-[var(--accent-gold)] transition-colors"
-               >
-                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-               </motion.button>
                <motion.button 
                  whileHover={{ scale: 1.1 }}
                  whileTap={{ scale: 0.9 }}
@@ -81,9 +70,6 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-6">
-            <button onClick={toggleTheme} className="text-[var(--text-secondary)]">
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
             <button onClick={() => setIsOpen(!isOpen)} className="text-[var(--text-primary)]">
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>

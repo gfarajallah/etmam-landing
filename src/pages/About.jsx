@@ -14,7 +14,10 @@ import {
   Award
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
+import TextReveal from '@/components/ui/TextReveal';
+import Magnetic from '@/components/ui/Magnetic';
 import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
+import MediaRecognition from '@/components/landing/MediaRecognition';
 
 const About = () => {
   const { lang } = useLanguage();
@@ -209,6 +212,9 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      {/* ── 02.5 MEDIA & RECOGNITION (Placeholder) ── */}
+      <MediaRecognition />
 
       {/* ── 03. THE TRIPLE S: Systematic IP ── */}
       <section className="py-52 bg-black/5 dark:bg-black/20 border-y border-[var(--border-color)] relative z-10 text-center overflow-visible">
