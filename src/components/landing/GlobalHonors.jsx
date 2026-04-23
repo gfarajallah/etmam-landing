@@ -6,7 +6,6 @@ import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const GlobalHonors = () => {
   const { lang } = useLanguage();
-  const isArabic = lang === 'ar';
   
   const { scrollYProgress } = useScroll();
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
