@@ -65,20 +65,16 @@ const Home = () => {
       
       {/* ── 01. HERO ── */}
       <section className="relative min-h-screen flex items-center overflow-hidden z-20 border-b border-[var(--border-color)]">
-        <div className={`absolute inset-0 z-0 bg-black group overflow-hidden`}>
-          <img 
-            src="/media/etmam_executive_hero_premium.png" 
-            alt="Etmam Vision - Ghassan Farajallah" 
-            className={`absolute top-0 h-full transition-all duration-[5000ms] animate-slow-zoom brightness-[0.4] group-hover:brightness-[0.6] grayscale group-hover:grayscale-0
-              ${isArabic ? 'left-0 scale-x-[-1]' : 'right-0'} `}
-            style={{ 
-              objectPosition: 'top center',
-              width: '65%',
-              objectFit: 'cover',
-              maskImage: `linear-gradient(${isArabic ? 'to right' : 'to left'}, black 45%, transparent 100%)`,
-              WebkitMaskImage: `linear-gradient(${isArabic ? 'to right' : 'to left'}, black 45%, transparent 100%)`
-            }}
-          />
+        <div className="absolute inset-0 z-0 bg-black overflow-hidden">
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale"
+          >
+            <source src="/media/ghassan_strategic.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--bg-primary)]/80" />
           <div className={`absolute inset-0 bg-gradient-to-r ${isArabic ? 'from-transparent via-[var(--bg-primary)]/30 to-[var(--bg-primary)]' : 'from-[var(--bg-primary)] via-[var(--bg-primary)]/30 to-transparent'}`} />
         </div>

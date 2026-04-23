@@ -114,30 +114,24 @@ const GlobalHonors = () => {
 
           {/* RIGHT: VISUAL COMPOSITION */}
           <div className="relative h-[700px] md:h-[900px] group">
-            {/* Background Image: SKEA Graphic */}
-            <motion.div 
-              style={{ y: y1 }}
-              className="absolute top-0 right-0 w-[85%] aspect-square opacity-30 grayscale hover:grayscale-0 transition-all duration-1000 z-0 overflow-hidden rounded-3xl border border-white/5"
-            >
-              <img 
-                src="/media/skea_award_graphic.jpg" 
-                alt="SKEA Award Graphic" 
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
+            {/* Visual Balance Element */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--accent-gold)]/5 via-transparent to-transparent opacity-30 z-0" />
 
-            {/* Main Image 1: Ghassan holding SKEA */}
+            {/* Main Image 1: SKEA Award Graphic (High Authority) */}
             <motion.div 
               style={{ y: y2 }}
-              className="absolute top-20 left-0 w-[70%] z-20"
+              className="absolute top-20 left-0 w-[80%] z-20"
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-[var(--accent-gold)]/10 blur-[120px] rounded-full" />
+              <div className="relative group/skea overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
                 <img 
-                  src="/media/ghassan_skea_holding.png" 
-                  alt="Ghassan Farajallah - SKEA Award" 
-                  className="relative z-10 w-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] grayscale hover:grayscale-0 transition-all duration-1000"
+                  src="/media/skea_award_graphic.jpg" 
+                  alt="Sheikh Khalifa Excellence Award" 
+                  className="w-full h-full object-cover grayscale group-hover/skea:grayscale-0 transition-all duration-1000"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+                <div className="absolute bottom-6 left-6">
+                  <p className="text-[10px] font-black text-[var(--accent-gold)] uppercase tracking-[0.4em]">INSTITUTIONAL EXCELLENCE</p>
+                </div>
               </div>
             </motion.div>
 
