@@ -22,7 +22,7 @@ const About = () => {
     { year: '2010', title: lang === 'en' ? 'Inception' : 'البداية', desc: lang === 'en' ? 'Core strategic architecture phase.' : 'مرحلة هندسة الاستراتيجية الجوهرية.' },
     { year: '2015', title: lang === 'en' ? 'Global SLA' : 'اتفاقية عالمية', desc: lang === 'en' ? 'Defining 12h Global executive response.' : 'تحديد الاستجابة التنفيذية العالمية خلال 12 ساعة.' },
     { year: '2020', title: lang === 'en' ? 'Digital Pivot' : 'التحول الرقمي', desc: lang === 'en' ? 'Engineering the real asset tokenization bridge.' : 'هندسة جسر ترميز الأصول الحقيقية.' },
-    { year: '2024', title: lang === 'en' ? 'Institutional Engine' : 'المحرك المؤسسي', desc: lang === 'en' ? 'The flagship era of digital liquidity.' : 'عصر السيولة الرقمية الرائد.' },
+    { year: '2024', title: lang === 'en' ? 'Global #1 Platform' : 'المنصة رقم 1 عالمياً', desc: lang === 'en' ? 'Crowned the world\'s best real estate tokenization platform in Amsterdam, prevailing over giants from Silicon Valley and Singapore.' : 'تم تتويجنا كأفضل منصة ترميز عقاري في العالم في أمستردام، متفوقين على عمالقة من سيليكون فالي وسنغافورة.' },
     { 
       year: '2025', 
       title: lang === 'en' ? 'Global Leadership' : 'القيادة العالمية', 

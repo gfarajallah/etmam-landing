@@ -73,6 +73,30 @@ const GlobalHonors = () => {
                     : "مساهمة استراتيجية في تحقيق أعلى مستويات التميز المؤسسي والجودة في العمل المؤسسي داخل دولة الإمارات العربية المتحدة."}
                 </p>
               </motion.div>
+
+              <motion.div variants={fadeUpVariant} className="p-10 bg-white/[0.02] border-l-2 border-emerald-500/40 backdrop-blur-xl rtl:border-l-0 rtl:border-r-2">
+                <h4 className="text-xl font-black uppercase mb-4 tracking-tight">
+                  {lang === 'en' ? 'Global Tokenization Award - Amsterdam' : 'جائزة الترميز العالمية - أمستردام'}
+                </h4>
+                <p className="body-text text-sm opacity-70 leading-relaxed">
+                  {lang === 'en' 
+                    ? "SmartBlocks was crowned the World's #1 Real Estate Tokenization Platform in Amsterdam, prevailing over leading competitors from Silicon Valley and Singapore in a global summit of innovation."
+                    : "تم تتويج سمارت بلوكس كأفضل منصة ترميز عقاري في العالم في أمستردام، متفوقة على منافسين عالميين من سيليكون فالي وسنغافورة في قمة عالمية للابتكار."}
+                </p>
+                <div className="mt-6 flex items-center gap-4">
+                  <a 
+                    href="https://youtu.be/YyR2Vb6k9No?si=C58GHegf8BiOCN16" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-[var(--accent-gold)] text-[10px] font-black tracking-widest uppercase hover:text-white transition-colors"
+                  >
+                    <div className="w-8 h-8 rounded-full border border-current flex items-center justify-center">
+                      <div className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[6px] border-l-current border-b-[4px] border-b-transparent ml-0.5" />
+                    </div>
+                    <span>{lang === 'en' ? 'Watch Ceremony' : 'مشاهدة التكريم'}</span>
+                  </a>
+                </div>
+              </motion.div>
             </div>
 
             <motion.div variants={fadeUpVariant} className="pt-8">
