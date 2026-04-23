@@ -49,20 +49,36 @@ const About = () => {
         </div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
-          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-4xl text-start">
-            <motion.div variants={fadeUpVariant} className="flex items-center gap-4 mb-10 rtl:flex-row-reverse">
-               <div className="w-12 h-[1px] bg-[var(--accent-gold)]/50" />
-               <span className="section-subtitle mb-0">{lang === 'en' ? 'Executive Profile' : 'الملف التنفيذي'}</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-4xl text-start">
+              <motion.div variants={fadeUpVariant} className="flex items-center gap-4 mb-10 rtl:flex-row-reverse">
+                 <div className="w-12 h-[1px] bg-[var(--accent-gold)]/50" />
+                 <span className="section-subtitle mb-0">{lang === 'en' ? 'Executive Profile' : 'الملف التنفيذي'}</span>
+              </motion.div>
+              <motion.h1 variants={fadeUpVariant} className="display-title mb-16 italic">
+                {lang === 'en' ? <>Engineering <br /><span className="text-[var(--accent-gold)] not-italic">Authority.</span></> : <>هندسة <br /><span className="text-[var(--accent-gold)] not-italic">السيادة.</span></>}
+              </motion.h1>
+              <motion.p variants={fadeUpVariant} className="body-text max-w-3xl lowercase first-letter:uppercase">
+                {lang === 'en' 
+                  ? 'ETMAM is not just a platform; it is a philosophy of excellence. Guided by the vision of Ghassan Farajallah, we engineer high-efficiency transitions for the real estate economy.'
+                  : 'إتمام ليست مجرد منصة؛ بل هي فلسفة للتميز. مسترشدين برؤية غسان فرج الله، نهندس تحولات عالية الكفاءة للاقتصاد العقاري.'}
+              </motion.p>
             </motion.div>
-            <motion.h1 variants={fadeUpVariant} className="display-title mb-16 italic">
-              {lang === 'en' ? <>Engineering <br /><span className="text-[var(--accent-gold)] not-italic">Authority.</span></> : <>هندسة <br /><span className="text-[var(--accent-gold)] not-italic">السيادة.</span></>}
-            </motion.h1>
-            <motion.p variants={fadeUpVariant} className="body-text max-w-3xl lowercase first-letter:uppercase">
-              {lang === 'en' 
-                ? 'ETMAM is not just a platform; it is a philosophy of excellence. Guided by the vision of Ghassan Farajallah, we engineer high-efficiency transitions for the real estate economy.'
-                : 'إتمام ليست مجرد منصة؛ بل هي فلسفة للتميز. مسترشدين برؤية غسان فرج الله، نهندس تحولات عالية الكفاءة للاقتصاد العقاري.'}
-            </motion.p>
-          </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="relative hidden lg:block"
+            >
+              <div className="absolute inset-0 bg-[var(--accent-gold)]/10 blur-[100px] rounded-full" />
+              <img 
+                src="/media/etmam_executive_hero_premium.png" 
+                alt="Ghassan Farajallah" 
+                className="relative z-10 w-full max-w-md mx-auto drop-shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -89,7 +105,7 @@ const About = () => {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="relative aspect-square">
                <div className="absolute inset-0 bg-[var(--accent-gold)]/5 rounded-full blur-[120px] animate-pulse-slow" />
                <div className="relative border border-[var(--border-color)] h-full p-2 bg-black/40 backdrop-blur-3xl overflow-hidden group">
-                  <img src="/media/ghassan_award.png" alt="Strategic Architecture" className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-[2000ms]" />
+                  <img src="/media/cxo_leadership_award.png" alt="Strategic Architecture" className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-[2000ms]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
                   <div className="absolute bottom-12 start-12 text-start">
                      <p className="text-xs font-black text-[var(--accent-gold)] uppercase tracking-[0.6em] mb-4">VETTED EXPERIENCE</p>

@@ -94,7 +94,7 @@ const GlobalHonors = () => {
               className="absolute top-0 right-0 w-[70%] aspect-square opacity-40 grayscale hover:grayscale-0 transition-all duration-1000 z-0"
             >
               <img 
-                src="/media/skea_award.png" 
+                src="/media/skea_excellence_award.png" 
                 alt="SKEA Award" 
                 className="w-full h-full object-contain"
               />
@@ -111,7 +111,7 @@ const GlobalHonors = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
-                  src="/media/ghassan_award.png" 
+                  src="/media/cxo_leadership_award.png" 
                   alt="Ghassan Farajallah - Outstanding Leadership Award" 
                   className="w-full h-full object-contain object-bottom drop-shadow-[0_0_80px_rgba(201,169,98,0.3)] group-hover:drop-shadow-[0_0_120px_rgba(201,169,98,0.5)] transition-all duration-1000"
                 />
