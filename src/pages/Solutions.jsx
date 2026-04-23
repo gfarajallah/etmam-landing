@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import PremiumButton from '@/components/ui/PremiumButton';
 import Magnetic from '@/components/ui/Magnetic';
 import TextReveal from '@/components/ui/TextReveal';
+import InstitutionalAction from '@/components/layout/InstitutionalAction';
 import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const Solutions = () => {
@@ -343,6 +344,10 @@ const Solutions = () => {
           </motion.div>
         ))}
       </section>
+
+      <InstitutionalAction 
+        title={lang === 'en' ? <>Deploy <span className="text-[var(--accent-gold)]">Capital.</span></> : <>نشر <span className="text-[var(--accent-gold)]">رأس المال.</span></>}
+      />
     </div>
   );
 };

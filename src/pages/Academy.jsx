@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
 import PremiumButton from '@/components/ui/PremiumButton';
 import Magnetic from '@/components/ui/Magnetic';
 import TextReveal from '@/components/ui/TextReveal';
+import InstitutionalAction from '@/components/layout/InstitutionalAction';
 import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const Academy = () => {
@@ -235,23 +236,9 @@ const Academy = () => {
         </div>
       </section>
 
-      {/* ── 05. ENROLL ── */}
-      <section className="py-60 z-10 relative overflow-hidden bg-black text-center">
-         <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-10">
-            <Award size={80} className="text-[var(--accent-gold)] mx-auto mb-12 opacity-50" />
-            <TextReveal text={lang === 'en' ? 'Institutional Certification.' : 'شهادة مؤسسية معتمدة.'} className="display-title justify-center mb-12 italic" />
-            <p className="body-text mb-20 opacity-60">
-               {lang === 'en' 
-                 ? "Complete the tracks to receive the ETMAM Institutional Professional (EIP) certification – a recognized mark of mastery in the digital asset economy."
-                 : "أكمل المسارات للحصول على شهادة إتمام للمحترفين المؤسسيين (EIP) – وهي علامة معترف بها للإتقان في اقتصاد الأصول الرقمية."}
-            </p>
-            <Magnetic strength={0.25}>
-               <PremiumButton to="/contact" className="px-24 py-12">
-                  {lang === 'en' ? 'Request Admission' : 'طلب القبول'}
-               </PremiumButton>
-            </Magnetic>
-         </div>
-      </section>
+      <InstitutionalAction 
+        title={lang === 'en' ? <>Earn your <span className="text-[var(--accent-gold)]">Authority.</span></> : <>اكتسب <span className="text-[var(--accent-gold)]">سيادتك.</span></>}
+      />
     </div>
   );
 };

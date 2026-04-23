@@ -261,11 +261,11 @@ const Ventures = () => {
             </Magnetic>
 
             <Magnetic strength={0.2}>
-              <a href="https://academy.etmam.io/smartblocks" target="_blank" rel="noopener noreferrer" 
+              <Link to="/academy" 
                  className="group flex flex-col items-center justify-center p-20 border border-white/5 bg-black/20 backdrop-blur-xl relative overflow-hidden transition-all duration-700 hover:border-[var(--accent-gold)]">
                 <Zap size={48} className="text-[var(--accent-gold)] mb-10 group-hover:scale-125 transition-all duration-700" />
                 <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{lang === 'en' ? 'Academy Access' : 'الوصول للأكاديمية'}</h3>
-              </a>
+              </Link>
             </Magnetic>
           </div>
         </motion.div>

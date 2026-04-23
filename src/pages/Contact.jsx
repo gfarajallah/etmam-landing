@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Mail, Linkedin, ArrowRight, ShieldCheck, Clock, MapPin, Activity } from 'lucide-react';
 import { useLanguage } from '@/context/useLanguage';
 import PremiumButton from '@/components/ui/PremiumButton';
+import InstitutionalAction from '@/components/layout/InstitutionalAction';
 import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const Contact = () => {
@@ -166,6 +167,10 @@ const Contact = () => {
           </motion.div>
         </div>
       </section>
+
+      <InstitutionalAction 
+        title={lang === 'en' ? <>Begin the <span className="text-[var(--accent-gold)]">Journey.</span></> : <>ابدأ <span className="text-[var(--accent-gold)]">الرحلة.</span></>}
+      />
     </div>
   );
 };
