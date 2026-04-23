@@ -39,7 +39,7 @@ const InstitutionalAction = ({
 
         <motion.div variants={fadeUpVariant} className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Action 1 */}
-          <Link to={action1.path} className="action-card">
+          <Link to={action1.path} className="action-card group">
             <div className="action-card-overlay" />
             <div className="action-card-icon">
               {action1.icon}

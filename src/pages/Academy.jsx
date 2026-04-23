@@ -123,7 +123,7 @@ const Academy = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {courses.map((course, i) => (
-              <motion.div key={i} variants={fadeUpVariant} className="action-card p-12">
+              <motion.div key={i} variants={fadeUpVariant} className="action-card group p-12">
                 <div className="action-card-overlay bg-[var(--accent-gold)]/5" />
                 <div className="flex justify-between items-start mb-10">
                    <div className="p-4 border border-white/10 group-hover:border-[var(--accent-gold)] transition-colors">

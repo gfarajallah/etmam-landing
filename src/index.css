@@ -180,11 +180,12 @@
 
   /* Standardized Action Card (The large boxes at the bottom of sections) */
   .action-card {
-    @apply group flex flex-col items-center justify-center p-12 md:p-20 border border-[var(--border-color)] bg-[var(--bg-primary)]/50 backdrop-blur-3xl relative overflow-hidden transition-all duration-1000 hover:border-[var(--accent-gold)] hover:shadow-[0_0_60px_rgba(201,169,98,0.25)];
+    @apply flex flex-col items-center justify-center p-12 md:p-20 border border-[var(--border-color)] backdrop-blur-3xl relative overflow-hidden transition-all duration-1000 hover:border-[var(--accent-gold)] hover:shadow-[0_0_60px_rgba(201,169,98,0.25)];
+    background-color: color-mix(in srgb, var(--bg-primary), transparent 50%);
   }
 
   .action-card-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000;
+    @apply absolute inset-0 bg-gradient-to-t from-[rgba(201,169,98,0.1)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000;
   }
 
   .action-card-icon {
