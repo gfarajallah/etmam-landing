@@ -237,49 +237,6 @@ const Home = () => {
       {/* ── 04.5 AUTHORITY: Media & Recognition ── */}
       <MediaRecognition />
 
-      {/* ── 04.5 KNOWLEDGE: ETMAM Academy ── */}
-      <section className="py-40 bg-[var(--bg-secondary)]/60 relative overflow-hidden border-t border-[var(--border-color)] z-10 transition-colors duration-700">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center text-start">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-              <motion.span variants={fadeUpVariant} className="section-subtitle">
-                {lang === 'en' ? 'Institutional Education' : 'التعليم المؤسسي'}
-              </motion.span>
-              <TextReveal 
-                text={lang === 'en' ? 'ETMAM ACADEMY.' : 'أكاديمية إتمام.'}
-                className="section-title mb-10"
-              />
-              <motion.p variants={fadeUpVariant} className="body-text mb-16 max-w-xl">
-                {lang === 'en' 
-                  ? 'The definitive masterclass for real estate executives. Engineering high-authority knowledge for the next generation of institutional leaders.'
-                  : 'دورة الإتقان النهائية للمسؤولين التنفيذيين في العقارات. هندسة المعرفة عالية السلطة للجيل القادم من القادة المؤسسيين.'}
-              </motion.p>
-              <motion.div variants={fadeUpVariant}>
-                <Magnetic>
-                  <PremiumButton to="/academy">
-                    {lang === 'en' ? 'EXPLORE ACADEMY' : 'استكشف الأكاديمية'}
-                  </PremiumButton>
-                </Magnetic>
-              </motion.div>
-            </motion.div>
-            <motion.div variants={slowFadeUpVariant} className="relative group">
-              <div className="absolute -inset-4 bg-[var(--accent-gold)]/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-              <div className="relative border border-[var(--border-color)] bg-black p-1">
-                 <img 
-                   src="/media/ghassan_keynote.jpg" 
-                   alt="Academy Dashboard" 
-                   className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-1000" 
-                 />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
-                 <div className="absolute bottom-10 start-10">
-                    <p className="text-4xl font-black italic gold-gradient-text">99.9%</p>
-                    <p className="text-[10px] font-black uppercase tracking-widest opacity-40">MASTERY RATING</p>
-                 </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* ── 05. FLAGSHIP: SMARTBLOCKS ── */}
       <section className="py-40 bg-[var(--bg-secondary)]/40 relative overflow-hidden border-y border-[var(--border-color)] z-10 transition-colors duration-700">
