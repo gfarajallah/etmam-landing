@@ -23,7 +23,7 @@ import TextReveal from '@/components/ui/TextReveal';
 import { fadeUpVariant, slowFadeUpVariant, staggerContainer } from '@/lib/animations';
 
 const Academy = () => {
-  const { lang, t } = useLanguage();
+  const { lang } = useLanguage();
   const isArabic = lang === 'ar';
   const [showPrezi, setShowPrezi] = useState(false);
 
