@@ -12,6 +12,7 @@ import SmartAgentAI from '@/pages/SmartAgentAI';
 import Ventures from '@/pages/Ventures';
 import Insights from '@/pages/Insights';
 import Contact from '@/pages/Contact';
+import Academy from '@/pages/Academy';
 import { pageTransition } from '@/lib/animations';
 
 const AnimatedRoutes = () => {
@@ -36,6 +37,7 @@ const AnimatedRoutes = () => {
           <Route path="/solutions/smart-agent" element={<SmartAgentAI />} />
           <Route path="/ventures" element={<Ventures />} />
           <Route path="/insights" element={<Insights />} />
+          <Route path="/academy" element={<Academy />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </motion.div>
